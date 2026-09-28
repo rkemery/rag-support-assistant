@@ -1,0 +1,245 @@
+{
+  "steps": [
+    {
+      "step": "chunking",
+      "metric": "ndcg@10",
+      "dev": {
+        "fixed-dense-bge-small": 0.7474,
+        "fixed-title-dense-bge-small": 0.7908,
+        "header-dense-bge-small": 0.7793
+      },
+      "chosen": "fixed-title-dense-bge-small"
+    },
+    {
+      "step": "embedding",
+      "metric": "ndcg@10",
+      "dev": {
+        "fixed-title-dense-bge-small": 0.7908,
+        "fixed-title-dense-granite-small": 0.7494
+      },
+      "chosen": "fixed-title-dense-bge-small"
+    },
+    {
+      "step": "first stage",
+      "metric": "ndcg@10",
+      "dev": {
+        "fixed-title-dense-bge-small": 0.7908,
+        "fixed-title-bm25": 0.7375,
+        "fixed-title-hybrid-bge-small-convex0.7": 0.839,
+        "fixed-title-hybrid-bge-small-rrf": 0.8045
+      },
+      "chosen": "fixed-title-hybrid-bge-small-convex0.7"
+    },
+    {
+      "step": "reranker",
+      "metric": "ndcg@10",
+      "dev": {
+        "fixed-title-hybrid-bge-small-convex0.7": 0.839,
+        "fixed-title-hybrid-bge-small-convex0.7-granite-rerank": 0.8199
+      },
+      "chosen": "fixed-title-hybrid-bge-small-convex0.7"
+    }
+  ],
+  "alpha_sweep": {
+    "0.0": 0.7356,
+    "0.1": 0.7578,
+    "0.2": 0.7722,
+    "0.3": 0.7919,
+    "0.4": 0.8128,
+    "0.5": 0.8282,
+    "0.6": 0.8245,
+    "0.7": 0.839,
+    "0.8": 0.8114,
+    "0.9": 0.7952,
+    "1.0": 0.7908
+  },
+  "configs": {
+    "fixed-dense-bge-small": {
+      "name": "fixed / bge-small",
+      "config": {
+        "chunking": "fixed",
+        "embedding": "bge-small",
+        "mode": "dense",
+        "fusion": null,
+        "alpha": null,
+        "reranker": null,
+        "contextual": false
+      },
+      "role": "grid",
+      "model": "BAAI/bge-small-en-v1.5"
+    },
+    "fixed-title-dense-bge-small": {
+      "name": "fixed-title / bge-small",
+      "config": {
+        "chunking": "fixed-title",
+        "embedding": "bge-small",
+        "mode": "dense",
+        "fusion": null,
+        "alpha": null,
+        "reranker": null,
+        "contextual": false
+      },
+      "role": "grid",
+      "model": "BAAI/bge-small-en-v1.5"
+    },
+    "header-dense-bge-small": {
+      "name": "header / bge-small",
+      "config": {
+        "chunking": "header",
+        "embedding": "bge-small",
+        "mode": "dense",
+        "fusion": null,
+        "alpha": null,
+        "reranker": null,
+        "contextual": false
+      },
+      "role": "grid",
+      "model": "BAAI/bge-small-en-v1.5"
+    },
+    "fixed-title-dense-granite-small": {
+      "name": "fixed-title / granite-small",
+      "config": {
+        "chunking": "fixed-title",
+        "embedding": "granite-small",
+        "mode": "dense",
+        "fusion": null,
+        "alpha": null,
+        "reranker": null,
+        "contextual": false
+      },
+      "role": "grid",
+      "model": "ibm-granite/granite-embedding-small-english-r2"
+    },
+    "fixed-title-bm25": {
+      "name": "fixed-title / bm25",
+      "config": {
+        "chunking": "fixed-title",
+        "embedding": "bge-small",
+        "mode": "bm25",
+        "fusion": null,
+        "alpha": null,
+        "reranker": null,
+        "contextual": false
+      },
+      "role": "grid",
+      "model": "bm25"
+    },
+    "fixed-title-hybrid-bge-small-convex0.7": {
+      "name": "fixed-title / bge-small+bm25 convex(a=0.7)",
+      "config": {
+        "chunking": "fixed-title",
+        "embedding": "bge-small",
+        "mode": "hybrid",
+        "fusion": "convex",
+        "alpha": 0.7,
+        "reranker": null,
+        "contextual": false
+      },
+      "role": "grid",
+      "model": "BAAI/bge-small-en-v1.5+bm25"
+    },
+    "fixed-title-hybrid-bge-small-rrf": {
+      "name": "fixed-title / bge-small+bm25 rrf",
+      "config": {
+        "chunking": "fixed-title",
+        "embedding": "bge-small",
+        "mode": "hybrid",
+        "fusion": "rrf",
+        "alpha": null,
+        "reranker": null,
+        "contextual": false
+      },
+      "role": "grid",
+      "model": "BAAI/bge-small-en-v1.5+bm25"
+    },
+    "fixed-title-hybrid-bge-small-convex0.7-granite-rerank": {
+      "name": "fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank",
+      "config": {
+        "chunking": "fixed-title",
+        "embedding": "bge-small",
+        "mode": "hybrid",
+        "fusion": "convex",
+        "alpha": 0.7,
+        "reranker": "granite-rerank",
+        "contextual": false
+      },
+      "role": "grid",
+      "model": "BAAI/bge-small-en-v1.5+bm25+ibm-granite/granite-embedding-reranker-english-r2"
+    },
+    "fixed-title-dense-qwen3-emb": {
+      "name": "fixed-title / qwen3-emb",
+      "config": {
+        "chunking": "fixed-title",
+        "embedding": "qwen3-emb",
+        "mode": "dense",
+        "fusion": null,
+        "alpha": null,
+        "reranker": null,
+        "contextual": false
+      },
+      "role": "strong_arm",
+      "model": "Qwen/Qwen3-Embedding-0.6B"
+    },
+    "fixed-title-hybrid-bge-small-convex0.7-qwen3-rerank": {
+      "name": "fixed-title / bge-small+bm25 convex(a=0.7) / rerank qwen3-rerank",
+      "config": {
+        "chunking": "fixed-title",
+        "embedding": "bge-small",
+        "mode": "hybrid",
+        "fusion": "convex",
+        "alpha": 0.7,
+        "reranker": "qwen3-rerank",
+        "contextual": false
+      },
+      "role": "strong_arm",
+      "model": "BAAI/bge-small-en-v1.5+bm25+Qwen/Qwen3-Reranker-0.6B"
+    }
+  },
+  "generation_configs": [
+    "fixed-title-hybrid-bge-small-convex0.7",
+    "fixed-title-hybrid-bge-small-convex0.7-granite-rerank",
+    "fixed-title-hybrid-bge-small-rrf"
+  ],
+  "compute": {
+    "wall_s": 2357.7,
+    "cpu_s": 2594.9,
+    "dev_selection_wall_s": 586.1,
+    "timings_s": {
+      "index fixed/bge-small": 6.03,
+      "queries fixed-dense-bge-small x43": 1.61,
+      "index fixed-title/bge-small": 0.53,
+      "queries fixed-title-dense-bge-small x43": 1.61,
+      "index header/bge-small": 0.44,
+      "queries header-dense-bge-small x43": 2.01,
+      "index fixed-title/granite-small": 1.85,
+      "queries fixed-title-dense-granite-small x43": 1.69,
+      "queries fixed-title-hybrid-bge-small-convex0.0 x43": 1.88,
+      "queries fixed-title-hybrid-bge-small-convex0.1 x43": 2.8,
+      "queries fixed-title-hybrid-bge-small-convex0.2 x43": 2.81,
+      "queries fixed-title-hybrid-bge-small-convex0.3 x43": 3.85,
+      "queries fixed-title-hybrid-bge-small-convex0.4 x43": 2.81,
+      "queries fixed-title-hybrid-bge-small-convex0.5 x43": 2.87,
+      "queries fixed-title-hybrid-bge-small-convex0.6 x43": 2.39,
+      "queries fixed-title-hybrid-bge-small-convex0.7 x43": 2.15,
+      "queries fixed-title-hybrid-bge-small-convex0.8 x43": 2.39,
+      "queries fixed-title-hybrid-bge-small-convex0.9 x43": 3.13,
+      "queries fixed-title-hybrid-bge-small-convex1.0 x43": 2.82,
+      "queries fixed-title-bm25 x43": 0.26,
+      "queries fixed-title-hybrid-bge-small-rrf x43": 2.56,
+      "queries fixed-title-hybrid-bge-small-convex0.7-granite-rerank x43": 139.36,
+      "index fixed-title/qwen3-emb": 132.39,
+      "queries fixed-title-dense-qwen3-emb x43": 14.88,
+      "queries fixed-title-hybrid-bge-small-convex0.7-qwen3-rerank x43": 232.53,
+      "queries fixed-dense-bge-small x130": 16.2,
+      "queries fixed-title-dense-bge-small x130": 7.18,
+      "queries header-dense-bge-small x130": 34.62,
+      "queries fixed-title-dense-granite-small x130": 28.27,
+      "queries fixed-title-bm25 x130": 0.86,
+      "queries fixed-title-hybrid-bge-small-convex0.7 x130": 46.76,
+      "queries fixed-title-hybrid-bge-small-rrf x130": 38.79,
+      "queries fixed-title-hybrid-bge-small-convex0.7-granite-rerank x130": 469.09,
+      "queries fixed-title-dense-qwen3-emb x130": 80.64,
+      "queries fixed-title-hybrid-bge-small-convex0.7-qwen3-rerank x130": 1048.08
+    }
+  }
+}
