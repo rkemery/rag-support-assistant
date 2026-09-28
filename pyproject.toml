@@ -1,0 +1,65 @@
+[project]
+name = "rag-support-assistant"
+version = "0.1.0"
+description = "Instrumented RAG for a fictional neobank help center: retrieval grid, abstention and hallucination metrics with error bars."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Richard Kemery" }]
+requires-python = ">=3.11"
+dependencies = [
+    "llm-eval-harness[azure]",
+    "llama-index-core>=0.14.25,<0.15",
+    "llama-index-vector-stores-qdrant>=0.10.3,<0.11",
+    "qdrant-client>=1.19.1,<1.20",
+    "ranx>=0.3.21",
+    "sentence-transformers>=6.1.0",
+    "transformers>=5.17.0",
+    "torch>=2.14.0",
+    "nltk>=3.9.3",
+    "pyyaml>=6.0.3",
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+ragas = [
+    "ragas==0.4.3",
+    # ragas 0.4.3 imports langchain_community.chat_models.vertexai, which 0.4.2 removed.
+    "langchain-community==0.4.1",
+]
+
+[project.scripts]
+eval = "rag_support_assistant.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.8.17,<0.9.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
+]
+
+[tool.uv.sources]
+llm-eval-harness = { git = "https://github.com/rkemery/llm-eval-harness", rev = "5de8e0ee94412b4e683316ef374658f348b74b75" }
+torch = [{ index = "pytorch-cpu" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "PT", "C4", "RET", "PTH"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra -m 'not download'"
+markers = [
+    "download: needs Hugging Face model downloads (skipped by default, run with -m download)",
+]
