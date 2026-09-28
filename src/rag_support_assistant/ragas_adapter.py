@@ -11,7 +11,9 @@ is gpt-6-luna, which only accepts the default temperature, so the temperature
 Ragas asks for is not sent.
 
 Ragas sends usage analytics unless RAGAS_DO_NOT_TRACK is "true". This module
-sets it before importing Ragas.
+sets it before importing Ragas. With it set, every send path in
+ragas/_analytics.py (0.4.3) returns before any request. Ragas still writes a
+random user id to a local file in its user data directory.
 """
 
 from __future__ import annotations
