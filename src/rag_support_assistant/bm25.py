@@ -23,7 +23,8 @@ from functools import lru_cache
 
 from nltk.stem import PorterStemmer
 
-_TOKEN = re.compile(r"[a-z0-9]+(?:[.,:][0-9]+)*")
+TOKEN_PATTERN = r"[a-z0-9]+(?:[.,:][0-9]+)*"
+_TOKEN = re.compile(TOKEN_PATTERN)
 # NLTK's English stopword list (the 179-word version), inlined so no corpus download or
 # file lookup is needed. Newer NLTK lists add contractions such as "we're", which never
 # reach this list because the tokenizer splits on apostrophes.

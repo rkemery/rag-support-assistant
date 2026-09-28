@@ -20,7 +20,7 @@ from pathlib import Path
 
 import numpy as np
 
-from rag_support_assistant.bm25 import BM25Encoder
+from rag_support_assistant.bm25 import TOKEN_PATTERN, BM25Encoder
 from rag_support_assistant.chunking import (
     FIXED_CHUNK_TOKENS,
     FIXED_OVERLAP_TOKENS,
@@ -67,7 +67,15 @@ def export(out_dir: Path, results: Path, cache_dir: Path | None) -> dict[str, st
         "normalized": True,
         "query_prompt": spec.query_prompt,
         "similarity": "cosine (dot product of normalized vectors)",
-        "bm25": {"k1": bm25.k1, "b": bm25.b, "tokenizer": "rag_support_assistant.bm25.tokenize"},
+        "bm25": {
+            "k1": bm25.k1,
+            "b": bm25.b,
+            "idf": "ln(1 + (N - df + 0.5) / (df + 0.5)), N and df over the chunks",
+            "token_regex": TOKEN_PATTERN,
+            "lowercase": True,
+            "stopwords": "NLTK English list, 179 words",
+            "stemmer": "Porter (nltk.stem.PorterStemmer)",
+        },
         "dev_chosen_config": chosen,
         "dataset_commit": data_manifest["source_commit"],
         "dataset_license": data_manifest["license"],
