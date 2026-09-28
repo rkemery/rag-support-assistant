@@ -20,6 +20,7 @@ Replay: `CachedClient(None, cache/, replay_only=True)`. A missing entry raises
 
 from __future__ import annotations
 
+import os
 import time
 from collections import deque
 from collections.abc import Callable, Mapping
@@ -43,6 +44,25 @@ DEPLOYMENT_TPM: dict[str, int] = {
     "gpt-5-mini": 20_000,
     "Llama-3.3-70B-Instruct": 10_000,
 }
+
+
+def deployment_tpm(env: Mapping[str, str] | None = None) -> dict[str, int]:
+    """DEPLOYMENT_TPM with overrides from RAG_TPM, e.g. "Llama-3.3-70B-Instruct=50000".
+
+    Several entries are comma-separated.
+
+    Raise a deployment's capacity in Azure, then tell the limiter here.
+    """
+    env = os.environ if env is None else env
+    out = dict(DEPLOYMENT_TPM)
+    for part in filter(None, (p.strip() for p in env.get("RAG_TPM", "").split(","))):
+        name, _, value = part.partition("=")
+        if not value.strip().isdigit():
+            raise ValueError(f"RAG_TPM entry {part!r} must look like deployment=tokens_per_minute")
+        out[name.strip()] = int(value)
+    return out
+
+
 # Share of the quota we plan to use, to leave room for estimate error.
 TPM_HEADROOM = 0.8
 # English text runs near 4 bytes per token. The limiter uses a slightly
@@ -73,7 +93,7 @@ class RateLimitedClient:
         if not 0 < headroom <= 1:
             raise ValueError(f"headroom must be in (0, 1], got {headroom}")
         self._inner = inner
-        self._budget = {m: int(v * headroom) for m, v in (tpm or DEPLOYMENT_TPM).items()}
+        self._budget = {m: int(v * headroom) for m, v in (tpm or deployment_tpm()).items()}
         self._clock = clock
         self._sleep = sleep
         self._sent: dict[str, deque[tuple[float, int]]] = {}
@@ -82,6 +102,7 @@ class RateLimitedClient:
     def complete(self, request: ModelRequest) -> ModelResponse:
         budget = self._budget.get(request.model)
         if budget is not None:
+            # A request bigger than the whole budget goes alone, once the window is empty.
             self._wait_for(request.model, min(estimated_tokens(request), budget), budget)
         return self._inner.complete(request)
 
@@ -98,6 +119,20 @@ class RateLimitedClient:
             delay = max(0.05, 60.0 - (now - window[0][0]))
             self.waited_s += delay
             self._sleep(delay)
+
+
+def item_level_errors() -> tuple[type[BaseException], ...]:
+    """Provider errors that belong to one request, not to the run.
+
+    A 400 (an invalid request, or input the content filter refused) is recorded
+    on that item and the run goes on. Budget, cache-miss, auth and network
+    errors are not in this tuple, so they still stop the run.
+    """
+    try:
+        import openai
+    except ImportError:
+        return ()
+    return (openai.BadRequestError,)
 
 
 @dataclass

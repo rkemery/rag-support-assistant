@@ -137,7 +137,8 @@ def _retrieval_comparisons(
         "**Paired comparisons on test**, same questions, clustered paired t-test (harness "
         "`compare_runs`), with the minimum detectable effect at 80% power.",
         "",
-        "| Step | Baseline -> candidate | d nDCG@10 (95% CI) | p | MDE | d Recall@5 (95% CI) | p |",
+        "| Step | Baseline -> candidate | nDCG@10 change (95% CI) | p | MDE | "
+        "Recall@5 change (95% CI) | p |",
         "|---|---|---|---|---|---|---|",
     ]
     for step, base, cand in _comparison_pairs(selection):
@@ -399,10 +400,53 @@ def render(results: Path = REPO_ROOT / "results") -> str:
     return "\n".join(parts)
 
 
+def render_cost(results: Path = REPO_ROOT / "results") -> str:
+    """The run estimate from `eval estimate`, the cap, and actual spend once a live run exists."""
+    from rag_support_assistant.clients import DEFAULT_CAP_USD, DEPLOYMENT_TPM
+    from rag_support_assistant.estimate import as_table, estimate
+
+    est = estimate(results)
+    total_minutes = sum(line.minutes_at_quota(DEPLOYMENT_TPM) for line in est.lines)
+    used = {line.model for line in est.lines}
+    lines = [
+        "Estimated before any live call by `eval estimate`, which builds the requests the run "
+        'will send and prices them at list prices. "Expected" assumes about 4 bytes per token, '
+        "typical output lengths and the full-context prefix served from the prompt cache after "
+        'the first call. "Worst case" is what `DollarCap` reserves per call (one token per '
+        "input byte plus `max_output_tokens`), the bound it enforces. Answer judging uses the "
+        "reference answer as a stand-in answer, since real answers do not exist yet.",
+        "",
+        as_table(est),
+        "",
+        '"Minutes at default quota" is the least wall time the rate limiter allows at the day-1 '
+        "capacities ("
+        + ", ".join(f"{m} {t // 1000}K" for m, t in DEPLOYMENT_TPM.items() if m in used)
+        + " tokens per minute), using 80% of each. Stages run one after another, so the whole "
+        f"run needs about {total_minutes / 60:.0f} hours unless capacities are raised and "
+        "`RAG_TPM` is set to match. The full-context prompt is larger than luna's whole default "
+        "quota, so that stage needs a raised luna capacity to run at all.",
+        "",
+        f"`make eval-live` runs with a hard cap of ${DEFAULT_CAP_USD:.2f} (`make eval-live "
+        "CAP=...` to change it), a bit more than twice the expected spend. A refused call stops "
+        "the run, and cached calls cost nothing when it is started again.",
+        "",
+    ]
+    runs = results / "live_runs.jsonl"
+    if runs.exists():
+        rows = [json.loads(line) for line in runs.read_text(encoding="utf-8").splitlines() if line]
+        spent = sum(r.get("spent_usd", 0.0) for r in rows)
+        calls = sum(r.get("calls", 0) for r in rows)
+        lines.append(f"Actual spend so far: ${spent:.2f} over {calls} calls in {len(rows)} runs.")
+    else:
+        lines.append(f"Actual spend: {PENDING}.")
+    return "\n".join(lines) + "\n"
+
+
 def update_readme(
     readme: Path = REPO_ROOT / "README.md", results: Path = REPO_ROOT / "results"
 ) -> bool:
-    return write_section(readme, "results", render(results))
+    changed = write_section(readme, "results", render(results))
+    return write_section(readme, "cost", render_cost(results)) or changed
 
 
-__all__ = ["PRIMARY_METRIC", "render", "update_readme"]
+__all__ = ["PRIMARY_METRIC", "render", "render_cost", "update_readme"]

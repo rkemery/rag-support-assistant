@@ -24,6 +24,7 @@ from llm_eval_harness.client import DEFAULT_PRICES, input_token_bound, max_cost_
 
 from rag_support_assistant import contextual, generation
 from rag_support_assistant.chunking import chunk_articles
+from rag_support_assistant.clients import DEPLOYMENT_TPM, TPM_HEADROOM, estimated_tokens
 from rag_support_assistant.data import load_articles, load_questions
 from rag_support_assistant.judging import (
     JUDGES,
@@ -53,6 +54,17 @@ class Line:
     expected_usd: float = 0.0
     worst_usd: float = 0.0
     input_tokens: int = 0
+    model: str = ""
+    # What Azure counts against TPM per call: prompt estimate plus max_output_tokens.
+    quota_tokens: list[int] = field(default_factory=list)
+
+    def minutes_at_quota(self, tpm: dict[str, int]) -> float:
+        """Least wall time the rate limiter allows. A call larger than the per-minute
+        budget goes alone and takes a whole minute, as `RateLimitedClient` sends it."""
+        budget = tpm.get(self.model, 0) * TPM_HEADROOM
+        if not budget:
+            return 0.0
+        return sum(min(t, budget) for t in self.quota_tokens) / budget
 
 
 @dataclass
@@ -86,6 +98,8 @@ def _price(
         ) / 1e6
         line.worst_usd += max_cost_usd(price, req)
         line.input_tokens += tokens
+        line.quota_tokens.append(estimated_tokens(req))
+        line.model = req.model
         line.calls += 1
     return line
 
@@ -168,12 +182,23 @@ def estimate(results: Path) -> Estimate:
     return est
 
 
-def as_table(est: Estimate) -> str:
-    rows = ["| Stage | Calls | Expected $ | DollarCap worst case $ |", "|---|---|---|---|"]
+def as_table(est: Estimate, tpm: dict[str, int] | None = None) -> str:
+    """Cost per stage, plus the least wall time each stage needs at the deployment's TPM quota."""
+    tpm = DEPLOYMENT_TPM if tpm is None else tpm
+    rows = [
+        "| Stage | Calls | Expected $ | DollarCap worst case $ | Minutes at default quota |",
+        "|---|---|---|---|---|",
+    ]
     for line in est.lines:
+        minutes = line.minutes_at_quota(tpm)
         rows.append(
-            f"| {line.stage} | {line.calls} | {line.expected_usd:.3f} | {line.worst_usd:.3f} |"
+            f"| {line.stage} | {line.calls} | {line.expected_usd:.3f} | {line.worst_usd:.3f} | "
+            f"{f'{minutes:.0f}' if minutes else 'n/a'} |"
         )
     total_calls = sum(line.calls for line in est.lines)
-    rows.append(f"| Total | {total_calls} | {est.expected_usd:.2f} | {est.worst_usd:.2f} |")
+    total_minutes = sum(line.minutes_at_quota(tpm) for line in est.lines)
+    rows.append(
+        f"| Total | {total_calls} | {est.expected_usd:.2f} | {est.worst_usd:.2f} | "
+        f"{total_minutes:.0f} |"
+    )
     return "\n".join(rows)

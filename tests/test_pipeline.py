@@ -98,3 +98,30 @@ def test_generation_and_judging_write_harness_records(results, tmp_path):
 def test_generation_section_shows_pending_without_results(tmp_path):
     text = readme.generation_section(tmp_path, ["x", pipeline.FULL_CONTEXT], {})
     assert text.count(readme.PENDING) >= 14
+
+
+def test_a_refused_request_is_recorded_and_the_run_goes_on(results, tmp_path):
+    import httpx
+    import openai
+
+    first = load_questions("test")[0].question_id
+
+    def refusing(request: ModelRequest) -> str:
+        if request.model == "gpt-6-luna" and first in json.dumps(request.input):
+            raise AssertionError("question ids never reach the prompt")
+        if request.model == "gpt-6-luna" and "Customer question" in json.dumps(request.input):
+            text = json.dumps(request.input)
+            if load_questions("test")[0].question in text:
+                response = httpx.Response(
+                    400, request=httpx.Request("POST", "https://example.test")
+                )
+                raise openai.BadRequestError("content filtered", response=response, body=None)
+        return fake_model(request)
+
+    stack = wrap_for_tests(FakeClient(refusing), tmp_path / "cache", cap_usd=5.0)
+    pipeline.run_generation(stack.client, ARM, "test", results)
+    records = {r.item_id: r for r in read_records(pipeline.generation_path(ARM, "test", results))}
+    assert records[first].error.startswith("BadRequestError")
+    assert sum(r.error is not None for r in records.values()) == 1
+    summary = analysis.summarize_generation(ARM, list(records.values()), None)
+    assert sum(row["error"] for row in summary.table.values()) == 1

@@ -25,8 +25,9 @@ from typing import Any
 
 from llm_eval_harness import ChecklistJudge, EvalRecord, ModelClient
 from llm_eval_harness.client import DEFAULT_PRICES, cost_usd
-from llm_eval_harness.judge import Checklist, ChecklistItem
+from llm_eval_harness.judge import Checklist, ChecklistItem, JudgeOutcome
 
+from rag_support_assistant.clients import item_level_errors
 from rag_support_assistant.data import Article
 
 MAX_EVIDENCE_ARTICLES = 8
@@ -42,11 +43,13 @@ class JudgeSpec:
 
 
 JUDGES: dict[str, JudgeSpec] = {
-    # Cross-family judge: non-reasoning, accepts temperature 0.
-    "llama": JudgeSpec("llama", "Llama-3.3-70B-Instruct", 0.0, None, 400),
+    # Cross-family judge: non-reasoning, accepts temperature 0. A two-check verdict is
+    # about 100 tokens. Azure counts max_output_tokens against the TPM quota on arrival,
+    # so a loose cap costs throughput.
+    "llama": JudgeSpec("llama", "Llama-3.3-70B-Instruct", 0.0, None, 300),
     # Second judge, same vendor as the answer model. Reasoning tokens bill as output,
     # so the cap leaves room for a few hundred of them at effort "minimal".
-    "gpt5mini": JudgeSpec("gpt5mini", "gpt-5-mini", None, "minimal", 1200),
+    "gpt5mini": JudgeSpec("gpt5mini", "gpt-5-mini", None, "minimal", 600),
 }
 PRIMARY_JUDGE = "llama"
 
@@ -140,7 +143,12 @@ def judge_items(
     records = []
     for n, item in enumerate(items, start=1):
         start = time.perf_counter()
-        outcome = judge.score(item.question, item.answer, item.reference)
+        try:
+            outcome = judge.score(item.question, item.answer, item.reference)
+        except item_level_errors() as exc:
+            outcome = JudgeOutcome(
+                scores={}, reasons={}, error=f"{type(exc).__name__}: {exc}", response=None
+            )
         wall_ms = (time.perf_counter() - start) * 1000.0
         response = outcome.response
         meta = {

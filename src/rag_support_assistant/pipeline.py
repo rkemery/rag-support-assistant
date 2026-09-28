@@ -20,6 +20,7 @@ from llm_eval_harness import EvalRecord, read_records, write_records
 from llm_eval_harness.client import DEFAULT_PRICES, cost_usd
 
 from rag_support_assistant import generation as gen
+from rag_support_assistant.clients import item_level_errors
 from rag_support_assistant.data import (
     REPO_ROOT,
     Article,
@@ -119,7 +120,19 @@ def _answer_record(
     retrieval_ms: float,
 ) -> EvalRecord:
     start = time.perf_counter()
-    response = stack_client.complete(request)
+    try:
+        response = stack_client.complete(request)
+    except item_level_errors() as exc:
+        return EvalRecord(
+            run_id=f"generate/{split}/{arm}",
+            item_id=question.question_id,
+            config=arm,
+            model=gen.ANSWER_MODEL,
+            scores={},
+            cluster=cluster_key(question),
+            error=f"{type(exc).__name__}: {exc}",
+            meta={"expected": question.expected_behavior},
+        )
     wall_ms = (time.perf_counter() - start) * 1000.0
     price = DEFAULT_PRICES[gen.ANSWER_MODEL]
     base: dict[str, Any] = {

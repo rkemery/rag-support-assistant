@@ -4,8 +4,10 @@ import pytest
 from llm_eval_harness import BudgetExceeded, CacheMiss, FakeClient, ModelRequest
 
 from rag_support_assistant.clients import (
+    DEPLOYMENT_TPM,
     RateLimitedClient,
     build_stack,
+    deployment_tpm,
     estimated_tokens,
     wrap_for_tests,
 )
@@ -72,3 +74,23 @@ def test_stack_caps_spend_and_caches(tmp_path):
     tiny = wrap_for_tests(FakeClient(lambda r: "reply"), tmp_path / "t", cap_usd=1e-9)
     with pytest.raises(BudgetExceeded):
         tiny.client.complete(req)
+
+
+def test_tpm_overrides_come_from_the_environment():
+    tpm = deployment_tpm({"RAG_TPM": "Llama-3.3-70B-Instruct=50000, gpt-6-luna=100000"})
+    assert tpm["Llama-3.3-70B-Instruct"] == 50_000
+    assert tpm["gpt-6-luna"] == 100_000
+    assert tpm["gpt-5-mini"] == DEPLOYMENT_TPM["gpt-5-mini"]
+    with pytest.raises(ValueError, match="RAG_TPM"):
+        deployment_tpm({"RAG_TPM": "gpt-6-luna=fast"})
+
+
+def test_a_request_bigger_than_the_budget_goes_alone():
+    clock = FakeClock()
+    big = ModelRequest(model="m", input="x" * 7000, max_output_tokens=10)
+    limiter = RateLimitedClient(
+        FakeClient(lambda r: "ok"), {"m": 1000}, headroom=1.0, clock=clock, sleep=clock.sleep
+    )
+    limiter.complete(big)
+    limiter.complete(big)
+    assert clock.now == pytest.approx(60.0)
