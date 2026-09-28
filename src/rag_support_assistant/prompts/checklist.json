@@ -1,0 +1,13 @@
+{
+  "name": "rag-answer-v1",
+  "items": [
+    {
+      "id": "correct",
+      "question": "Does the answer agree with the reference answer on everything the question asks (amounts, limits, times, plan names, steps, and whether something is allowed), with nothing that contradicts it? If no reference answer is given, judge this against the sources."
+    },
+    {
+      "id": "grounded",
+      "question": "Is every factual claim in the answer supported by the reference answer or the current source articles? Answer no if the answer states any number, fee, limit, time, plan detail, product, step or rule that they do not support."
+    }
+  ]
+}
