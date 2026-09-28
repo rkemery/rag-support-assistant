@@ -40,7 +40,7 @@ A small, fully synthetic customer-support dataset for a fictional US neobank cal
 
 - **Everything here is synthetic.** Tallowbrook is not a real bank. A web search in September 2026 found no bank, credit union or fintech with that name. Its policies, fees and products are invented.
 - **Written by an AI.** Claude (Anthropic) wrote the facts file, the article text, the questions, the reference answers and the tickets. Numbers in the text come from one structured facts file through code, so they agree with each other. The judgments (which article answers a question, what the right support action is) are Claude's.
-- **Not yet audited by a human.** The author plans to review every question and its gold article IDs, and every agent task, before any results built on this data are published. Until then, treat gold labels as a strong draft.
+- **No human labels, by design.** Nobody labels or audits this data by hand. Gold labels are checked by code instead: `scripts/validate.py` checks every question and task against the facts file, the agent tasks' final states are computed by `scripts/bank_sim.py`, an independent reimplementation of the bank in support-triage-agents reproduces all 50 gold states, and that repo cross-checks the tasks' gold actions with a second model. Treat the labels as machine-checked, not human-validated.
 - **Identifiers are fake.** Emails use `example.com`, phone numbers use the 555-01xx range reserved for fiction, towns are made up, and ZIP codes are placeholders. Card numbers are fake Luhn-valid numbers in the `411111` Visa test range. There are no routing numbers, full account numbers or Social Security numbers. Customer names are invented, and any match with a real person is a coincidence.
 
 ## Files
@@ -155,7 +155,7 @@ make test
 - **Short, templated articles.** Articles run 150 to 230 words and per-plan variants share templates, so they are more regular than a real help center.
 - **Simplified policy.** The rules are plausible but invented, and they are not legal or regulatory guidance.
 - **Inclusive gold.** See above. Some gold articles mention a needed fact in passing.
-- **No human audit yet.** Gold article IDs, unanswerable labels and agent resolutions reflect one model's reading of the facts file.
+- **No human audit.** Gold article IDs, unanswerable labels and agent resolutions reflect one model's reading of the facts file, checked by code and a second model but never by a person.
 - **No attack suite in this release.** A set of bank-specific prompt-injection attacks and poisoned articles for guardrail testing was planned but is not included.
 
 ## License
