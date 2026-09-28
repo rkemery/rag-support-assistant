@@ -63,3 +63,59 @@ def test_freeze_gate(tmp_path, monkeypatch):
     )
     with pytest.raises(judging.JudgeNotFrozen, match="changed"):
         judging.check_frozen(tmp_path)
+
+
+# One of the 13 malformed Llama dev replies, verbatim.
+LLAMA_STRAY_PAREN = (
+    '{"correct": {"pass": true, "reason": "The answer matches the reference answer on all '
+    'points."), "grounded": {"pass": true, "reason": "Every claim in the answer is supported '
+    'by the reference answer or source articles."}}'
+)
+
+
+def test_stray_paren_reply_is_repaired_and_flagged():
+    judge = judging.make_judge(FakeClient([LLAMA_STRAY_PAREN]), "llama")
+    inputs = [judging.JudgeInput("i0", "q", "a", "ref", "c", {})]
+    records = judging.judge_items(judge, inputs, run_id="r", config="c")
+    assert records[0].scores == {"correct": True, "grounded": True}
+    assert records[0].score_error is None
+    assert records[0].meta["reply_repaired"] is True
+
+
+def test_valid_reply_with_paren_inside_a_reason_is_left_alone():
+    text = json.dumps(
+        {
+            "correct": {"pass": False, "reason": 'It says "fee (waived")'},
+            "grounded": {"pass": True, "reason": "r"},
+        }
+    )
+    judge = judging.make_judge(FakeClient([text]), "llama")
+    records = judging.judge_items(
+        judge, [judging.JudgeInput("i0", "q", "a", "ref", "c", {})], run_id="r", config="c"
+    )
+    assert records[0].scores == {"correct": False, "grounded": True}
+    assert "reply_repaired" not in records[0].meta
+
+
+def test_unrepairable_reply_stays_a_score_error():
+    judge = judging.make_judge(FakeClient(['{"correct": {"pass": tru']), "llama")
+    records = judging.judge_items(
+        judge, [judging.JudgeInput("i0", "q", "a", "ref", "c", {})], run_id="r", config="c"
+    )
+    assert records[0].scores == {}
+    assert records[0].score_error.startswith("JudgeParseError")
+
+
+def test_repair_rule_is_part_of_the_fingerprint():
+    from llm_eval_harness import ChecklistJudge
+
+    judge = judging.make_judge(FakeClient([]), "llama")
+    plain = ChecklistJudge(
+        judge.client,
+        judge.model,
+        judge.checklist,
+        template=judge.template,
+        max_output_tokens=judge.max_output_tokens,
+        temperature=judge.temperature,
+    )
+    assert judge.fingerprint != plain.fingerprint

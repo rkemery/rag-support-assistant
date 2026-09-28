@@ -15,7 +15,9 @@ verdicts from a judge other than the frozen one.
 
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 import time
 from collections.abc import Iterable, Mapping, Sequence
 from dataclasses import dataclass
@@ -25,7 +27,14 @@ from typing import Any
 
 from llm_eval_harness import ChecklistJudge, EvalRecord, ModelClient
 from llm_eval_harness.client import DEFAULT_PRICES, cost_usd
-from llm_eval_harness.judge import Checklist, ChecklistItem, JudgeOutcome
+from llm_eval_harness.judge import (
+    Checklist,
+    ChecklistItem,
+    ChecklistVerdict,
+    JudgeOutcome,
+    JudgeParseError,
+    parse_checklist_reply,
+)
 
 from rag_support_assistant.clients import item_level_errors
 from rag_support_assistant.data import Article
@@ -68,9 +77,56 @@ def load_template() -> str:
     return _resource("judge_template.txt")
 
 
+# Llama 3.3 70B sometimes closes a checklist item with `")` instead of `"}` (13 of 160
+# dev replies, always followed by a comma). Foundry ignored JSON mode and a strict JSON
+# schema for this deployment, so the reply is repaired instead, by this one rule only.
+_STRAY_PAREN = re.compile(r'"\)(?=\s*(?:,|\}|$))')
+REPLY_REPAIR = (
+    "stray-paren-v1: a reply that fails to parse gets '\")' before ',', '}' or the end "
+    "replaced by '\"}', then one reparse"
+)
+
+
+def repair_stray_paren(text: str) -> str:
+    return _STRAY_PAREN.sub('"}', text)
+
+
+class RepairingChecklistJudge(ChecklistJudge):
+    """`ChecklistJudge` that retries a failed parse once after `repair_stray_paren`.
+
+    Replies that parse are never touched. `last_repaired` says whether the last
+    verdict needed the repair, so records can carry it. The repair rule is part of
+    the fingerprint, so the frozen judge is the model plus this exact rule.
+    """
+
+    last_repaired: bool = False
+
+    @property
+    def fingerprint(self) -> str:
+        blob = json.dumps({"base": super().fingerprint, "reply_repair": REPLY_REPAIR})
+        return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:16]
+
+    def judge(self, question: str, answer: str, reference: str) -> ChecklistVerdict:
+        self.last_repaired = False
+        response = self.client.complete(self.build_request(question, answer, reference))
+        try:
+            results = parse_checklist_reply(response.text, self.checklist.ids)
+        except JudgeParseError as exc:
+            original = JudgeParseError(str(exc), raw=exc.raw, response=response)
+            fixed = repair_stray_paren(response.text)
+            if fixed == response.text:
+                raise original from exc
+            try:
+                results = parse_checklist_reply(fixed, self.checklist.ids)
+            except JudgeParseError:
+                raise original from exc
+            self.last_repaired = True
+        return ChecklistVerdict(results=results, response=response)
+
+
 def make_judge(client: ModelClient, key: str) -> ChecklistJudge:
     spec = JUDGES[key]
-    return ChecklistJudge(
+    return RepairingChecklistJudge(
         client,
         spec.model,
         load_checklist(),
@@ -158,6 +214,8 @@ def judge_items(
         }
         if response is not None:
             meta["from_cache"] = response.from_cache
+        if outcome.error is None and getattr(judge, "last_repaired", False):
+            meta["reply_repaired"] = True
         records.append(
             EvalRecord(
                 run_id=run_id,
