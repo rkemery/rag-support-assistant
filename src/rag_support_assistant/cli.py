@@ -399,8 +399,20 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    from llm_eval_harness import BudgetExceeded, CacheMiss
+
+    from rag_support_assistant.judging import JudgeNotFrozen
+
     args = build_parser().parse_args(argv)
-    return int(args.func(args))
+    try:
+        return int(args.func(args))
+    except CacheMiss as exc:
+        print(f"eval: replay stopped at a request the cache has not seen. {exc}", file=sys.stderr)
+    except BudgetExceeded as exc:
+        print(f"eval: dollar cap reached, nothing past it was sent. {exc}", file=sys.stderr)
+    except JudgeNotFrozen as exc:
+        print(f"eval: {exc}", file=sys.stderr)
+    return 1
 
 
 if __name__ == "__main__":
