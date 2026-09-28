@@ -151,6 +151,15 @@ class Facts:
             return val.strftime("%B %-d, %Y")
         return str(val)
 
+    def quiet(self, path: str, **kw: Any) -> str:
+        """Formatted value that is NOT recorded. For incidental details in a
+        reference answer that shouldn't pull extra articles into its gold set."""
+        saved, self._stack = self._stack, []
+        try:
+            return self.v(path, **kw)
+        finally:
+            self._stack = saved
+
     def n(self, path: str) -> Any:
         """Bare number (recorded), for use inside ranges such as '7 to 10 business days'."""
         return self.raw(path)

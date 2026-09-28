@@ -1812,7 +1812,7 @@ art("transfers-holidays", "Weekends and bank holidays", S_TRANSFERS, transfer_ho
 
 def transfer_limits(plan: str) -> Callable[[], str]:
     def body() -> str:
-        t("transfer_limits", "limits_fixed")
+        t("transfer_limits")
         name = pn(plan)
         return "\n".join([
             f"These are the transfer and deposit limits on the {name} plan.",
@@ -2407,7 +2407,7 @@ def password_reset() -> str:
         "2. Enter the email on your account. We send a reset link.",
         "3. Open the link on the same phone, confirm the one-time code we text you, and choose a new password.",
         "",
-        "The link expires after an hour. If it has expired, start again.",
+        F.mark("security.password_reset_link_validity_minutes") + "The link expires after an hour. If it has expired, start again.",
         "",
         "## Didn't get the email?",
         "",
