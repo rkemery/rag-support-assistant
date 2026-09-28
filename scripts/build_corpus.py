@@ -424,7 +424,7 @@ def card_activate() -> str:
         "",
         "## If activation fails",
         "",
-        f"Check that you're activating the newest card. An old or replaced card can't be activated. If your card hasn't arrived within {F.v('cards.standard_delivery_max_business_days')} of ordering it, message support so we can cancel it and send another one.",
+        f"Check that you're activating the newest card. An old or replaced card can't be activated. If your card hasn't arrived within {F.quiet('cards.standard_delivery_max_business_days')} of ordering it, message support so we can cancel it and send another one.",
         "",
         "Replacement cards need activating too. For a damaged card, your old card keeps working until you activate the new one.",
     ])
