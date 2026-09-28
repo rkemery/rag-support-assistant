@@ -125,3 +125,36 @@ def test_a_refused_request_is_recorded_and_the_run_goes_on(results, tmp_path):
     assert sum(r.error is not None for r in records.values()) == 1
     summary = analysis.summarize_generation(ARM, list(records.values()), None)
     assert sum(row["error"] for row in summary.table.values()) == 1
+
+
+def test_corrected_rate_and_judge_agreement_render_once_judged(results, tmp_path):
+    from llm_eval_harness import EvalRecord, write_records
+
+    from rag_support_assistant.judging import make_judge
+    from rag_support_assistant.validation import load_perturbation_set
+
+    stack = wrap_for_tests(FakeClient(fake_model), tmp_path / "cache", cap_usd=5.0)
+    pipeline.run_generation(stack.client, ARM, "test", results)
+    for key in ("llama", "gpt5mini"):
+        pipeline.run_answer_judging(stack.client, key, ARM, "test", results)
+    # A calibration run from the same judge that is right on 9 of every 10 items.
+    pset = load_perturbation_set()
+    fingerprint = make_judge(None, "llama").fingerprint
+    calibration = []
+    for n, item in enumerate(pset.by_split("test")):
+        verdict = item.labels["grounded"] if n % 10 else not item.labels["grounded"]
+        calibration.append(
+            EvalRecord(
+                run_id="judge/llama/perturbations/test",
+                item_id=item.item_id,
+                config="perturbations",
+                model="Llama-3.3-70B-Instruct",
+                scores={"grounded": verdict},
+                meta={"judge_fingerprint": fingerprint},
+            )
+        )
+    write_records(pipeline.judge_path("llama", "perturbations/test", results), calibration)
+    text = readme._judge_rows(results, [ARM], {ARM: "arm"})
+    row = next(line for line in text if line.startswith("| arm |"))
+    assert readme.PENDING not in row
+    assert "n=" in row  # kappa between the two judges was computed

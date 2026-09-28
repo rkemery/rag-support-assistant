@@ -80,7 +80,8 @@ def retrieval_section(results: Path) -> str:
     out = [
         f"**Retrieval, test split** ({n} questions with a gold article, article-level, no LLM). "
         "Mean with a 95% percentile bootstrap CI over clusters (questions grouped by their first "
-        "gold article). Latency is per query on a 4-vCPU container, CPU only.",
+        "gold article). Latency is per query on CPU, on a 4-vCPU container shared with other "
+        "jobs, so it is rough (see Limitations).",
         "",
         "| Config | Role | nDCG@10 | MRR@10 | Recall@5 | Recall@10 | p50 / p95 ms |",
         "|---|---|---|---|---|---|---|",
@@ -206,7 +207,55 @@ def generation_section(results: Path, arms: Sequence[str], names: dict[str, str]
         )
     out.append("")
     out += _abstention_tables(summaries, arms, names)
+    out += _judge_rows(results, arms, names)
     return "\n".join(out) + "\n"
+
+
+def _judge_rows(results: Path, arms: Sequence[str], names: dict[str, str]) -> list[str]:
+    """Hallucination rate corrected for the primary judge's error, and agreement between judges."""
+    from llm_eval_harness.calibration import kappa_interval
+
+    from rag_support_assistant.validation import load_perturbation_set
+
+    pset = load_perturbation_set()
+    calibration = _load(judge_path("llama", "perturbations/test", results))
+    out = [
+        "**Hallucination rate corrected for judge error, and judge agreement on the answers.** "
+        "The correction is Rogan-Gladen with the Llama judge's TPR and TNR on the perturbation "
+        "test split, and its interval carries their uncertainty. It assumes the judge errs on "
+        "real answers the way it errs on synthetic ones. The RAGTruth rows below check that. "
+        "Kappa compares the Llama and gpt-5-mini `grounded` verdicts on the same answers.",
+        "",
+        "| Arm | Judged hallucination rate | Corrected (95% CI) | Llama vs gpt-5-mini kappa | n |",
+        "|---|---|---|---|---|",
+    ]
+    for arm in arms:
+        llama = _load(judge_path("llama", f"answers/test/{arm}", results))
+        mini = _load(judge_path("gpt5mini", f"answers/test/{arm}", results))
+        label = names.get(arm, arm)
+        if llama is None or calibration is None:
+            out.append(f"| {label} | {PENDING} | {PENDING} | {PENDING} | |")
+            continue
+        c = analysis.corrected_hallucination_rate(
+            llama, calibration, pset.labels, list(pset.split.test)
+        )
+        corrected = (
+            f"{(1 - c.corrected.estimate) * 100:.1f}% ({(1 - c.corrected.high) * 100:.1f}% to "
+            f"{(1 - c.corrected.low) * 100:.1f}%)"
+        )
+        kappa = PENDING
+        if mini is not None:
+            a = {r.item_id: r.scores["grounded"] for r in llama if "grounded" in r.scores}
+            b = {r.item_id: r.scores["grounded"] for r in mini if "grounded" in r.scores}
+            both = sorted(set(a) & set(b))
+            k = kappa_interval([a[i] for i in both], [b[i] for i in both], seed=analysis.SEED)
+            kappa = f"{k.estimate:.2f} ({k.low:.2f} to {k.high:.2f}), n={len(both)}"
+        out.append(
+            f"| {label} | {(1 - c.observed.estimate) * 100:.1f}% | {corrected} | {kappa} | "
+            f"{c.observed.n} |"
+        )
+    out.append("")
+    return out
 
 
 def _abstention_tables(
@@ -253,8 +302,9 @@ def judge_section(results: Path) -> str:
     out = [
         "**Judge validation without human labels.** Perturbation test split: "
         f"{len(test_ids)} items built from the facts file ({len(test_ids) - n_neg} faithful, "
-        f"{n_neg} with one injected error), labels known by construction, judge prompt tuned "
-        f"on the {len(pset.split.dev)} dev items only. RAGTruth: {len(rt)} human-annotated QA "
+        f"{n_neg} with one injected error), labels known by construction. The judge prompt is "
+        f"tuned on the {len(pset.split.dev)} dev items only and frozen, by fingerprint, before "
+        f"test is judged. RAGTruth: {len(rt)} human-annotated QA "
         "responses (half with a hallucination). TPR is the share of good answers passed, TNR the "
         "share of flawed answers caught. Wilson 95% CIs, kappa with a bootstrap CI.",
         "",
@@ -365,7 +415,7 @@ def extras_section(results: Path) -> str:
                     parts.append(f"{metric} {sum(vals) / len(vals):.3f} (n={len(vals)})")
             out.append(f"- Ragas on {path.stem}: {', '.join(parts)}.")
     else:
-        out.append(f"- Ragas 0.4.3 faithfulness and answer relevancy on two configs: {PENDING}.")
+        out.append(f"- Ragas 0.4.3 faithfulness and context recall on two configs: {PENDING}.")
     live = results / "live_run.json"
     if live.exists():
         info = json.loads(live.read_text(encoding="utf-8"))

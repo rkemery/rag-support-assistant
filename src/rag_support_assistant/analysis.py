@@ -23,6 +23,7 @@ from llm_eval_harness.analysis import MetricSummary, RunComparison, compare_runs
 from llm_eval_harness.calibration import (
     CorrectedPassRate,
     JudgeAgreement,
+    check_same_judge,
     corrected_pass_rate,
     judge_agreement,
     pair_labels,
@@ -234,7 +235,12 @@ def corrected_hallucination_rate(
     labels: Sequence[LabelRecord],
     test_items: Sequence[str],
 ) -> CorrectedPassRate:
-    """Rogan-Gladen corrected grounded rate of real answers, calibrated on perturbation test."""
+    """Rogan-Gladen corrected grounded rate of real answers, calibrated on perturbation test.
+
+    Refuses (CalibrationError) when the answers were judged by a different
+    judge fingerprint than the calibration run.
+    """
+    check_same_judge(calibration_records, answer_judge_records)
     labeled = {lab.item_id for lab in labels if "grounded" in lab.labels}
     pairs = pair_labels(
         calibration_records,
