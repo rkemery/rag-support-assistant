@@ -1,11 +1,11 @@
 """A fixed, seeded RAGTruth subset: an outside check of the judge on natural hallucinations.
 
 RAGTruth (Niu et al., ACL 2024, arXiv 2401.00396) has human span annotations of
-hallucinations in answers that real LLMs wrote from retrieved passages. We use
+hallucinations in answers that real LLMs wrote from retrieved passages. This repo uses
 its QA task (MS MARCO questions with passages), test split, responses of
-quality "good" only, and draw 100 responses with at least one annotated span
+quality "good" only, and draws 100 responses with at least one annotated span
 and 100 with none. A response with any span counts as "not grounded", which
-matches our `grounded` check: RAGTruth's "implicit true" spans (true, but not
+matches this repo's `grounded` check: RAGTruth's "implicit true" spans (true, but not
 in the passages) are unsupported by the context too.
 
 The builder downloads the two source files at a pinned commit, checks their

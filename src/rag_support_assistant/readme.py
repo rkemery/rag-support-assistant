@@ -1,7 +1,7 @@
 """Render the README results section from the committed result files.
 
-Rows whose results do not exist yet (anything that needs a live model run)
-print "pending live run" instead of a number. Nothing here calls a model.
+Every live result is committed. A row prints "pending live run" only when its
+result files are missing. Nothing here calls a model.
 """
 
 from __future__ import annotations

@@ -5,7 +5,7 @@
 
 The copy mode refuses a source checkout that is not at the pinned commit or has
 uncommitted changes, so the manifest always names a commit the files came from.
-The dataset's canonical home will be a Hugging Face dataset. Until then the
+The dataset's canonical home is planned as a Hugging Face dataset. Until then the
 source is a git checkout of the dataset, branch claude/tallowbrook-dataset of
 rkemery/rag-support-assistant.
 """

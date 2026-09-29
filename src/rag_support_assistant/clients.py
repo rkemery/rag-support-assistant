@@ -63,7 +63,7 @@ def deployment_tpm(env: Mapping[str, str] | None = None) -> dict[str, int]:
     return out
 
 
-# Share of the quota we plan to use, to leave room for estimate error.
+# Share of the quota the limiter plans to use, to leave room for estimate error.
 TPM_HEADROOM = 0.8
 # English text runs near 4 bytes per token. The limiter uses a slightly
 # conservative 3.5, which only makes it wait a little longer.
@@ -182,7 +182,7 @@ def build_stack(mode: str, cache_dir: Path, cap_usd: float = DEFAULT_CAP_USD) ->
 
 
 def wrap_for_tests(inner: ModelClient, cache_dir: Path, cap_usd: float) -> ClientStack:
-    """The live stack with a fake model in place of Foundry. Used by tests and the offline demo."""
+    """The live stack with a fake model in place of Foundry. Used by tests."""
     cap = DollarCap(inner, cap_usd=cap_usd)
     cache = CachedClient(cap, cache_dir)
     return ClientStack(cache, cache, cap, None, "fake")
