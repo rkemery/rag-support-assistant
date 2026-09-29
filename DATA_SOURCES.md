@@ -6,7 +6,7 @@ Everything this repo downloads or vendors, pinned, with its license. Licenses we
 
 | Name | Where it lives here | Revision | License | Source | How the license was checked |
 |---|---|---|---|---|---|
-| Tallowbrook Neobank Support (synthetic) | `data/tallowbrook/` (corpus, facts, RAG questions) | neobank-support-data commit `3c72058e8cc7d5dd6e224ecdec7b814341a3d48f` | CC-BY-4.0 | The portfolio's shared dataset. Its canonical home will be a Hugging Face dataset. | Dataset card in the source repo. `scripts/sync_data.py` checks every file's sha256. |
+| Tallowbrook Neobank Support (synthetic) | `data/tallowbrook/` (corpus, facts, RAG questions) | commit `3c72058e8cc7d5dd6e224ecdec7b814341a3d48f` on the dataset branch | CC-BY-4.0 | The portfolio's shared dataset, built on the [`claude/tallowbrook-dataset`](https://github.com/rkemery/rag-support-assistant/tree/claude/tallowbrook-dataset) branch of this repo. That branch is kept after merges so the pin stays reachable. Its canonical home will be a Hugging Face dataset. | Dataset card in the source repo. `scripts/sync_data.py` checks every file's sha256. |
 | RAGTruth, QA task, test split, 200-response seeded subset | `data/ragtruth/` | `c103204b9ce28d6bbad859304bf30de72b8ed8fe` | MIT | https://github.com/ParticleMedia/RAGTruth | The `LICENSE` file at that commit (copied to `data/ragtruth/LICENSE`). Source file hashes are in `data/ragtruth/MANIFEST.json`. |
 | Judge-validation perturbations | `data/judge_validation/` | built by `eval build-validation` from the Tallowbrook files above | CC-BY-4.0 (derived from Tallowbrook) | This repo | Derived data, same license as its source. |
 
