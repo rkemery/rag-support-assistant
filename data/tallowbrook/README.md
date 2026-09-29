@@ -4,4 +4,4 @@ A pinned copy of the files this repo needs from the synthetic Tallowbrook Neoban
 
 Tallowbrook is a fictional bank. The dataset was written by Claude from one structured facts file, and it has not been audited by a person. Its canonical home will be a Hugging Face dataset, pinned by revision.
 
-License: CC-BY-4.0 (Tallowbrook Neobank Support dataset, Richard Kemery).
+License: CC-BY-4.0 (Tallowbrook Neobank Support dataset, Richard K.).
