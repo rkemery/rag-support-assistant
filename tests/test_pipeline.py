@@ -87,7 +87,7 @@ def test_generation_and_judging_write_harness_records(results, tmp_path):
 
     names = {ARM: "fixed-title / bge-small", pipeline.FULL_CONTEXT: "Full context"}
     text = readme.generation_section(results, [ARM, pipeline.FULL_CONTEXT], names)
-    assert readme.PENDING not in text.split("**Abstention")[0]
+    assert readme.PENDING not in text.split("Abstention table")[0]
 
     # A second pass is served entirely from the cache and costs nothing more.
     spent = stack.cap.spent_usd

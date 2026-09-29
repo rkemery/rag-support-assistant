@@ -81,7 +81,7 @@ RERANKERS: dict[str, RerankerSpec] = {
     ),
 }
 
-# HHEM-2.1-Open. Its checkpoint expects trust_remote_code. We read that code at
+# HHEM-2.1-Open. Its checkpoint expects trust_remote_code. I read that code at
 # this revision, and hhem.py rebuilds the same computation from transformers' own
 # T5ForTokenClassification instead of running it (it fails to load under
 # transformers 5). flan-t5-base supplies the config and tokenizer, pinned too.
@@ -89,4 +89,3 @@ HHEM_ID = "vectara/hallucination_evaluation_model"
 HHEM_REVISION = "8e4a2e6e96c708cc76c2344f7e4757df2515292c"
 HHEM_FOUNDATION_ID = "google/flan-t5-base"
 HHEM_FOUNDATION_REVISION = "7bcac572ce56db69c1ea7c8af255c5d7c9672fc2"
-HHEM_LICENSE = "Apache-2.0"

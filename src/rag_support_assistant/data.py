@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import json
 import os
-from collections.abc import Iterable, Sequence
+from collections.abc import Sequence
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal
@@ -126,11 +126,6 @@ def load_questions(split: Split | None = None, data_dir: Path = DATA_DIR) -> lis
 def load_facts(data_dir: Path = DATA_DIR) -> dict[str, Any]:
     with (data_dir / "policies.yaml").open(encoding="utf-8") as fh:
         return yaml.safe_load(fh)
-
-
-def superseded_ids(articles: Iterable[Article]) -> set[str]:
-    """Articles that a newer version points back to."""
-    return {a.supersedes for a in articles if a.supersedes}
 
 
 def cluster_key(question: Question) -> str:

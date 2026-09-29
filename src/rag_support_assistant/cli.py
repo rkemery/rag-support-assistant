@@ -101,9 +101,10 @@ def cmd_build_validation(args: argparse.Namespace) -> int:
 def cmd_hhem(args: argparse.Namespace) -> int:
     from llm_eval_harness import read_records, write_records
 
-    from rag_support_assistant.data import load_articles, load_questions
+    from rag_support_assistant.data import cluster_key, load_articles, load_questions
     from rag_support_assistant.grid import set_torch_threads
     from rag_support_assistant.hhem import HHEM, HHEMInput, score_items
+    from rag_support_assistant.judging import evidence_ids
     from rag_support_assistant.pipeline import generation_arms, generation_path
     from rag_support_assistant.validation import load_perturbation_set, load_ragtruth_subset
 
@@ -121,8 +122,6 @@ def cmd_hhem(args: argparse.Namespace) -> int:
 
     if not args.answers_only:
         pset = load_perturbation_set()
-        from rag_support_assistant.data import cluster_key
-
         items = [
             HHEMInput(
                 item.item_id,
@@ -143,8 +142,6 @@ def cmd_hhem(args: argparse.Namespace) -> int:
         path = generation_path(arm, "test")
         if not path.exists():
             continue
-        from rag_support_assistant.judging import evidence_ids
-
         items = []
         for r in read_records(path):
             if r.error is None and not r.scores.get("abstained", True):

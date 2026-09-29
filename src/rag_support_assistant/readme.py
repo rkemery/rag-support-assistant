@@ -1,7 +1,7 @@
 """Render the README results section from the committed result files.
 
-Rows whose results do not exist yet (anything that needs a live model run)
-print "pending live run" instead of a number. Nothing here calls a model.
+Every live result is committed. A row prints "pending live run" only when its
+result files are missing. Nothing here calls a model.
 """
 
 from __future__ import annotations
@@ -21,7 +21,6 @@ from rag_support_assistant import analysis
 from rag_support_assistant.data import REPO_ROOT, load_questions
 from rag_support_assistant.judging import JUDGES
 from rag_support_assistant.pipeline import FULL_CONTEXT, generation_path, judge_path
-from rag_support_assistant.scoring import PRIMARY_METRIC
 
 PENDING = "pending live run"
 RETRIEVAL_COLUMNS = (
@@ -62,6 +61,13 @@ def _load(path: Path) -> list[EvalRecord] | None:
     return read_records(path) if path.exists() else None
 
 
+def _details(summary: str, body: list[str]) -> list[str]:
+    """A collapsed block. The blank line after </summary> lets GitHub render the tables inside."""
+    while body and body[-1] == "":
+        body = body[:-1]
+    return ["<details>", f"<summary>{summary}</summary>", "", *body, "", "</details>", ""]
+
+
 # ---------------------------------------------------------------- retrieval
 
 
@@ -77,15 +83,18 @@ def retrieval_section(results: Path) -> str:
     n = len(next(iter(test.values())))
     chosen = {step["chosen"] for step in selection["steps"]}
     gen = set(selection["generation_configs"])
-    out = [
-        f"**Retrieval, test split** ({n} questions with a gold article, article-level, no LLM). "
-        "Mean with a 95% percentile bootstrap CI over clusters (questions grouped by their first "
-        "gold article). Latency is per query on CPU, on a 4-vCPU container shared with other "
-        "jobs, so it is rough (see Limitations).",
-        "",
+    header = [
         "| Config | Role | nDCG@10 | MRR@10 | Recall@5 | Recall@10 | p50 / p95 ms |",
         "|---|---|---|---|---|---|---|",
     ]
+    out = [
+        f"**Retrieval, test split** ({n} questions with a gold article, article-level, no LLM). "
+        "Mean with a 95% percentile bootstrap CI over clusters (questions grouped by their first "
+        "gold article). Latency per query on CPU is rough (see Limitations).",
+        "",
+        *header,
+    ]
+    grid = list(header)
     clusters = 0
     for slug, info in selection["configs"].items():
         records = test[slug]
@@ -101,15 +110,21 @@ def retrieval_section(results: Path) -> str:
         ]
         if tags:
             role += ", " + ", ".join(tags)
-        out.append(f"| {info['name']} | {role} | {' | '.join(cells)} | {p50:.0f} / {p95:.0f} |")
+        row = f"| {info['name']} | {role} | {' | '.join(cells)} | {p50:.0f} / {p95:.0f} |"
+        grid.append(row)
+        if tags:
+            out.append(row)
     out += [
         "",
         f'{clusters} clusters. "chosen on dev" marks the winner of each step on dev nDCG@10, '
         '"generation" the three configs picked on dev for the answer runs.',
         "",
     ]
-    out += _retrieval_comparisons(selection, test)
-    out += _dev_path(selection)
+    out += _details("<b>All retrieval configs</b>", grid)
+    out += _details("<b>Paired comparisons on test</b>", _retrieval_comparisons(selection, test))
+    out += _details(
+        "<b>How the path was chosen</b> (dev split, mean nDCG@10)", _dev_path(selection)
+    )
     return "\n".join(out) + "\n"
 
 
@@ -135,11 +150,10 @@ def _retrieval_comparisons(
 ) -> list[str]:
     names = {s: info["name"] for s, info in selection["configs"].items()}
     out = [
-        "**Paired comparisons on test**, same questions, clustered paired t-test (harness "
-        "`compare_runs`), with the minimum detectable effect at 80% power. nDCG@10 is the "
-        "primary metric. Each step's candidates were fixed on dev before test ran, so the "
-        "nDCG@10 tests on the grid rows are the confirmatory ones. The recall@5 columns and the "
-        "strong-arm rows are exploratory.",
+        "Clustered paired t-test on the same questions (harness `compare_runs`), with the "
+        "minimum detectable effect (MDE) at 80% power. Each step's candidates were fixed on dev "
+        "before test ran, so the nDCG@10 tests on the grid rows are confirmatory. The recall@5 "
+        "columns and the strong-arm rows are exploratory.",
         "",
         "| Step | Baseline -> candidate | nDCG@10 change (95% CI) | p | MDE | "
         "Recall@5 change (95% CI) | p |",
@@ -159,8 +173,7 @@ def _retrieval_comparisons(
 def _dev_path(selection: dict[str, Any]) -> list[str]:
     names = {s: info["name"] for s, info in selection["configs"].items()}
     out = [
-        "**How the path was chosen (dev split, mean nDCG@10).** Test was run once, after these "
-        "choices were fixed.",
+        "Test was run once, after these choices were fixed.",
         "",
         "| Step | Candidates (dev nDCG@10) | Chosen |",
         "|---|---|---|",
@@ -211,10 +224,14 @@ def generation_section(results: Path, arms: Sequence[str], names: dict[str, str]
     out.append("")
     if summaries:
         out += _generation_notes(results, summaries, arms, names)
-    out += _abstention_tables(summaries, arms, names)
+    abstention = _abstention_tables(summaries, arms, names)
     if summaries:
-        out += _decline_split(results, [a for a in arms if a in summaries])
-    out += _judge_rows(results, arms, names)
+        abstention += _decline_split(results, [a for a in arms if a in summaries])
+    out += _details("<b>Abstention table, test split</b> (answered / abstained)", abstention)
+    out += _details(
+        "<b>Hallucination flags on the answers, by judge</b> (flagged as not grounded / judged)",
+        _judge_rows(results, arms, names),
+    )
     return "\n".join(out) + "\n"
 
 
@@ -294,7 +311,6 @@ def _judge_rows(results: Path, arms: Sequence[str], names: dict[str, str]) -> li
     from rag_support_assistant.validation import load_perturbation_set, load_ragtruth_subset
 
     out = [
-        "**Hallucination flags on the answers, by judge** (flagged as not grounded / judged). "
         "Disagree counts the answers both LLM judges read where their `grounded` verdicts differ.",
         "",
         "| Arm | Llama | gpt-5-mini | Llama vs gpt-5-mini disagree | HHEM |",
@@ -339,7 +355,7 @@ def _judge_rows(results: Path, arms: Sequence[str], names: dict[str, str]) -> li
     ]
     unchanged = all(math.isclose(c.corrected.estimate, c.observed.estimate) for c in corrected)
     effect = (
-        "returns the judged rate unchanged for every arm"
+        "returns every judged rate unchanged"
         if unchanged
         else "gives " + ", ".join(f"{(1 - c.corrected.estimate) * 100:.1f}%" for c in corrected)
     )
@@ -358,14 +374,11 @@ def _judge_rows(results: Path, arms: Sequence[str], names: dict[str, str]) -> li
         else f"at {pert.tpr.estimate:.2f} and {pert.tnr.estimate:.2f}"
     )
     out += [
-        "A Rogan-Gladen correction for judge error was run and can't be identified here. With "
-        f"the Llama judge's perturbation TPR and TNR {rates_text} it {effect}, the bootstrap "
-        "over answers collapses when an arm has 0 or 1 flagged answers, and plugging in the "
-        f"RAGTruth rates (TPR {tpr:.0%}, TNR {tnr:.0%}) gives {rg_text}. The true "
-        "hallucination rate is unknown, bracketed by a judge that catches "
-        f"{pert.tnr.estimate:.0%} of synthetic errors and {tnr:.0%} of RAGTruth's, neither of "
-        "which matches this task. RAGTruth was also judged without a reference answer, while "
-        "the answers here are judged with one.",
+        "A Rogan-Gladen correction for judge error ran but can't be identified here: with the "
+        f"Llama judge's perturbation TPR and TNR {rates_text} it {effect}, and with RAGTruth's "
+        f"(TPR {tpr:.0%}, TNR {tnr:.0%}) it gives {rg_text}. The true hallucination rate is "
+        f"unknown, bracketed by a judge that catches {pert.tnr.estimate:.0%} of synthetic errors "
+        f"and {tnr:.0%} of RAGTruth's.",
         "",
         f"The arms are at most {_spread(flags)} flagged answers apart by Llama"
         + (f" and {_spread(mini_flags)} by gpt-5-mini" if mini_flags else "")
@@ -404,9 +417,9 @@ def _abstention_tables(
     summaries: dict[str, analysis.GenerationSummary], arms: Sequence[str], names: dict[str, str]
 ) -> list[str]:
     out = [
-        "**Abstention table, test split** (answered / abstained). The first two rows are the "
-        "2x2. False-premise questions count as unanswerable in the dataset, but the right move "
-        "is to answer and correct the premise, so they get their own row.",
+        "The first two rows are the 2x2. False-premise questions count as unanswerable in the "
+        "dataset, but the right move is to answer and correct the premise, so they get their "
+        "own row.",
         "",
         "| Expected | " + " | ".join(names.get(a, a) for a in arms) + " |",
         "|---|" + "---|" * len(arms),
@@ -458,17 +471,15 @@ def _decline_split(results: Path, arms: Sequence[str]) -> list[str]:
         f"{sum(1 for q in declines if q.unanswerable_type == t)} {t.replace('_', '-')}"
         for t in types
     )
+    passed_text = "all" if passed == answered_all else f"{passed} of the"
     return [
-        f"The {len(declines)} should-decline questions are {split}. Answered ones by type "
-        f"({kinds}), in table order: {', '.join(cells)}. A near-miss question is on a covered "
-        "topic but asks for a detail the help center doesn't give, and its reference answer is a "
-        'partial answer ("the help center doesn\'t list the stores. It says..."). The answer '
-        "prompt says to abstain when the excerpts don't contain the answer, yet Llama passed "
-        f"{'all' if passed == answered_all else f'{passed} of the'} {answered_all} answered "
-        "replies as correct and grounded. So "
-        '"answered unanswerable" mostly counts replies that say the help center doesn\'t cover '
-        "the detail but leave the abstain flag off, and the reference answers and the prompt "
-        "disagree on whether that's right. The metric stays as defined before the run.",
+        f"The {len(declines)} should-decline questions are {split}, and the answered ones by type "
+        f"({kinds}) are {', '.join(cells)}, in table order. Near-miss reference answers are "
+        "partial answers, while the answer prompt says to abstain when the excerpts lack the "
+        f"answer, and Llama passed {passed_text} {answered_all} answered replies as correct "
+        'and grounded. So "answered unanswerable" mostly counts replies that say the help '
+        "center lacks the detail without setting the abstain flag. The metric stays as defined "
+        "before the run.",
         "",
     ]
 
@@ -485,7 +496,7 @@ def judge_section(results: Path) -> str:
     n_neg = sum(1 for i in pset.items if i.split == "test" and not i.labels["grounded"])
     rt = load_ragtruth_subset()
     out = [
-        "**Judge validation with no labels written for this repo.** Perturbation test split: "
+        "Perturbation test split: "
         f"{len(test_ids)} items built from the facts file ({len(test_ids) - n_neg} faithful, "
         f"{n_neg} with one injected error), labels known by construction. The judge prompt is "
         f"tuned on the {len(pset.split.dev)} dev items only and frozen, by fingerprint, before "
@@ -521,7 +532,8 @@ def judge_section(results: Path) -> str:
         )
     out.append("")
     out += _by_type(results, types, test_ids, hhem_pert)
-    return "\n".join(out) + "\n"
+    summary = "<b>Judge validation</b> (no labels written for this repo)"
+    return "\n".join(_details(summary, out))
 
 
 def _ragtruth_labels(items: Sequence[Any]) -> list[Any]:
@@ -581,7 +593,7 @@ def _by_type(
 
 
 def extras_section(results: Path) -> str:
-    out = ["**Live-only cells.**", ""]
+    out: list[str] = []
     ctx = results / "contextual" / "selection.json"
     if ctx.exists():
         info = json.loads(ctx.read_text(encoding="utf-8"))
@@ -601,15 +613,7 @@ def extras_section(results: Path) -> str:
             out.append(f"- Ragas on {path.stem}: {', '.join(parts)}.")
     else:
         out.append(f"- Ragas 0.4.3 faithfulness and context recall on two configs: {PENDING}.")
-    live = results / "live_run.json"
-    if live.exists():
-        info = json.loads(live.read_text(encoding="utf-8"))
-        out.append(
-            f"- Live run spend: ${info['spent_usd']:.2f} of a ${info['cap_usd']:.2f} cap "
-            f"({info['calls']} calls)."
-        )
-    out.append("")
-    return "\n".join(out)
+    return "\n".join(_details("<b>Live-only cells</b>", out))
 
 
 def render(results: Path = REPO_ROOT / "results") -> str:
@@ -635,7 +639,7 @@ def render(results: Path = REPO_ROOT / "results") -> str:
             f'> Rows marked "{PENDING}" need Azure model calls, which have not been made '
             "yet. Every number shown was produced offline by `make demo` from committed results."
         )
-    return "\n".join([note, "", *body])
+    return "\n\n".join([note, *(part.strip("\n") for part in body)])
 
 
 def render_cost(results: Path = REPO_ROOT / "results") -> str:
@@ -646,7 +650,29 @@ def render_cost(results: Path = REPO_ROOT / "results") -> str:
     est = estimate(results)
     total_minutes = sum(line.minutes_at_quota(DEPLOYMENT_TPM) for line in est.lines)
     used = {line.model for line in est.lines}
-    lines = [
+    runs = results / "live_runs.jsonl"
+    if runs.exists():
+        rows = [json.loads(line) for line in runs.read_text(encoding="utf-8").splitlines() if line]
+        spent = sum(r.get("spent_usd", 0.0) for r in rows)
+        errors = sum(r.get("charged_for_errors_usd", 0.0) for r in rows)
+        failed = sum(r.get("failed_calls", 0) for r in rows)
+        calls = sum(r.get("calls", 0) for r in rows)
+        lines = [
+            f"Actual spend: ${spent - errors:.2f} token-priced over {calls} calls in {len(rows)} "
+            f"runs. DollarCap's accounting shows ${spent:.2f}, which includes ${errors:.2f} "
+            f"reserved for {failed} failed, retried calls that Azure doesn't bill."
+        ]
+        lines += _cache_line(results)
+    else:
+        lines = [f"Actual spend: {PENDING}."]
+    lines += [
+        "",
+        f"`make eval-live` runs with a hard cap of ${DEFAULT_CAP_USD:.2f} (`make eval-live "
+        "CAP=...` to change it), a bit more than twice the expected spend. A refused call stops "
+        "the run, and cached calls cost nothing when it is started again.",
+        "",
+    ]
+    estimate_body = [
         "Estimated before the live run by `eval estimate`, which builds the requests the run "
         'sends and prices them at list prices. "Expected" assumes about 4 bytes per token, '
         "typical output lengths and the full-context prefix served from the prompt cache after "
@@ -663,28 +689,9 @@ def render_cost(results: Path = REPO_ROOT / "results") -> str:
         f"quotas the run would take about {total_minutes / 60:.0f} hours, and luna's default "
         "quota can't fit the full-context prompt at all. The live run used raised capacities "
         "(see Limitations).",
-        "",
-        f"`make eval-live` runs with a hard cap of ${DEFAULT_CAP_USD:.2f} (`make eval-live "
-        "CAP=...` to change it), a bit more than twice the expected spend. A refused call stops "
-        "the run, and cached calls cost nothing when it is started again.",
-        "",
     ]
-    runs = results / "live_runs.jsonl"
-    if runs.exists():
-        rows = [json.loads(line) for line in runs.read_text(encoding="utf-8").splitlines() if line]
-        spent = sum(r.get("spent_usd", 0.0) for r in rows)
-        errors = sum(r.get("charged_for_errors_usd", 0.0) for r in rows)
-        failed = sum(r.get("failed_calls", 0) for r in rows)
-        calls = sum(r.get("calls", 0) for r in rows)
-        lines.append(
-            f"Actual spend: ${spent - errors:.2f} token-priced over {calls} calls in {len(rows)} "
-            f"runs. DollarCap's accounting shows ${spent:.2f}, which includes ${errors:.2f} "
-            f"reserved for {failed} failed, retried calls that Azure doesn't bill."
-        )
-        lines += _cache_line(results)
-    else:
-        lines.append(f"Actual spend: {PENDING}.")
-    return "\n".join(lines) + "\n"
+    lines += _details("<b>Pre-run estimate by stage</b>", estimate_body)
+    return "\n".join(lines)
 
 
 def _cache_line(results: Path) -> list[str]:
@@ -716,4 +723,4 @@ def update_readme(
     return write_section(readme, "cost", render_cost(results)) or changed
 
 
-__all__ = ["PRIMARY_METRIC", "render", "render_cost", "update_readme"]
+__all__ = ["render", "render_cost", "update_readme"]

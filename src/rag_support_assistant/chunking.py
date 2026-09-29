@@ -96,7 +96,7 @@ def chunk_articles(articles: Sequence[Article], chunking: Chunking) -> list[Text
             if not isinstance(node, TextNode):
                 raise TypeError(f"expected TextNode, got {type(node).__name__}")
             node.id_ = chunk_id(article.article_id, chunking, index)
-            # MarkdownNodeParser adds header_path. Keep only our keys, in a fixed order.
+            # MarkdownNodeParser adds header_path. Keep only this repo's keys, in a fixed order.
             node.metadata = {
                 **{k: node.metadata[k] for k in _META_KEYS if k in node.metadata},
                 "chunk_index": index,

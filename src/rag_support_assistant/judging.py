@@ -60,7 +60,6 @@ JUDGES: dict[str, JudgeSpec] = {
     # so the cap leaves room for a few hundred of them at effort "minimal".
     "gpt5mini": JudgeSpec("gpt5mini", "gpt-5-mini", None, "minimal", 600),
 }
-PRIMARY_JUDGE = "llama"
 
 
 def _resource(name: str) -> str:
