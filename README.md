@@ -1,9 +1,20 @@
 # rag-support-assistant
 
-Retrieval-augmented answers for a fictional neobank's help center, measured the way a support team would need: which retrieval setup finds the right article, how often the assistant declines when it should, and how often it states something its sources do not support.
-Results come with 95% confidence intervals and sample sizes, retrieval runs fully offline on CPU, and the model-graded parts are validated against labels known by construction and RAGTruth's published annotations. No labels were written for this repo.
+Retrieval-augmented answers for a fictional neobank's help center, scored on retrieval, abstention and hallucination with 95% CIs and no hand-written labels.
 
-**What it found.** Putting the whole corpus in the prompt ties the best retrieval arm on accuracy (119 against 117 of 120 answerable questions, 2 discordant pairs, exact McNemar p = 0.5) and declined 17 of the 20 questions it should, against 12 (p = 0.0625, not significant). It costs 2.6 times as much per answer with a warm prompt cache and about 22 times cold (149 of 150 full-context calls hit the cache, and the one cold call cost $0.0037, about $3.7 per 1,000 answers), and it only works at this corpus size, 37K tokens. The LLM judges score 100% on synthetic perturbations but catch only 59% (Llama) and 64% (gpt-5-mini) of RAGTruth's hallucinations, so the hallucination rates below are judge-scored with an unknown miss rate. In retrieval, convex hybrid fusion is the only step that beat dense retrieval significantly (+0.029 nDCG@10, p = 0.004).
+- **Full context ties the best retrieval arm.** It got 119 of 120 answerable questions right against 117 (exact McNemar p = 0.5) and declined 17 of 20 should-decline questions against 12 (p = 0.06). It costs 2.6x per answer with a warm prompt cache and about 22x cold, and it only fits because the corpus is 37K tokens.
+- **The judges miss real errors.** They catch 100% of synthetic errors but only 59% (Llama) and 64% (gpt-5-mini) of RAGTruth's hallucinations, so the hallucination rates below carry an unknown miss rate.
+- **Convex hybrid fusion is the only significant retrieval gain.** +0.029 nDCG@10 over dense retrieval on 130 test questions (p = 0.004).
+
+## Quickstart
+
+```bash
+git clone https://github.com/rkemery/rag-support-assistant.git
+cd rag-support-assistant
+uv run make demo
+```
+
+`make demo` needs no keys and no network after `uv sync`. It checks every dataset against its hashes and rebuilds the Results and Cost sections from the committed result files. `make test` runs the tests and `make lint` runs ruff. `make retrieval` reruns the retrieval grid (downloads the open models, 43 CPU minutes on a shared 4-vCPU container). For live runs, see [Cost](#cost).
 
 ## Results
 
@@ -146,33 +157,45 @@ Perturbation test split: 462 items built from the facts file (240 faithful, 222 
 </details>
 <!-- results:end -->
 
-## Quickstart
+## Method
 
-```bash
-git clone https://github.com/rkemery/rag-support-assistant.git
-cd rag-support-assistant
-uv run make demo
-```
+Retrieval is scored at the article level: each ranked chunk list collapses to articles by first appearance, then ranx scores it against the gold articles. Only the 130 test questions with a gold article count (answerable questions, and false premises, whose gold is the article that refutes them).
 
-`make demo` needs no keys and no network after `uv sync`. It checks every committed dataset against its hashes and rebuilds the results section above from the committed result files. `make test` runs the test suite (no downloads, no keys) and `make lint` runs ruff.
+| Metric | Definition | Why |
+|---|---|---|
+| nDCG@10 (primary) | Rank-discounted gain from gold articles in the top 10 | A question can have several gold articles and position matters |
+| MRR@10 | Reciprocal rank of the first gold article | How soon the first right article shows up |
+| Recall@5, Recall@10 | Share of gold articles in the top 5 or 10 | How much of the gold set reaches the answer model. Gold is inclusive (a fact in seven articles gives seven gold articles), so recall reads low |
+| Accuracy | Answerable questions judged `correct`, abstaining counts as wrong | The main answer-quality number |
+| False refusal, answered unanswerable | Read from the answer's `abstain` field, by code | Abstention needs no judge |
+| Premise corrected | False-premise questions answered with the premise corrected | The dataset calls them unanswerable, but the right reply corrects them |
+| Hallucination rate | Answered questions with a claim the reference answer and current articles don't support (`grounded` check) | Catches claims the sources don't back |
+| Cost, latency | $ per 1,000 answers and p50 ms | What the accuracy costs |
 
-To rerun the retrieval grid: `make retrieval`. It downloads the open models and took 43 CPU minutes (39 minutes wall) on a shared 4-vCPU container, most of it in the two rerankers. For the live model runs, see [Cost of a full live run](#cost-of-a-full-live-run).
+- **One factor at a time, chosen on dev.** Four steps: chunking, embedding model, first stage (dense, BM25, convex or RRF hybrid) and reranker. Each keeps its dev winner by nDCG@10, and test runs once after every choice is fixed. The Qwen3 strong-arm rows never change the path.
+- **Answers.** The three best dev configs feed gpt-6-luna the top 8 chunks. A full-context arm puts the whole corpus in the prompt instead.
+- **Error bars.** Questions are clustered by their first gold article. Means get a cluster bootstrap, and paired comparisons use the harness's clustered paired t-test with a minimum detectable effect, so "no difference" reads as "too small to see at this n".
+- **Judges.** Llama 3.3 70B, a different family from the answer model, grades every answer with binary `correct` and `grounded` checks. gpt-5-mini grades the same answers as a second judge. Both are scored against labels known by construction and RAGTruth's human annotations first.
 
-## What's inside
+<details>
+<summary><b>What's inside</b></summary>
 
 | Path | What it is |
 |---|---|
 | `data/tallowbrook/` | Pinned copy of the synthetic Tallowbrook corpus (151 articles), facts file and RAG questions (50 dev, 150 test, 40 unanswerable), with a sha256 manifest. `scripts/sync_data.py` verifies it. |
 | `data/judge_validation/` | 622 perturbed answers built by code from the facts file, labels in the harness label format, and the dev/test split. |
 | `data/ragtruth/` | A seeded 200-response subset of RAGTruth QA (100 with a human-marked hallucination, 100 without), with its MIT license and source hashes. |
-| `src/rag_support_assistant/` | `chunking` (LlamaIndex parsers), `bm25` (BM25 as Qdrant sparse vectors), `retrieval` (Qdrant local mode through LlamaIndex, explicit fusion, reranking), `grid` (dev selection, then test once), `scoring` (ranx), `generation`, `judging`, `perturb`, `ragtruth`, `hhem`, `contextual`, `ragas_adapter`, `clients` (the live client stack), `pipeline`, `analysis`, `readme`, `snapshot`, `cli`. |
+| `src/rag_support_assistant/` | The pipeline: chunking, retrieval and the grid, generation, judging and judge validation, the live client stack, and the README renderer. |
 | `results/` | Harness JSONL records, one per question per run: `retrieval/` (every config on dev and test, plus `selection.json` with the dev decisions and compute used), `contexts/` (the frozen top chunks each generation config sends), `hhem/` (HHEM on the validation sets and the answers, offline), and the live results: `generation/`, `judge/`, `contextual/`, `ragas/` and `live_runs.jsonl`. |
 | `cache/` | Replay cache for model calls, keyed by the sha256 of each request. It holds every live call (about 4,300 files, 59 MB), so `make eval-replay` reruns the live stages offline. |
 | `snapshot/` | Frozen retrieval snapshot for the agents repo: chunks, bge-small embeddings, config and hashes. |
 
-The `eval` command covers every step: `retrieval`, `contexts`, `build-validation`, `hhem`, `export-snapshot`, `estimate`, `demo` and `verify-data` run offline. `judge-dev`, `judge-freeze` and `run` make model calls with `--live`, or replay the cache with `--replay`.
+`uv run eval --help` lists every step. Model calls take `--live` or `--replay`.
 
-## Architecture
+</details>
+
+<details>
+<summary><b>Architecture</b></summary>
 
 ```mermaid
 flowchart LR
@@ -194,19 +217,12 @@ flowchart LR
 
 Every live call goes through the same stack, outermost first: the harness `CachedClient` (committed disk cache, so a replay costs nothing), `RetryingClient`, `DollarCap` (refuses any call that could take spend past the cap), this repo's `RateLimitedClient` (keeps estimated tokens per minute under each deployment's quota) and the harness `FoundryClient`.
 
-## What we measured and why
-
-**Retrieval, at the article level.** Gold labels name articles, so each ranked chunk list is collapsed to articles by first appearance before scoring with ranx. nDCG@10 is the primary metric because a question can have several gold articles and position matters. MRR@10 says how soon the first right article shows up. Recall@5 and recall@10 say how much of the gold set reaches the answer model. Gold is inclusive by design (a fact stated in seven articles gives seven gold articles), which pulls recall down, so recall sits next to MRR rather than alone. Only the 130 test questions with a gold article are scored: answerable questions and false premises, whose gold is the article that refutes them.
-
-**One factor at a time, chosen on dev.** Four steps: chunking (fixed 128-token chunks, the same with the article title, header-aware sections with the title), embedding model, first stage (dense, BM25 alone, hybrid with convex fusion, hybrid with RRF) and a reranker. Each step keeps the dev winner by nDCG@10. The convex weight is swept on dev. Test runs once, after every choice is fixed. The Qwen3 strong-arm rows ride on the chosen path and never change it.
-
-**Error bars that respect correlated questions.** Questions that cite the same leading article share source material, so they are clustered by their first gold article. Means get a percentile bootstrap over clusters, and paired comparisons use the harness's clustered paired t-test with a minimum detectable effect, so "no difference" reads as "too small to see at this n".
-
-**Answers.** The three retrieval configs with the best dev nDCG@10 feed gpt-6-luna the top 8 chunks, and a full-context arm puts the whole corpus in the prompt instead. The answer is structured output with citations and an explicit abstain flag, so abstention is measured by code, not by a judge. The metrics: accuracy on answerable questions (abstaining counts as wrong), the abstention 2x2 table, false refusal rate, the share of should-decline questions answered, premise correction on the 10 false-premise questions, hallucination rate (answers with at least one claim the reference answer and the current source articles do not support), cost per 1,000 answers and latency.
-
-**Judges, checked against known labels.** Llama 3.3 70B (a different model family from the answer model) grades every answer with two binary checks, `correct` and `grounded`. gpt-5-mini grades the same answers as a second judge, which doubles as the same-vendor versus cross-family comparison. Both are scored against labels known by construction and against RAGTruth's human annotations before their verdicts on real answers are reported. A correction for the primary judge's measured error rates was planned too, and the results section says why it can't be identified on this data.
+</details>
 
 ## Design decisions
+
+<details>
+<summary>All 12, with sources</summary>
 
 - **BM25 inside Qdrant.** Each chunk's BM25 term weights, IDF included, are stored as a Qdrant sparse vector and a query vector holds term counts, so Qdrant's sparse dot product is the BM25 score (Robertson and Zaragoza, "The Probabilistic Relevance Framework: BM25 and Beyond", 2009, k1 = 1.2, b = 0.75). Dense, BM25 and hybrid search then share one local collection, and a test checks Qdrant's scores against the formula.
 - **Fusion set explicitly, both kinds tested.** LlamaIndex's Qdrant store takes the fusion function as an argument, and the grid always passes one. Convex fusion is a weighted sum of min-max normalized scores with its weight tuned on dev, which Bruch, Gai and Ingber found beats RRF when a few labeled queries are available ([arXiv 2210.11934](https://arxiv.org/abs/2210.11934)). RRF is rank-only with k = 60 (Cormack, Clarke and Buettcher, SIGIR 2009).
@@ -221,37 +237,44 @@ Every live call goes through the same stack, outermost first: the harness `Cache
 - **Two second opinions that are not the judge.** HHEM-2.1-Open, a small classifier, scores the same premise and answer pairs as the LLM judge. Ragas 0.4.3 (Es et al., [arXiv 2309.15217](https://arxiv.org/abs/2309.15217)) runs faithfulness and context recall on two configs, with its LLM calls routed through the same capped, cached client as everything else.
 - **A rate limiter in front of the cap.** `DollarCap` charges a failed call its worst case, so a burst of 429s would eat the budget without spending it. The limiter keeps estimated tokens per minute (prompt plus `max_output_tokens`, which Azure counts on arrival) under 80% of each deployment's quota.
 
+</details>
+
 ## What didn't work
 
-- **The reranker.** On dev the granite cross-encoder on the top 10 chunks lowered nDCG@10 (0.839 to 0.820), so the grid dropped it. On test it moved nDCG@10 by -0.007 (-0.037 to +0.024) and added about 3 seconds per query on this CPU. The 0.6B Qwen3 reranker did a little better on test (+0.013, CI includes 0) at about 6 seconds per query. Every chunk already carries its article title, and the hybrid first stage ranks well on these short articles, which leaves a reranker little to fix.
-- **granite-small in place of bge-small.** It lost on dev (0.749 against 0.791) and on test (-0.019, not significant), even though it is the newer model.
-- **Header-aware chunks.** They lost to fixed chunks with the title on dev (0.779 against 0.791) and beat them on test (0.797 against 0.782), with neither gap significant. The dev choice stands. Adding the title to fixed chunks raised test recall@5 by 4.1 points (p = 0.033), but recall@5 is exploratory here and that's one of 18 tests, so it's a lead, not a result.
-- **RRF.** It trailed convex fusion on dev (0.804 against 0.839) and on test (0.797 against 0.811). Only convex fusion beat dense retrieval significantly on test (+0.029 nDCG@10, p = 0.004). Rank fusion discards how far apart the scores are, which is exactly what the tuned weight uses.
-- **Contextual retrieval.** Prepending a model-written context to each chunk (Anthropic's prompt, on the chosen convex config) moved test nDCG@10 by -0.017 (-0.045 to +0.012, p = 0.244), so it didn't help. Every chunk already carries its article title, which may leave little for a written context to add.
-- **A correction for judge error.** A judge with known TPR and TNR over- or under-counts in a predictable way, so the plan was a Rogan-Gladen correction with an interval that carries the uncertainty in TPR and TNR (Lee et al., [arXiv 2511.21140](https://arxiv.org/abs/2511.21140), implemented in the harness). It ran, but it can't be identified here. The Llama judge's TPR and TNR on the synthetic set are both 1.00, so it changes nothing, and RAGTruth's error rates give a negative rate. The results section shows raw flag counts instead.
-- **BM25 alone.** Lowest nDCG@10 of the grid on both splits, though at 6 ms per query it is by far the cheapest.
-- **HHEM as a check on numbers.** On the perturbation test split it caught 93% of appended claims but none of the 22 answers carrying another plan's value and 2 of the 12 carrying a superseded value, and it flagged 21% of faithful paraphrases. The premise often includes the all-plans fee table, and HHEM appears not to check which plan a number belongs to. On RAGTruth it caught 53% of the human-marked hallucinations. It stays a second opinion next to the LLM judge, not a replacement.
-- **HHEM's own loading code.** Its `trust_remote_code` class fails under transformers 5 (it never calls `post_init`). Rebuilding the same computation from transformers' `T5ForTokenClassification` reproduces the scores printed on the model card to four decimals, and runs no remote code.
-- **Ragas 0.4.3 with current LangChain.** It imports `langchain_community.chat_models.vertexai`, which langchain-community 0.4.2 removed. The `ragas` extra pins langchain-community 0.4.1, the release that was current when Ragas 0.4.3 shipped.
-- **Four torch threads on a shared 4-vCPU box.** With other jobs running, a single bge-small query took 0.8 to 2 seconds instead of about 30 ms, because OpenMP threads spin while they wait for cores. Torch is pinned to 2 threads, and the grid was rerun from scratch.
-- **Smaller snags.** LlamaIndex's bundled NLTK stopword file is refused by NLTK's hardlink check when uv installs it, so the list is inlined. A literal "$5.00" in the judge prompt broke Python's `string.Template`, which reads `$5` as a placeholder. A unit test caught it before any live call. Few reference answers state a versioned number, so superseded-value perturbations came to 15 items, and word-level swaps (travel notices, the old lost-card phone line) only brought them to 17.
+- **The reranker.** Granite lowered dev nDCG@10 (0.839 to 0.820) and moved test by -0.007 (CI includes 0) for about 3 s per query. Qwen3's 0.6B reranker did +0.013 (CI includes 0) at about 6 s. Titled chunks and a strong hybrid first stage leave it little to fix.
+- **granite-small in place of bge-small.** It lost on dev (0.749 against 0.791) and on test (-0.019, not significant).
+- **Header-aware chunks.** They lost on dev (0.779 against 0.791) and won on test (0.797 against 0.782), neither significantly. The dev choice stands.
+- **RRF.** It trailed convex fusion on dev (0.804 against 0.839) and test (0.797 against 0.811). Rank fusion drops the score gaps that the tuned weight uses.
+- **Contextual retrieval.** Anthropic's prompt on the chosen config moved test nDCG@10 by -0.017 (p = 0.244). Every chunk already carries its article title, which may leave little to add.
+- **A correction for judge error.** The planned Rogan-Gladen correction ran but can't be identified on this data (see the hallucination flags under Results).
+- **BM25 alone.** Lowest nDCG@10 on both splits, though the cheapest at 6 ms per query.
+- **HHEM as a check on numbers.** It caught 93% of appended claims but none of the 22 wrong-plan values, 2 of 12 superseded values and 53% of RAGTruth's hallucinations. It stays a second opinion.
+
+Engineering snags (HHEM's loader, Ragas pins, torch threads) are in [docs/notes.md](docs/notes.md).
 
 ## Limitations
 
-- **No labels written for this repo.** Every judge-scored number is "judge-scored, judge validated on synthetic perturbations and RAGTruth". Synthetic errors (a swapped number, an appended sentence) are easier to catch than the errors models make, so the perturbation TNR is an upper bound on what the judge catches in real answers. RAGTruth is the check on natural errors, but its passages and questions come from MS MARCO, not from a bank.
-- **Synthetic, templated corpus.** One model wrote the articles and questions, per-plan variants share templates, and the gold labels have not been audited by a person. Real help centers are messier, so absolute scores here will be higher than on real data.
-- **Small test set.** 130 scored retrieval questions and 150 answer questions. Differences of a few points are below the MDE the tables print.
-- **Latency is rough.** It was measured on a 4-vCPU container shared with other training jobs, with torch pinned to 2 threads. The same config ran at a p50 of 48 ms on dev and 143 ms on test because the load changed. Use it to rank configs by order of magnitude, not to quote.
-- **The perturbation types are narrow.** They cover wrong values, wrong plans, superseded values and appended claims. They do not cover omissions, wrong reasoning or a wrong answer built from true facts. Only 12 test items carry a superseded value, because few reference answers state a versioned number.
-- **HHEM's premise includes the reference answer.** That matches what the LLM judge sees, but an answer copied from the reference is trivially consistent. Its threshold is fixed at 0.5 and not tuned.
-- **Long-context pricing is unconfirmed.** Azure lists short and long price tiers for gpt-6-luna without saying where the cutoff is, and every cost here uses the standard rate. If the 37K-token full-context prompt (cl100k count) falls in the long tier, that arm costs up to about twice what's shown.
-- **The live run needed raised quotas.** Azure counts `max_output_tokens` against tokens per minute, and at the day-1 quotas the run would have taken about 13 hours, with luna's 20K unable to take the full-context prompt at all. It ran at luna 200K, gpt-5-mini 100K and Llama 20K tokens per minute (Llama's quota max), set through `RAG_TPM`.
-- **Llama's replies needed a repair.** 150 of 1,367 Llama replies (dev perturbations 13, test perturbations 25, RAGTruth 24, and the four answer arms 18, 18, 32 and 20 in table order) closed a checklist item with `")` instead of `"}`. One rule, `stray-paren-v1`, fixes that, it only runs after a strict parse fails, and it's part of the frozen judge fingerprint. Two more replies, both in the rrf arm (q-test-007 and q-test-068), couldn't be parsed because they use bare `no` and `yes` instead of JSON booleans, so they're left out. Read as written, rrf accuracy would be 111/120 = 92.5% instead of 94.1% on 118, and its hallucination rate 4/137 = 2.9% instead of 2.2% on 135.
-- **RAGTruth is graded with this repo's judge prompt,** which frames the task as a Tallowbrook help-center answer, and without a reference answer, while the real answers are judged with one. That keeps one frozen judge for both checks, but it is a transfer test in more than one way.
-- **Dev and test disagree on small differences.** Header-aware chunking lost on dev and won on test. With about 40 dev questions, a step decided by 0.01 nDCG@10 is close to a coin flip, which is why the paired test results carry more weight than the path.
-- **Replay depends on request bytes.** The cache key is the request, so changing a prompt, the context size or a model setting turns a replay into cache misses. That is on purpose.
+- **No labels written for this repo.** Judge scores are validated only on synthetic perturbations and RAGTruth, and synthetic errors are easier to catch than real ones.
+- **Synthetic corpus.** One model wrote the articles and questions from templates, and no person audited the gold labels. Scores on a real help center would likely be lower.
+- **Small test set.** 130 retrieval and 150 answer questions. Differences of a few points are below the MDE the tables print.
+- **Long-context pricing is unconfirmed.** Azure doesn't say where gpt-6-luna's long price tier starts. If the 37K-token full-context prompt falls in it, that arm costs up to about twice what's shown.
+- **Llama's replies needed a repair.** 150 of 1,367 Llama replies closed a checklist item with `")` instead of `"}`. One rule, `stray-paren-v1`, fixes that only after a strict parse fails, and it's part of the frozen judge fingerprint.
 
-## Cost of a full live run
+<details>
+<summary>More limitations</summary>
+
+- **Repairs by set.** Dev perturbations 13, test perturbations 25, RAGTruth 24, and the four answer arms 18, 18, 32 and 20 in table order. Two rrf replies with bare `no` and `yes` stay unparsed (see Results).
+- **Latency is rough.** It was measured on a 4-vCPU container shared with other jobs, with torch pinned to 2 threads. The same config ran at a p50 of 48 ms on dev and 143 ms on test. Use it to rank configs by order of magnitude.
+- **The perturbation types are narrow.** They cover wrong values, wrong plans, superseded values and appended claims, not omissions or wrong reasoning. Only 12 test items carry a superseded value.
+- **HHEM's premise includes the reference answer,** as the LLM judge's does, so an answer copied from the reference is trivially consistent. Its threshold is fixed at 0.5.
+- **The live run needed raised quotas.** Azure counts `max_output_tokens` against tokens per minute, and luna's day-1 20K couldn't take the full-context prompt. It ran at luna 200K, gpt-5-mini 100K and Llama 20K (Llama's max), set through `RAG_TPM`.
+- **RAGTruth is graded with this repo's judge prompt** and without a reference answer, while the real answers are judged with one. Its passages come from MS MARCO, not a bank, so it's a transfer test in more than one way.
+- **Dev and test disagree on small differences.** With about 40 dev questions, a step decided by 0.01 nDCG@10 is close to a coin flip, so the paired tests carry more weight than the path.
+- **Replay depends on request bytes.** Changing a prompt, the context size or a model setting turns a replay into cache misses, on purpose.
+
+</details>
+
+## Cost
 
 <!-- cost:start -->
 Actual spend: $2.21 token-priced over 4343 calls in 2 runs. DollarCap's accounting shows $2.68, which includes $0.48 reserved for 109 failed, retried calls that Azure doesn't bill.
