@@ -83,14 +83,18 @@ def retrieval_section(results: Path) -> str:
     n = len(next(iter(test.values())))
     chosen = {step["chosen"] for step in selection["steps"]}
     gen = set(selection["generation_configs"])
+    header = [
+        "| Config | Role | nDCG@10 | MRR@10 | Recall@5 | Recall@10 | p50 / p95 ms |",
+        "|---|---|---|---|---|---|---|",
+    ]
     out = [
         f"**Retrieval, test split** ({n} questions with a gold article, article-level, no LLM). "
         "Mean with a 95% percentile bootstrap CI over clusters (questions grouped by their first "
         "gold article). Latency per query on CPU is rough (see Limitations).",
         "",
-        "| Config | Role | nDCG@10 | MRR@10 | Recall@5 | Recall@10 | p50 / p95 ms |",
-        "|---|---|---|---|---|---|---|",
+        *header,
     ]
+    grid = list(header)
     clusters = 0
     for slug, info in selection["configs"].items():
         records = test[slug]
@@ -106,13 +110,17 @@ def retrieval_section(results: Path) -> str:
         ]
         if tags:
             role += ", " + ", ".join(tags)
-        out.append(f"| {info['name']} | {role} | {' | '.join(cells)} | {p50:.0f} / {p95:.0f} |")
+        row = f"| {info['name']} | {role} | {' | '.join(cells)} | {p50:.0f} / {p95:.0f} |"
+        grid.append(row)
+        if tags:
+            out.append(row)
     out += [
         "",
         f'{clusters} clusters. "chosen on dev" marks the winner of each step on dev nDCG@10, '
         '"generation" the three configs picked on dev for the answer runs.',
         "",
     ]
+    out += _details("<b>All retrieval configs</b>", grid)
     out += _details("<b>Paired comparisons on test</b>", _retrieval_comparisons(selection, test))
     out += _details(
         "<b>How the path was chosen</b> (dev split, mean nDCG@10)", _dev_path(selection)
