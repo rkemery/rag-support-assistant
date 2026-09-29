@@ -485,7 +485,7 @@ def judge_section(results: Path) -> str:
     n_neg = sum(1 for i in pset.items if i.split == "test" and not i.labels["grounded"])
     rt = load_ragtruth_subset()
     out = [
-        "**Judge validation without human labels.** Perturbation test split: "
+        "**Judge validation with no labels written for this repo.** Perturbation test split: "
         f"{len(test_ids)} items built from the facts file ({len(test_ids) - n_neg} faithful, "
         f"{n_neg} with one injected error), labels known by construction. The judge prompt is "
         f"tuned on the {len(pset.split.dev)} dev items only and frozen, by fingerprint, before "

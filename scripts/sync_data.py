@@ -87,7 +87,7 @@ def copy_from(source: Path, dest: Path = DEST) -> None:
     manifest = {
         "dataset": "Tallowbrook Neobank Support (synthetic)",
         "license": "CC-BY-4.0",
-        "source_repo": "rkemery/rag-support-assistant, branch claude/tallowbrook-dataset",
+        "source_repo": "rkemery/rag-support-assistant, tag tallowbrook-v0.1",
         "source_commit": PINNED_COMMIT,
         "files": entries,
     }
