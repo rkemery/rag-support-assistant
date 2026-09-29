@@ -25,7 +25,7 @@ Results come with 95% confidence intervals and sample sizes, retrieval runs full
 
 82 clusters. "chosen on dev" marks the winner of each step on dev nDCG@10, "generation" the three configs picked on dev for the answer runs.
 
-**Paired comparisons on test**, same questions, clustered paired t-test (harness `compare_runs`), with the minimum detectable effect at 80% power.
+**Paired comparisons on test**, same questions, clustered paired t-test (harness `compare_runs`), with the minimum detectable effect at 80% power. nDCG@10 is the primary metric. Each step's candidates were fixed on dev before test ran, so the nDCG@10 tests on the grid rows are the confirmatory ones. The recall@5 columns and the strong-arm rows are exploratory.
 
 | Step | Baseline -> candidate | nDCG@10 change (95% CI) | p | MDE | Recall@5 change (95% CI) | p |
 |---|---|---|---|---|---|---|
@@ -60,6 +60,10 @@ Convex fusion weight on dense (alpha) swept on dev: 0.0: 0.736, 0.1: 0.758, 0.2:
 | fixed-title / bge-small+bm25 rrf | 94.1% (88.1% to 97.1%), n=118 | 0.8% (0.1% to 4.7%), n=120 | 40.0% (21.0% to 62.6%), n=20 | 2.2% (0.7% to 6.4%), n=135 | 100.0% (65.3% to 100.0%), n=10 | 0.167 | 1571 |
 | Full context (no retrieval) | 99.2% (95.3% to 99.9%), n=120 | 0.0% (0.0% to 3.2%), n=120 | 15.0% (4.9% to 37.7%), n=20 | 0.0% (0.0% to 2.9%), n=133 | 100.0% (65.3% to 100.0%), n=10 | 0.420 | 2111 |
 
+The hallucination rate counts answered questions only (answerable + should-decline + false premise), so its denominator differs by arm: 137 (119 + 8 + 10), 138 (118 + 10 + 10), 137 (119 + 8 + 10) and 133 (120 + 3 + 10), in table order.
+
+fixed-title / bge-small+bm25 rrf: Llama's reply couldn't be parsed for 2 answers (q-test-007, q-test-068), so they're left out of its accuracy and hallucination rate. The replies use bare `no` and `yes` instead of JSON booleans. Read as written, accuracy would be 111/120 = 92.5% and the hallucination rate 4/137 = 2.9% (see Limitations).
+
 **Abstention table, test split** (answered / abstained). The first two rows are the 2x2. False-premise questions count as unanswerable in the dataset, but the right move is to answer and correct the premise, so they get their own row.
 
 | Expected | fixed-title / bge-small+bm25 convex(a=0.7) | fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | fixed-title / bge-small+bm25 rrf | Full context (no retrieval) |
@@ -68,14 +72,22 @@ Convex fusion weight on dense (alpha) swept on dev: 0.0: 0.736, 0.1: 0.758, 0.2:
 | Should decline (20) | 8 / 12 | 10 / 10 | 8 / 12 | 3 / 17 |
 | False premise (10) | 10 / 0 | 10 / 0 | 10 / 0 | 10 / 0 |
 
-**Hallucination rate corrected for judge error, and judge agreement on the answers.** The correction is Rogan-Gladen with the Llama judge's TPR and TNR on the perturbation test split, and its interval carries their uncertainty. It assumes the judge errs on real answers the way it errs on synthetic ones. The RAGTruth rows below check that. Kappa compares the Llama and gpt-5-mini `grounded` verdicts on the same answers.
+The 20 should-decline questions are 10 near-miss and 10 out-of-scope. Answered ones by type (near-miss / out-of-scope), in table order: 7 / 1, 8 / 2, 7 / 1, 3 / 0. A near-miss question is on a covered topic but asks for a detail the help center doesn't give, and its reference answer is a partial answer ("the help center doesn't list the stores. It says..."). The answer prompt says to abstain when the excerpts don't contain the answer, yet Llama passed all 29 answered replies as correct and grounded. So "answered unanswerable" mostly counts replies that say the help center doesn't cover the detail but leave the abstain flag off, and the reference answers and the prompt disagree on whether that's right. The metric stays as defined before the run.
 
-| Arm | Judged hallucination rate | Corrected (95% CI) | Llama vs gpt-5-mini kappa | n |
+**Hallucination flags on the answers, by judge** (flagged as not grounded / judged). Disagree counts the answers both LLM judges read where their `grounded` verdicts differ.
+
+| Arm | Llama | gpt-5-mini | Llama vs gpt-5-mini disagree | HHEM |
 |---|---|---|---|---|
-| fixed-title / bge-small+bm25 convex(a=0.7) | 0.7% | 0.7% (0.0% to 2.3%) | 0.39 (0.00 to 1.00), n=137 | 137 |
-| fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | 1.4% | 1.4% (0.0% to 3.7%) | 0.80 (0.00 to 1.00), n=138 | 138 |
-| fixed-title / bge-small+bm25 rrf | 2.2% | 2.2% (0.0% to 4.9%) | 1.00 (1.00 to 1.00), n=135 | 135 |
-| Full context (no retrieval) | 0.0% | 0.0% (0.0% to 0.0%) | undefined (one judge gave a single verdict), agreement 100.0%, n=133 | 133 |
+| fixed-title / bge-small+bm25 convex(a=0.7) | 1 / 137 | 4 / 137 | 3 / 137 | 17 / 137 |
+| fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | 2 / 138 | 3 / 138 | 1 / 138 | 17 / 138 |
+| fixed-title / bge-small+bm25 rrf | 3 / 135 | 5 / 137 | 0 / 135 | 18 / 137 |
+| Full context (no retrieval) | 0 / 133 | 0 / 133 | 0 / 133 | 9 / 133 |
+
+A Rogan-Gladen correction for judge error was run and can't be identified here. With the Llama judge's perturbation TPR and TNR both at 1.00 it returns the judged rate unchanged for every arm, the bootstrap over answers collapses when an arm has 0 or 1 flagged answers, and plugging in the RAGTruth rates (TPR 93%, TNR 59%) gives a negative rate for every arm (-13% to -9%), which clips to 0. The true hallucination rate is unknown, bracketed by a judge that catches 100% of synthetic errors and 59% of RAGTruth's, neither of which matches this task. RAGTruth was also judged without a reference answer, while the answers here are judged with one.
+
+The arms are at most 3 flagged answers apart by Llama and 5 by gpt-5-mini, and the two LLM judges rank the retrieval arms differently, so the arms can't be told apart on hallucination.
+
+HHEM flags far more answers than either LLM judge, which fits its 21% false-alarm rate on faithful paraphrases.
 
 
 **Judge validation without human labels.** Perturbation test split: 462 items built from the facts file (240 faithful, 222 with one injected error), labels known by construction. The judge prompt is tuned on the 160 dev items only and frozen, by fingerprint, before test is judged. RAGTruth: 200 human-annotated QA responses (half with a hallucination). TPR is the share of good answers passed, TNR the share of flawed answers caught. Wilson 95% CIs, kappa with a bootstrap CI.
@@ -213,7 +225,7 @@ Every live call goes through the same stack, outermost first: the harness `Cache
 ## Cost of a full live run
 
 <!-- cost:start -->
-Estimated before any live call by `eval estimate`, which builds the requests the run will send and prices them at list prices. "Expected" assumes about 4 bytes per token, typical output lengths and the full-context prefix served from the prompt cache after the first call. "Worst case" is what `DollarCap` reserves per call (one token per input byte plus `max_output_tokens`), the bound it enforces. Answer judging uses the reference answer as a stand-in answer, since real answers do not exist yet.
+Estimated before the live run by `eval estimate`, which builds the requests the run sends and prices them at list prices. "Expected" assumes about 4 bytes per token, typical output lengths and the full-context prefix served from the prompt cache after the first call. "Worst case" is what `DollarCap` reserves per call (one token per input byte plus `max_output_tokens`), the bound it enforces. Answer judging uses the reference answer as a stand-in answer, since the estimate runs before any answers exist.
 
 | Stage | Calls | Expected $ | DollarCap worst case $ | Minutes at default quota |
 |---|---|---|---|---|
@@ -233,11 +245,13 @@ Estimated before any live call by `eval estimate`, which builds the requests the
 | Ragas (2 configs, luna) | 900 | 0.270 | 1.170 | n/a |
 | Total | 4711 | 3.47 | 13.65 | 754 |
 
-"Minutes at default quota" is the least wall time the rate limiter allows at the day-1 capacities (gpt-6-luna 20K, gpt-5-mini 20K, Llama-3.3-70B-Instruct 10K tokens per minute), using 80% of each. Stages run one after another, so the whole run needs about 13 hours unless capacities are raised and `RAG_TPM` is set to match. The full-context prompt is larger than luna's whole default quota, so that stage needs a raised luna capacity to run at all.
+"Minutes at default quota" is the least wall time the rate limiter allows at the day-1 capacities (gpt-6-luna 20K, gpt-5-mini 20K, Llama-3.3-70B-Instruct 10K tokens per minute), using 80% of each. Stages run one after another, so at those quotas the run would take about 13 hours, and luna's default quota can't fit the full-context prompt at all. The live run used raised capacities (see Limitations).
 
 `make eval-live` runs with a hard cap of $8.00 (`make eval-live CAP=...` to change it), a bit more than twice the expected spend. A refused call stops the run, and cached calls cost nothing when it is started again.
 
-Actual spend so far: $2.68 over 4343 calls in 2 runs.
+Actual spend: $2.21 token-priced over 4343 calls in 2 runs. DollarCap's accounting shows $2.68, which includes $0.48 reserved for 109 failed, retried calls that Azure doesn't bill.
+
+Prompt caching served 5.40M of the full-context arm's 5.44M input tokens: 149 of 150 calls hit the cache, and a cold call cost $0.0037, about $3.7 per 1,000 answers against $0.42 warm.
 <!-- cost:end -->
 
 ## How I built this

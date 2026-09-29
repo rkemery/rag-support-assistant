@@ -136,7 +136,10 @@ def _retrieval_comparisons(
     names = {s: info["name"] for s, info in selection["configs"].items()}
     out = [
         "**Paired comparisons on test**, same questions, clustered paired t-test (harness "
-        "`compare_runs`), with the minimum detectable effect at 80% power.",
+        "`compare_runs`), with the minimum detectable effect at 80% power. nDCG@10 is the "
+        "primary metric. Each step's candidates were fixed on dev before test ran, so the "
+        "nDCG@10 tests on the grid rows are the confirmatory ones. The recall@5 columns and the "
+        "strong-arm rows are exploratory.",
         "",
         "| Step | Baseline -> candidate | nDCG@10 change (95% CI) | p | MDE | "
         "Recall@5 change (95% CI) | p |",
@@ -206,65 +209,194 @@ def generation_section(results: Path, arms: Sequence[str], names: dict[str, str]
             f"{cell('premise_corrected')} | {per_1k:.3f} | {s.latency_p50_ms:.0f} |"
         )
     out.append("")
+    if summaries:
+        out += _generation_notes(results, summaries, arms, names)
     out += _abstention_tables(summaries, arms, names)
+    if summaries:
+        out += _decline_split(results, [a for a in arms if a in summaries])
     out += _judge_rows(results, arms, names)
     return "\n".join(out) + "\n"
 
 
-def _judge_rows(results: Path, arms: Sequence[str], names: dict[str, str]) -> list[str]:
-    """Hallucination rate corrected for the primary judge's error, and agreement between judges."""
-    from llm_eval_harness.calibration import kappa_interval
+# Two Llama replies in the rrf arm use bare `no` and `yes` instead of JSON booleans, so the
+# frozen judge records them as parse errors. These are the verdicts as written in the cached
+# replies (cache/40/4051f9f3... and cache/c0/c0877ec5...), used only for the footnote.
+UNPARSED_AS_WRITTEN: dict[tuple[str, str], dict[str, bool]] = {
+    ("fixed-title-hybrid-bge-small-rrf", "q-test-007"): {"correct": False, "grounded": True},
+    ("fixed-title-hybrid-bge-small-rrf", "q-test-068"): {"correct": False, "grounded": False},
+}
 
-    from rag_support_assistant.validation import load_perturbation_set
 
-    pset = load_perturbation_set()
-    calibration = _load(judge_path("llama", "perturbations/test", results))
+def _share(outcomes: dict[str, bool | None]) -> tuple[int, int]:
+    known = [v for v in outcomes.values() if v is not None]
+    return sum(known), len(known)
+
+
+def _generation_notes(
+    results: Path,
+    summaries: dict[str, analysis.GenerationSummary],
+    arms: Sequence[str],
+    names: dict[str, str],
+) -> list[str]:
+    """Hallucination denominators per arm, and a footnote for replies the judge couldn't parse."""
+    from dataclasses import replace
+
+    present = [a for a in arms if a in summaries]
+    parts = []
+    for arm in present:
+        t = summaries[arm].table
+        answered = [
+            t.get(k, {}).get("answered", 0) for k in ("answer", "decline", "correct_premise")
+        ]
+        parts.append(f"{sum(answered)} ({' + '.join(str(x) for x in answered)})")
     out = [
-        "**Hallucination rate corrected for judge error, and judge agreement on the answers.** "
-        "The correction is Rogan-Gladen with the Llama judge's TPR and TNR on the perturbation "
-        "test split, and its interval carries their uncertainty. It assumes the judge errs on "
-        "real answers the way it errs on synthetic ones. The RAGTruth rows below check that. "
-        "Kappa compares the Llama and gpt-5-mini `grounded` verdicts on the same answers.",
+        "The hallucination rate counts answered questions only (answerable + should-decline + "
+        "false premise), so its denominator differs by arm: "
+        + ", ".join(parts[:-1])
+        + (" and " if len(parts) > 1 else "")
+        + parts[-1]
+        + ", in table order.",
         "",
-        "| Arm | Judged hallucination rate | Corrected (95% CI) | Llama vs gpt-5-mini kappa | n |",
+    ]
+    for arm in present:
+        gen = _load(generation_path(arm, "test", results)) or []
+        judged = _load(judge_path("llama", f"answers/test/{arm}", results)) or []
+        failed = [r for r in judged if r.score_error is not None]
+        if not failed:
+            continue
+        ids = ", ".join(r.item_id for r in failed)
+        note = (
+            f"{names.get(arm, arm)}: Llama's reply couldn't be parsed for {len(failed)} answers "
+            f"({ids}), so they're left out of its accuracy and hallucination rate."
+        )
+        if all((arm, r.item_id) in UNPARSED_AS_WRITTEN for r in failed):
+            patched = [
+                replace(r, scores=UNPARSED_AS_WRITTEN[(arm, r.item_id)], score_error=None)
+                if r.score_error is not None
+                else r
+                for r in judged
+            ]
+            outcomes = analysis.generation_outcomes(gen, patched)
+            acc, acc_n = _share(outcomes["accuracy"])
+            hal, hal_n = _share(outcomes["hallucination"])
+            note += (
+                " The replies use bare `no` and `yes` instead of JSON booleans. Read as written, "
+                f"accuracy would be {acc}/{acc_n} = {acc / acc_n:.1%} and the hallucination rate "
+                f"{hal}/{hal_n} = {hal / hal_n:.1%} (see Limitations)."
+            )
+        out += [note, ""]
+    return out
+
+
+def _judge_rows(results: Path, arms: Sequence[str], names: dict[str, str]) -> list[str]:
+    """Answers flagged as not grounded by each judge, and how often the LLM judges disagree."""
+    from rag_support_assistant.validation import load_perturbation_set, load_ragtruth_subset
+
+    out = [
+        "**Hallucination flags on the answers, by judge** (flagged as not grounded / judged). "
+        "Disagree counts the answers both LLM judges read where their `grounded` verdicts differ.",
+        "",
+        "| Arm | Llama | gpt-5-mini | Llama vs gpt-5-mini disagree | HHEM |",
         "|---|---|---|---|---|",
     ]
+    flags: dict[str, list[EvalRecord]] = {}
+    mini_flags: dict[str, list[EvalRecord]] = {}
     for arm in arms:
+        label = names.get(arm, arm)
         llama = _load(judge_path("llama", f"answers/test/{arm}", results))
         mini = _load(judge_path("gpt5mini", f"answers/test/{arm}", results))
-        label = names.get(arm, arm)
-        if llama is None or calibration is None:
-            out.append(f"| {label} | {PENDING} | {PENDING} | {PENDING} | |")
+        hhem = _load(results / "hhem" / "answers" / f"{arm}.jsonl")
+        if llama is None:
+            out.append(f"| {label} | {PENDING} | {PENDING} | {PENDING} | {PENDING} |")
             continue
-        c = analysis.corrected_hallucination_rate(
-            llama, calibration, pset.labels, list(pset.split.test)
-        )
-        corrected = (
-            f"{(1 - c.corrected.estimate) * 100:.1f}% ({(1 - c.corrected.high) * 100:.1f}% to "
-            f"{(1 - c.corrected.low) * 100:.1f}%)"
-        )
-        kappa = PENDING
+        flags[arm] = llama
+        if mini is not None:
+            mini_flags[arm] = mini
+        disagree = PENDING
         if mini is not None:
             a = {r.item_id: r.scores["grounded"] for r in llama if "grounded" in r.scores}
             b = {r.item_id: r.scores["grounded"] for r in mini if "grounded" in r.scores}
             both = sorted(set(a) & set(b))
-            va, vb = [a[i] for i in both], [b[i] for i in both]
-            if len(set(va)) < 2 or len(set(vb)) < 2:
-                # Kappa is undefined when a judge gives one verdict to every answer.
-                agree = sum(x == y for x, y in zip(va, vb, strict=True)) / len(both)
-                kappa = (
-                    f"undefined (one judge gave a single verdict), agreement {agree:.1%}, "
-                    f"n={len(both)}"
-                )
-            else:
-                k = kappa_interval(va, vb, seed=analysis.SEED)
-                kappa = f"{k.estimate:.2f} ({k.low:.2f} to {k.high:.2f}), n={len(both)}"
+            disagree = f"{sum(a[i] != b[i] for i in both)} / {len(both)}"
         out.append(
-            f"| {label} | {(1 - c.observed.estimate) * 100:.1f}% | {corrected} | {kappa} | "
-            f"{c.observed.n} |"
+            f"| {label} | {_flagged(llama)} | {_flagged(mini)} | {disagree} | {_flagged(hhem)} |"
+        )
+    out.append("")
+    calibration = _load(judge_path("llama", "perturbations/test", results))
+    ragtruth = _load(judge_path("llama", "ragtruth", results))
+    hhem_pert = _load(results / "hhem" / "perturbations_test.jsonl")
+    if not flags or calibration is None or ragtruth is None:
+        return out
+    pset = load_perturbation_set()
+    test_ids = list(pset.split.test)
+    pert = analysis.agreement(calibration, pset.labels, "grounded", test_ids)
+    rt_labels = _ragtruth_labels(load_ragtruth_subset())
+    rt = analysis.agreement(ragtruth, rt_labels, "grounded", [lab.item_id for lab in rt_labels])
+    corrected = [
+        analysis.corrected_hallucination_rate(llama, calibration, pset.labels, test_ids)
+        for llama in flags.values()
+    ]
+    unchanged = all(math.isclose(c.corrected.estimate, c.observed.estimate) for c in corrected)
+    effect = (
+        "returns the judged rate unchanged for every arm"
+        if unchanged
+        else "gives " + ", ".join(f"{(1 - c.corrected.estimate) * 100:.1f}%" for c in corrected)
+    )
+    # Rogan-Gladen with the RAGTruth rates: theta = (p + TNR - 1) / (TPR + TNR - 1).
+    tpr, tnr = rt.tpr.estimate, rt.tnr.estimate
+    rg = [1 - (c.observed.estimate + tnr - 1) / (tpr + tnr - 1) for c in corrected]
+    rg_text = (
+        f"a negative rate for every arm ({min(rg) * 100:.0f}% to {max(rg) * 100:.0f}%), which "
+        "clips to 0"
+        if max(rg) < 0
+        else ", ".join(f"{h * 100:.1f}%" for h in rg)
+    )
+    rates_text = (
+        f"both at {pert.tpr.estimate:.2f}"
+        if f"{pert.tpr.estimate:.2f}" == f"{pert.tnr.estimate:.2f}"
+        else f"at {pert.tpr.estimate:.2f} and {pert.tnr.estimate:.2f}"
+    )
+    out += [
+        "A Rogan-Gladen correction for judge error was run and can't be identified here. With "
+        f"the Llama judge's perturbation TPR and TNR {rates_text} it {effect}, the bootstrap "
+        "over answers collapses when an arm has 0 or 1 flagged answers, and plugging in the "
+        f"RAGTruth rates (TPR {tpr:.0%}, TNR {tnr:.0%}) gives {rg_text}. The true "
+        "hallucination rate is unknown, bracketed by a judge that catches "
+        f"{pert.tnr.estimate:.0%} of synthetic errors and {tnr:.0%} of RAGTruth's, neither of "
+        "which matches this task. RAGTruth was also judged without a reference answer, while "
+        "the answers here are judged with one.",
+        "",
+        f"The arms are at most {_spread(flags)} flagged answers apart by Llama"
+        + (f" and {_spread(mini_flags)} by gpt-5-mini" if mini_flags else "")
+        + ", and the two LLM judges rank the retrieval arms differently, so the arms can't be "
+        "told apart on hallucination.",
+        "",
+    ]
+    if hhem_pert is not None:
+        types = {item.item_id: item.type for item in pset.items}
+        wanted = set(test_ids)
+        rates = analysis.detection_by_type([r for r in hhem_pert if r.item_id in wanted], types)
+        out.append(
+            "HHEM flags far more answers than either LLM judge, which fits its "
+            f"{rates['paraphrase'].estimate:.0%} false-alarm rate on faithful paraphrases."
         )
     out.append("")
     return out
+
+
+def _spread(by_arm: dict[str, list[EvalRecord]]) -> int:
+    counts = [
+        sum(not r.scores["grounded"] for r in rs if "grounded" in r.scores)
+        for rs in by_arm.values()
+    ]
+    return max(counts) - min(counts)
+
+
+def _flagged(records: list[EvalRecord] | None) -> str:
+    if records is None:
+        return PENDING
+    judged = [r for r in records if "grounded" in r.scores]
+    return f"{sum(not r.scores['grounded'] for r in judged)} / {len(judged)}"
 
 
 def _abstention_tables(
@@ -295,6 +427,49 @@ def _abstention_tables(
         out.append(f"| {label} | " + " | ".join(cells) + " |")
     out.append("")
     return out
+
+
+def _decline_split(results: Path, arms: Sequence[str]) -> list[str]:
+    """Answered should-decline questions by unanswerable type, and what the judge made of them."""
+    questions = {q.question_id: q for q in load_questions("test")}
+    declines = [q for q in questions.values() if q.expected_behavior == "decline"]
+    types = sorted({str(q.unanswerable_type) for q in declines})
+    cells, passed, answered_all = [], 0, 0
+    for arm in arms:
+        gen = _load(generation_path(arm, "test", results)) or []
+        judged = _load(judge_path("llama", f"answers/test/{arm}", results)) or []
+        verdicts = {r.item_id: r.scores for r in judged if r.score_error is None}
+        answered = [
+            r.item_id
+            for r in gen
+            if r.meta["expected"] == "decline" and r.error is None and not r.scores["abstained"]
+        ]
+        answered_all += len(answered)
+        passed += sum(
+            1
+            for i in answered
+            if verdicts.get(i, {}).get("correct") and verdicts.get(i, {}).get("grounded")
+        )
+        counts = [sum(1 for i in answered if questions[i].unanswerable_type == t) for t in types]
+        cells.append(" / ".join(str(c) for c in counts))
+    kinds = " / ".join(t.replace("_", "-") for t in types)
+    split = " and ".join(
+        f"{sum(1 for q in declines if q.unanswerable_type == t)} {t.replace('_', '-')}"
+        for t in types
+    )
+    return [
+        f"The {len(declines)} should-decline questions are {split}. Answered ones by type "
+        f"({kinds}), in table order: {', '.join(cells)}. A near-miss question is on a covered "
+        "topic but asks for a detail the help center doesn't give, and its reference answer is a "
+        'partial answer ("the help center doesn\'t list the stores. It says..."). The answer '
+        "prompt says to abstain when the excerpts don't contain the answer, yet Llama passed "
+        f"{'all' if passed == answered_all else f'{passed} of the'} {answered_all} answered "
+        "replies as correct and grounded. So "
+        '"answered unanswerable" mostly counts replies that say the help center doesn\'t cover '
+        "the detail but leave the abstain flag off, and the reference answers and the prompt "
+        "disagree on whether that's right. The metric stays as defined before the run.",
+        "",
+    ]
 
 
 # ---------------------------------------------------------------- judge validation
@@ -471,22 +646,22 @@ def render_cost(results: Path = REPO_ROOT / "results") -> str:
     total_minutes = sum(line.minutes_at_quota(DEPLOYMENT_TPM) for line in est.lines)
     used = {line.model for line in est.lines}
     lines = [
-        "Estimated before any live call by `eval estimate`, which builds the requests the run "
-        'will send and prices them at list prices. "Expected" assumes about 4 bytes per token, '
+        "Estimated before the live run by `eval estimate`, which builds the requests the run "
+        'sends and prices them at list prices. "Expected" assumes about 4 bytes per token, '
         "typical output lengths and the full-context prefix served from the prompt cache after "
         'the first call. "Worst case" is what `DollarCap` reserves per call (one token per '
         "input byte plus `max_output_tokens`), the bound it enforces. Answer judging uses the "
-        "reference answer as a stand-in answer, since real answers do not exist yet.",
+        "reference answer as a stand-in answer, since the estimate runs before any answers exist.",
         "",
         as_table(est),
         "",
         '"Minutes at default quota" is the least wall time the rate limiter allows at the day-1 '
         "capacities ("
         + ", ".join(f"{m} {t // 1000}K" for m, t in DEPLOYMENT_TPM.items() if m in used)
-        + " tokens per minute), using 80% of each. Stages run one after another, so the whole "
-        f"run needs about {total_minutes / 60:.0f} hours unless capacities are raised and "
-        "`RAG_TPM` is set to match. The full-context prompt is larger than luna's whole default "
-        "quota, so that stage needs a raised luna capacity to run at all.",
+        + " tokens per minute), using 80% of each. Stages run one after another, so at those "
+        f"quotas the run would take about {total_minutes / 60:.0f} hours, and luna's default "
+        "quota can't fit the full-context prompt at all. The live run used raised capacities "
+        "(see Limitations).",
         "",
         f"`make eval-live` runs with a hard cap of ${DEFAULT_CAP_USD:.2f} (`make eval-live "
         "CAP=...` to change it), a bit more than twice the expected spend. A refused call stops "
@@ -497,11 +672,40 @@ def render_cost(results: Path = REPO_ROOT / "results") -> str:
     if runs.exists():
         rows = [json.loads(line) for line in runs.read_text(encoding="utf-8").splitlines() if line]
         spent = sum(r.get("spent_usd", 0.0) for r in rows)
+        errors = sum(r.get("charged_for_errors_usd", 0.0) for r in rows)
+        failed = sum(r.get("failed_calls", 0) for r in rows)
         calls = sum(r.get("calls", 0) for r in rows)
-        lines.append(f"Actual spend so far: ${spent:.2f} over {calls} calls in {len(rows)} runs.")
+        lines.append(
+            f"Actual spend: ${spent - errors:.2f} token-priced over {calls} calls in {len(rows)} "
+            f"runs. DollarCap's accounting shows ${spent:.2f}, which includes ${errors:.2f} "
+            f"reserved for {failed} failed, retried calls that Azure doesn't bill."
+        )
+        lines += _cache_line(results)
     else:
         lines.append(f"Actual spend: {PENDING}.")
     return "\n".join(lines) + "\n"
+
+
+def _cache_line(results: Path) -> list[str]:
+    """Prompt caching on the full-context arm, from its generation records."""
+    gen = _load(generation_path(FULL_CONTEXT, "test", results))
+    if not gen:
+        return []
+    cached = sum(int(r.meta.get("cached_input_tokens", 0)) for r in gen)
+    total = sum(r.tokens_in for r in gen)
+    cold = [r for r in gen if not r.meta.get("cached_input_tokens")]
+    warm = sum(r.cost_usd for r in gen) / len(gen) * 1000
+    line = (
+        f"Prompt caching served {cached / 1e6:.2f}M of the full-context arm's {total / 1e6:.2f}M "
+        f"input tokens: {len(gen) - len(cold)} of {len(gen)} calls hit the cache"
+    )
+    if cold:
+        cold_cost = sum(r.cost_usd for r in cold) / len(cold)
+        line += (
+            f", and a cold call cost ${cold_cost:.4f}, about ${cold_cost * 1000:.1f} per 1,000 "
+            f"answers against ${warm:.2f} warm"
+        )
+    return ["", line + "."]
 
 
 def update_readme(

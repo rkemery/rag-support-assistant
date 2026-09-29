@@ -127,7 +127,7 @@ def test_a_refused_request_is_recorded_and_the_run_goes_on(results, tmp_path):
     assert sum(row["error"] for row in summary.table.values()) == 1
 
 
-def test_corrected_rate_and_judge_agreement_render_once_judged(results, tmp_path):
+def test_flag_counts_and_judge_disagreement_render_once_judged(results, tmp_path):
     from llm_eval_harness import EvalRecord, write_records
 
     from rag_support_assistant.judging import make_judge
@@ -156,5 +156,7 @@ def test_corrected_rate_and_judge_agreement_render_once_judged(results, tmp_path
     write_records(pipeline.judge_path("llama", "perturbations/test", results), calibration)
     text = readme._judge_rows(results, [ARM], {ARM: "arm"})
     row = next(line for line in text if line.startswith("| arm |"))
-    assert readme.PENDING not in row
-    assert "n=" in row  # kappa between the two judges was computed
+    cells = [c.strip() for c in row.strip("|").split("|")]
+    assert cells[1] != readme.PENDING  # Llama flags
+    assert cells[3] != readme.PENDING  # disagreement between the two judges was computed
+    assert " / " in cells[3]
