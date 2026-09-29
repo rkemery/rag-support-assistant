@@ -40,7 +40,7 @@ A small, fully synthetic customer-support dataset for a fictional US neobank cal
 
 - **Everything here is synthetic.** Tallowbrook is not a real bank. A web search in September 2026 found no bank, credit union or fintech with that name. Its policies, fees and products are invented.
 - **Written by an AI.** Claude (Anthropic) wrote the facts file, the article text, the questions, the reference answers and the tickets. Numbers in the text come from one structured facts file through code, so they agree with each other. The judgments (which article answers a question, what the right support action is) are Claude's.
-- **No human labels, by design.** Nobody labels or audits this data by hand. Gold labels are checked by code instead: `scripts/validate.py` checks every question and task against the facts file, the agent tasks' final states are computed by `scripts/bank_sim.py`, an independent reimplementation of the bank in support-triage-agents reproduces all 50 gold states, and that repo cross-checks the tasks' gold actions with a second model. Treat the labels as machine-checked, not human-validated.
+- **No human labels, by design.** Nobody labels or audits this data by hand. Gold labels are checked by code instead: `scripts/validate.py` checks every question and task against the facts file, the agent tasks' final states are computed by `scripts/bank_sim.py`, an independent reimplementation of the bank in support-triage-agents reproduces all 50 gold states, and that repo cross-checks the tasks' gold actions with a second model (gpt-5-mini agreed on 38 of 50, and the 12 disagreements are listed there, not adjudicated). Treat the labels as machine-checked, not human-validated.
 - **Identifiers are fake.** Emails use `example.com`, phone numbers use the 555-01xx range reserved for fiction, towns are made up, and ZIP codes are placeholders. Card numbers are fake Luhn-valid numbers in the `411111` Visa test range. There are no routing numbers, full account numbers or Social Security numbers. Customer names are invented, and any match with a real person is a coincidence.
 
 ## Files
@@ -110,7 +110,7 @@ Unanswerable questions by split:
 
 ### `agents/bank_seed.json` and `agents/tasks.jsonl`
 
-The seed is a snapshot as of 2026-09-15: 30 customers, 33 accounts, 33 cards, 196 recent transactions (a mix of hand-written scenario transactions and seeded random filler), 2 disputes and an empty escalations table. Balances are snapshots, so recent transactions don't sum to them.
+The seed is a snapshot as of 2026-09-15: 30 customers, 33 accounts, 33 cards, 196 recent transactions (a mix of scripted scenario transactions and seeded random filler), 2 disputes and an empty escalations table. Balances are snapshots, so recent transactions don't sum to them.
 
 | Task field | Meaning |
 |---|---|
@@ -160,4 +160,4 @@ make test
 
 ## License
 
-CC-BY-4.0.
+CC-BY-4.0. See `LICENSE`.
