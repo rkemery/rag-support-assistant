@@ -21,7 +21,6 @@ from rag_support_assistant import analysis
 from rag_support_assistant.data import REPO_ROOT, load_questions
 from rag_support_assistant.judging import JUDGES
 from rag_support_assistant.pipeline import FULL_CONTEXT, generation_path, judge_path
-from rag_support_assistant.scoring import PRIMARY_METRIC
 
 PENDING = "pending live run"
 RETRIEVAL_COLUMNS = (
@@ -601,13 +600,6 @@ def extras_section(results: Path) -> str:
             out.append(f"- Ragas on {path.stem}: {', '.join(parts)}.")
     else:
         out.append(f"- Ragas 0.4.3 faithfulness and context recall on two configs: {PENDING}.")
-    live = results / "live_run.json"
-    if live.exists():
-        info = json.loads(live.read_text(encoding="utf-8"))
-        out.append(
-            f"- Live run spend: ${info['spent_usd']:.2f} of a ${info['cap_usd']:.2f} cap "
-            f"({info['calls']} calls)."
-        )
     out.append("")
     return "\n".join(out)
 
@@ -716,4 +708,4 @@ def update_readme(
     return write_section(readme, "cost", render_cost(results)) or changed
 
 
-__all__ = ["PRIMARY_METRIC", "render", "render_cost", "update_readme"]
+__all__ = ["render", "render_cost", "update_readme"]

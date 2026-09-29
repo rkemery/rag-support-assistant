@@ -169,27 +169,6 @@ def summarize_generation(
     )
 
 
-def paired_generation(
-    baseline: Sequence[EvalRecord],
-    baseline_judge: Sequence[EvalRecord],
-    candidate: Sequence[EvalRecord],
-    candidate_judge: Sequence[EvalRecord],
-    metric: str,
-) -> RunComparison | None:
-    """Paired comparison on a metric defined for every item (accuracy on answerable, or
-    hallucinated_any on all). Items missing a value in either arm are left out of both."""
-    a = generation_outcomes(baseline, baseline_judge)[metric]
-    b = generation_outcomes(candidate, candidate_judge)[metric]
-    common = {k for k in a if a[k] is not None and b.get(k) is not None}
-    base = _subset(baseline, metric, {k: a[k] for k in common})
-    cand = _subset(candidate, metric, {k: b[k] for k in common})
-    if len(base) < 2:
-        return None
-    base = [replace(r, run_id="baseline") for r in base]
-    cand = [replace(r, run_id="candidate") for r in cand]
-    return compare_runs(base, cand, metric, use_clusters=True, n_boot=N_BOOT, seed=SEED)
-
-
 # ---------------------------------------------------------------- judges
 
 
