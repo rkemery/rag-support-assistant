@@ -16,7 +16,7 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
-from llm_eval_harness import EvalRecord, read_records, write_records
+from llm_eval_harness import EvalRecord, ModelClient, ModelRequest, read_records, write_records
 from llm_eval_harness.client import DEFAULT_PRICES, cost_usd
 
 from rag_support_assistant import generation as gen
@@ -114,8 +114,8 @@ def _answer_record(
     arm: str,
     split: Split,
     question: Question,
-    request: Any,
-    stack_client: Any,
+    request: ModelRequest,
+    stack_client: ModelClient,
     context_ids: Sequence[str] | None,
     retrieval_ms: float,
 ) -> EvalRecord:
@@ -174,7 +174,9 @@ def _answer_record(
     return EvalRecord(**base, scores=scores, meta=meta)
 
 
-def run_generation(stack_client: Any, arm: str, split: Split, results: Path = RESULTS) -> Path:
+def run_generation(
+    stack_client: ModelClient, arm: str, split: Split, results: Path = RESULTS
+) -> Path:
     questions = load_questions(split)
     records = []
     if arm == FULL_CONTEXT:
@@ -228,7 +230,7 @@ def judge_path(judge_key: str, target: str, results: Path = RESULTS) -> Path:
 
 
 def run_answer_judging(
-    stack_client: Any, judge_key: str, arm: str, split: Split, results: Path = RESULTS
+    stack_client: ModelClient, judge_key: str, arm: str, split: Split, results: Path = RESULTS
 ) -> Path:
     records = read_records(generation_path(arm, split, results))
     questions = {q.question_id: q for q in load_questions(split)}
@@ -261,7 +263,7 @@ def perturbation_inputs(split: Split) -> list[JudgeInput]:
 
 
 def run_perturbation_judging(
-    stack_client: Any, judge_key: str, split: Split, results: Path = RESULTS
+    stack_client: ModelClient, judge_key: str, split: Split, results: Path = RESULTS
 ) -> Path:
     judge = make_judge(stack_client, judge_key)
     judged = judge_items(
@@ -290,7 +292,9 @@ def ragtruth_inputs() -> list[JudgeInput]:
     ]
 
 
-def run_ragtruth_judging(stack_client: Any, judge_key: str, results: Path = RESULTS) -> Path:
+def run_ragtruth_judging(
+    stack_client: ModelClient, judge_key: str, results: Path = RESULTS
+) -> Path:
     judge = make_judge(stack_client, judge_key)
     judged = judge_items(
         judge,

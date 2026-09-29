@@ -1,4 +1,4 @@
-.PHONY: install lint format test test-download demo data retrieval contexts validation hhem snapshot estimate judge-dev judge-freeze eval-live eval-replay
+.PHONY: install lint format test test-download demo data retrieval contexts validation hhem snapshot export-snapshot estimate judge-dev judge-freeze eval-live eval-replay
 
 # Dollar cap for every live model call (DollarCap refuses anything that could pass it).
 CAP ?= 8.00
@@ -21,8 +21,9 @@ test:
 test-download:
 	uv run pytest -q -m download
 
-# Offline, no keys: checks data hashes and rewrites the README results section
-# from the committed results. Live rows print "pending live run" until they exist.
+# Offline, no keys: checks data hashes and rewrites the README results and cost
+# sections from the committed results. A row reads "pending live run" only if its
+# result files are missing.
 demo:
 	uv run eval verify-data
 	uv run eval demo
