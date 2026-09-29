@@ -2,7 +2,7 @@
 
 Retrieval-augmented answers for a fictional neobank's help center, scored on retrieval, abstention and hallucination with 95% CIs and no hand-written labels.
 
-- **Full context ties the best retrieval arm.** It got 119 of 120 answerable questions right against 117 (exact McNemar p = 0.5) and declined 17 of 20 should-decline questions against 12 (p = 0.06). It costs 2.6x per answer with a warm prompt cache and about 22x cold, and it only fits because the corpus is 37K tokens.
+- **Full context ties the best retrieval arm** (119 vs 117 of 120, p = 0.5) at 2.6x the cost warm and about 22x cold, and only fits a 37K-token corpus.
 - **The judges miss real errors.** They catch 100% of synthetic errors but only 59% (Llama) and 64% (gpt-5-mini) of RAGTruth's hallucinations, so the hallucination rates below carry an unknown miss rate.
 - **Convex hybrid fusion is the only significant retrieval gain.** +0.029 nDCG@10 over dense retrieval on 130 test questions (p = 0.004).
 
@@ -14,7 +14,7 @@ cd rag-support-assistant
 uv run make demo
 ```
 
-`make demo` needs no keys and no network after `uv sync`. It checks every dataset against its hashes and rebuilds the Results and Cost sections from the committed result files. `make test` runs the tests and `make lint` runs ruff. `make retrieval` reruns the retrieval grid (downloads the open models, 43 CPU minutes on a shared 4-vCPU container). For live runs, see [Cost](#cost).
+No keys or network after `uv sync`. Rebuilds Results and Cost from committed files. Live runs: see [Cost](#cost).
 
 ## Results
 
@@ -97,7 +97,7 @@ The first two rows are the 2x2. False-premise questions count as unanswerable in
 | Should decline (20) | 8 / 12 | 10 / 10 | 8 / 12 | 3 / 17 |
 | False premise (10) | 10 / 0 | 10 / 0 | 10 / 0 | 10 / 0 |
 
-The 20 should-decline questions are 10 near-miss and 10 out-of-scope, and the answered ones by type (near-miss / out-of-scope) are 7 / 1, 8 / 2, 7 / 1, 3 / 0, in table order. Near-miss reference answers are partial answers and Llama passed all 29 answered replies as correct and grounded, so "answered unanswerable" mostly counts replies that say the help center lacks the detail without setting the abstain flag, and the metric stays as defined before the run.
+The 20 should-decline questions are 10 near-miss and 10 out-of-scope, and the answered ones by type (near-miss / out-of-scope) are 7 / 1, 8 / 2, 7 / 1, 3 / 0, in table order. Near-miss reference answers are partial answers, while the answer prompt says to abstain when the excerpts lack the answer, and Llama passed all 29 answered replies as correct and grounded. So "answered unanswerable" mostly counts replies that say the help center lacks the detail without setting the abstain flag. The metric stays as defined before the run.
 
 </details>
 
@@ -174,8 +174,6 @@ Retrieval is scored at the article level: each ranked chunk list collapses to ar
 
 - **One factor at a time, chosen on dev.** Four steps: chunking, embedding model, first stage (dense, BM25, convex or RRF hybrid) and reranker. Each keeps its dev winner by nDCG@10, and test runs once after every choice is fixed. The Qwen3 strong-arm rows never change the path.
 - **Answers.** The three best dev configs feed gpt-6-luna the top 8 chunks. A full-context arm puts the whole corpus in the prompt instead.
-- **Error bars.** Questions are clustered by their first gold article. Means get a cluster bootstrap, and paired comparisons use the harness's clustered paired t-test with a minimum detectable effect, so "no difference" reads as "too small to see at this n".
-- **Judges.** Llama 3.3 70B, a different family from the answer model, grades every answer with binary `correct` and `grounded` checks. gpt-5-mini grades the same answers as a second judge. Both are scored against labels known by construction and RAGTruth's human annotations first.
 
 <details>
 <summary><b>What's inside</b></summary>

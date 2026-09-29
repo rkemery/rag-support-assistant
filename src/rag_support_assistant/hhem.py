@@ -6,7 +6,7 @@ against its "hallucinated" class, so 0.5 is where the model's own prediction
 flips. An answer counts as grounded when the score is at least 0.5. The
 threshold is not tuned here.
 
-The checkpoint ships its own model class and expects `trust_remote_code`. We
+The checkpoint ships its own model class and expects `trust_remote_code`. I
 read that code at the pinned revision (72 lines): a transformers
 `T5ForTokenClassification` over the google/flan-t5-base config, a fixed
 prompt, and a softmax over the first token's two logits. Under transformers 5

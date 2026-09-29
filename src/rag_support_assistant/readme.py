@@ -467,10 +467,11 @@ def _decline_split(results: Path, arms: Sequence[str]) -> list[str]:
     return [
         f"The {len(declines)} should-decline questions are {split}, and the answered ones by type "
         f"({kinds}) are {', '.join(cells)}, in table order. Near-miss reference answers are "
-        f"partial answers and Llama passed {passed_text} "
-        f'{answered_all} answered replies as correct and grounded, so "answered unanswerable" '
-        "mostly counts replies that say the help center lacks the detail without setting the "
-        "abstain flag, and the metric stays as defined before the run.",
+        "partial answers, while the answer prompt says to abstain when the excerpts lack the "
+        f"answer, and Llama passed {passed_text} {answered_all} answered replies as correct "
+        'and grounded. So "answered unanswerable" mostly counts replies that say the help '
+        "center lacks the detail without setting the abstain flag. The metric stays as defined "
+        "before the run.",
         "",
     ]
 
