@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[atm-surcharges] ATM owner surcharges and our fees (effective 2025-01-01)\nWhen you use an ATM outside BrookLink, up to two different charges can apply. They're easy to mix up.\n\n## The ATM owner's surcharge\n\nThis is set by whoever owns the ATM, not by us. The ATM shows it on screen before you confirm, and it's added to the withdrawal amount. For example, if you withdraw cash and the owner charges a surcharge, one transaction for the total appears in your activity.\n\n## Tallowbrook's out-of-network fee\n\nThis is our fee, charged as a separate line called \"Out-of-network ATM fee\".\n\n[atm-fees-basic-v1] ATM fees on Basic (effective 2025-01-01)\nHere's what ATM withdrawals cost on the Basic plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | $2.00 |\n| ATMs outside the US | $3.00 |\n\nEvery out-of-network withdrawal is charged the fee. To avoid it, use a BrookLink ATM.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou\n\n[atm-fees-basic-v2] ATM fees on Basic (effective 2026-03-01)\nHere's what ATM withdrawals cost on the Basic plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | $2.50 |\n| ATMs outside the US | $3.00 |\n\nEvery out-of-network withdrawal is charged the fee. To avoid it, use a BrookLink ATM.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou\n\n[atm-fees-plus-v1] ATM fees on Plus (effective 2025-01-01)\nadd their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $1,000 a day on Plus.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[atm-fees-plus-v2] ATM fees on Plus (effective 2026-03-01)\nadd their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $1,000 a day on Plus.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nQuestions? Our support team is available in the app at any hour.\n\n[atm-fees-premium] ATM fees on Premium (effective 2025-01-01)\nHere's what ATM withdrawals cost on the Premium plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | no fee |\n| ATMs outside the US | free |\n\nPremium also reimburses ATM owner surcharges up to $10.00 each calendar month, in the US and abroad.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can\n\n[atm-surcharges] ATM owner surcharges and our fees (effective 2025-01-01)\nour fee, charged as a separate line called \"Out-of-network ATM fee\". It's $2.50 on Basic and on Plus after your free withdrawals, and free on Premium.\n\n## Premium surcharge reimbursement\n\nPremium pays back ATM owner surcharges up to $10.00 per calendar month. The refund is credited automatically on the first business day of the next month.\n\n## Avoiding both\n\nUse a BrookLink ATM. They never charge a surcharge, and we never charge a fee for them.\n\nNeed more help? Message us in the app any time, day or\n\n[plan-premium] The Premium plan (effective 2026-06-01)\nPremium costs $15.00 a month. It removes nearly every fee we charge, comes with a metal card, and has the highest limits and savings rate we offer.\n\n## What's included\n\n- **Monthly fee:** $15.00\n- **ATMs:** no Tallowbrook fee at any ATM in the US, and we reimburse ATM owner surcharges up to $10.00 a month.\n- **Foreign transaction fee:** 0% of the purchase amount\n- **Card replacement:** free\n- **Expedited card shipping:** free\n- **Savings Pockets:**\n\nCustomer question:\nThe ATM charged me a surcharge AND Tallowbrook charged me a fee. Why am I paying twice?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1406,
+    "latency_ms": 5356.9077079882845,
+    "model": "gpt-6-luna",
+    "output_tokens": 139,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Those are separate charges: the ATM owner sets the surcharge, while Tallowbrook’s out-of-network ATM fee appears separately in your activity. On Basic, Tallowbrook charges $2.50 for an out-of-network U.S. withdrawal; on Plus, the fee is $2.50 after any free withdrawals. Premium has no Tallowbrook ATM fee and reimburses ATM-owner surcharges up to $10 per month; using a BrookLink ATM avoids both charges.\",\"citations\":[\"atm-surcharges\",\"atm-fees-basic-v2\",\"atm-fees-plus-v2\",\"plan-premium\"],\"abstain\":false}"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# What changed in the March 2026 fee update\n\nWe updated our fees on March 1, 2026. Here's everything that changed and what stayed the same.\n\n## What changed\n\n- **Plus monthly fee:** from $4.00 to $5.00.\n- **Plus foreign transaction fee:** from 1.5% to 1%.\n- **Out-of-network ATM fee on Basic and Plus:** from $2.00 to $2.50 per withdrawal.\n- **Plus free out-of-network withdrawals:** from 2 to 3 a month.\n\n## What stayed the same\n\nBasic is still free. Premium is still $15.00 a month with no ATM or foreign transaction fees. Card replacement, wire and cash deposit fees didn't change on any plan.\n\n## Why we made these changes\n\nOut-of-network ATM operators raised what they charge us, and we moved part of that cost into the fee. We lowered the Plus foreign transaction fee at the same time, so Plus members who travel pay less overall.\n\nIf the new Plus price doesn't work for you, you can move to Basic in the app. The change takes effect on your next billing date.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\n2 to 3 a month.\n\n## What stayed the same\n\nBasic is still free. Premium is still $15.00 a month with no ATM or foreign transaction fees. Card replacement, wire and cash deposit fees didn't change on any plan.\n\n## Why we made these changes\n\nOut-of-network ATM operators raised what they charge us, and we moved part of that cost into the fee. We lowered the Plus foreign transaction fee at the same time, so Plus members who travel pay less overall.\n\nIf the new Plus price doesn't work for you, you can\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 431,
+    "latency_ms": 2897.1241670660675,
+    "model": "gpt-6-luna",
+    "output_tokens": 68,
+    "reasoning_tokens": 0,
+    "text": "The document explains fee changes effective March 1, 2026, including Plus pricing and ATM fees, unchanged plan fees, and the reasons for the changes. The chunk covers what stayed the same and why the fees changed, after noting Plus’s free out-of-network withdrawals increased from 2 to 3 per month."
+  }
+}

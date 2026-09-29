@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Monthly statements\n\nYour monthly statement is ready within 3 after the end of each month. We'll notify you when it's available.\n\n## Download a statement\n\nTap Profile, then Documents, then Statements, and choose the month. Statements are PDFs.\n\n## How far back\n\nSeven years of statements are available in the app.\n\n## Statement dates\n\nStatements cover a calendar month and close on the last day of the month. The statement date matters for disputes about unauthorized transactions, which must be reported within 60 days of the statement they first appear on.\n\n## Paper statements\n\nWe don't mail paper statements, and there's no fee for any statement ($0.00).\n\n## Savings Pockets\n\nPocket balances and interest appear on the same statement as your main balance.\n\n## Something looks wrong\n\nIf a statement shows a transaction you don't recognize, tap it in the app to see the merchant details, and dispute it if you didn't make it.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nYour monthly statement is ready within 3 after the end of each month. We'll notify you when it's available.\n\n## Download a statement\n\nTap Profile, then Documents, then Statements, and choose the month. Statements are PDFs.\n\n## How far back\n\nSeven years of statements are available in the app.\n\n## Statement dates\n\nStatements cover a calendar month and close on the last day of the month. The statement date matters for disputes about unauthorized transactions, which must be reported within 60 days of the statement they first appear on.\n\n## Paper statements\n\nWe don't mail paper statements, and there's\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 387,
+    "latency_ms": 1534.874959033914,
+    "model": "gpt-6-luna",
+    "output_tokens": 39,
+    "reasoning_tokens": 0,
+    "text": "This section explains monthly account statements: when they’re available, how to download them, seven-year availability, statement periods and unauthorized-transaction dispute deadlines, and paper statement policies."
+  }
+}

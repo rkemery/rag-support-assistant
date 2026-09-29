@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Zero liability for unauthorized card use\n\nYou aren't responsible for unauthorized card transactions if you report them in time.\n\n## What counts as in time\n\nReport unauthorized card transactions within 60 days of the date of the statement they first appear on. Statements close on the last calendar day of each month.\n\n## What's covered\n\n- Purchases and ATM withdrawals made with your card or card number without your permission\n- Mobile wallet payments made with a device you don't control\n\n## What isn't covered\n\n- Purchases made by someone you gave your card or PIN to\n- BrookPay payments and transfers you sent yourself, even if you were tricked into sending them\n- Transactions reported after the window\n\n## How to report\n\nFreeze or report your card first, then dispute each transaction as unauthorized in the app. See \"Disputing a transaction you didn't make\".\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\ncard or PIN to\n- BrookPay payments and transfers you sent yourself, even if you were tricked into sending them\n- Transactions reported after the window\n\n## How to report\n\nFreeze or report your card first, then dispute each transaction as unauthorized in the app. See \"Disputing a transaction you didn't make\".\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 338,
+    "latency_ms": 962.667208048515,
+    "model": "gpt-6-luna",
+    "output_tokens": 52,
+    "reasoning_tokens": 0,
+    "text": "This section explains what isn’t covered by the zero-liability policy for unauthorized card use and how to report unauthorized transactions: freeze or report your card, then dispute each transaction in the app. You can also contact in-app chat for help."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Refunds of plan fees\n\nWe refund the first paid plan charge on your account in full if you leave the paid plan within 14 days of that charge. We call this the cooling-off period.\n\n## How it works\n\n- It applies only to the first paid plan charge your account has ever had. Later charges, even after switching plans, aren't covered.\n- When you ask for the refund, your plan returns to Basic right away rather than on your next billing date.\n- The refund goes back to your main balance, usually within minutes.\n\n## What isn't refunded\n\nOutside the cooling-off period, plan fees aren't refunded or prorated. That includes the month in which you downgrade and the month in which you close your account.\n\n## How to ask\n\nMessage support in the app and say you'd like to cancel your paid plan under the cooling-off period. Support can process it for you straight away.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWe refund the first paid plan charge on your account in full if you leave the paid plan within 14 days of that charge. We call this the cooling-off period.\n\n## How it works\n\n- It applies only to the first paid plan charge your account has ever had. Later charges, even after switching plans, aren't covered.\n- When you ask for the refund, your plan returns to Basic right away rather than on your next billing date.\n- The refund goes back to your main balance, usually within minutes.\n\n## What isn't refunded\n\nOutside the cooling-off period, plan fees\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 380,
+    "latency_ms": 1206.5221250522882,
+    "model": "gpt-6-luna",
+    "output_tokens": 44,
+    "reasoning_tokens": 0,
+    "text": "This section explains the 14-day cooling-off refund for a customer’s first paid plan charge, how the refund and immediate return to Basic work, and introduces charges that aren’t refunded outside that period."
+  }
+}

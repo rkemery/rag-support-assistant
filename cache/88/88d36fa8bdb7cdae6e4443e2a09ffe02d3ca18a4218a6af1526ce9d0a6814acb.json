@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[security-new-device] Signing in on a new device (effective 2025-01-01)\nlift it early?\n\nNo. The limit ends on its own. Support can't remove it.\n\n## Sign-in alerts\n\nWe send an alert to your other devices and your email whenever a new device signs in. If it wasn't you, change your password and message us right away.\n\n## Switching phones\n\nIf you know you'll need to send a large transfer, do it from your old phone before you switch, or plan around the waiting period.\n\nNeed more help? Message us in the app any time, day or night.\n\n[transfers-brookpay] Sending money with BrookPay (effective 2025-01-01)\n$5,000 |\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are limited to $500.\n\n## BrookPay can't be reversed\n\nOnce a BrookPay payment is sent, it can't be cancelled or pulled back, even by support. Only send money to people you know. If you sent money to the wrong person, ask them to send it back. If you think you were scammed, report it to us right away.\n\n## Fees\n\nBrookPay costs $0.00 on every plan. BrookPay only works between\n\n[transfers-brookpay] Sending money with BrookPay (effective 2025-01-01)\nBrookPay lets you send money to another Tallowbrook member by phone number, email or username. It's free, it works every day, and the money arrives in seconds.\n\n## Send money\n\nTap Transfers, then BrookPay. Choose the person, enter the amount and confirm. The recipient sees the money straight away.\n\n## Limits\n\n| Plan | Daily BrookPay limit |\n|---|---|\n| Basic | $1,000 |\n| Plus | $2,500 |\n| Premium | $5,000 |\n\nFor 24 hours after you sign in on a new\n\n[wires-domestic] Sending a domestic wire (effective 2025-01-01)\n| Fee | Daily limit |\n|---|---|---|\n| Basic | $25.00 | $5,000 |\n| Plus | $15.00 | $10,000 |\n| Premium | free | $25,000 |\n\n## Before you send\n\nWires can't be cancelled once sent. Double-check the details, and be careful if someone you've only met online, or someone claiming to be from a bank or the government, asks you to wire money.\n\nNeed more help? Message us in the app any time, day or night.\n\n[card-renewal] Card expiry and renewal (effective 2025-01-01)\ncomes first.\n\n## If it doesn't arrive\n\nCheck that your address in the app is current. If your old card expires and the new one still hasn't arrived, message support and we'll send another one at no cost.\n\n## No renewal?\n\nIf your account is restricted or under review, we can't send a renewal card until that's resolved.\n\nQuestions? Our support team is available in the app at any hour.\n\n[account-contact-change] Changing your email or phone number (effective 2025-01-01)\nway for fraudsters to take over accounts, we pass these requests to our Verification team, who may ask for a new selfie.\n\n## After a change\n\nFor 24 hours after a change, if you're also on a new device, BrookPay and external transfers are limited to $500.\n\nIf you get a notice about a change you didn't make, message us right away.\n\nQuestions? Our support team is available in the app at any hour.\n\n[security-new-device] Signing in on a new device (effective 2025-01-01)\nWhen you sign in on a new phone or computer, we add a short safety period.\n\n## What changes\n\nFor 24 hours after the first sign-in on a new device, BrookPay payments and transfers to external accounts are limited to $500 in total. Card payments, ATM withdrawals and deposits aren't affected.\n\n## Why\n\nIf someone steals your password, the first thing they usually try is moving money out quickly. The limit gives you time to notice the sign-in alert and tell us.\n\n## Can support lift it early?\n\nNo. The limit ends on its own. Support can't\n\n[card-damaged] Replacing a damaged card (effective 2025-01-01)\nIf your card is cracked, bent, or the chip or contactless stops working, order a replacement in the app.\n\n## How to order\n\nTap Cards, choose the card, then Replace card, then Damaged. Confirm your address and pick a shipping speed.\n\n## Your old card keeps working\n\nWhen you report a card as damaged, we don't cancel it. You can keep using it (if it still works) until you activate the replacement. Activating the new card switches the old one off.\n\nThe new card has the same card number, a new expiry date and a new security\n\nCustomer question:\nJust got a new phone and now I can't send more than a few hundred bucks. Why?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1330,
+    "latency_ms": 1602.7096250327304,
+    "model": "gpt-6-luna",
+    "output_tokens": 67,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"For 24 hours after your first sign-in on a new device, BrookPay and transfers to external accounts are limited to $500 in total. The limit ends automatically, and support can’t lift it early.\",\"citations\":[\"security-new-device\"],\"abstain\":false}"
+  }
+}

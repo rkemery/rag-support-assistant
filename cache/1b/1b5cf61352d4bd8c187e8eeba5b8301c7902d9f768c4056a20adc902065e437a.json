@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Why is my card locked by Tallowbrook?\n\nIf the app says your card is \"Locked by Tallowbrook\", our fraud systems have placed a fraud lock on it. This is different from a freeze you set yourself.\n\n## Why it happens\n\nWe lock a card when we see activity that looks like fraud, or when a fraud alert goes unanswered for 24 hours.\n\n## How to get it removed\n\n- If there's an open fraud alert in the app, answer it. Tapping \"Yes, that was me\" usually removes the lock straight away.\n- If there's no alert, message us in the app. Support will pass your case to the Fraud team. Support can't remove a fraud lock, and neither can the freeze switch.\n\nThe Fraud team replies within 2 business days, often much sooner.\n\n## Meanwhile\n\nDeposits and incoming transfers still arrive while your card is locked. You can also still use BrookPay and transfers, unless the Fraud team has restricted those too.\n\nWe will never ask you to confirm a fraud alert by giving us your full card number, PIN or a one-time code.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nto confirm a fraud alert by giving us your full card number, PIN or a one-time code.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 343,
+    "latency_ms": 1478.7898749345914,
+    "model": "gpt-6-luna",
+    "output_tokens": 70,
+    "reasoning_tokens": 0,
+    "text": "The article explains what “Locked by Tallowbrook” means, how to resolve a fraud lock, and what account services remain available. It warns that Tallowbrook will never ask for your full card number, PIN, or one-time code to confirm a fraud alert, and says you can message in-app support for help anytime."
+  }
+}

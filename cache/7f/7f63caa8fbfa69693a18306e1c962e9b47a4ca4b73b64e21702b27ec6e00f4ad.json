@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Depositing cash at a store\n\nYou can add cash to your Tallowbrook account at participating retail stores. Open the app, tap Cash, then Deposit cash, and show the barcode to the cashier with your cash.\n\n## Fees\n\n| Plan | Fee per deposit |\n|---|---|\n| Basic | $3.00 |\n| Plus | $3.00 |\n| Premium | free |\n\n## Limits\n\n| Plan | Daily cash deposit limit |\n|---|---|\n| Basic | $1,000 |\n| Plus | $1,000 |\n| Premium | $2,000 |\n\n## When the money arrives\n\nFunds usually appear within minutes. Keep the store receipt until you see the deposit in the app.\n\n## Things to know\n\n- BrookLink ATMs don't accept cash deposits.\n- The barcode is valid for one deposit only.\n- Stores set their own maximum per visit, which can be lower than your daily limit.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nYou can add cash to your Tallowbrook account at participating retail stores. Open the app, tap Cash, then Deposit cash, and show the barcode to the cashier with your cash.\n\n## Fees\n\n| Plan | Fee per deposit |\n|---|---|\n| Basic | $3.00 |\n| Plus | $3.00 |\n| Premium | free |\n\n## Limits\n\n| Plan | Daily cash deposit limit |\n|---|---|\n| Basic | $1,000 |\n| Plus | $1,000 |\n| Premium | $2,000 |\n\n## When the money\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 392,
+    "latency_ms": 976.1331669287756,
+    "model": "gpt-6-luna",
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "text": "Explains how to deposit cash at participating retail stores, including plan-based fees and daily limits; the chunk ends as it begins describing when funds arrive."
+  }
+}

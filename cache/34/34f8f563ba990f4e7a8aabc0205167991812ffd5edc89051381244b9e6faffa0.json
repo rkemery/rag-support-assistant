@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Inactive accounts\n\nWe may close accounts that have a $0.00 balance and no activity for 12 months.\n\n## Notice\n\nWe email you at least 30 days before closing. Any activity during that time, such as a deposit or a card purchase, keeps the account open.\n\n## Fees\n\nWe don't charge inactivity fees ($0.00) on any plan.\n\n## Accounts with money in them\n\nWe don't close accounts for inactivity while they hold a balance, including money in Savings Pockets.\n\n## Paid plans\n\nA paid plan keeps charging its monthly fee while the account is open, which counts as activity. If you don't use your account, consider moving to Basic.\n\n## Coming back\n\nIf your account was closed for inactivity, you can apply for a new one whenever you like.\n\n## Keeping an account open\n\nAny card purchase, deposit or transfer counts as activity. Signing in to the app on its own doesn't.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\npaid plan keeps charging its monthly fee while the account is open, which counts as activity. If you don't use your account, consider moving to Basic.\n\n## Coming back\n\nIf your account was closed for inactivity, you can apply for a new one whenever you like.\n\n## Keeping an account open\n\nAny card purchase, deposit or transfer counts as activity. Signing in to the app on its own doesn't.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 367,
+    "latency_ms": 1506.7192920250818,
+    "model": "gpt-6-luna",
+    "output_tokens": 43,
+    "reasoning_tokens": 0,
+    "text": "This section explains that paid plan fees count as account activity, how to reopen an account closed for inactivity, and which actions keep an account open. It appears in guidance about account inactivity and closure."
+  }
+}

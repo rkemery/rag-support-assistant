@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[atm-surcharges] ATM owner surcharges and our fees (effective 2025-01-01)\nour fee, charged as a separate line called \"Out-of-network ATM fee\". It's $2.50 on Basic and on Plus after your free withdrawals, and free on Premium.\n\n## Premium surcharge reimbursement\n\nPremium pays back ATM owner surcharges up to $10.00 per calendar month. The refund is credited automatically on the first business day of the next month.\n\n## Avoiding both\n\nUse a BrookLink ATM. They never charge a surcharge, and we never charge a fee for them.\n\nNeed more help? Message us in the app any time, day or\n\n[fees-schedule-premium-v2] Premium plan fee schedule (effective 2026-03-01)\nHere is every fee that can apply to a Premium account, effective March 1, 2026. Fees are taken from your main balance when they're charged and show up in your activity feed with the word \"Fee\".\n\n| Fee | Amount |\n|---|---|\n| Monthly fee | $15.00 |\n| Out-of-network ATM withdrawal | $0.00 |\n| International ATM withdrawal | $0.00 |\n| Foreign transaction fee | 0% |\n| Card replacement | $0.00 |\n| Expedited card shipping | $0.00 |\n| Outgoing domestic wire\n\n[fees-schedule-premium-v1] Premium plan fee schedule (effective 2025-01-01)\nHere is every fee that can apply to a Premium account, effective January 1, 2025. Fees are taken from your main balance when they're charged and show up in your activity feed with the word \"Fee\".\n\n| Fee | Amount |\n|---|---|\n| Monthly fee | $15.00 |\n| Out-of-network ATM withdrawal | $0.00 |\n| International ATM withdrawal | $0.00 |\n| Foreign transaction fee | 0% |\n| Card replacement | $0.00 |\n| Expedited card shipping | $0.00 |\n| Outgoing domestic wire\n\n[fee-changes-2026] What changed in the March 2026 fee update (effective 2026-03-01)\n2 to 3 a month.\n\n## What stayed the same\n\nBasic is still free. Premium is still $15.00 a month with no ATM or foreign transaction fees. Card replacement, wire and cash deposit fees didn't change on any plan.\n\n## Why we made these changes\n\nOut-of-network ATM operators raised what they charge us, and we moved part of that cost into the fee. We lowered the Plus foreign transaction fee at the same time, so Plus members who travel pay less overall.\n\nIf the new Plus price doesn't work for you, you can\n\n[atm-surcharges] ATM owner surcharges and our fees (effective 2025-01-01)\nWhen you use an ATM outside BrookLink, up to two different charges can apply. They're easy to mix up.\n\n## The ATM owner's surcharge\n\nThis is set by whoever owns the ATM, not by us. The ATM shows it on screen before you confirm, and it's added to the withdrawal amount. For example, if you withdraw cash and the owner charges a surcharge, one transaction for the total appears in your activity.\n\n## Tallowbrook's out-of-network fee\n\nThis is our fee, charged as a separate line called \"Out-of-network ATM fee\".\n\n[fees-all-v1] Fees for all plans (effective 2025-01-01)\n$10.00 | $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 2 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM\n\n[fees-all-v2] Fees for all plans (effective 2026-03-01)\nThis is the full fee schedule for all three plans, effective March 1, 2026.\n\n| Fee | Basic | Plus | Premium |\n|---|---|---|---|\n| Monthly fee | $0.00 | $5.00 | $15.00 |\n| Out-of-network ATM withdrawal | $2.50 | $2.50 | $0.00 |\n| International ATM withdrawal | $3.00 | $3.00 | $0.00 |\n| Foreign transaction fee | 3% | 1% | 0% |\n| Card replacement |\n\n[fees-all-v2] Fees for all plans (effective 2026-03-01)\n| $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 3 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM owners can add their\n\nCustomer question:\nI'm on Premium and got charged an out-of-network ATM fee. That's not supposed to happen, right?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1434,
+    "latency_ms": 1812.4111659126356,
+    "model": "gpt-6-luna",
+    "output_tokens": 115,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Correct: Premium has a $0.00 out-of-network ATM withdrawal fee. The ATM owner may still charge a separate surcharge; Premium reimburses those surcharges up to $10 per calendar month, automatically on the first business day of the next month. Check whether the charge is labeled “Out-of-network ATM fee” or is an ATM-owner surcharge. [fees-all-v2] [atm-surcharges]\",\"citations\":[\"fees-all-v2\",\"atm-surcharges\"],\"abstain\":false}"
+  }
+}

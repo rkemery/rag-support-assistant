@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Lost or stolen card\n\nIf your card is lost or stolen, you can deal with it in the app in a couple of minutes. You don't need to call us.\n\n## What to do\n\n1. **Freeze the card.** Tap Cards and switch Freeze card on. This stops new purchases right away.\n2. **Report it.** If you can't find it, tap Report lost or stolen. This cancels the card permanently. It can't be undone.\n3. **Add a virtual card.** You can create one in the app and use it online and in mobile wallets right away while the replacement ships.\n4. **Order a replacement.** Pick standard or expedited shipping. Replacement and shipping fees depend on your plan.\n5. **Check your transactions.** Dispute anything you don't recognize.\n\n## Delivery\n\nStandard shipping takes 7 to 10 business days. Expedited shipping takes 2 to 3 business days.\n\n## Unauthorized transactions\n\nYou're not responsible for unauthorized card transactions you report within 60 days of the statement they first appear on. If you found your card after freezing it, just unfreeze it. Nothing else changes.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nthe statement they first appear on. If you found your card after freezing it, just unfreeze it. Nothing else changes.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 357,
+    "latency_ms": 1232.7007920248434,
+    "model": "gpt-6-luna",
+    "output_tokens": 74,
+    "reasoning_tokens": 0,
+    "text": "The lost or stolen card guide explains freezing or permanently canceling a card, using a virtual card, ordering a replacement, and checking transactions. It notes that unauthorized transactions must be reported within 60 days of appearing on a statement, and that a found, frozen card can simply be unfrozen. For more help, message support in the app anytime."
+  }
+}

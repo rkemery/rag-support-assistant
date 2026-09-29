@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Premium plan fee schedule\n\nHere is every fee that can apply to a Premium account, effective March 1, 2026. Fees are taken from your main balance when they're charged and show up in your activity feed with the word \"Fee\".\n\n| Fee | Amount |\n|---|---|\n| Monthly fee | $15.00 |\n| Out-of-network ATM withdrawal | $0.00 |\n| International ATM withdrawal | $0.00 |\n| Foreign transaction fee | 0% |\n| Card replacement | $0.00 |\n| Expedited card shipping | $0.00 |\n| Outgoing domestic wire | $0.00 |\n| Outgoing international wire | $10.00 |\n| Incoming international wire | $0.00 |\n| Cash deposit at a retail store | $0.00 |\n\n## Details\n\nPremium has no ATM fees from us, and we pay back ATM owner surcharges up to $10.00 each month.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nHere is every fee that can apply to a Premium account, effective March 1, 2026. Fees are taken from your main balance when they're charged and show up in your activity feed with the word \"Fee\".\n\n| Fee | Amount |\n|---|---|\n| Monthly fee | $15.00 |\n| Out-of-network ATM withdrawal | $0.00 |\n| International ATM withdrawal | $0.00 |\n| Foreign transaction fee | 0% |\n| Card replacement | $0.00 |\n| Expedited card shipping | $0.00 |\n| Outgoing domestic wire\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 425,
+    "latency_ms": 2002.6787919923663,
+    "model": "gpt-6-luna",
+    "output_tokens": 60,
+    "reasoning_tokens": 0,
+    "text": "The Premium plan fee schedule, effective March 1, 2026, lists account fees and amounts. Fees are deducted from the main balance and appear in the activity feed as “Fee”; this excerpt includes monthly, ATM, foreign transaction, card, and outgoing domestic wire fees."
+  }
+}

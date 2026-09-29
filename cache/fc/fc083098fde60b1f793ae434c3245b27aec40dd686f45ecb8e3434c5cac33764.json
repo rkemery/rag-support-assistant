@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Fees for all plans\n\nThis is the full fee schedule for all three plans, effective March 1, 2026.\n\n| Fee | Basic | Plus | Premium |\n|---|---|---|---|\n| Monthly fee | $0.00 | $5.00 | $15.00 |\n| Out-of-network ATM withdrawal | $2.50 | $2.50 | $0.00 |\n| International ATM withdrawal | $3.00 | $3.00 | $0.00 |\n| Foreign transaction fee | 3% | 1% | 0% |\n| Card replacement | $5.00 | $0.00 | $0.00 |\n| Expedited card shipping | $25.00 | $25.00 | $0.00 |\n| Outgoing domestic wire | $25.00 | $15.00 | $0.00 |\n| Outgoing international wire | not available | $35.00 | $10.00 |\n| Incoming international wire | $10.00 | $10.00 | $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 3 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM owners can add their own surcharge. That is separate from our fee.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nfree ($0.00) on every plan.\n- ATM owners can add their own surcharge. That is separate from our fee.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 471,
+    "latency_ms": 1660.730625037104,
+    "model": "gpt-6-luna",
+    "output_tokens": 54,
+    "reasoning_tokens": 0,
+    "text": "The fee schedule for the Basic, Plus, and Premium plans, effective March 1, 2026, notes that incoming domestic wires are free on all plans. ATM owners may charge separate surcharges; customers can contact support through the app anytime."
+  }
+}

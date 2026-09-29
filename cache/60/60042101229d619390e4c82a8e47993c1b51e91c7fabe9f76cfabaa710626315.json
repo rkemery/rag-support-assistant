@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# If someone is controlling your money\n\nIf someone is controlling your money, pressuring you to hand it over, or using your account without your permission, you're not alone, and we can help.\n\n## Tell us safely\n\nMessage support in the app when it's safe. You can use a code phrase like \"I need to talk about my account security\" if someone might see your screen. Support will pass your case to our Account Services team, who are trained to help.\n\n## What we can do\n\n- Change your password and sign out other devices\n- Freeze or replace your card\n- Stop sending paper mail to your address\n- Talk about options for moving money you need to keep safe\n\n## What we won't do\n\nWe won't tell anyone else you contacted us.\n\n## If you're in danger\n\nIf you're in immediate danger, call emergency services first.\n\nAccount Services replies within 2 business days, and faster when you tell us it's urgent.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nother devices\n- Freeze or replace your card\n- Stop sending paper mail to your address\n- Talk about options for moving money you need to keep safe\n\n## What we won't do\n\nWe won't tell anyone else you contacted us.\n\n## If you're in danger\n\nIf you're in immediate danger, call emergency services first.\n\nAccount Services replies within 2 business days, and faster when you tell us it's urgent.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 368,
+    "latency_ms": 3336.7940000025555,
+    "model": "gpt-6-luna",
+    "output_tokens": 38,
+    "reasoning_tokens": 0,
+    "text": "This section explains what the bank can do to help someone experiencing financial control, reassures them that their contact will remain confidential, and provides urgent safety and support response guidance."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Disputing an ACH debit\n\nAn ACH debit is when a company pulls money from your account using your account and routing number, for example a utility bill or a loan payment.\n\n## Unauthorized ACH debits\n\nIf a company took money you didn't authorize, report it within 60 days of the statement it first appeared on. Tap the transaction, then Get help, then I didn't authorize this.\n\n## Authorized, but wrong\n\nIf you did authorize the company but the amount or date is wrong, contact the company first. If that doesn't work, message support and we'll look at it with you.\n\n## Stopping future debits\n\nYou can block a company from pulling money in the app. Tap the transaction, then Block future debits. Tell the company too, so they know to bill you another way.\n\n## What happens next\n\nWe'll ask the company's bank to return the money. If your claim passes an initial review, you get a provisional credit within 10 business days.\n\nACH transfers you sent yourself, and BrookPay payments, can't be disputed this way.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nAn ACH debit is when a company pulls money from your account using your account and routing number, for example a utility bill or a loan payment.\n\n## Unauthorized ACH debits\n\nIf a company took money you didn't authorize, report it within 60 days of the statement it first appeared on. Tap the transaction, then Get help, then I didn't authorize this.\n\n## Authorized, but wrong\n\nIf you did authorize the company but the amount or date is wrong, contact the company first. If that doesn't work, message support and we'll look at it with\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 407,
+    "latency_ms": 1246.5642909519374,
+    "model": "gpt-6-luna",
+    "output_tokens": 32,
+    "reasoning_tokens": 0,
+    "text": "Explains how to dispute unauthorized ACH debits within 60 days and what to do if an authorized debit has the wrong amount or date."
+  }
+}

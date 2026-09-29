@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 90 days of the\n\n[disputes-merchant-v2] Disputing a purchase with a merchant (effective 2026-01-15)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 120 days of the\n\n[support-merchant-refunds] When will my refund arrive? (effective 2025-01-01)\na merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-pending] Why can't I dispute a pending transaction? (effective 2025-01-01)\nYou can't dispute a transaction while it's still pending. A pending transaction is an authorization. The merchant hasn't collected the money yet, and the amount can still change or disappear.\n\n## What to do\n\nWait for the transaction to post. Most pending transactions post or drop off within 7 days. Once it posts, the Dispute option appears when you tap it.\n\n## If you don't recognize it\n\nFreeze your card now, even though you can't dispute yet. That stops any more charges. When the transaction posts, dispute it as unauthorized. Your dispute\n\n[support-merchant-refunds] When will my refund arrive? (effective 2025-01-01)\ndays have passed, ask the merchant for the refund reference number, sometimes called an ARN, and message support. We can trace it.\n\n## Refunds to a cancelled card\n\nRefunds to a card you've replaced still reach your account. You don't need to give the merchant your new card.\n\n## Refunds in a foreign currency\n\nForeign refunds are converted on the day they settle, so the amount can differ slightly from what you paid.\n\n## Merchant won't refund?\n\nYou may be able to file a merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed\n\n[disputes-documents] Documents that help a dispute (effective 2025-01-01)\nscreenshot of the date you cancelled\n- The merchant's cancellation terms, if you have them\n\n## Unauthorized transactions\n\nUsually nothing. Just confirm you didn't make or authorize the transaction and that your card is frozen or reported.\n\n## How to upload\n\nOpen the dispute under Profile, then Disputes, and tap Add documents. Photos and PDFs work.\n\nNever send us your full card number, PIN or passwords as part of a dispute. We don't need them.\n\nQuestions? Our support team is available in the app at any hour.\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nyou don't recognize at all are a different kind of dispute. See \"Disputing a transaction you didn't make\".\n\nQuestions? Our support team is available in the app at any hour.\n\n[disputes-ach] Disputing an ACH debit (effective 2025-01-01)\nand BrookPay payments, can't be disputed this way.\n\nQuestions? Our support team is available in the app at any hour.\n\nCustomer question:\nI paid for a jacket that never arrived. What's the deadline to dispute it?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1162,
+    "latency_ms": 1685.1251249900088,
+    "model": "gpt-6-luna",
+    "output_tokens": 61,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"For a jacket you paid for but never received, file a merchant dispute within 120 days. Try contacting the merchant first and keep a record of the conversation.\",\"citations\":[\"disputes-merchant-v2\"],\"abstain\":false}"
+  }
+}

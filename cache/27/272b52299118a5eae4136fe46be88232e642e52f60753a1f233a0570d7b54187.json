@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "Given a question and an answer, analyze the complexity of each sentence in the answer. Break down each sentence into one or more fully understandable statements. Ensure that no pronouns are used in any statement. Format the outputs in JSON.\nPlease return the output in a JSON format that complies with the following schema as specified in JSON Schema:\n{\"properties\": {\"statements\": {\"description\": \"The generated statements\", \"items\": {\"type\": \"string\"}, \"title\": \"Statements\", \"type\": \"array\"}}, \"required\": [\"statements\"], \"title\": \"StatementGeneratorOutput\", \"type\": \"object\"}Do not use single quotes in your response but double quotes,properly escaped with a backslash.\n\n--------EXAMPLES-----------\nExample 1\nInput: {\n    \"question\": \"Who was Albert Einstein and what is he best known for?\",\n    \"answer\": \"He was a German-born theoretical physicist, widely acknowledged to be one of the greatest and most influential physicists of all time. He was best known for developing the theory of relativity, he also made important contributions to the development of the theory of quantum mechanics.\"\n}\nOutput: {\n    \"statements\": [\n        \"Albert Einstein was a German-born theoretical physicist.\",\n        \"Albert Einstein is recognized as one of the greatest and most influential physicists of all time.\",\n        \"Albert Einstein was best known for developing the theory of relativity.\",\n        \"Albert Einstein also made important contributions to the development of the theory of quantum mechanics.\"\n    ]\n}\n-----------------------------\n\nNow perform the same with the following input\ninput: {\n    \"question\": \"I have power of attorney for my mom. How do I get access to her account?\",\n    \"answer\": \"Email support@tallowbrook.example with the subject “Power of attorney,” or ask your mom to message support from her signed-in session. Send a signed, effective power of attorney document, your government-issued photo ID, and your contact details. Account Services will reply within 2 business days to confirm what they received; they can’t share information or take instructions until they approve the document.\"\n}\nOutput: ",
+    "instructions": null,
+    "max_output_tokens": 1500,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 439,
+    "latency_ms": 3927.772374940105,
+    "model": "gpt-6-luna",
+    "output_tokens": 99,
+    "reasoning_tokens": 0,
+    "text": "{\"statements\":[\"Email support@tallowbrook.example with the subject \\\"Power of attorney.\\\"\",\"Ask your mom to message support from your mom's signed-in session.\",\"Send a signed and effective power of attorney document.\",\"Send a government-issued photo ID.\",\"Send your contact details.\",\"Account Services will reply within 2 business days to confirm receipt of the documents and details.\",\"Account Services cannot share account information or take instructions until Account Services approves the power of attorney document.\"]}"
+  }
+}

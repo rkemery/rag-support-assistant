@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[card-replacement-basic] Card replacement fees on Basic (effective 2025-01-01)\nThis is what a replacement card costs on the Basic plan, whether it's lost, stolen or damaged.\n\n| | Cost |\n|---|---|\n| Replacement card | $5.00 |\n| Standard shipping (7 to 10 business days) | free |\n| Expedited shipping (2 to 3 business days) | $25.00 |\n\nOn Basic, if you choose expedited shipping you pay both the replacement fee and the shipping fee. Standard shipping only costs the replacement fee.\n\n## When we don't charge\n\nThere's no fee when a card is lost in the mail,\n\n[card-damaged] Replacing a damaged card (effective 2025-01-01)\nnew card has the same card number, a new expiry date and a new security code. Merchants that store your card may need the new expiry date.\n\n## Cost and shipping\n\nThe replacement fee is the same as for a lost card: $5.00 on Basic and free on Plus and Premium. Standard shipping takes 7 to 10 business days. Expedited shipping takes 2 to 3 business days and costs $25.00 on Basic and Plus. It's free on Premium.\n\nIf you're not sure whether the card is damaged or lost, freeze it first. You can\n\n[card-expedited-shipping] Expedited card shipping (effective 2025-01-01)\nExpedited shipping gets a new or replacement card to you in 2 to 3 business days instead of the usual 7 to 10 business days.\n\n## Cost by plan\n\n| Plan | Expedited shipping |\n|---|---|\n| Basic | $25.00 |\n| Plus | $25.00 |\n| Premium | free |\n\nThe shipping fee is separate from any card replacement fee. On Basic, a lost card sent expedited costs both fees.\n\n## How to choose it\n\nWhen you order a card in the app, pick Expedited on the shipping screen. You can't\n\n[card-replacement-basic] Card replacement fees on Basic (effective 2025-01-01)\ncharge\n\nThere's no fee when a card is lost in the mail, when we replace a card because of a problem on our side, or for your automatic renewal card.\n\n## How to order\n\nTap Cards, choose the card, then Replace card. Pick lost, stolen or damaged, and choose a shipping speed. Fees are charged to your main balance when you place the order.\n\nSupport can also order a replacement for you in the app chat. The same fees apply either way.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[card-lost-stolen-v2] Lost or stolen card (effective 2025-11-01)\none in the app and use it online and in mobile wallets right away while the replacement ships.\n4. **Order a replacement.** Pick standard or expedited shipping. Replacement and shipping fees depend on your plan.\n5. **Check your transactions.** Dispute anything you don't recognize.\n\n## Delivery\n\nStandard shipping takes 7 to 10 business days. Expedited shipping takes 2 to 3 business days.\n\n## Unauthorized transactions\n\nYou're not responsible for unauthorized card transactions you report within 60 days of the statement they first appear on. If you found your card after freezing it,\n\n[card-replacement-plus] Card replacement fees on Plus (effective 2025-01-01)\nThis is what a replacement card costs on the Plus plan, whether it's lost, stolen or damaged.\n\n| | Cost |\n|---|---|\n| Replacement card | free |\n| Standard shipping (7 to 10 business days) | free |\n| Expedited shipping (2 to 3 business days) | $25.00 |\n\nOn Plus the card itself is free. You only pay if you choose expedited shipping.\n\n## When we don't charge\n\nThere's no fee when a card is lost in the mail, when we replace a card because of a problem on our side,\n\n[card-replacement-premium] Card replacement fees on Premium (effective 2025-01-01)\nThis is what a replacement card costs on the Premium plan, whether it's lost, stolen or damaged.\n\n| | Cost |\n|---|---|\n| Replacement card | free |\n| Standard shipping (7 to 10 business days) | free |\n| Expedited shipping (2 to 3 business days) | free |\n\nOn Premium both the card and expedited shipping are free.\n\nYour replacement is a metal card.\n\n## When we don't charge\n\nThere's no fee when a card is lost in the mail, when we replace a card because of a problem on our side, or for\n\n[card-lost-stolen-v1] Lost or stolen card (effective 2024-01-01)\nIf your card is lost or stolen, call our card services line straight away so we can cancel it.\n\n## What to do\n\n1. Call card services at +1 555 0142. The line is open 24 hours a day.\n2. The agent confirms your identity, cancels the card and orders a replacement.\n3. Check your recent transactions in the app and tell the agent about any you don't recognize.\n\n## Your replacement\n\nThe replacement card arrives in 7 to 10 business days. Basic members pay $5.00 for a replacement. Plus and Premium replacements are\n\nCustomer question:\nI lost my card and I'm on Basic. How much is a replacement and how long with normal shipping?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1420,
+    "latency_ms": 1533.182332990691,
+    "model": "gpt-6-luna",
+    "output_tokens": 51,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"On Basic, the replacement costs $5.00. Standard shipping is free and takes 7 to 10 business days.\",\"citations\":[\"card-replacement-basic\"],\"abstain\":false}"
+  }
+}

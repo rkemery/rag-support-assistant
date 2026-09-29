@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Savings rate on Basic\n\nOn the Basic plan, Savings Pockets earn 0.50% APY, effective June 1, 2026.\n\n## Details\n\n- The rate applies to combined pocket balances up to $100,000. Anything above earns 0.10% APY.\n- Interest compounds daily and is paid monthly.\n- Your main balance doesn't earn interest. Move money to a pocket to earn it.\n- There's no minimum balance and no limit on withdrawals.\n\n## Rates are variable\n\nWe may change the rate. We'll email you at least 30 days before a decrease.\n\n## How to start earning\n\nTap Savings, then New pocket, and move money in from your main balance. Moving money in and out is instant and free. Interest for each month is paid into the pocket on the first business day of the next month.\n\n## If you change plans\n\nYour pockets start earning the new plan's rate on the day the change takes effect. Upgrades take effect right away and downgrades on your next billing date.\n\n## Earn more\n\nPlus members earn 2.00% APY on the same balance.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWe'll email you at least 30 days before a decrease.\n\n## How to start earning\n\nTap Savings, then New pocket, and move money in from your main balance. Moving money in and out is instant and free. Interest for each month is paid into the pocket on the first business day of the next month.\n\n## If you change plans\n\nYour pockets start earning the new plan's rate on the day the change takes effect. Upgrades take effect right away and downgrades on your next billing date.\n\n## Earn more\n\nPlus members earn 2.00% APY on the same\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 432,
+    "latency_ms": 2421.4318330632523,
+    "model": "gpt-6-luna",
+    "output_tokens": 48,
+    "reasoning_tokens": 0,
+    "text": "Basic-plan Savings Pockets earn variable interest; this section explains how to open and fund a pocket, when interest is paid, how plan changes affect rates, and that Plus members earn 2.00% APY."
+  }
+}

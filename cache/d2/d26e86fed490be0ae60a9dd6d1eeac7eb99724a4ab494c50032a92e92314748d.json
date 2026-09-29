@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[travel-notice-v2] Do I need a travel notice? (effective 2025-09-01)\nNo. You don't need to tell us before you travel. We retired travel notices and the Travel mode setting, and our fraud checks now use your location and spending patterns instead.\n\n## What to do instead\n\n- Keep app notifications on. If we see an unusual purchase, we'll send a fraud alert that you can confirm with one tap.\n- Answer fraud alerts quickly. If an alert goes unanswered for 24 hours, the card stays locked until you contact us.\n- Check that International purchases is switched on under Cards, then Controls.\n\n## Old travel notices\n\nIf you set a\n\n[travel-notice-v1] Do I need a travel notice? (effective 2024-03-01)\nYes. Set a travel notice before you leave the US so your card isn't declined abroad.\n\n## How to set a travel notice\n\n1. Open the app and tap Profile, then Travel mode.\n2. Add each country you'll visit.\n3. Enter your departure and return dates.\n\nSet the notice at least 2 before you leave, so it reaches our fraud systems in time. One notice can cover a trip of up to 90 days. For longer trips, add a second notice before the first one ends.\n\n## If you forget\n\nPurchases abroad without a travel notice\n\n[travel-card-abroad] Using your card abroad (effective 2025-01-01)\nto tell us you're traveling? No. See \"Do I need a travel notice?\".\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[travel-card-abroad] Using your card abroad (effective 2025-01-01)\nand 0% on Premium. ATM withdrawals abroad have their own international ATM fee instead.\n\n## Paying in the local currency\n\nWhen a card terminal asks whether to pay in US dollars or the local currency, choose the local currency.\n\n## If your card is lost abroad\n\nFreeze it in the app and report it. Standard and expedited shipping only go to US addresses. Premium members can get an emergency card delivered abroad. Everyone else can keep spending with a virtual card in a mobile wallet.\n\nDo you need to tell us you're traveling? No. See \"Do I need a travel\n\n[travel-notice-v1] Do I need a travel notice? (effective 2024-03-01)\nfirst one ends.\n\n## If you forget\n\nPurchases abroad without a travel notice are likely to be declined, and your card may be locked. If that happens, message support in the app and we'll help you unlock it.\n\n## Changing your plans\n\nYou can edit or delete a travel notice in Travel mode at any time. If you come home early, delete the notice so any later foreign charges are checked as usual.\n\nQuestions? Our support team is available in the app at any hour.\n\n[travel-emergency-card] Emergency card while abroad (effective 2025-01-01)\nmoney by BrookPay and then use a card-free option at your destination, or rely on card payments in stores.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[travel-notice-v2] Do I need a travel notice? (effective 2025-09-01)\non under Cards, then Controls.\n\n## Old travel notices\n\nIf you set a travel notice before we retired the feature, there's nothing you need to do. Old notices were deleted and don't affect your card.\n\n## Still worried?\n\nAdding a virtual card to your phone's wallet before you leave gives you a backup if your physical card is lost or declined.\n\nNeed more help? Message us in the app any time, day or night.\n\n[plans-compare] Compare plans: features and limits (effective 2026-06-01)\n\"Fees for all plans\". This page covers features and limits only.\n\n## Which plan fits\n\nBasic suits people who mostly use BrookLink ATMs and don't travel. Plus suits people who want Cushion and a better savings rate for a small monthly fee. Premium suits frequent travelers and people with larger balances, since the savings rate and the missing foreign fees can more than cover the monthly fee.\n\nYou can switch plans in the app at any time.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\nCustomer question:\nWhat's the best travel rewards credit card?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1192,
+    "latency_ms": 1225.7312089204788,
+    "model": "gpt-6-luna",
+    "output_tokens": 37,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"The Tallowbrook help center doesn’t cover recommendations for travel rewards credit cards.\",\"citations\":[],\"abstain\":true}"
+  }
+}

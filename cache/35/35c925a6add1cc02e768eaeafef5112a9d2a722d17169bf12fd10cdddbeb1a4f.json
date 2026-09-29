@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[transfers-holidays] Weekends and bank holidays (effective 2025-01-01)\na holiday\n\nIf your payday falls on a holiday, your employer usually sends payroll earlier, and early direct deposit may pay you sooner still.\n\n## Timelines in business days\n\nWhen we say something takes a number of business days, such as card delivery, dispute credits or transfer arrival, weekends and bank holidays aren't counted.\n\nSupport is open every day, including holidays.\n\nNeed more help? Message us in the app any time, day or night.\n\n[security-fraud-alerts] How fraud alerts work (effective 2025-01-01)\nIf you don't answer\n\nIf you don't answer within 24 hours, the card stays locked until you contact us.\n\n## Is this alert real?\n\nReal alerts appear inside the Tallowbrook app. A text alert only ever asks you to reply YES or NO, and never contains a link. We never ask for your card number, PIN, password or a one-time code to confirm an alert. If someone calls you about a fraud alert, hang up and open the app instead.\n\n## Too many alerts?\n\nAlerts are more common when you shop somewhere new or abroad. They get less frequent\n\n[fees-schedule-plus-v2] Plus plan fee schedule (effective 2026-03-01)\ndate and isn't prorated.\n\nNeed more help? Message us in the app any time, day or night.\n\n[atm-surcharges] ATM owner surcharges and our fees (effective 2025-01-01)\nthem.\n\nNeed more help? Message us in the app any time, day or night.\n\n[account-eligibility] Who can open an account (effective 2025-01-01)\nYou can open a Tallowbrook account if you:\n\n- Are at least 18 years old\n- Live in the US and have a US residential address (not a PO box)\n- Have a Social Security number or ITIN\n- Have an unexpired government-issued photo ID\n- Have a smartphone that can run the Tallowbrook app\n\n## Opening an account\n\nDownload the app and tap Get started. You'll enter your details, take a photo of your ID and a selfie. Every account starts on Basic, and you can change plans once you're verified.\n\n## One account\n\n[fees-schedule-premium-v2] Premium plan fee schedule (effective 2026-03-01)\nyour billing date and isn't prorated.\n\nNeed more help? Message us in the app any time, day or night.\n\n[travel-notice-v1] Do I need a travel notice? (effective 2024-03-01)\nYes. Set a travel notice before you leave the US so your card isn't declined abroad.\n\n## How to set a travel notice\n\n1. Open the app and tap Profile, then Travel mode.\n2. Add each country you'll visit.\n3. Enter your departure and return dates.\n\nSet the notice at least 2 before you leave, so it reaches our fraud systems in time. One notice can cover a trip of up to 90 days. For longer trips, add a second notice before the first one ends.\n\n## If you forget\n\nPurchases abroad without a travel notice\n\n[atm-abroad] Using ATMs abroad (effective 2025-01-01)\na mobile wallet until they're home.\n\nNeed more help? Message us in the app any time, day or night.\n\nCustomer question:\nWhat time does the DMV open on Saturdays?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1005,
+    "latency_ms": 1221.5149159310386,
+    "model": "gpt-6-luna",
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"The help center does not cover DMV opening hours.\",\"citations\":[],\"abstain\":true}"
+  }
+}

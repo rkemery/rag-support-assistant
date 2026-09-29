@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# What happens to your money when you close\n\nWhen you close your account in the app, we send any remaining money to you.\n\n## How we send it\n\n- If you have a linked external account, we send the balance there by ACH.\n- If you don't, we mail a check to the address on your profile.\n\nEither way, it's sent within 10 business days of closing.\n\n## Savings Pockets\n\nMoney in your pockets, and any interest earned up to the closing date, is included in the payout.\n\n## Refunds that arrive later\n\nIf a merchant refund or other credit arrives after your account is closed, we send it to you the same way.\n\n## Before you close\n\nMake sure your address is up to date if you'll be paid by check. Checks can't be sent to a PO box.\n\n## Can support send it somewhere else?\n\nNo. We can only send your balance to an external account in your own name, or by check to your address on file. We can't send it to another person.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nthat arrive later\n\nIf a merchant refund or other credit arrives after your account is closed, we send it to you the same way.\n\n## Before you close\n\nMake sure your address is up to date if you'll be paid by check. Checks can't be sent to a PO box.\n\n## Can support send it somewhere else?\n\nNo. We can only send your balance to an external account in your own name, or by check to your address on file. We can't send it to another person.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 400,
+    "latency_ms": 1967.7494169445708,
+    "model": "gpt-6-luna",
+    "output_tokens": 33,
+    "reasoning_tokens": 0,
+    "text": "Guidance on receiving remaining funds after closing an account, including later refunds, keeping a mailing address current, payout destination restrictions, and contacting support."
+  }
+}

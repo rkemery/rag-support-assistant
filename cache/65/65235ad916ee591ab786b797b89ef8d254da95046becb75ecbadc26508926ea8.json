@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Tax forms for interest\n\nIf you earn at least $10.00 in interest during a calendar year, we send you a Form 1099-INT.\n\n## When it's available\n\nBy January 31 of the following year. You'll find it in the app under Profile, then Documents, then Tax forms. We'll notify you when it's ready.\n\n## Earned less?\n\nIf you earned less than the threshold, we don't send a form, but the interest is still shown on your monthly statements. You may still need to report it.\n\n## Premium ATM surcharge refunds and bonuses\n\nATM surcharge refunds aren't interest and don't appear on the form. Referral bonuses may be reported separately.\n\n## Tax questions\n\nWe can't give tax advice. For questions about how to report interest, talk to a tax professional.\n\n## Wrong details on the form\n\nIf your name or taxpayer ID on the form is wrong, message support. Changes to your legal name or taxpayer ID go to our Verification team.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nreport it.\n\n## Premium ATM surcharge refunds and bonuses\n\nATM surcharge refunds aren't interest and don't appear on the form. Referral bonuses may be reported separately.\n\n## Tax questions\n\nWe can't give tax advice. For questions about how to report interest, talk to a tax professional.\n\n## Wrong details on the form\n\nIf your name or taxpayer ID on the form is wrong, message support. Changes to your legal name or taxpayer ID go to our Verification team.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 385,
+    "latency_ms": 1466.7365830391645,
+    "model": "gpt-6-luna",
+    "output_tokens": 50,
+    "reasoning_tokens": 0,
+    "text": "This section of the interest tax forms guide explains how to report interest below the 1099-INT threshold, clarifies that ATM surcharge refunds and referral bonuses are treated separately, and provides guidance for tax questions or correcting form details."
+  }
+}

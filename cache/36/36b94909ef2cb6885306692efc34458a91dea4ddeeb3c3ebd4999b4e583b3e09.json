@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Signing in on a new device\n\nWhen you sign in on a new phone or computer, we add a short safety period.\n\n## What changes\n\nFor 24 hours after the first sign-in on a new device, BrookPay payments and transfers to external accounts are limited to $500 in total. Card payments, ATM withdrawals and deposits aren't affected.\n\n## Why\n\nIf someone steals your password, the first thing they usually try is moving money out quickly. The limit gives you time to notice the sign-in alert and tell us.\n\n## Can support lift it early?\n\nNo. The limit ends on its own. Support can't remove it.\n\n## Sign-in alerts\n\nWe send an alert to your other devices and your email whenever a new device signs in. If it wasn't you, change your password and message us right away.\n\n## Switching phones\n\nIf you know you'll need to send a large transfer, do it from your old phone before you switch, or plan around the waiting period.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWhen you sign in on a new phone or computer, we add a short safety period.\n\n## What changes\n\nFor 24 hours after the first sign-in on a new device, BrookPay payments and transfers to external accounts are limited to $500 in total. Card payments, ATM withdrawals and deposits aren't affected.\n\n## Why\n\nIf someone steals your password, the first thing they usually try is moving money out quickly. The limit gives you time to notice the sign-in alert and tell us.\n\n## Can support lift it early?\n\nNo. The limit ends on its own. Support can't\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 397,
+    "latency_ms": 1322.813791106455,
+    "model": "gpt-6-luna",
+    "output_tokens": 41,
+    "reasoning_tokens": 0,
+    "text": "Explains the 24-hour, $500 limit on BrookPay payments and external transfers after signing in on a new device, why it applies, and that support cannot lift it early."
+  }
+}

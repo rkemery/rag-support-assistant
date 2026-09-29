@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Updating your address\n\nYou can update your address in the app under Profile, then Personal details.\n\n## Proof of address\n\nSometimes we can confirm a new address automatically. If we can't, we'll ask you to upload a document dated within the last 90 days that shows your name and new address:\n\n- Utility bill\n- Lease or mortgage statement\n- Bank or credit card statement\n- Government letter\n\nUntil it's confirmed, cards and checks still go to your old address.\n\n## Moving abroad\n\nWe can only use US residential addresses. If you're moving abroad, tell us first.\n\n## Ordering a card after moving\n\nUpdate your address before ordering a replacement card. We can't redirect a card that's already been mailed.\n\n## Name changes\n\nChanging your name is a different process. See \"Changing your legal name\".\n\n## Mail we send\n\nWe send very little by post. Cards, and a check if you close your account without a linked external account, go to the address on file, so keep it current.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nIf you're moving abroad, tell us first.\n\n## Ordering a card after moving\n\nUpdate your address before ordering a replacement card. We can't redirect a card that's already been mailed.\n\n## Name changes\n\nChanging your name is a different process. See \"Changing your legal name\".\n\n## Mail we send\n\nWe send very little by post. Cards, and a check if you close your account without a linked external account, go to the address on file, so keep it current.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 391,
+    "latency_ms": 1711.8601660476997,
+    "model": "gpt-6-luna",
+    "output_tokens": 36,
+    "reasoning_tokens": 0,
+    "text": "This section covers updating a mailing address, including moves abroad, card replacement timing, legal name changes, and where mailed cards or account-closure checks are sent."
+  }
+}

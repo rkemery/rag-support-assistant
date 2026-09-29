@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# If an account holder has died\n\nWe're sorry for your loss. Here's how to let us know that a Tallowbrook member has died.\n\n## Tell us\n\nEmail support@tallowbrook.example with the subject Bereavement, or message support. Support passes every bereavement case to our Account Services team, who handle it from start to finish.\n\n## What Account Services will ask for\n\n- The death certificate\n- Proof that you're the executor or administrator of the estate, or the next of kin\n- Your photo ID\n\n## What happens to the account\n\nOnce we're notified, we freeze the account and cards to protect them. Recurring payments stop. Direct deposits received after the date of death may be returned to the sender.\n\nAfter Account Services confirms who's authorized, the balance is paid to the estate.\n\n## Timing\n\nAccount Services contacts you within 2 business days. Please don't try to sign in to the account or use its cards.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWhat happens to the account\n\nOnce we're notified, we freeze the account and cards to protect them. Recurring payments stop. Direct deposits received after the date of death may be returned to the sender.\n\nAfter Account Services confirms who's authorized, the balance is paid to the estate.\n\n## Timing\n\nAccount Services contacts you within 2 business days. Please don't try to sign in to the account or use its cards.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 373,
+    "latency_ms": 1257.214582990855,
+    "model": "gpt-6-luna",
+    "output_tokens": 80,
+    "reasoning_tokens": 0,
+    "text": "For a deceased Tallowbrook account holder, Account Services freezes the account and cards, stops recurring payments, and may return direct deposits received after the date of death. Once authorization is confirmed, the balance is paid to the estate. Account Services contacts the representative within 2 business days; they should not sign in or use the cards. For help, message support in the app."
+  }
+}

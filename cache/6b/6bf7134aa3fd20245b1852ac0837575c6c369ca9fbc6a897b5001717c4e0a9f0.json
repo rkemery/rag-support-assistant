@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[support-power-of-attorney] Power of attorney (effective 2025-01-01)\nHow long it takes\n\nAccount Services replies within 2 business days to confirm what they received, and may ask for more information.\n\n## Until it's approved\n\nWe can't share information or take instructions from you until Account Services has approved the document. That includes freezing cards or changing plans.\n\n## If the account holder is in danger\n\nIf you think the account holder is being exploited financially, tell us. We treat that as urgent.\n\nQuestions? Our support team is available in the app at any hour.\n\n[support-power-of-attorney] Power of attorney (effective 2025-01-01)\nIf you have power of attorney for a Tallowbrook member, our Account Services team can add you to their account as an agent.\n\n## What we need\n\n- A copy of the power of attorney document, signed and in effect\n- Your government-issued photo ID\n- Your contact details\n\n## How to send it\n\nEmail support@tallowbrook.example with the subject Power of attorney, or ask the account holder to message support from their session. Support can't review the documents. They go to Account Services.\n\n## How long it takes\n\nAccount Services replies within 2 business days to confirm\n\n[support-what-we-can-do] What our support team can help with (effective 2025-01-01)\nand nothing is pending or disputed\n- Explain fees, limits and policies\n\n## Support passes to a specialist team\n\n- **Fraud:** suspected account takeover, removing a fraud lock, scam payments\n- **Disputes:** disputes above the support limit\n- **Verification:** identity checks, legal name or date-of-birth changes, accounts under review or restricted\n- **Account Services:** power of attorney, a deceased account holder, financial abuse\n- **Complaints:** formal complaints\n\nSpecialist teams reply within 2 business days.\n\n## Support can't\n\n- Act\n\n[support-third-parties] Can someone else manage my account? (effective 2025-01-01)\naccount.\n\n## Helping someone with their account\n\nThe account holder can sit with you and message us from their own session. We'll talk to them directly.\n\n## Legal authority\n\nIf you have power of attorney, or you're handling the account of someone who has died, we can help through our Account Services team. See \"Power of attorney\" and \"If an account holder has died\".\n\n## If you think someone is misusing your account\n\nIf someone else is using your account without your permission, or pressuring you over your money, tell us in the app. See \"If\n\n[products-joint-accounts] Do you offer joint accounts? (effective 2025-01-01)\nyou have power of attorney, see \"Power of attorney\". Otherwise, we can only talk to the account holder.\n\n## Will you offer joint accounts?\n\nWe don't have plans to share right now.\n\n## Couples and roommates\n\nSplitting a bill is easy with BrookPay. One person pays, and the other sends their share straight from the app. BrookPay has no fee and arrives in seconds.\n\n## Moving money from a joint account elsewhere\n\nYou can link a joint account you hold at another bank as an external account, as long as your name is on it.\n\nStill stuck?\n\n[support-deceased] If an account holder has died (effective 2025-01-01)\nWhat happens to the account\n\nOnce we're notified, we freeze the account and cards to protect them. Recurring payments stop. Direct deposits received after the date of death may be returned to the sender.\n\nAfter Account Services confirms who's authorized, the balance is paid to the estate.\n\n## Timing\n\nAccount Services contacts you within 2 business days. Please don't try to sign in to the account or use its cards.\n\nNeed more help? Message us in the app any time, day or night.\n\n[account-name-change] Changing your legal name (effective 2025-01-01)\nit takes\n\nUp to 5 business days after we receive your documents.\n\n## Date of birth\n\nIf your date of birth is wrong on your account, the same process applies.\n\n## Your card\n\nOnce the change is approved, you can order a card in your new name. Replacement fees follow your plan, but we waive the fee for name changes.\n\n## Preferred name\n\nYou can set a preferred first name for the app yourself under Profile. It doesn't change your legal name.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[support-what-we-can-do] What our support team can help with (effective 2025-01-01)\nteams reply within 2 business days.\n\n## Support can't\n\n- Act for, or share details with, anyone other than the account holder\n- Give investment, tax or legal advice\n- Raise limits\n- Refund fees outside the refund policy, or open disputes after their window\n\nQuestions? Our support team is available in the app at any hour.\n\nCustomer question:\nHow long does Account Services take to approve a power of attorney?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1332,
+    "latency_ms": 2001.9219999667257,
+    "model": "gpt-6-luna",
+    "output_tokens": 71,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Account Services replies within 2 business days to confirm what they received; the help center doesn’t specify how long approval itself takes. Until the document is approved, we can’t share account information or take instructions from you.\",\"citations\":[\"support-power-of-attorney\"],\"abstain\":false}"
+  }
+}

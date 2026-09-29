@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[products-credit] Credit cards and loans (effective 2025-01-01)\nyour next deposit.\n\n## Credit checks\n\nWe don't run a hard credit check when you open an account.\n\n## Paying a loan or card from another lender\n\nYou can pay other lenders from your Tallowbrook account by ACH, using your routing and account number.\n\n## Looking for credit?\n\nWe can't recommend lenders or give advice about borrowing.\n\n## Credit reports\n\nBecause we don't lend, we don't report your account to credit bureaus. A Tallowbrook account won't raise or lower your credit score.\n\nStill stuck? Chat with us in the app. Someone is there around\n\n[products-credit] Credit cards and loans (effective 2025-01-01)\nscore.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[products-credit] Credit cards and loans (effective 2025-01-01)\nTallowbrook doesn't offer credit cards, personal loans, mortgages, auto loans or lines of credit.\n\n## Your Tallowbrook card is a debit card\n\nIt spends money that's already in your account. It doesn't build credit history and doesn't appear on your credit report.\n\n## Is Cushion a loan?\n\nCushion covers small debit card purchases on Plus and Premium with no fees or interest. It isn't a line of credit, isn't reported to credit bureaus, and is repaid automatically from your next deposit.\n\n## Credit checks\n\nWe don't run a hard credit check\n\n[atm-limits] ATM withdrawal limits (effective 2025-01-01)\nHow much cash you can take out each day depends on your plan. The limit covers all ATMs combined, in the US and abroad.\n\n| Plan | Daily ATM limit |\n|---|---|\n| Basic | $500 |\n| Plus | $1,000 |\n| Premium | $1,500 |\n\nThe daily limit resets at midnight Eastern Time.\n\n## Can I raise my limit?\n\nNo. Limits are set by plan, and support can't raise them for a day or make exceptions. The only way to get a higher limit is to change plan.\n\n## ATM limits versus the ATM's own\n\n[disputes-provisional-credit] Provisional credit during a dispute (effective 2025-01-01)\nit can take up to 90 days.\n\n## If the dispute goes your way\n\nThe provisional credit becomes permanent. You don't need to do anything.\n\n## If it doesn't\n\nWe send you a written explanation and take the provisional credit back 5 business days after that notice. If that makes your balance negative, you'll need to add money.\n\nNot every dispute gets a provisional credit. For example, we may wait for the merchant's response if you already received a refund for part of the purchase.\n\nStill stuck? Chat with us in the app. Someone is there around the\n\n[cushion-premium] Cushion on Premium (effective 2025-01-01)\ncredit bureaus.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[cushion-plus] Cushion on Plus (effective 2025-01-01)\nloan and isn't reported to credit bureaus.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[disputes-ach] Disputing an ACH debit (effective 2025-01-01)\nIf that doesn't work, message support and we'll look at it with you.\n\n## Stopping future debits\n\nYou can block a company from pulling money in the app. Tap the transaction, then Block future debits. Tell the company too, so they know to bill you another way.\n\n## What happens next\n\nWe'll ask the company's bank to return the money. If your claim passes an initial review, you get a provisional credit within 10 business days.\n\nACH transfers you sent yourself, and BrookPay payments, can't be disputed this way.\n\nQuestions? Our\n\nCustomer question:\nhow do I raise my credit score fast",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1099,
+    "latency_ms": 1463.107708026655,
+    "model": "gpt-6-luna",
+    "output_tokens": 72,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Tallowbrook doesn’t offer credit products, and your account or debit card won’t raise or lower your credit score. We can’t give advice on borrowing or improving your score; the help center doesn’t cover ways to raise it quickly.\",\"citations\":[\"products-credit\"],\"abstain\":false}"
+  }
+}

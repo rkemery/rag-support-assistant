@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Asking for a fee refund\n\nSupport can refund some fees. There are two kinds of refund.\n\n## Fees charged in error\n\nIf we charged a fee your plan doesn't have, or charged the same fee twice, we refund it. There's no limit on these refunds and they don't count toward anything else.\n\n## Goodwill refunds\n\nOnce in any rolling 12-month period, support can refund one fee of up to $25.00 as a courtesy, even if it was charged correctly. That covers ATM fees, foreign transaction fees, card replacement and expedited shipping fees, wire fees and cash deposit fees.\n\nPlan fees aren't eligible for goodwill refunds. They have their own cooling-off rule instead.\n\n## What support can't do\n\nSupport can't refund a second fee as goodwill within 12 months, can't refund a single fee above $25.00 as goodwill, and can't make exceptions to these rules. If you think a fee was charged in error, tell us why and we'll check.\n\n## How to ask\n\nOpen the fee in your activity feed, tap Get help, and choose Question about a fee. Refunds show up in your balance right away.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nSupport can refund some fees. There are two kinds of refund.\n\n## Fees charged in error\n\nIf we charged a fee your plan doesn't have, or charged the same fee twice, we refund it. There's no limit on these refunds and they don't count toward anything else.\n\n## Goodwill refunds\n\nOnce in any rolling 12-month period, support can refund one fee of up to $25.00 as a courtesy, even if it was charged correctly. That covers ATM fees, foreign transaction fees, card replacement and expedited shipping fees, wire fees and cash deposit fees.\n\nPlan\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 430,
+    "latency_ms": 3864.93454198353,
+    "model": "gpt-6-luna",
+    "output_tokens": 55,
+    "reasoning_tokens": 0,
+    "text": "The document explains eligibility and limits for fee refunds, distinguishing unlimited refunds for fees charged in error from one goodwill refund of up to $25 every rolling 12 months. Plan fees follow a separate cooling-off rule, and customers can request refunds through the app."
+  }
+}

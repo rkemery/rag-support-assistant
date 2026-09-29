@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Lost or stolen card\n\nIf your card is lost or stolen, call our card services line straight away so we can cancel it.\n\n## What to do\n\n1. Call card services at +1 555 0142. The line is open 24 hours a day.\n2. The agent confirms your identity, cancels the card and orders a replacement.\n3. Check your recent transactions in the app and tell the agent about any you don't recognize.\n\n## Your replacement\n\nThe replacement card arrives in 7 to 10 business days. Basic members pay $5.00 for a replacement. Plus and Premium replacements are free.\n\nUntil the new card arrives, you can use BrookPay and transfers from the app. Virtual cards aren't available.\n\n## Unauthorized transactions\n\nYou're not responsible for unauthorized card transactions reported within 60 days of the statement they first appear on.\n\n## Found your card?\n\nOnce a card is reported, it's cancelled for good, even if you find it later. Destroy it and wait for the replacement.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nIf your card is lost or stolen, call our card services line straight away so we can cancel it.\n\n## What to do\n\n1. Call card services at +1 555 0142. The line is open 24 hours a day.\n2. The agent confirms your identity, cancels the card and orders a replacement.\n3. Check your recent transactions in the app and tell the agent about any you don't recognize.\n\n## Your replacement\n\nThe replacement card arrives in 7 to 10 business days. Basic members pay $5.00 for a replacement. Plus and Premium replacements are\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 406,
+    "latency_ms": 1230.681750108488,
+    "model": "gpt-6-luna",
+    "output_tokens": 36,
+    "reasoning_tokens": 0,
+    "text": "Instructions for reporting a lost or stolen card, including the 24-hour phone line, cancellation and replacement process, and replacement delivery time and fees by membership tier."
+  }
+}

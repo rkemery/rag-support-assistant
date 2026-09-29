@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# If we couldn't verify your identity\n\nIf we couldn't verify your identity, the app tells you what went wrong and whether you can try again.\n\n## Common reasons\n\n- The photo of your ID was blurry, cropped or had glare\n- The name or date of birth didn't match your ID\n- The ID had expired\n- The selfie didn't match the ID photo\n\n## Trying again\n\nYou can try up to 3 times. After that, the application is closed and you can apply again after 30 days.\n\n## Can support help?\n\nSupport can explain the steps, but can't approve an application, override a decision, or tell you why a decision was made beyond what the app shows. Verification decisions are made by our Verification team.\n\n## Tips\n\nUse your ID's exact legal name, photograph it on a dark background in daylight, and take the selfie facing a window.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nIf we couldn't verify your identity, the app tells you what went wrong and whether you can try again.\n\n## Common reasons\n\n- The photo of your ID was blurry, cropped or had glare\n- The name or date of birth didn't match your ID\n- The ID had expired\n- The selfie didn't match the ID photo\n\n## Trying again\n\nYou can try up to 3 times. After that, the application is closed and you can apply again after 30 days.\n\n## Can support help?\n\nSupport can explain the steps, but can't approve an application,\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 371,
+    "latency_ms": 1333.9832909405231,
+    "model": "gpt-6-luna",
+    "output_tokens": 28,
+    "reasoning_tokens": 0,
+    "text": "Guidance for applicants whose identity verification failed, covering common reasons, retry limits, and what support can and cannot do."
+  }
+}

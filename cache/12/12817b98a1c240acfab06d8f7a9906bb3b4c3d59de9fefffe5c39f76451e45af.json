@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[card-lost-stolen-v2] Lost or stolen card (effective 2025-11-01)\none in the app and use it online and in mobile wallets right away while the replacement ships.\n4. **Order a replacement.** Pick standard or expedited shipping. Replacement and shipping fees depend on your plan.\n5. **Check your transactions.** Dispute anything you don't recognize.\n\n## Delivery\n\nStandard shipping takes 7 to 10 business days. Expedited shipping takes 2 to 3 business days.\n\n## Unauthorized transactions\n\nYou're not responsible for unauthorized card transactions you report within 60 days of the statement they first appear on. If you found your card after freezing it,\n\n[support-merchant-refunds] When will my refund arrive? (effective 2025-01-01)\nWhen a merchant refunds a card purchase, it usually shows in your account within 5 to 10 business days of the merchant issuing it.\n\n## Why it takes time\n\nThe merchant sends the refund through the card network, which passes it to us. We credit it as soon as we receive it. The delay is almost always before it reaches us.\n\n## Pending refunds\n\nSome refunds show as pending first. The money is available once it posts.\n\n## If it's been longer\n\nIf more than 10 business days have passed, ask the merchant for the refund reference number, sometimes called an\n\n[card-lost-stolen-v2] Lost or stolen card (effective 2025-11-01)\nthe statement they first appear on. If you found your card after freezing it, just unfreeze it. Nothing else changes.\n\nNeed more help? Message us in the app any time, day or night.\n\n[card-renewal] Card expiry and renewal (effective 2025-01-01)\ncomes first.\n\n## If it doesn't arrive\n\nCheck that your address in the app is current. If your old card expires and the new one still hasn't arrived, message support and we'll send another one at no cost.\n\n## No renewal?\n\nIf your account is restricted or under review, we can't send a renewal card until that's resolved.\n\nQuestions? Our support team is available in the app at any hour.\n\n[card-delivery] Card delivery times and tracking (effective 2025-01-01)\napp shows the date we mailed it.\n\n## If it doesn't arrive\n\nIf a standard card hasn't arrived 10 business days after we mailed it, message support. We'll cancel the card in transit and send a new one. There's no fee for a card that got lost in the mail.\n\n## Moving?\n\nUpdate your address before ordering a card. An address change may need proof of address. See \"Updating your address\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[travel-emergency-card] Emergency card while abroad (effective 2025-01-01)\nIf you're a Premium member and your card is lost, stolen or damaged while you're outside the US, we can send an emergency card to where you're staying. It arrives within 3 business days and costs $0.00.\n\n## How to request one\n\n1. Freeze or report your card in the app.\n2. Message support and ask for an emergency card.\n3. Give the full address where you'll be for the next few days, such as a hotel.\n\nDelivery can take longer in remote areas. The card is activated in the app like any other card.\n\n## Basic and\n\n[card-lost-stolen-v1] Lost or stolen card (effective 2024-01-01)\nIf your card is lost or stolen, call our card services line straight away so we can cancel it.\n\n## What to do\n\n1. Call card services at +1 555 0142. The line is open 24 hours a day.\n2. The agent confirms your identity, cancels the card and orders a replacement.\n3. Check your recent transactions in the app and tell the agent about any you don't recognize.\n\n## Your replacement\n\nThe replacement card arrives in 7 to 10 business days. Basic members pay $5.00 for a replacement. Plus and Premium replacements are\n\n[card-activate] Activating your card (effective 2025-01-01)\nuse it online or in a mobile wallet while you wait. It has its own number, so you don't need to update it when the physical card shows up.\n\n## If activation fails\n\nCheck that you're activating the newest card. An old or replaced card can't be activated. If your card hasn't arrived within 10 business days of ordering it, message support so we can cancel it and send another one.\n\nReplacement cards need activating too. For a damaged card, your old card keeps working until you activate the new one.\n\nQuestions? Our support team is available in the app at any\n\nCustomer question:\nmy card never showed up and it's been like 2 weeks",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1286,
+    "latency_ms": 1430.5808750214055,
+    "model": "gpt-6-luna",
+    "output_tokens": 75,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"If it was a standard card and it’s been 10 business days since it was mailed, message support in the app. They’ll cancel the card in transit and send a replacement at no fee. Check the app for the date it was mailed.\",\"citations\":[\"card-delivery\"],\"abstain\":false}"
+  }
+}

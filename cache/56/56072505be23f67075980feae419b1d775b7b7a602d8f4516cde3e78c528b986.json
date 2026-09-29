@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Wire fees on Plus\n\nHere's what wires cost on the Plus plan.\n\n| Wire | Fee |\n|---|---|\n| Outgoing domestic | $15.00 |\n| Outgoing international | $35.00 |\n| Incoming domestic | free |\n| Incoming international | $10.00 |\n\nYou can send up to $10,000 a day in domestic wires on Plus.\n\n## Cutoff times\n\nDomestic wires sent before 3:00 PM ET on a business day go out the same day.\nInternational wires sent before 1:00 PM ET go out the same day and arrive in 1 to 5 business days.\n\n## Before you send\n\nWires can't be cancelled once they're sent. Check the recipient's name, bank and account number carefully. Be wary of anyone who pressures you to wire money quickly, especially someone you've only met online.\n\nOther banks involved in the wire may charge their own fees, which can reduce the amount the recipient gets. We show our fee before you confirm.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nPM ET go out the same day and arrive in 1 to 5 business days.\n\n## Before you send\n\nWires can't be cancelled once they're sent. Check the recipient's name, bank and account number carefully. Be wary of anyone who pressures you to wire money quickly, especially someone you've only met online.\n\nOther banks involved in the wire may charge their own fees, which can reduce the amount the recipient gets. We show our fee before you confirm.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 396,
+    "latency_ms": 2639.658375061117,
+    "model": "gpt-6-luna",
+    "output_tokens": 62,
+    "reasoning_tokens": 0,
+    "text": "On the Plus plan, international wires sent before 1:00 PM ET arrive in 1–5 business days. Wires can’t be cancelled once sent; verify recipient details and watch for scam pressure. Other banks may charge fees, and in-app support is available around the clock."
+  }
+}

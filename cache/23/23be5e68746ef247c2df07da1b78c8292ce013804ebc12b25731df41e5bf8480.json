@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Finding your account and routing numbers\n\nYour routing number and account number are in the app under Account details. You'll need them for direct deposit, to link Tallowbrook at another bank, or to receive a wire.\n\n## Where to find them\n\nTap Profile, then Account details. Tap the eye icon to show the full account number. The app asks you to confirm it's you first.\n\n## Card number versus account number\n\nYour card number is different from your account number. Don't give your card number to an employer for direct deposit.\n\n## Keeping them safe\n\nOnly give your account and routing numbers to people and companies you trust, such as your employer. Someone with these numbers can try to pull money by ACH. If that happens, you can dispute it.\n\n## Support won't read them out\n\nFor security, support won't read your full account number or card number to you in chat or on the phone. You can always see them in the app.\n\n## Wire instructions\n\nFor incoming wires, use the Wire instructions screen under Account details, which also shows our SWIFT code for international wires.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nKeeping them safe\n\nOnly give your account and routing numbers to people and companies you trust, such as your employer. Someone with these numbers can try to pull money by ACH. If that happens, you can dispute it.\n\n## Support won't read them out\n\nFor security, support won't read your full account number or card number to you in chat or on the phone. You can always see them in the app.\n\n## Wire instructions\n\nFor incoming wires, use the Wire instructions screen under Account details, which also shows our SWIFT code for international wires.\n\nQuestions? Our support team\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 416,
+    "latency_ms": 1318.5636659618467,
+    "model": "gpt-6-luna",
+    "output_tokens": 39,
+    "reasoning_tokens": 0,
+    "text": "Explains how to keep account and routing numbers safe, why support won’t provide full numbers, and where to find incoming wire instructions and the SWIFT code in the app."
+  }
+}

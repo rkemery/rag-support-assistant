@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Documents for identity verification\n\nTo verify your identity, we need a photo ID and a selfie, plus a few details.\n\n## Photo IDs we accept\n\n- US driver's license or state ID card\n- US passport or passport card\n- Permanent resident card\n- Foreign passport, together with an ITIN\n\nThe ID must be unexpired, and all four corners must be visible in the photo.\n\n## Selfie\n\nThe app asks you to take a short selfie video to match your face to the ID. Remove glasses and hats, and use good light.\n\n## Details\n\nYour legal name, date of birth, residential address and Social Security number or ITIN. Your name must match your ID.\n\n## Proof of address\n\nIf we can't confirm your address automatically, we'll ask for a document dated within the last 90 days, such as a utility bill, lease or bank statement.\n\n## What we don't accept\n\nExpired IDs, photocopies, student IDs, or screenshots of an ID.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\ngood light.\n\n## Details\n\nYour legal name, date of birth, residential address and Social Security number or ITIN. Your name must match your ID.\n\n## Proof of address\n\nIf we can't confirm your address automatically, we'll ask for a document dated within the last 90 days, such as a utility bill, lease or bank statement.\n\n## What we don't accept\n\nExpired IDs, photocopies, student IDs, or screenshots of an ID.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 383,
+    "latency_ms": 1602.3529169615358,
+    "model": "gpt-6-luna",
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "text": "Identity verification requirements include providing personal details and, if needed, recent proof of address; the document also lists unacceptable ID types and how to contact support."
+  }
+}

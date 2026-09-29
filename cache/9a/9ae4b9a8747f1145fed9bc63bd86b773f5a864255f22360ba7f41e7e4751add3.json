@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[fee-refunds] Asking for a fee refund (effective 2025-01-01)\nSupport can refund some fees. There are two kinds of refund.\n\n## Fees charged in error\n\nIf we charged a fee your plan doesn't have, or charged the same fee twice, we refund it. There's no limit on these refunds and they don't count toward anything else.\n\n## Goodwill refunds\n\nOnce in any rolling 12-month period, support can refund one fee of up to $25.00 as a courtesy, even if it was charged correctly. That covers ATM fees, foreign transaction fees, card replacement and expedited shipping fees, wire fees and cash deposit fees.\n\nPlan\n\n[support-what-we-can-do] What our support team can help with (effective 2025-01-01)\nteams reply within 2 business days.\n\n## Support can't\n\n- Act for, or share details with, anyone other than the account holder\n- Give investment, tax or legal advice\n- Raise limits\n- Refund fees outside the refund policy, or open disputes after their window\n\nQuestions? Our support team is available in the app at any hour.\n\n[fee-refunds] Asking for a fee refund (effective 2025-01-01)\ncard replacement and expedited shipping fees, wire fees and cash deposit fees.\n\nPlan fees aren't eligible for goodwill refunds. They have their own cooling-off rule instead.\n\n## What support can't do\n\nSupport can't refund a second fee as goodwill within 12 months, can't refund a single fee above $25.00 as goodwill, and can't make exceptions to these rules. If you think a fee was charged in error, tell us why and we'll check.\n\n## How to ask\n\nOpen the fee in your activity feed, tap Get help, and choose Question about a fee.\n\n[fee-refunds] Asking for a fee refund (effective 2025-01-01)\nin your activity feed, tap Get help, and choose Question about a fee. Refunds show up in your balance right away.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[plan-fee-refunds] Refunds of plan fees (effective 2025-01-01)\nminutes.\n\n## What isn't refunded\n\nOutside the cooling-off period, plan fees aren't refunded or prorated. That includes the month in which you downgrade and the month in which you close your account.\n\n## How to ask\n\nMessage support in the app and say you'd like to cancel your paid plan under the cooling-off period. Support can process it for you straight away.\n\nQuestions? Our support team is available in the app at any hour.\n\n[support-merchant-refunds] When will my refund arrive? (effective 2025-01-01)\ndays have passed, ask the merchant for the refund reference number, sometimes called an ARN, and message support. We can trace it.\n\n## Refunds to a cancelled card\n\nRefunds to a card you've replaced still reach your account. You don't need to give the merchant your new card.\n\n## Refunds in a foreign currency\n\nForeign refunds are converted on the day they settle, so the amount can differ slightly from what you paid.\n\n## Merchant won't refund?\n\nYou may be able to file a merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed\n\n[disputes-duplicate] Charged twice for the same thing (effective 2025-01-01)\napp as a duplicate. Tap the transaction, then Get help, then Charged twice.\n\n## Duplicate fees\n\nIf we charged you the same fee twice, message support. A fee charged in error is always refunded.\n\n## Time limit\n\nDuplicate charges follow the merchant dispute window: 120 days from the transaction date.\n\n## Split payments\n\nSome merchants split one order into several charges, for example when items ship separately. Check your order confirmation before you dispute.\n\nNeed more help? Message us in the app any time, day or night.\n\n[atm-cash-not-dispensed] ATM didn't give me my cash (effective 2025-01-01)\nwithin 60 days. Tap the transaction, then Get help, then Cash not dispensed.\n\n## What happens next\n\nWe ask the ATM operator for its records. Most ATM cases are resolved within 10 business days. If the records show the cash wasn't dispensed, we credit the full amount, including any ATM fee we charged for that withdrawal.\n\n## Pending withdrawals\n\nYou can't dispute a withdrawal while it's still pending. Wait until it posts.\n\nQuestions? Our support team is available in the app at any hour.\n\nCustomer question:\nSupport already refunded an ATM fee for me back in May. Can they refund another one now?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1246,
+    "latency_ms": 1429.7807910479605,
+    "model": "gpt-6-luna",
+    "output_tokens": 71,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Support can’t refund a second fee as a goodwill refund within a rolling 12-month period. If the ATM fee was charged in error, though, it can still be refunded; error refunds don’t count toward the goodwill limit.\",\"citations\":[\"fee-refunds\"],\"abstain\":false}"
+  }
+}

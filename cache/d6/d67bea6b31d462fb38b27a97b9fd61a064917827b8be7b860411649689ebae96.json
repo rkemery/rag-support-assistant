@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[savings-tax-forms] Tax forms for interest (effective 2025-01-01)\nIf you earn at least $10.00 in interest during a calendar year, we send you a Form 1099-INT.\n\n## When it's available\n\nBy January 31 of the following year. You'll find it in the app under Profile, then Documents, then Tax forms. We'll notify you when it's ready.\n\n## Earned less?\n\nIf you earned less than the threshold, we don't send a form, but the interest is still shown on your monthly statements. You may still need to report it.\n\n## Premium ATM surcharge refunds and bonuses\n\nATM surcharge\n\n[savings-tax-forms] Tax forms for interest (effective 2025-01-01)\nreport it.\n\n## Premium ATM surcharge refunds and bonuses\n\nATM surcharge refunds aren't interest and don't appear on the form. Referral bonuses may be reported separately.\n\n## Tax questions\n\nWe can't give tax advice. For questions about how to report interest, talk to a tax professional.\n\n## Wrong details on the form\n\nIf your name or taxpayer ID on the form is wrong, message support. Changes to your legal name or taxpayer ID go to our Verification team.\n\nNeed more help? Message us in the app any time, day or night.\n\n[products-business] Business accounts (effective 2025-01-01)\nNo. Tallowbrook only offers personal accounts. We don't offer business accounts for companies, partnerships, nonprofits or sole proprietors.\n\n## Using a personal account for business\n\nPersonal accounts are for personal use. Small amounts of freelance or side income are fine, such as getting paid for occasional gigs. Running a business's regular payments through a personal account isn't allowed, and could lead to a review of your account.\n\n## Business payments into your account\n\nYou can receive payments from a business, such as your employer or a client, into your personal account.\n\n## Business debit cards\n\nYour Tallowbrook card\n\n[support-no-advice] Financial advice (effective 2025-01-01)\nand Savings Pockets work\n- Fees and limits on each plan, so you can decide which suits you\n- Your statements and tax forms\n\n## Where to get advice\n\nFor advice about your situation, talk to a qualified financial adviser, tax professional or lawyer.\n\n## Investing\n\nTallowbrook doesn't offer investment or brokerage accounts. See \"Investing and cryptocurrency\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-how-to-file] How to file a dispute (effective 2026-01-15)\nMost disputes can be filed yourself in the app in a couple of minutes. Support can also file one for you.\n\n## File it yourself\n\n1. Tap the transaction in your activity feed.\n2. Tap Get help and choose the reason.\n3. Answer the questions and add any documents.\n\n## Before you file\n\n- The transaction must have posted. Pending transactions can't be disputed.\n- Unauthorized transactions: within 60 days of the statement date, and the card must be frozen or reported first.\n- Merchant problems: within 120 days of the transaction date, after contacting the merchant.\n\n##\n\n[close-statements] Statements after closing (effective 2025-01-01)\nAfter you close your account, you can still sign in and download statements for 90 days.\n\n## Download them before you go\n\nWe recommend downloading any statements and tax forms you might need before you close. Tap Profile, then Documents.\n\n## After that\n\nOnce the download period ends, you can't sign in. Message support from the sign-in screen, or email us, and we'll send the statements you need. We keep records for seven years.\n\n## Tax forms\n\nIf you earned at least $10.00 in interest in the year you closed, we still send your 1099-INT\n\n[products-business] Business accounts (effective 2025-01-01)\ninto your personal account.\n\n## Business debit cards\n\nYour Tallowbrook card is a personal debit card. It can't carry a business name.\n\n## Tax forms\n\nWe only issue interest tax forms. We can't issue forms for business income.\n\n## Looking for a business account?\n\nYou'll need a bank that offers business accounts. We can't recommend a specific one.\n\nQuestions? Our support team is available in the app at any hour.\n\n[support-no-advice] Financial advice (effective 2025-01-01)\nOur support team can explain how Tallowbrook products work, but we can't give financial, investment, tax or legal advice.\n\n## What we can't help with\n\n- Whether to invest, save or pay down debt\n- Which stocks, funds or cryptocurrencies to buy or sell\n- How much of your money to keep in savings\n- How to report interest or other income on your taxes\n- Legal questions about wills, divorce or disputes with other people\n\n## What we can help with\n\n- How our savings rates and Savings Pockets work\n- Fees and limits on each plan, so you\n\nCustomer question:\nHow do I file taxes on my freelance income?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1325,
+    "latency_ms": 1188.8965420657769,
+    "model": "gpt-6-luna",
+    "output_tokens": 45,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"The help center can’t advise you on how to report freelance income on your taxes. Please speak with a tax professional.\",\"citations\":[],\"abstain\":true}"
+  }
+}

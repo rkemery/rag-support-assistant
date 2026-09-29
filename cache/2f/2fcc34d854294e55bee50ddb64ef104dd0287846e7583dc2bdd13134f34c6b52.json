@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[fx-fees-basic] Foreign transaction fees on Basic (effective 2025-01-01)\nOn the Basic plan, the foreign transaction fee is 3% of the purchase amount in US dollars.\n\n## When it applies\n\n- Purchases in a foreign currency, in a store or online\n- Purchases in US dollars processed by a merchant outside the US\n\nIt doesn't apply to ATM withdrawals abroad. Those have the international ATM fee instead.\n\n## Example\n\nIf a purchase converts to a given dollar amount, the fee is 3% of that amount. It's added as a separate line in your activity feed, called \"Foreign transaction fee\", on the same day the purchase\n\n[fx-fees-plus-v1] Foreign transaction fees on Plus (effective 2025-01-01)\nOn the Plus plan, the foreign transaction fee is 1.5% of the purchase amount in US dollars.\n\n## When it applies\n\n- Purchases in a foreign currency, in a store or online\n- Purchases in US dollars processed by a merchant outside the US\n\nIt doesn't apply to ATM withdrawals abroad. Those have the international ATM fee instead.\n\n## Example\n\nIf a purchase converts to a given dollar amount, the fee is 1.5% of that amount. It's added as a separate line in your activity feed, called \"Foreign transaction fee\", on the same\n\n[fx-fees-plus-v2] Foreign transaction fees on Plus (effective 2026-03-01)\nOn the Plus plan, the foreign transaction fee is 1% of the purchase amount in US dollars.\n\n## When it applies\n\n- Purchases in a foreign currency, in a store or online\n- Purchases in US dollars processed by a merchant outside the US\n\nIt doesn't apply to ATM withdrawals abroad. Those have the international ATM fee instead.\n\n## Example\n\nIf a purchase converts to a given dollar amount, the fee is 1% of that amount. It's added as a separate line in your activity feed, called \"Foreign transaction fee\", on the same day the purchase\n\n[fx-fees-premium] Foreign transaction fees on Premium (effective 2025-01-01)\nOn the Premium plan, the foreign transaction fee is 0% of the purchase amount in US dollars.\n\n## When it applies\n\n- Purchases in a foreign currency, in a store or online\n- Purchases in US dollars processed by a merchant outside the US\n\nIt doesn't apply to ATM withdrawals abroad. Those have the international ATM fee instead.\n\n## Example\n\nOn Premium, a purchase abroad costs exactly the converted amount. No fee is added.\n\n## Exchange rate\n\nWe use the card network's rate on the day the transaction settles, with no markup. Choose the local currency when a\n\n[atm-abroad] Using ATMs abroad (effective 2025-01-01)\nYour Tallowbrook card works at ATMs abroad that accept Visa.\n\n## What it costs\n\n| Plan | International ATM fee |\n|---|---|\n| Basic | $3.00 |\n| Plus | $3.00 |\n| Premium | free |\n\nThe international ATM fee replaces the out-of-network fee for withdrawals outside the US. The foreign transaction fee doesn't apply to ATM withdrawals. It only applies to purchases.\n\nThe ATM owner may add its own surcharge. Premium surcharge reimbursement covers ATMs abroad too, up to the same monthly cap.\n\n## Pick the local currency\n\nIf the\n\n[travel-card-abroad] Using your card abroad (effective 2025-01-01)\nYour Tallowbrook card works in most countries, anywhere Visa is accepted.\n\n## Before you go\n\n- Keep notifications on for the app so you can answer fraud alerts quickly.\n- Make sure International purchases is switched on under Cards, then Controls.\n- Check your plan's foreign transaction and international ATM fees.\n- Add a virtual card to your phone's wallet as a backup.\n\n## What it costs\n\nPurchases in a foreign currency carry a foreign transaction fee of 3% on Basic, 1% on Plus and 0% on Premium. ATM withdrawals abroad have their own international ATM fee\n\n[travel-dcc] Paying in local currency or dollars (effective 2025-01-01)\nAbroad, card terminals and ATMs sometimes offer to charge you in US dollars instead of the local currency. This is called dynamic currency conversion. It sounds convenient, but it's almost always more expensive.\n\n## What to choose\n\nAlways choose the local currency. Then the conversion happens at the card network's rate, plus your plan's foreign transaction fee.\n\n## Why dollars cost more\n\nIf you pick US dollars, the merchant or ATM owner converts the amount using its own rate, which usually includes a markup. Your plan's foreign transaction fee may still apply, because the merchant is still\n\n[travel-dcc] Paying in local currency or dollars (effective 2025-01-01)\nYour plan's foreign transaction fee may still apply, because the merchant is still abroad.\n\n## Online shopping\n\nForeign websites sometimes show prices in dollars using their own conversion. If you can switch the site to its home currency, that's usually cheaper.\n\n## Already paid in dollars?\n\nDynamic currency conversion isn't a reason to dispute a purchase, because you agreed to it at the terminal. Next time, choose the local currency.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\nCustomer question:\nDoes the foreign transaction fee apply when I take cash out of an ATM abroad?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1406,
+    "latency_ms": 1840.6653329730034,
+    "model": "gpt-6-luna",
+    "output_tokens": 88,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. The foreign transaction fee applies to purchases, not ATM withdrawals abroad. Those withdrawals have a separate international ATM fee: $3 on Basic and Plus, and free on Premium; the ATM owner may also charge a surcharge.\",\"citations\":[\"atm-abroad\",\"fx-fees-basic\",\"fx-fees-plus-v2\",\"fx-fees-premium\"],\"abstain\":false}"
+  }
+}

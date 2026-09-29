@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# The Premium metal card\n\nPremium members get a metal debit card. It works exactly like the plastic card, with the same number, limits and controls.\n\n## Getting your metal card\n\nWhen you upgrade to Premium, the app asks whether you want a metal card now or at your next renewal. If you order it now, your current card keeps working until you activate the metal one.\n\n## Replacing it\n\nReplacements for a lost, stolen or damaged metal card are metal and free on Premium. Expedited shipping is free on Premium too, and takes 2 to 3 business days.\n\n## If you leave Premium\n\nYour metal card keeps working until it expires. After that, or if you need a replacement, you'll get a plastic card.\n\n## Disposal\n\nMetal cards can't be cut with scissors. When you replace one, you can mail it back to us in the prepaid envelope that comes with the new card, and we'll recycle it.\n\nContactless works on metal cards the same way it does on plastic.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nPremium members get a metal debit card. It works exactly like the plastic card, with the same number, limits and controls.\n\n## Getting your metal card\n\nWhen you upgrade to Premium, the app asks whether you want a metal card now or at your next renewal. If you order it now, your current card keeps working until you activate the metal one.\n\n## Replacing it\n\nReplacements for a lost, stolen or damaged metal card are metal and free on Premium. Expedited shipping is free on Premium too, and takes 2 to 3 business days.\n\n## If you leave Premium\n\nYour\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 406,
+    "latency_ms": 3891.2937080021948,
+    "model": "gpt-6-luna",
+    "output_tokens": 33,
+    "reasoning_tokens": 0,
+    "text": "The Premium metal card overview explains how to get one, replacement and expedited-shipping benefits, and what happens to the card when you leave Premium."
+  }
+}

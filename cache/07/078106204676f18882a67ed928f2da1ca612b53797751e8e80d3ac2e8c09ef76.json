@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Freezing and unfreezing your card\n\nFreezing your card blocks new purchases and ATM withdrawals straight away. It's the fastest thing to do if you've misplaced your card and think you might find it again.\n\n## How to freeze or unfreeze\n\nTap Cards, choose the card, and switch Freeze card on. Switch it off to unfreeze. Both happen instantly, and you can do it as often as you like.\n\n## What still works while frozen\n\n- Recurring payments to merchants you've already authorized, such as subscriptions\n- Refunds from merchants\n- Deposits and incoming transfers\n- Your virtual card, which has its own freeze switch\n\n## Freeze or report lost?\n\nIf you're sure the card is gone or stolen, report it lost or stolen instead. That cancels the card permanently and lets you order a replacement. A freeze is temporary and reversible.\n\n## Freeze versus fraud lock\n\nIf the app says your card is locked by Tallowbrook, that's a fraud lock, not a freeze. You can't remove a fraud lock with the freeze switch. See \"Why is my card locked by Tallowbrook?\".\n\nSupport can also freeze or unfreeze your card for you if you ask in the app.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nremove a fraud lock with the freeze switch. See \"Why is my card locked by Tallowbrook?\".\n\nSupport can also freeze or unfreeze your card for you if you ask in the app.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 386,
+    "latency_ms": 1242.2990840859711,
+    "model": "gpt-6-luna",
+    "output_tokens": 40,
+    "reasoning_tokens": 0,
+    "text": "This section explains that a Tallowbrook fraud lock cannot be removed with the card’s freeze switch, and that support can freeze or unfreeze cards or help through in-app chat."
+  }
+}

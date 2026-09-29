@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[security-scam-payment] If you sent money to a scammer (effective 2025-01-01)\na purchase with a merchant\".\n\nThe Fraud team usually replies within 2 business days.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[security-scams] Common scams to watch for (effective 2025-01-01)\nthe chance of stopping or recovering the money, although we can't promise that. See \"If you sent money to a scammer\".\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[support-merchant-refunds] When will my refund arrive? (effective 2025-01-01)\na merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[security-scam-payment] If you sent money to a scammer (effective 2025-01-01)\nIf you sent a BrookPay payment, a transfer or a wire and then realized it was a scam, tell us right away.\n\n## What we can do\n\nSupport will pass your report to our Fraud team. They'll contact the receiving account or bank and try to recover the money. BrookPay payments can't be reversed, so recovery depends on the money still being in the other account. We can't promise to get it back.\n\n## What to include\n\n- The payment and the date\n- How you were contacted and what you were told\n- Screenshots of messages,\n\n[security-scam-payment] If you sent money to a scammer (effective 2025-01-01)\nHow you were contacted and what you were told\n- Screenshots of messages, and any names, numbers or websites\n\n## Protect yourself now\n\n- If you shared a password or code, change your password.\n- Don't send more money to get the first payment back. That's a common second scam.\n- Report the scam to the police.\n\n## Card payments are different\n\nIf you paid a scammer by card, you may be able to dispute the purchase with the merchant. See \"Disputing a purchase with a merchant\".\n\nThe Fraud team usually replies within 2\n\n[cushion-plus] Cushion on Plus (effective 2025-01-01)\nloan and isn't reported to credit bureaus.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[disputes-merchant-v2] Disputing a purchase with a merchant (effective 2026-01-15)\nyou don't recognize at all are a different kind of dispute. See \"Disputing a transaction you didn't make\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-pending] Why can't I dispute a pending transaction? (effective 2025-01-01)\nlook at it.\n\nQuestions? Our support team is available in the app at any hour.\n\nCustomer question:\nItem came broken and the seller won't answer my emails. can i get my money back thru you guys?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 920,
+    "latency_ms": 2045.306041953154,
+    "model": "gpt-6-luna",
+    "output_tokens": 59,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"You may be able to dispute the card purchase with the merchant. The help center excerpt doesn’t include the steps or explain whether a refund is guaranteed.\",\"citations\":[\"disputes-merchant-v2\"],\"abstain\":false}"
+  }
+}

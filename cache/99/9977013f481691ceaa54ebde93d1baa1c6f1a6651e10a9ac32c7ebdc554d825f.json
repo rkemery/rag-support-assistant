@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Refunds of plan fees\n\nWe refund the first paid plan charge on your account in full if you leave the paid plan within 14 days of that charge. We call this the cooling-off period.\n\n## How it works\n\n- It applies only to the first paid plan charge your account has ever had. Later charges, even after switching plans, aren't covered.\n- When you ask for the refund, your plan returns to Basic right away rather than on your next billing date.\n- The refund goes back to your main balance, usually within minutes.\n\n## What isn't refunded\n\nOutside the cooling-off period, plan fees aren't refunded or prorated. That includes the month in which you downgrade and the month in which you close your account.\n\n## How to ask\n\nMessage support in the app and say you'd like to cancel your paid plan under the cooling-off period. Support can process it for you straight away.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nminutes.\n\n## What isn't refunded\n\nOutside the cooling-off period, plan fees aren't refunded or prorated. That includes the month in which you downgrade and the month in which you close your account.\n\n## How to ask\n\nMessage support in the app and say you'd like to cancel your paid plan under the cooling-off period. Support can process it for you straight away.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 350,
+    "latency_ms": 1182.6387089677155,
+    "model": "gpt-6-luna",
+    "output_tokens": 64,
+    "reasoning_tokens": 0,
+    "text": "This is part of the policy on refunds for paid plan fees. The first-ever paid plan charge is fully refundable if you cancel within 14 days; later charges are not refunded or prorated. To request a cooling-off refund, contact support in the app, and your plan returns to Basic immediately."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Basic plan fee schedule\n\nHere is every fee that can apply to a Basic account, effective January 1, 2025. Fees are taken from your main balance when they're charged and show up in your activity feed with the word \"Fee\".\n\n| Fee | Amount |\n|---|---|\n| Monthly fee | $0.00 |\n| Out-of-network ATM withdrawal | $2.00 |\n| International ATM withdrawal | $3.00 |\n| Foreign transaction fee | 3% |\n| Card replacement | $5.00 |\n| Expedited card shipping | $25.00 |\n| Outgoing domestic wire | $25.00 |\n| Outgoing international wire | not available |\n| Incoming international wire | $10.00 |\n| Cash deposit at a retail store | $3.00 |\n\n## Details\n\nBrookLink ATMs are always free. The out-of-network fee applies to every withdrawal at any other ATM in the US.\n\nOutgoing international wires aren't available on this plan.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nExpedited card shipping | $25.00 |\n| Outgoing domestic wire | $25.00 |\n| Outgoing international wire | not available |\n| Incoming international wire | $10.00 |\n| Cash deposit at a retail store | $3.00 |\n\n## Details\n\nBrookLink ATMs are always free. The out-of-network fee applies to every withdrawal at any other ATM in the US.\n\nOutgoing international wires aren't available on this plan.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 429,
+    "latency_ms": 1409.5186250051484,
+    "model": "gpt-6-luna",
+    "output_tokens": 45,
+    "reasoning_tokens": 0,
+    "text": "This chunk is from the Basic account fee schedule, effective January 1, 2025. It lists card shipping, wire transfer, and retail cash deposit fees, and explains ATM and other fee policies."
+  }
+}

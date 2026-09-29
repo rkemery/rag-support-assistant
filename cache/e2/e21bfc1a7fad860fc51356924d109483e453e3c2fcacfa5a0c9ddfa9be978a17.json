@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[travel-card-abroad] Using your card abroad (effective 2025-01-01)\nYour Tallowbrook card works in most countries, anywhere Visa is accepted.\n\n## Before you go\n\n- Keep notifications on for the app so you can answer fraud alerts quickly.\n- Make sure International purchases is switched on under Cards, then Controls.\n- Check your plan's foreign transaction and international ATM fees.\n- Add a virtual card to your phone's wallet as a backup.\n\n## What it costs\n\nPurchases in a foreign currency carry a foreign transaction fee of 3% on Basic, 1% on Plus and 0% on Premium. ATM withdrawals abroad have their own international ATM fee\n\n[travel-blocked-regions] Countries where cards don't work (effective 2025-01-01)\nyou're in a country that isn't sanctioned and your card is declined, the cause is more likely a fraud check, your card controls, or your balance. See \"Why was my card declined?\".\n\n## Sending money abroad\n\nInternational wires to sanctioned countries are also blocked. Wires to other countries may still be reviewed before they're sent.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[card-declined] Why was my card declined? (effective 2025-01-01)\non Premium. Limits can't be raised except by changing plan.\n\n## Card settings\n\nCheck that the card is activated and isn't frozen, and that the right controls are on. If international purchases are switched off, foreign merchants will decline, even for online orders.\n\n## Fraud checks\n\nIf our systems think a purchase looks unusual, we decline it and send a fraud alert. Confirm the alert in the app and try again. If you don't answer, the card may stay locked.\n\n## Where you are\n\nCards don't work in comprehensively sanctioned countries and regions.\n\nIf none of these\n\n[card-declined] Why was my card declined? (effective 2025-01-01)\ndon't work in comprehensively sanctioned countries and regions.\n\nIf none of these explain it, message support with the merchant name and time of the purchase.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[travel-blocked-regions] Countries where cards don't work (effective 2025-01-01)\nTallowbrook cards don't work in comprehensively sanctioned countries and regions. Purchases, ATM withdrawals and online orders from merchants based there are declined.\n\n## Why\n\nUS banks and card programs must follow US sanctions rules. We can't make exceptions, and support can't unblock a sanctioned location for you.\n\n## Signing in from abroad\n\nYou can usually use the app from anywhere, but access from a sanctioned location may be blocked and could lead to a review of your account.\n\n## Declined somewhere else?\n\nIf you're in a country that isn't sanctioned and your card is declined,\n\n[travel-card-abroad] Using your card abroad (effective 2025-01-01)\nand 0% on Premium. ATM withdrawals abroad have their own international ATM fee instead.\n\n## Paying in the local currency\n\nWhen a card terminal asks whether to pay in US dollars or the local currency, choose the local currency.\n\n## If your card is lost abroad\n\nFreeze it in the app and report it. Standard and expedited shipping only go to US addresses. Premium members can get an emergency card delivered abroad. Everyone else can keep spending with a virtual card in a mobile wallet.\n\nDo you need to tell us you're traveling? No. See \"Do I need a travel\n\n[travel-emergency-card] Emergency card while abroad (effective 2025-01-01)\nThe card is activated in the app like any other card.\n\n## Basic and Plus members\n\nEmergency cards abroad aren't available on Basic or Plus. Standard and expedited shipping only go to US addresses. Instead, add a virtual card in the app and use it in your phone's wallet while you're away. Your replacement can be sent to your US address.\n\n## Cash abroad\n\nVirtual cards can't be used at ATMs. If you need cash, you can ask someone with a Tallowbrook account to send you money by BrookPay and then use a card-free option at your destination, or\n\n[travel-notice-v1] Do I need a travel notice? (effective 2024-03-01)\nYes. Set a travel notice before you leave the US so your card isn't declined abroad.\n\n## How to set a travel notice\n\n1. Open the app and tap Profile, then Travel mode.\n2. Add each country you'll visit.\n3. Enter your departure and return dates.\n\nSet the notice at least 2 before you leave, so it reaches our fraud systems in time. One notice can cover a trip of up to 90 days. For longer trips, add a second notice before the first one ends.\n\n## If you forget\n\nPurchases abroad without a travel notice\n\nCustomer question:\nWill my card work in every country?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1300,
+    "latency_ms": 1431.095250067301,
+    "model": "gpt-6-luna",
+    "output_tokens": 62,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. Your Tallowbrook card works in most countries where Visa is accepted, but cards don’t work in comprehensively sanctioned countries and regions. \",\"citations\":[\"travel-card-abroad\",\"travel-blocked-regions\"],\"abstain\":false}"
+  }
+}

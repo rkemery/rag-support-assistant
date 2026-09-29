@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Card expiry and renewal\n\nWe mail a new card automatically about 30 days before your current card expires. You don't need to ask for it.\n\n## What changes\n\nThe renewed card has the same card number, a new expiry date and a new security code. Most merchants that store your card get the new expiry date automatically, but some don't, so check your subscriptions.\n\n## What to do when it arrives\n\nActivate the new card in the app. Your old card keeps working until you activate the new one or until it expires, whichever comes first.\n\n## If it doesn't arrive\n\nCheck that your address in the app is current. If your old card expires and the new one still hasn't arrived, message support and we'll send another one at no cost.\n\n## No renewal?\n\nIf your account is restricted or under review, we can't send a renewal card until that's resolved.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\ncomes first.\n\n## If it doesn't arrive\n\nCheck that your address in the app is current. If your old card expires and the new one still hasn't arrived, message support and we'll send another one at no cost.\n\n## No renewal?\n\nIf your account is restricted or under review, we can't send a renewal card until that's resolved.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 336,
+    "latency_ms": 2294.174417038448,
+    "model": "gpt-6-luna",
+    "output_tokens": 38,
+    "reasoning_tokens": 0,
+    "text": "This section of the card expiry and renewal guide explains what to do if a replacement card doesn’t arrive, why a renewal may be delayed, and how to contact support."
+  }
+}

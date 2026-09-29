@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Transfer limits on Premium\n\nThese are the transfer and deposit limits on the Premium plan.\n\n| Limit | Amount |\n|---|---|\n| ACH transfers out, per day | $10,000 |\n| ACH transfers out, per calendar month | $50,000 |\n| BrookPay, per day | $5,000 |\n| Domestic wires, per day | $25,000 |\n| Mobile check deposits, per day | $5,000 |\n| Cash deposits at stores, per day | $2,000 |\n\nDaily limits reset at midnight Eastern Time. The monthly limit resets on the first day of each calendar month.\n\n## Incoming transfers\n\nThere's no limit on money coming in by ACH, wire, direct deposit or BrookPay.\n\n## New devices\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are capped at $500.\n\n## Need more?\n\nLimits are set by plan. Support can't raise them, even for one transfer. Changing plan is the only way to get higher limits.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nreset at midnight Eastern Time. The monthly limit resets on the first day of each calendar month.\n\n## Incoming transfers\n\nThere's no limit on money coming in by ACH, wire, direct deposit or BrookPay.\n\n## New devices\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are capped at $500.\n\n## Need more?\n\nLimits are set by plan. Support can't raise them, even for one transfer. Changing plan is the only way to get higher limits.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 404,
+    "latency_ms": 1439.6469159983099,
+    "model": "gpt-6-luna",
+    "output_tokens": 61,
+    "reasoning_tokens": 0,
+    "text": "Premium-plan transfer limits: daily limits reset at midnight Eastern Time, and the monthly ACH limit resets on the first of each month. Incoming transfers have no limit. New-device transfers are capped at $500 for 24 hours; higher limits require changing plans, as support cannot raise them."
+  }
+}

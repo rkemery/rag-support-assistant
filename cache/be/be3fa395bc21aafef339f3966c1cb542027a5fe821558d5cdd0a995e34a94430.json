@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[plans-compare] Compare plans: features and limits (effective 2026-06-01)\nto $50.00 | up to $200 |\n| Daily card spending | $3,000 | $5,000 | $10,000 |\n| Daily ATM withdrawals | $500 | $1,000 | $1,500 |\n| Daily ACH transfers out | $2,500 | $5,000 | $10,000 |\n| Outgoing international wires | not available | yes | yes |\n| Emergency card abroad | no | no | yes |\n\nFees are listed in the article \"Fees for all plans\". This page covers features and limits only.\n\n##\n\n[plan-basic] The Basic plan (effective 2026-06-01)\n**Expedited card shipping:** $25.00\n- **Savings Pockets:** 0.50% APY\n- **Cushion:** not available on Basic\n- **Daily card spending limit:** $3,000\n- **Daily ATM limit:** $500\n\n## Good to know\n\nInternational wires aren't available on Basic. You can still receive them. If you travel or send money abroad often, Plus or Premium will usually cost less over a year.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away. Downgrades\n\n[card-declined] Why was my card declined? (effective 2025-01-01)\nIf a purchase was declined, the app usually tells you why in the activity feed. These are the most common reasons.\n\n## Not enough money\n\nWe don't let your balance go negative on most transactions, so a purchase larger than your balance is declined. There's no fee for that. Plus and Premium members with Cushion may be covered for small debit card purchases.\n\n## Your daily limit\n\nDaily card spending limits are $3,000 on Basic, $5,000 on Plus and $10,000 on Premium. Limits can't be raised except by changing plan.\n\n## Card\n\n[atm-limits] ATM withdrawal limits (effective 2025-01-01)\nHow much cash you can take out each day depends on your plan. The limit covers all ATMs combined, in the US and abroad.\n\n| Plan | Daily ATM limit |\n|---|---|\n| Basic | $500 |\n| Plus | $1,000 |\n| Premium | $1,500 |\n\nThe daily limit resets at midnight Eastern Time.\n\n## Can I raise my limit?\n\nNo. Limits are set by plan, and support can't raise them for a day or make exceptions. The only way to get a higher limit is to change plan.\n\n## ATM limits versus the ATM's own\n\n[plans-compare] Compare plans: features and limits (effective 2026-06-01)\nAll three plans come with a Visa debit card, the Tallowbrook app, BrookPay transfers to other members, Savings Pockets and support around the clock. They differ in fees, limits and a few features.\n\n| Feature | Basic | Plus | Premium |\n|---|---|---|---|\n| Card | plastic | plastic | metal |\n| Savings APY | 0.50% | 2.00% | 3.75% |\n| Cushion | not available | up to $50.00 | up to $200 |\n| Daily card spending |\n\n[plan-premium] The Premium plan (effective 2026-06-01)\n**Expedited card shipping:** free\n- **Savings Pockets:** 3.75% APY\n- **Cushion:** fee-free coverage up to $200 on debit card purchases\n- **Daily card spending limit:** $10,000\n- **Daily ATM limit:** $1,500\n\n## Good to know\n\nPremium members can get an emergency replacement card delivered abroad within 3 business days at no cost. Your card is metal, and replacements are metal too.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away.\n\n[plan-plus] The Plus plan (effective 2026-06-01)\n**Card replacement:** free\n- **Expedited card shipping:** $25.00\n- **Savings Pockets:** 2.00% APY\n- **Cushion:** fee-free coverage up to $50.00 on debit card purchases\n- **Daily card spending limit:** $5,000\n- **Daily ATM limit:** $1,000\n\n## Good to know\n\nPlus includes outgoing international wires for $35.00 each. Your card is plastic, like Basic. Upgrade to Premium if you want the metal card.\n\nYou can change plans any time in the app\n\n[transfer-limits-basic] Transfer limits on Basic (effective 2025-01-01)\nThese are the transfer and deposit limits on the Basic plan.\n\n| Limit | Amount |\n|---|---|\n| ACH transfers out, per day | $2,500 |\n| ACH transfers out, per calendar month | $10,000 |\n| BrookPay, per day | $1,000 |\n| Domestic wires, per day | $5,000 |\n| Mobile check deposits, per day | $1,000 |\n| Cash deposits at stores, per day | $1,000 |\n\nDaily limits reset at midnight Eastern Time. The monthly limit resets on the first day of each\n\nCustomer question:\nwhat are the daily card spending limits on each plan",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1402,
+    "latency_ms": 1360.5261660413817,
+    "model": "gpt-6-luna",
+    "output_tokens": 52,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Daily card spending limits are $3,000 on Basic, $5,000 on Plus, and $10,000 on Premium.\",\"citations\":[\"plans-compare\"],\"abstain\":false}"
+  }
+}

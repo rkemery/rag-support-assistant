@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[security-two-step] Two-step verification (effective 2025-01-01)\nTwo-step verification is always on for Tallowbrook accounts. When you sign in on a new device, or do something sensitive, we ask for your password and a second step.\n\n## The second step\n\n- A push approval on a device you've already signed in on, or\n- A one-time code sent by text, valid for 10 minutes\n\n## When we ask\n\n- Signing in on a new device\n- Changing your password, email or phone number\n- Adding a new external account or wire recipient\n- Viewing your full virtual card number\n\n## Keep codes to yourself\n\nA\n\n[close-statements] Statements after closing (effective 2025-01-01)\nAfter you close your account, you can still sign in and download statements for 90 days.\n\n## Download them before you go\n\nWe recommend downloading any statements and tax forms you might need before you close. Tap Profile, then Documents.\n\n## After that\n\nOnce the download period ends, you can't sign in. Message support from the sign-in screen, or email us, and we'll send the statements you need. We keep records for seven years.\n\n## Tax forms\n\nIf you earned at least $10.00 in interest in the year you closed, we still send your 1099-INT\n\n[security-new-device] Signing in on a new device (effective 2025-01-01)\nWhen you sign in on a new phone or computer, we add a short safety period.\n\n## What changes\n\nFor 24 hours after the first sign-in on a new device, BrookPay payments and transfers to external accounts are limited to $500 in total. Card payments, ATM withdrawals and deposits aren't affected.\n\n## Why\n\nIf someone steals your password, the first thing they usually try is moving money out quickly. The limit gives you time to notice the sign-in alert and tell us.\n\n## Can support lift it early?\n\nNo. The limit ends on its own. Support can't\n\n[security-two-step] Two-step verification (effective 2025-01-01)\nViewing your full virtual card number\n\n## Keep codes to yourself\n\nA one-time code is only for you to type into the Tallowbrook app. Nobody from Tallowbrook will ask you to read it out. If someone asks, it's a scam.\n\n## Changed your phone number?\n\nUpdate it in the app while you still have the old number. If you've lost access to your old number, message support. We'll pass it to the team that verifies identity, which can take longer.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[account-documents] Documents for identity verification (effective 2025-01-01)\ngood light.\n\n## Details\n\nYour legal name, date of birth, residential address and Social Security number or ITIN. Your name must match your ID.\n\n## Proof of address\n\nIf we can't confirm your address automatically, we'll ask for a document dated within the last 90 days, such as a utility bill, lease or bank statement.\n\n## What we don't accept\n\nExpired IDs, photocopies, student IDs, or screenshots of an ID.\n\nQuestions? Our support team is available in the app at any hour.\n\n[security-password-reset] Resetting your password (effective 2025-01-01)\nsigned up with. If you no longer have access to that email, message support from the sign-in screen. For your security, changing the email on an account you can't sign in to needs extra checks.\n\n## After a reset\n\nOther devices are signed out. The first time you sign in on a new device, BrookPay and external transfers are limited to $500 for 24 hours.\n\nIf you didn't ask for a reset email, someone may have typed your email by mistake. If you also see a sign-in you don't recognize, see \"If someone else accessed your\n\n[account-verification-time] How long verification takes (effective 2025-01-01)\nMost applications are verified within 1 business day, and many within minutes.\n\n## Manual review\n\nIf we need to check something by hand, it can take up to 5 business days. We may ask for another document, such as proof of address.\n\n## While you wait\n\nYou can receive deposits into your new account, but you can't send money, withdraw cash or order a card until you're verified.\n\n## Checking status\n\nThe app shows your verification status on the home screen. We'll notify you as soon as it's done.\n\n## Can support speed it up?\n\nNo. Verification is\n\n[security-fraud-alerts] How fraud alerts work (effective 2025-01-01)\nIf you don't answer\n\nIf you don't answer within 24 hours, the card stays locked until you contact us.\n\n## Is this alert real?\n\nReal alerts appear inside the Tallowbrook app. A text alert only ever asks you to reply YES or NO, and never contains a link. We never ask for your card number, PIN, password or a one-time code to confirm an alert. If someone calls you about a fraud alert, hang up and open the app instead.\n\n## Too many alerts?\n\nAlerts are more common when you shop somewhere new or abroad. They get less frequent\n\nCustomer question:\nHow long is the one-time sign in code good for?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1385,
+    "latency_ms": 1318.0401669815183,
+    "model": "gpt-6-luna",
+    "output_tokens": 55,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"The one-time sign-in code is valid for 10 minutes. Keep it to yourself—Tallowbrook will never ask you to read it out.\",\"citations\":[\"security-two-step\"],\"abstain\":false}"
+  }
+}

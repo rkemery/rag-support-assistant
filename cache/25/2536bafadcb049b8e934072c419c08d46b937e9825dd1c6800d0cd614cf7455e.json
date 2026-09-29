@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[transfer-limits-basic] Transfer limits on Basic (effective 2025-01-01)\nThese are the transfer and deposit limits on the Basic plan.\n\n| Limit | Amount |\n|---|---|\n| ACH transfers out, per day | $2,500 |\n| ACH transfers out, per calendar month | $10,000 |\n| BrookPay, per day | $1,000 |\n| Domestic wires, per day | $5,000 |\n| Mobile check deposits, per day | $1,000 |\n| Cash deposits at stores, per day | $1,000 |\n\nDaily limits reset at midnight Eastern Time. The monthly limit resets on the first day of each\n\n[wires-basic] Wire fees on Basic (effective 2025-01-01)\nneed to move to Plus or Premium. You can still receive international wires on Basic.\n\n## Before you send\n\nWires can't be cancelled once they're sent. Check the recipient's name, bank and account number carefully. Be wary of anyone who pressures you to wire money quickly, especially someone you've only met online.\n\nOther banks involved in the wire may charge their own fees, which can reduce the amount the recipient gets. We show our fee before you confirm.\n\nNeed more help? Message us in the app any time, day or night.\n\n[transfers-recurring] Scheduled and recurring transfers (effective 2025-01-01)\nYou can schedule a transfer for a future date, or set one up to repeat weekly, every two weeks or monthly.\n\n## Set one up\n\nTap Transfers, choose the account, enter the amount, and tap Schedule. Pick the date and how often it repeats.\n\n## When scheduled transfers are sent\n\nOn the scheduled date, ACH transfers are sent in the batch before 4:00 PM ET. If the date falls on a weekend or holiday, they're sent the next business day.\n\n## Not enough money\n\nIf your balance is too low on the send date, the transfer is skipped\n\n[transfers-cancel] Cancelling a transfer (effective 2025-01-01)\nWhether you can cancel a transfer depends on the type of transfer and how far along it is.\n\n## Scheduled or pending ACH transfers\n\nYou can cancel a scheduled ACH transfer in the app until the ACH cutoff time (4:00 PM ET) on its send date. Tap Transfers, choose the transfer and tap Cancel. After the cutoff, the transfer is already on its way and can't be cancelled.\n\n## BrookPay\n\nBrookPay payments arrive instantly and can't be cancelled.\n\n## Wires\n\nWires can't be cancelled once sent. We can ask the receiving bank to\n\n[wires-domestic] Sending a domestic wire (effective 2025-01-01)\n| Fee | Daily limit |\n|---|---|---|\n| Basic | $25.00 | $5,000 |\n| Plus | $15.00 | $10,000 |\n| Premium | free | $25,000 |\n\n## Before you send\n\nWires can't be cancelled once sent. Double-check the details, and be careful if someone you've only met online, or someone claiming to be from a bank or the government, asks you to wire money.\n\nNeed more help? Message us in the app any time, day or night.\n\n[transfer-limits-basic] Transfer limits on Basic (effective 2025-01-01)\nreset at midnight Eastern Time. The monthly limit resets on the first day of each calendar month.\n\n## Incoming transfers\n\nThere's no limit on money coming in by ACH, wire, direct deposit or BrookPay.\n\n## New devices\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are capped at $500.\n\n## Need more?\n\nLimits are set by plan. Support can't raise them, even for one transfer. Changing plan is the only way to get higher limits.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[transfers-ach-cutoff-v2] ACH transfer cutoff times (effective 2026-05-01)\nmake the money available.\n\n## Example\n\nIf you send money on a Friday after 4:00 PM ET, it's sent on Monday (or Tuesday if Monday is a holiday).\n\n## Faster options\n\n- BrookPay transfers to other Tallowbrook members arrive in seconds, every day.\n- Domestic wires arrive the same business day if sent before the wire cutoff.\n\n## Limits\n\nDaily and monthly ACH limits depend on your plan. See the transfer limits article for your plan.\n\nQuestions? Our support team is available in the app at any hour.\n\n[transfers-ach-cutoff-v1] ACH transfer cutoff times (effective 2024-01-01)\nmake the money available.\n\n## Example\n\nIf you send money on a Friday after 2:00 PM ET, it's sent on Monday (or Tuesday if Monday is a holiday).\n\n## Faster options\n\n- BrookPay transfers to other Tallowbrook members arrive in seconds, every day.\n- Domestic wires arrive the same business day if sent before the wire cutoff.\n\n## Limits\n\nDaily and monthly ACH limits depend on your plan. See the transfer limits article for your plan.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\nCustomer question:\nI'm on Basic and need to send 4k to my landlord by ACH today. Is that possible?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1383,
+    "latency_ms": 1332.1411249926314,
+    "model": "gpt-6-luna",
+    "output_tokens": 56,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. Basic ACH transfers out are limited to $2,500 per day, so a $4,000 ACH transfer today exceeds the daily limit.\",\"citations\":[\"transfer-limits-basic\"],\"abstain\":false}"
+  }
+}

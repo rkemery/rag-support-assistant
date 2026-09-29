@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Using mobile wallets\n\nYou can add your Tallowbrook physical or virtual card to the mobile wallet on your phone or watch and pay by tapping at checkout.\n\n## Add a card\n\nIn the Tallowbrook app, tap Cards, choose the card, and tap Add to wallet. The app sends the card details straight to your wallet, so you don't have to type them.\n\n## Things to know\n\n- Your wallet uses a device-specific number instead of your card number. Merchants never see your real card number.\n- Freezing a card in the app also blocks wallet payments on that card.\n- If you report a card lost or stolen, remove it from your wallet and add the replacement once it's activated. A virtual card can be added right away.\n- Limits, fees and Cushion work the same way for wallet payments as for card payments.\n\n## If adding fails\n\nMake sure the card is activated and not frozen, and that your phone has a screen lock set. Wallets won't add a card on a device without a screen lock.\n\nIf you've lost your phone, freeze your cards from another device by signing in to the app, or message support.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nin the app also blocks wallet payments on that card.\n- If you report a card lost or stolen, remove it from your wallet and add the replacement once it's activated. A virtual card can be added right away.\n- Limits, fees and Cushion work the same way for wallet payments as for card payments.\n\n## If adding fails\n\nMake sure the card is activated and not frozen, and that your phone has a screen lock set. Wallets won't add a card on a device without a screen lock.\n\nIf you've lost your phone, freeze your cards from another device by signing in to the\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 434,
+    "latency_ms": 2132.685875054449,
+    "model": "gpt-6-luna",
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "text": "This section covers mobile wallet payment security, card replacement, fees and limits, troubleshooting failed card additions, and actions to take if a phone is lost."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[card-lost-stolen-v2] Lost or stolen card (effective 2025-11-01)\nIf your card is lost or stolen, you can deal with it in the app in a couple of minutes. You don't need to call us.\n\n## What to do\n\n1. **Freeze the card.** Tap Cards and switch Freeze card on. This stops new purchases right away.\n2. **Report it.** If you can't find it, tap Report lost or stolen. This cancels the card permanently. It can't be undone.\n3. **Add a virtual card.** You can create one in the app and use it online and in mobile wallets right away while the\n\n[card-virtual] Virtual cards (effective 2025-01-01)\nfreeze the virtual one.\n- It can't be used at ATMs.\n- Reporting your physical card lost or stolen doesn't cancel the virtual card.\n\n## Replacing a virtual card\n\nIf you think the virtual card number has been exposed, delete it in the app and create a new one. There's no fee. Remember to update any merchants that stored the old number.\n\nLimits and fees are the same as for your physical card, and virtual card spending counts toward the same daily card spending limit.\n\nNeed more help? Message us in the app any time, day or night.\n\n[card-lost-stolen-v1] Lost or stolen card (effective 2024-01-01)\nBasic members pay $5.00 for a replacement. Plus and Premium replacements are free.\n\nUntil the new card arrives, you can use BrookPay and transfers from the app. Virtual cards aren't available.\n\n## Unauthorized transactions\n\nYou're not responsible for unauthorized card transactions reported within 60 days of the statement they first appear on.\n\n## Found your card?\n\nOnce a card is reported, it's cancelled for good, even if you find it later. Destroy it and wait for the replacement.\n\nQuestions? Our support team is available in the app at any hour.\n\n[card-freeze] Freezing and unfreezing your card (effective 2025-01-01)\nRefunds from merchants\n- Deposits and incoming transfers\n- Your virtual card, which has its own freeze switch\n\n## Freeze or report lost?\n\nIf you're sure the card is gone or stolen, report it lost or stolen instead. That cancels the card permanently and lets you order a replacement. A freeze is temporary and reversible.\n\n## Freeze versus fraud lock\n\nIf the app says your card is locked by Tallowbrook, that's a fraud lock, not a freeze. You can't remove a fraud lock with the freeze switch. See \"Why is my card locked\n\n[disputes-unauthorized] Disputing a transaction you didn't make (effective 2026-01-15)\nIf you see a card transaction you didn't make or authorize, you can dispute it as unauthorized.\n\n## First, protect your card\n\nBefore we open an unauthorized dispute, the card used must be frozen or reported lost or stolen. That stops more charges while we investigate. If the card is still in your wallet, freezing is enough.\n\n## How long you have\n\nReport an unauthorized transaction within 60 days of the date of the statement it first appeared on. Statements close on the last calendar day of each month. For example, a transaction that posted in March appears on the\n\n[card-damaged] Replacing a damaged card (effective 2025-01-01)\nIf your card is cracked, bent, or the chip or contactless stops working, order a replacement in the app.\n\n## How to order\n\nTap Cards, choose the card, then Replace card, then Damaged. Confirm your address and pick a shipping speed.\n\n## Your old card keeps working\n\nWhen you report a card as damaged, we don't cancel it. You can keep using it (if it still works) until you activate the replacement. Activating the new card switches the old one off.\n\nThe new card has the same card number, a new expiry date and a new security\n\n[card-mobile-wallets] Using mobile wallets (effective 2025-01-01)\nin the app also blocks wallet payments on that card.\n- If you report a card lost or stolen, remove it from your wallet and add the replacement once it's activated. A virtual card can be added right away.\n- Limits, fees and Cushion work the same way for wallet payments as for card payments.\n\n## If adding fails\n\nMake sure the card is activated and not frozen, and that your phone has a screen lock set. Wallets won't add a card on a device without a screen lock.\n\nIf you've lost your phone, freeze your cards from another device by signing in to the\n\n[security-zero-liability] Zero liability for unauthorized card use (effective 2025-01-01)\ncard or PIN to\n- BrookPay payments and transfers you sent yourself, even if you were tricked into sending them\n- Transactions reported after the window\n\n## How to report\n\nFreeze or report your card first, then dispute each transaction as unauthorized in the app. See \"Disputing a transaction you didn't make\".\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\nCustomer question:\nhey so if i report my card stolen and then find it in my couch can i just keep using it",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1376,
+    "latency_ms": 1639.0851250616834,
+    "model": "gpt-6-luna",
+    "output_tokens": 73,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. Reporting your card stolen cancels it permanently, even if you find it later, so you can’t keep using it. Destroy the canceled card and wait for the replacement.\",\"citations\":[\"card-lost-stolen-v2\",\"card-lost-stolen-v1\"],\"abstain\":false}"
+  }
+}

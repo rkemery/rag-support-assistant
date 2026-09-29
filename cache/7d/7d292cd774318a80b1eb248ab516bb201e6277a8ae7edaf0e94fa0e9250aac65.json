@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Account under review or restricted\n\nSometimes we need to review an account, for example to confirm identity details, check unusual activity, or meet legal requirements.\n\n## What you can do during a review\n\nYou can still receive deposits. Depending on the review, you may not be able to send money, withdraw cash, use your card or order a new card.\n\n## What you'll see\n\nA banner in the app tells you the account is under review or restricted, and what we need from you, if anything.\n\n## How long it takes\n\nIt depends on the reason. If we need documents, sending them quickly is the best way to speed things up.\n\n## Can support help?\n\nSupport can't lift a review or restriction, and often can't share the reason. Support will pass your message to the Verification team, who reply within 2 business days.\n\n## Negative balance restrictions\n\nIf your account is restricted because of a negative balance, adding money lifts the restriction once the balance is back to zero.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nSometimes we need to review an account, for example to confirm identity details, check unusual activity, or meet legal requirements.\n\n## What you can do during a review\n\nYou can still receive deposits. Depending on the review, you may not be able to send money, withdraw cash, use your card or order a new card.\n\n## What you'll see\n\nA banner in the app tells you the account is under review or restricted, and what we need from you, if anything.\n\n## How long it takes\n\nIt depends on the reason. If we need documents, sending them quickly is the best\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 399,
+    "latency_ms": 1357.5042079901323,
+    "model": "gpt-6-luna",
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "text": "Explains account reviews and restrictions, including possible limitations, in-app notices, and that promptly submitting requested documents can speed up the review."
+  }
+}

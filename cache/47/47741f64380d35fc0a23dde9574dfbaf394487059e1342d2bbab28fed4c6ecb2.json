@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[transfers-cancel] Cancelling a transfer (effective 2025-01-01)\nWhether you can cancel a transfer depends on the type of transfer and how far along it is.\n\n## Scheduled or pending ACH transfers\n\nYou can cancel a scheduled ACH transfer in the app until the ACH cutoff time (4:00 PM ET) on its send date. Tap Transfers, choose the transfer and tap Cancel. After the cutoff, the transfer is already on its way and can't be cancelled.\n\n## BrookPay\n\nBrookPay payments arrive instantly and can't be cancelled.\n\n## Wires\n\nWires can't be cancelled once sent. We can ask the receiving bank to\n\n[transfers-cancel] Cancelling a transfer (effective 2025-01-01)\ncan't be cancelled once sent. We can ask the receiving bank to return the money, but the receiving bank decides, and it isn't guaranteed.\n\n## Recurring transfers\n\nYou can stop future transfers in a recurring series at any time. Stopping the series doesn't cancel a transfer that's already past its cutoff.\n\n## Sent to the wrong account?\n\nIf an ACH transfer went to the wrong external account, message support. We'll try to contact the other bank, but we can't promise the money comes back.\n\nQuestions? Our support team is available in the app at any hour.\n\n[transfers-recurring] Scheduled and recurring transfers (effective 2025-01-01)\nYou can schedule a transfer for a future date, or set one up to repeat weekly, every two weeks or monthly.\n\n## Set one up\n\nTap Transfers, choose the account, enter the amount, and tap Schedule. Pick the date and how often it repeats.\n\n## When scheduled transfers are sent\n\nOn the scheduled date, ACH transfers are sent in the batch before 4:00 PM ET. If the date falls on a weekend or holiday, they're sent the next business day.\n\n## Not enough money\n\nIf your balance is too low on the send date, the transfer is skipped\n\n[transfers-recurring] Scheduled and recurring transfers (effective 2025-01-01)\nyour balance is too low on the send date, the transfer is skipped and we notify you. We don't retry it, and there's no fee. Future transfers in the series still run.\n\n## Change or stop\n\nEdit or cancel a scheduled transfer in the app any time before the cutoff on its send date.\n\n## Transfers to savings\n\nRecurring transfers between your main balance and Savings Pockets happen instantly on the scheduled day, including weekends.\n\nScheduled transfers count toward your daily and monthly transfer limits on the day they're sent.\n\nQuestions? Our support team is available in the app at any\n\n[transfers-pending] Why is my transfer pending? (effective 2025-01-01)\nA transfer can show as pending for a few reasons. Here's how to tell what's going on.\n\n## Waiting for the cutoff\n\nACH transfers submitted after 4:00 PM ET, or on a weekend or holiday, stay pending until they're sent on the next business day.\n\n## On its way\n\nOnce sent, ACH transfers take 1 to 3 business days to arrive. The app shows the expected arrival date on the transfer.\n\n## Under review\n\nSome transfers are reviewed before they're sent, for example a large first transfer to a newly linked account. The app shows\n\n[transfers-ach-cutoff-v2] ACH transfer cutoff times (effective 2026-05-01)\nStandard transfers to and from your linked bank accounts use ACH, which only processes on business days.\n\n## Cutoff time\n\nTransfers you submit before 4:00 PM ET on a business day are sent that day. Transfers submitted after 4:00 PM ET, or on a weekend or bank holiday, are sent the next business day.\n\n## When the money arrives\n\nOnce sent, ACH transfers usually arrive in 1 to 3 business days. The other bank decides when to make the money available.\n\n## Example\n\nIf you send money on a Friday after\n\n[disputes-ach] Disputing an ACH debit (effective 2025-01-01)\nIf that doesn't work, message support and we'll look at it with you.\n\n## Stopping future debits\n\nYou can block a company from pulling money in the app. Tap the transaction, then Block future debits. Tell the company too, so they know to bill you another way.\n\n## What happens next\n\nWe'll ask the company's bank to return the money. If your claim passes an initial review, you get a provisional credit within 10 business days.\n\nACH transfers you sent yourself, and BrookPay payments, can't be disputed this way.\n\nQuestions? Our\n\n[transfers-ach-cutoff-v1] ACH transfer cutoff times (effective 2024-01-01)\nStandard transfers to and from your linked bank accounts use ACH, which only processes on business days.\n\n## Cutoff time\n\nTransfers you submit before 2:00 PM ET on a business day are sent that day. Transfers submitted after 2:00 PM ET, or on a weekend or bank holiday, are sent the next business day.\n\n## When the money arrives\n\nOnce sent, ACH transfers usually arrive in 1 to 3 business days. The other bank decides when to make the money available.\n\n## Example\n\nIf you send money on a Friday after\n\nCustomer question:\nCan I cancel a scheduled ACH transfer?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1384,
+    "latency_ms": 2352.7045419905335,
+    "model": "gpt-6-luna",
+    "output_tokens": 68,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Yes. You can cancel a scheduled ACH transfer in the app any time before 4:00 PM ET on its send date. After the cutoff, it’s already on its way and can’t be cancelled.\",\"citations\":[\"transfers-cancel\"],\"abstain\":false}"
+  }
+}

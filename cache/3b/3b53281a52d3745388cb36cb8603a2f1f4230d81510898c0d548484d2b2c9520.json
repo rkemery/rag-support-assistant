@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[disputes-how-to-file] How to file a dispute (effective 2026-01-15)\nwithin 120 days of the transaction date, after contacting the merchant.\n\n## Filing through support\n\nSupport can open disputes totaling up to $5,000 per case. Larger cases go to our Disputes team, who will contact you within 2 business days.\n\n## One dispute per transaction\n\nIf a transaction already has an open dispute, add information to that case instead of opening a new one.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[disputes-denied] If your dispute is denied (effective 2025-01-01)\nSometimes a dispute is decided against you. Here's what that means.\n\n## Why disputes are denied\n\n- The merchant showed you made or authorized the purchase, for example with delivery proof signed at your address.\n- The dispute was filed after its window closed.\n- The merchant already refunded you.\n- The issue isn't covered, such as a price you agreed to and later changed your mind about.\n\n## What happens to the provisional credit\n\nWe send you a written explanation first. 5 business days later, we take the provisional credit back. If that leaves your balance negative, add money so your\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nHow long you have\n\nFile a merchant dispute within 90 days of the transaction date. After that, we can't open a dispute for you.\n\n## How to file\n\nTap the transaction, then Get help, then Problem with a purchase. Tell us what happened and upload your records.\n\n## What happens next\n\nIf the dispute passes an initial review, you get a provisional credit within 10 business days. We then contact the merchant through the card network. Most cases finish within 45 days.\n\nTransactions you don't recognize at all are a different kind of dispute. See\n\n[disputes-merchant-v2] Disputing a purchase with a merchant (effective 2026-01-15)\nHow long you have\n\nFile a merchant dispute within 120 days of the transaction date. After that, we can't open a dispute for you.\n\n## How to file\n\nTap the transaction, then Get help, then Problem with a purchase. Tell us what happened and upload your records.\n\n## What happens next\n\nIf the dispute passes an initial review, you get a provisional credit within 10 business days. We then contact the merchant through the card network. Most cases finish within 45 days.\n\nTransactions you don't recognize at all are a different kind of dispute. See\n\n[disputes-merchant-v2] Disputing a purchase with a merchant (effective 2026-01-15)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 120 days of the\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 90 days of the\n\n[cushion-negative-after-dispute] Negative balance after a dispute (effective 2025-01-01)\nYour balance can go negative when we take back a provisional credit after a dispute is denied, or when a deposit is returned. This isn't Cushion, and it can happen on any plan, including Basic.\n\n## Why it happens\n\nA provisional credit is money we lend you while a dispute is investigated. If the dispute is denied, we give you written notice and take it back 5 business days later. If you've spent it in the meantime, the balance can drop below zero.\n\n## What to do\n\nAdd money to bring your balance back to zero. Any incoming deposit repays it\n\n[disputes-status] Checking the status of a dispute (effective 2025-01-01)\n**Resolved in your favor:** the credit is permanent.\n- **Denied:** we've sent an explanation, and any provisional credit will be taken back.\n\n## How long it takes\n\nMost disputes finish within 45 days, and some take up to 90 days. We'll message you whenever the status changes.\n\n## Adding information\n\nYou can upload documents or add notes to an open dispute from the case page at any time.\n\n## Cancelling a dispute\n\nIf the merchant refunds you directly, withdraw the dispute from the case page so you aren't credited twice. If you were credited twice,\n\nCustomer question:\nwhen will i get my money back after filing a dispute",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1409,
+    "latency_ms": 1158.379708067514,
+    "model": "gpt-6-luna",
+    "output_tokens": 84,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"If your dispute passes the initial review, you’ll get a provisional credit within 10 business days. Most disputes finish within 45 days, and some take up to 90 days; the credit is permanent if your dispute is resolved in your favor.\",\"citations\":[\"disputes-merchant-v2\",\"disputes-status\"],\"abstain\":false}"
+  }
+}

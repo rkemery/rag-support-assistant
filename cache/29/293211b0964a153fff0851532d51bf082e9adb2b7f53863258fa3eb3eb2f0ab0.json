@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Can someone else manage my account?\n\nTallowbrook accounts belong to one person. We don't offer joint accounts or authorized users, and support only acts for the account holder in their own signed-in session.\n\n## What that means\n\n- We can't discuss an account with a spouse, partner, parent, child or friend, even if they know the account details.\n- We can't make changes because someone else asks, even if they're messaging from the account holder's phone.\n- We can't confirm whether a person has a Tallowbrook account.\n\n## Helping someone with their account\n\nThe account holder can sit with you and message us from their own session. We'll talk to them directly.\n\n## Legal authority\n\nIf you have power of attorney, or you're handling the account of someone who has died, we can help through our Account Services team. See \"Power of attorney\" and \"If an account holder has died\".\n\n## If you think someone is misusing your account\n\nIf someone else is using your account without your permission, or pressuring you over your money, tell us in the app. See \"If someone is controlling your money\".\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nTallowbrook accounts belong to one person. We don't offer joint accounts or authorized users, and support only acts for the account holder in their own signed-in session.\n\n## What that means\n\n- We can't discuss an account with a spouse, partner, parent, child or friend, even if they know the account details.\n- We can't make changes because someone else asks, even if they're messaging from the account holder's phone.\n- We can't confirm whether a person has a Tallowbrook account.\n\n## Helping someone with their account\n\nThe account holder can sit with\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 421,
+    "latency_ms": 1301.0419170605019,
+    "model": "gpt-6-luna",
+    "output_tokens": 60,
+    "reasoning_tokens": 0,
+    "text": "Explains Tallowbrook’s single-person accounts and privacy rules: support only assists the account holder in their signed-in session, cannot discuss or change accounts at another person’s request, and cannot confirm whether someone has an account. The account holder may sit with someone while contacting support."
+  }
+}

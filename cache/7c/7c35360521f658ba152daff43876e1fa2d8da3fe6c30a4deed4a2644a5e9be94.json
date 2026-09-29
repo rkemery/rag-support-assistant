@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Repaying Cushion\n\nWhen Cushion covers a purchase, your balance goes below zero. Here's how it gets back to zero.\n\n## Automatic repayment\n\nAny money that comes in, such as a direct deposit, a transfer or a refund, goes toward the negative balance first. You don't need to do anything.\n\n## Paying it back yourself\n\nYou can add money at any time by transfer, BrookPay from another member, or a cash deposit at a store.\n\n## If it stays negative\n\n- After 30 days, Cushion is suspended until you're back at zero and meet the direct deposit requirement again.\n- After 60 days, your account is restricted. You can still add money, but you can't spend or send it until the balance is repaid.\n\n## Cost\n\nThere are no fees or interest for using Cushion, and none for repaying late. The only consequences are suspension and restriction.\n\n## Can I close my account while it's negative?\n\nNo. Bring the balance to zero first.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nCushion is suspended until you're back at zero and meet the direct deposit requirement again.\n- After 60 days, your account is restricted. You can still add money, but you can't spend or send it until the balance is repaid.\n\n## Cost\n\nThere are no fees or interest for using Cushion, and none for repaying late. The only consequences are suspension and restriction.\n\n## Can I close my account while it's negative?\n\nNo. Bring the balance to zero first.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 389,
+    "latency_ms": 1395.283667021431,
+    "model": "gpt-6-luna",
+    "output_tokens": 43,
+    "reasoning_tokens": 0,
+    "text": "Explains the consequences of leaving a Cushion balance negative: suspension after 30 days, account restrictions after 60 days, no fees or interest, and the requirement to repay before closing the account."
+  }
+}

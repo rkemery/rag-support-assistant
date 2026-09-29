@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# How Savings Pockets work\n\nSavings Pockets are separate balances inside your account that earn interest. You can have up to 10 of them, each with its own name and goal.\n\n## Create a pocket\n\nTap Savings, then New pocket. Name it, set a goal if you like, and move money in.\n\n## Moving money\n\nMoving money between your main balance and your pockets is instant and free, every day. There's no limit on how many times you can withdraw from a pocket.\n\n## Interest\n\nAll your pockets earn the APY for your plan: 0.50% on Basic, 2.00% on Plus and 3.75% on Premium. Rates are variable.\n\n## Spending from a pocket\n\nYour card spends from your main balance, not from pockets. Move money back first.\n\n## Closing a pocket\n\nTap the pocket, then Close. Any money and accrued interest move to your main balance.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nearn the APY for your plan: 0.50% on Basic, 2.00% on Plus and 3.75% on Premium. Rates are variable.\n\n## Spending from a pocket\n\nYour card spends from your main balance, not from pockets. Move money back first.\n\n## Closing a pocket\n\nTap the pocket, then Close. Any money and accrued interest move to your main balance.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 370,
+    "latency_ms": 2778.290292015299,
+    "model": "gpt-6-luna",
+    "output_tokens": 41,
+    "reasoning_tokens": 0,
+    "text": "Savings Pockets are separate interest-earning balances within your account. This section explains pocket interest rates, how card spending works, how to close a pocket, and how to get help."
+  }
+}

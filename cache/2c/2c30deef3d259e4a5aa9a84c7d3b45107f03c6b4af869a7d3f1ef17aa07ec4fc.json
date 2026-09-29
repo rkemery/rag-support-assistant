@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# How savings interest is calculated\n\nInterest on Savings Pockets is calculated every day and paid once a month.\n\n## How it's calculated\n\nEach day we work out interest on the balance in each pocket at your plan's rate, and it compounds daily. The APY already includes the effect of compounding.\n\n## When it's paid\n\nInterest for the month is paid into each pocket on the first business day of the next month, and shows as \"Interest\".\n\n## Balance cap\n\nYour plan's APY applies to combined pocket balances up to $100,000. Anything above that earns 0.10% APY.\n\n## Changing plans\n\nIf you change plans, the new rate applies from the day the change takes effect. Interest for earlier days in the month uses the old rate.\n\n## Rate changes\n\nRates are variable. We give at least 30 days notice by email before we lower a rate.\n\nYour main balance doesn't earn interest.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nup to $100,000. Anything above that earns 0.10% APY.\n\n## Changing plans\n\nIf you change plans, the new rate applies from the day the change takes effect. Interest for earlier days in the month uses the old rate.\n\n## Rate changes\n\nRates are variable. We give at least 30 days notice by email before we lower a rate.\n\nYour main balance doesn't earn interest.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 373,
+    "latency_ms": 3230.560291092843,
+    "model": "gpt-6-luna",
+    "output_tokens": 49,
+    "reasoning_tokens": 0,
+    "text": "This section explains the $100,000 savings-pocket balance cap, how interest rates change when switching plans or when rates are lowered, and that the main balance earns no interest. For help, customers can chat in the app."
+  }
+}

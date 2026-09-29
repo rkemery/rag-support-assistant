@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# When will my refund arrive?\n\nWhen a merchant refunds a card purchase, it usually shows in your account within 5 to 10 business days of the merchant issuing it.\n\n## Why it takes time\n\nThe merchant sends the refund through the card network, which passes it to us. We credit it as soon as we receive it. The delay is almost always before it reaches us.\n\n## Pending refunds\n\nSome refunds show as pending first. The money is available once it posts.\n\n## If it's been longer\n\nIf more than 10 business days have passed, ask the merchant for the refund reference number, sometimes called an ARN, and message support. We can trace it.\n\n## Refunds to a cancelled card\n\nRefunds to a card you've replaced still reach your account. You don't need to give the merchant your new card.\n\n## Refunds in a foreign currency\n\nForeign refunds are converted on the day they settle, so the amount can differ slightly from what you paid.\n\n## Merchant won't refund?\n\nYou may be able to file a merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\na merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 336,
+    "latency_ms": 1238.2022499805316,
+    "model": "gpt-6-luna",
+    "output_tokens": 36,
+    "reasoning_tokens": 0,
+    "text": "If a merchant won’t refund your purchase, you may be able to file a merchant dispute; the article also directs you to in-app support for further help."
+  }
+}

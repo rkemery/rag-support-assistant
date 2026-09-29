@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Sending money with BrookPay\n\nBrookPay lets you send money to another Tallowbrook member by phone number, email or username. It's free, it works every day, and the money arrives in seconds.\n\n## Send money\n\nTap Transfers, then BrookPay. Choose the person, enter the amount and confirm. The recipient sees the money straight away.\n\n## Limits\n\n| Plan | Daily BrookPay limit |\n|---|---|\n| Basic | $1,000 |\n| Plus | $2,500 |\n| Premium | $5,000 |\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are limited to $500.\n\n## BrookPay can't be reversed\n\nOnce a BrookPay payment is sent, it can't be cancelled or pulled back, even by support. Only send money to people you know. If you sent money to the wrong person, ask them to send it back. If you think you were scammed, report it to us right away.\n\n## Fees\n\nBrookPay costs $0.00 on every plan. BrookPay only works between Tallowbrook members.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nBrookPay lets you send money to another Tallowbrook member by phone number, email or username. It's free, it works every day, and the money arrives in seconds.\n\n## Send money\n\nTap Transfers, then BrookPay. Choose the person, enter the amount and confirm. The recipient sees the money straight away.\n\n## Limits\n\n| Plan | Daily BrookPay limit |\n|---|---|\n| Basic | $1,000 |\n| Plus | $2,500 |\n| Premium | $5,000 |\n\nFor 24 hours after you sign in on a new\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 426,
+    "latency_ms": 1153.3292919630185,
+    "model": "gpt-6-luna",
+    "output_tokens": 32,
+    "reasoning_tokens": 0,
+    "text": "Instructions for sending money with BrookPay, including how to make a payment and daily limits by plan; new-device restrictions begin after signing in."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Card controls\n\nCard controls let you decide where your card can be used. Changes take effect straight away.\n\n## Controls you can set\n\nIn the app, tap Cards, choose the card, then Controls. You can switch each of these on or off:\n\n- Online purchases\n- International purchases (in stores and online with foreign merchants)\n- ATM withdrawals\n- Contactless payments\n\n## Common mix-ups\n\n- A declined online order from a foreign website is often the International purchases control, not the Online purchases one.\n- Switching off ATM withdrawals on your physical card doesn't affect your virtual card, which can't be used at ATMs anyway.\n- Controls don't change your limits. Limits are set by your plan.\n\n## Controls versus freezing\n\nControls block certain kinds of transactions. Freezing blocks almost everything. If you think your card is at risk, freeze it.\n\nSupport can explain your current settings, but you change controls yourself in the app.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nCard controls let you decide where your card can be used. Changes take effect straight away.\n\n## Controls you can set\n\nIn the app, tap Cards, choose the card, then Controls. You can switch each of these on or off:\n\n- Online purchases\n- International purchases (in stores and online with foreign merchants)\n- ATM withdrawals\n- Contactless payments\n\n## Common mix-ups\n\n- A declined online order from a foreign website is often the International purchases control, not the Online purchases one.\n- Switching off ATM withdrawals on your physical card doesn't affect your virtual card, which can't be used\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 393,
+    "latency_ms": 2092.315583024174,
+    "model": "gpt-6-luna",
+    "output_tokens": 37,
+    "reasoning_tokens": 0,
+    "text": "Explains how to find and toggle card controls in the app, what each control covers, and common misunderstandings about international online purchases and ATM withdrawals on virtual cards."
+  }
+}

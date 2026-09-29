@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[travel-exchange-rates] Exchange rates we use (effective 2025-01-01)\nWhen you pay in a foreign currency, we convert the amount to US dollars using the card network's exchange rate on the day the transaction settles. We don't add a markup to that rate.\n\n## What you pay on top\n\nYour plan's foreign transaction fee is added as a percentage of the converted amount:\n\n- Basic: 3%\n- Plus: 1%\n- Premium: 0%\n\n## Why the amount changes\n\nA pending transaction shows an estimate based on the rate when you paid. The final amount uses the rate on the day it settles, usually a day or two later, so\n\n[disputes-pending] Why can't I dispute a pending transaction? (effective 2025-01-01)\nany more charges. When the transaction posts, dispute it as unauthorized. Your dispute window starts from the statement it posts on, so you won't lose time by waiting.\n\n## If the amount is wrong\n\nPending amounts are often estimates, for example at gas pumps or hotels. The posted amount is usually different. Wait and see what posts.\n\n## If it's been pending a long time\n\nSome merchants take longer. If a transaction has been pending much longer than usual, message support and we'll look at it.\n\nQuestions? Our support team is available in the app at any\n\n[disputes-duplicate] Charged twice for the same thing (effective 2025-01-01)\nSeeing the same charge twice doesn't always mean you were charged twice.\n\n## Check if one is pending\n\nHotels, gas stations, car rentals and restaurants often place a temporary authorization, then post the final amount separately. The pending one usually drops off within 7 days. Pending transactions can't be disputed.\n\n## If both have posted\n\nIf two identical charges have both posted, contact the merchant first. Most will refund a duplicate quickly. If the merchant doesn't help, dispute the second charge in the app as a duplicate. Tap the transaction, then Get help, then Charged\n\n[card-declined] Why was my card declined? (effective 2025-01-01)\non Premium. Limits can't be raised except by changing plan.\n\n## Card settings\n\nCheck that the card is activated and isn't frozen, and that the right controls are on. If international purchases are switched off, foreign merchants will decline, even for online orders.\n\n## Fraud checks\n\nIf our systems think a purchase looks unusual, we decline it and send a fraud alert. Confirm the alert in the app and try again. If you don't answer, the card may stay locked.\n\n## Where you are\n\nCards don't work in comprehensively sanctioned countries and regions.\n\nIf none of these\n\n[security-scam-payment] If you sent money to a scammer (effective 2025-01-01)\na purchase with a merchant\".\n\nThe Fraud team usually replies within 2 business days.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[travel-dcc] Paying in local currency or dollars (effective 2025-01-01)\nYour plan's foreign transaction fee may still apply, because the merchant is still abroad.\n\n## Online shopping\n\nForeign websites sometimes show prices in dollars using their own conversion. If you can switch the site to its home currency, that's usually cheaper.\n\n## Already paid in dollars?\n\nDynamic currency conversion isn't a reason to dispute a purchase, because you agreed to it at the terminal. Next time, choose the local currency.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[fx-fees-plus-v1] Foreign transaction fees on Plus (effective 2025-01-01)\nfee.\n\nNeed more help? Message us in the app any time, day or night.\n\n[transfers-returned] Returned transfers (effective 2025-01-01)\nSometimes a transfer is sent back. This is called a return. It usually happens a few business days after the transfer was sent.\n\n## Common reasons\n\n- The account number or routing number was wrong.\n- The receiving account was closed or frozen.\n- The name on the receiving account didn't match.\n- For money you pulled in from another bank, there wasn't enough money in that account.\n\n## What happens to the money\n\nFor transfers out, the money comes back to your Tallowbrook balance when the return reaches us. For transfers in, we take back any amount we already made available.\n\n##\n\nCustomer question:\nwhy did the amount of my purchase in london change after it posted",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1218,
+    "latency_ms": 1635.352542041801,
+    "model": "gpt-6-luna",
+    "output_tokens": 110,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"The pending amount was an estimate using the exchange rate when you paid. The final amount uses the card network’s rate on the day the purchase settled, usually a day or two later, so it can change; Tallowbrook doesn’t add a markup to the rate. Your plan’s foreign transaction fee may also apply: 3% for Basic, 1% for Plus, and 0% for Premium.\",\"citations\":[\"travel-exchange-rates\"],\"abstain\":false}"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Investing and cryptocurrency\n\nTallowbrook doesn't offer investing, brokerage or retirement accounts, and you can't buy, sell or hold cryptocurrency with us.\n\n## Sending money to an investment app\n\nYou can link your Tallowbrook account to an investment or crypto platform and move money by ACH, like any other external account. Some platforms also accept debit card payments.\n\n## Crypto purchases with your card\n\nSome crypto platforms treat card purchases as cash advances. We don't charge cash advance fees, but the platform might. Card purchases from crypto platforms can't be disputed if you simply change your mind.\n\n## Scams\n\nBe careful of anyone promising guaranteed returns or asking you to move money into crypto to keep it safe. That's a common scam.\n\n## Advice\n\nSupport can't advise you on investments or cryptocurrency.\n\n## Earning more on savings\n\nSavings Pockets earn interest at your plan's rate. See the savings rate article for your plan.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nbe disputed if you simply change your mind.\n\n## Scams\n\nBe careful of anyone promising guaranteed returns or asking you to move money into crypto to keep it safe. That's a common scam.\n\n## Advice\n\nSupport can't advise you on investments or cryptocurrency.\n\n## Earning more on savings\n\nSavings Pockets earn interest at your plan's rate. See the savings rate article for your plan.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 356,
+    "latency_ms": 3716.4180839899927,
+    "model": "gpt-6-luna",
+    "output_tokens": 61,
+    "reasoning_tokens": 0,
+    "text": "This section of Tallowbrook’s investing and cryptocurrency guide warns that crypto card purchases can’t be disputed just because you change your mind, cautions against investment scams, clarifies that support can’t give investment advice, and notes that Savings Pockets earn interest at the plan’s rate."
+  }
+}

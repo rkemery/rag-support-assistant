@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Card controls\n\nCard controls let you decide where your card can be used. Changes take effect straight away.\n\n## Controls you can set\n\nIn the app, tap Cards, choose the card, then Controls. You can switch each of these on or off:\n\n- Online purchases\n- International purchases (in stores and online with foreign merchants)\n- ATM withdrawals\n- Contactless payments\n\n## Common mix-ups\n\n- A declined online order from a foreign website is often the International purchases control, not the Online purchases one.\n- Switching off ATM withdrawals on your physical card doesn't affect your virtual card, which can't be used at ATMs anyway.\n- Controls don't change your limits. Limits are set by your plan.\n\n## Controls versus freezing\n\nControls block certain kinds of transactions. Freezing blocks almost everything. If you think your card is at risk, freeze it.\n\nSupport can explain your current settings, but you change controls yourself in the app.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\non your physical card doesn't affect your virtual card, which can't be used at ATMs anyway.\n- Controls don't change your limits. Limits are set by your plan.\n\n## Controls versus freezing\n\nControls block certain kinds of transactions. Freezing blocks almost everything. If you think your card is at risk, freeze it.\n\nSupport can explain your current settings, but you change controls yourself in the app.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 369,
+    "latency_ms": 1381.9611249491572,
+    "model": "gpt-6-luna",
+    "output_tokens": 49,
+    "reasoning_tokens": 0,
+    "text": "Card controls let you enable or disable online and international purchases, ATM withdrawals, and contactless payments in the app. This section clarifies how controls differ from card limits and freezing, and how to get help with your settings."
+  }
+}

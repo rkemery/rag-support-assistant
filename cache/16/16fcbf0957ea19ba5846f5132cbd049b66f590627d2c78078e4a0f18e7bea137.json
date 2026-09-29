@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[transfers-returned] Returned transfers (effective 2025-01-01)\nFor transfers in, we take back any amount we already made available.\n\n## Fees\n\nWe don't charge for returned transfers ($0.00). The other bank might.\n\n## What to do\n\nCheck the details on the linked account, correct anything wrong, and send the transfer again. If a pull from your own account at another bank was returned, ask that bank why before you try again. Repeated returns can lead to lower transfer amounts.\n\nNeed more help? Message us in the app any time, day or night.\n\n[fees-all-v1] Fees for all plans (effective 2025-01-01)\n$10.00 | $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 2 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM\n\n[fees-all-v2] Fees for all plans (effective 2026-03-01)\n| $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 3 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM owners can add their\n\n[transfers-returned] Returned transfers (effective 2025-01-01)\nSometimes a transfer is sent back. This is called a return. It usually happens a few business days after the transfer was sent.\n\n## Common reasons\n\n- The account number or routing number was wrong.\n- The receiving account was closed or frozen.\n- The name on the receiving account didn't match.\n- For money you pulled in from another bank, there wasn't enough money in that account.\n\n## What happens to the money\n\nFor transfers out, the money comes back to your Tallowbrook balance when the return reaches us. For transfers in, we take back any amount we already made available.\n\n##\n\n[overdraft-no-fees] Do you charge overdraft fees? (effective 2025-01-01)\non Premium. It isn't available on Basic.\n\n## Can my balance still go negative?\n\nRarely. It can happen when a merchant charges more than it first authorized, for example a tip added to a restaurant bill, when a deposit is returned, or when a dispute credit is taken back. Add money to bring it back to zero.\n\n## Returned payments\n\nIf a scheduled transfer or an ACH debit can't be paid, it's returned unpaid, with no fee from us. The company you owe may charge its own late fee.\n\nQuestions? Our support team is available in the\n\n[close-inactivity] Inactive accounts (effective 2025-01-01)\npaid plan keeps charging its monthly fee while the account is open, which counts as activity. If you don't use your account, consider moving to Basic.\n\n## Coming back\n\nIf your account was closed for inactivity, you can apply for a new one whenever you like.\n\n## Keeping an account open\n\nAny card purchase, deposit or transfer counts as activity. Signing in to the app on its own doesn't.\n\nNeed more help? Message us in the app any time, day or night.\n\n[check-deposit-availability] When check deposits are available (effective 2025-01-01)\nThe app shows the release date on the deposit.\n\n## Returned checks\n\nIf the check bounces after the money was made available, we take the amount back from your balance. There's no returned item fee.\n\nDeposits made on a weekend or bank holiday count as received on the next business day.\n\n## Check the status\n\nTap the deposit in your activity feed to see whether it's pending, available or returned.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[plan-fee-refunds] Refunds of plan fees (effective 2025-01-01)\nWe refund the first paid plan charge on your account in full if you leave the paid plan within 14 days of that charge. We call this the cooling-off period.\n\n## How it works\n\n- It applies only to the first paid plan charge your account has ever had. Later charges, even after switching plans, aren't covered.\n- When you ask for the refund, your plan returns to Basic right away rather than on your next billing date.\n- The refund goes back to your main balance, usually within minutes.\n\n## What isn't refunded\n\nOutside the cooling-off period, plan fees\n\nCustomer question:\nAre there any fees for returned transfers or for not using my account for a while?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1362,
+    "latency_ms": 3478.0385409248993,
+    "model": "gpt-6-luna",
+    "output_tokens": 80,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Tallowbrook charges no fee for returned transfers. There’s also no inactivity fee on any plan; however, a paid plan’s monthly fee continues while the account is open, and signing in alone doesn’t count as activity.\",\"citations\":[\"transfers-returned\",\"fees-all-v2\",\"close-inactivity\"],\"abstain\":false}"
+  }
+}

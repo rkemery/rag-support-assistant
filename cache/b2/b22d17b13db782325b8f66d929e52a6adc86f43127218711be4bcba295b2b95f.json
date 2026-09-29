@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# When and how plan fees are charged\n\nPaid plan fees are charged once a month on your billing date, from your main balance. Your billing date is the day you first joined a paid plan, or the day of your last upgrade.\n\n## If the fee can't be collected\n\nIf your balance is too low on the billing date, we try again after 3 days. If the second try also fails, your plan moves to Basic. Cushion never covers plan fees. You can move back to a paid plan once you've added money.\n\n## Where to see it\n\nThe charge shows in your activity feed as \"Plan fee\" with the plan name. Your next billing date is shown in the app under Profile, then Plan.\n\n## Refunds\n\nPlan fees aren't prorated and aren't eligible for goodwill fee refunds. The only exception is the cooling-off rule for your first paid plan charge, which gives a full refund if you leave the paid plan within 14 days of that charge.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWhere to see it\n\nThe charge shows in your activity feed as \"Plan fee\" with the plan name. Your next billing date is shown in the app under Profile, then Plan.\n\n## Refunds\n\nPlan fees aren't prorated and aren't eligible for goodwill fee refunds. The only exception is the cooling-off rule for your first paid plan charge, which gives a full refund if you leave the paid plan within 14 days of that charge.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 384,
+    "latency_ms": 1161.3456249469891,
+    "model": "gpt-6-luna",
+    "output_tokens": 53,
+    "reasoning_tokens": 0,
+    "text": "Explains where to find paid-plan charges and the next billing date in the app, and outlines the refund policy, including the 14-day cooling-off exception for a first paid-plan charge. For help, users can message support in the app."
+  }
+}

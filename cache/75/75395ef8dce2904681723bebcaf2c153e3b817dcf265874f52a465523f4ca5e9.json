@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[atm-fees-plus-v2] ATM fees on Plus (effective 2026-03-01)\nHere's what ATM withdrawals cost on the Plus plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | first 3 each month free, then $2.50 |\n| ATMs outside the US | $3.00 |\n\nThe 3 free withdrawals reset on the first day of each calendar month. Unused ones don't carry over.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on\n\n[fee-changes-2026] What changed in the March 2026 fee update (effective 2026-03-01)\nWe updated our fees on March 1, 2026. Here's everything that changed and what stayed the same.\n\n## What changed\n\n- **Plus monthly fee:** from $4.00 to $5.00.\n- **Plus foreign transaction fee:** from 1.5% to 1%.\n- **Out-of-network ATM fee on Basic and Plus:** from $2.00 to $2.50 per withdrawal.\n- **Plus free out-of-network withdrawals:** from 2 to 3 a month.\n\n## What stayed the same\n\nBasic is\n\n[atm-fees-plus-v1] ATM fees on Plus (effective 2025-01-01)\nHere's what ATM withdrawals cost on the Plus plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | first 2 each month free, then $2.00 |\n| ATMs outside the US | $3.00 |\n\nThe 2 free withdrawals reset on the first day of each calendar month. Unused ones don't carry over.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on\n\n[fees-all-v1] Fees for all plans (effective 2025-01-01)\n$10.00 | $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 2 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM\n\n[plan-plus] The Plus plan (effective 2026-06-01)\nPlus costs $5.00 a month. It's built for people who use their card a lot away from BrookLink ATMs or spend some time abroad, and it adds Cushion and a higher savings rate.\n\n## What's included\n\n- **Monthly fee:** $5.00\n- **ATMs:** free at BrookLink ATMs, plus 3 free out-of-network withdrawals a month. After that it's $2.50 per withdrawal.\n- **Foreign transaction fee:** 1% of the purchase amount\n- **Card replacement:** free\n- **Expedited card shipping:**\n\n[fees-schedule-plus-v1] Plus plan fee schedule (effective 2025-01-01)\n|\n| Expedited card shipping | $25.00 |\n| Outgoing domestic wire | $15.00 |\n| Outgoing international wire | $35.00 |\n| Incoming international wire | $10.00 |\n| Cash deposit at a retail store | $3.00 |\n\n## Details\n\nYour first 2 out-of-network ATM withdrawals each calendar month are free. The fee applies from the next one.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nQuestions? Our support team is\n\n[fees-all-v2] Fees for all plans (effective 2026-03-01)\n| $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 3 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM owners can add their\n\n[fees-schedule-plus-v2] Plus plan fee schedule (effective 2026-03-01)\nExpedited card shipping | $25.00 |\n| Outgoing domestic wire | $15.00 |\n| Outgoing international wire | $35.00 |\n| Incoming international wire | $10.00 |\n| Cash deposit at a retail store | $3.00 |\n\n## Details\n\nYour first 3 out-of-network ATM withdrawals each calendar month are free. The fee applies from the next one.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nNeed more help? Message us in the\n\nCustomer question:\nHow many free out of network ATM withdrawals do I get on Plus?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1424,
+    "latency_ms": 1431.0604999773204,
+    "model": "gpt-6-luna",
+    "output_tokens": 56,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Plus includes 3 free out-of-network ATM withdrawals each calendar month. After that, each withdrawal costs $2.50.\",\"citations\":[\"atm-fees-plus-v2\",\"plan-plus\"],\"abstain\":false}"
+  }
+}

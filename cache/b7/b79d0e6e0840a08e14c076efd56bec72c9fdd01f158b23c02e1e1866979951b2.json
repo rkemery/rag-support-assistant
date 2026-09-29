@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Premium plan fee schedule\n\nHere is every fee that can apply to a Premium account, effective January 1, 2025. Fees are taken from your main balance when they're charged and show up in your activity feed with the word \"Fee\".\n\n| Fee | Amount |\n|---|---|\n| Monthly fee | $15.00 |\n| Out-of-network ATM withdrawal | $0.00 |\n| International ATM withdrawal | $0.00 |\n| Foreign transaction fee | 0% |\n| Card replacement | $0.00 |\n| Expedited card shipping | $0.00 |\n| Outgoing domestic wire | $0.00 |\n| Outgoing international wire | $10.00 |\n| Incoming international wire | $0.00 |\n| Cash deposit at a retail store | $0.00 |\n\n## Details\n\nPremium has no ATM fees from us, and we pay back ATM owner surcharges up to $10.00 each month.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nExpedited card shipping | $0.00 |\n| Outgoing domestic wire | $0.00 |\n| Outgoing international wire | $10.00 |\n| Incoming international wire | $0.00 |\n| Cash deposit at a retail store | $0.00 |\n\n## Details\n\nPremium has no ATM fees from us, and we pay back ATM owner surcharges up to $10.00 each month.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nQuestions? Our support team is\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 421,
+    "latency_ms": 1858.4129579830915,
+    "model": "gpt-6-luna",
+    "output_tokens": 64,
+    "reasoning_tokens": 0,
+    "text": "This is the latter part of the Premium plan fee schedule, effective January 1, 2025. It lists card shipping, domestic and international wire, and retail cash deposit fees, followed by ATM surcharge reimbursement, fees that no plan charges, monthly billing terms, and a note about support availability."
+  }
+}

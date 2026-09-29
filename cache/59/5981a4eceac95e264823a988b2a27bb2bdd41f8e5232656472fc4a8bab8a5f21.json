@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Cushion on Plus\n\nOn Plus, Cushion covers debit card purchases up to $50.00 below zero, with no fee.\n\n## Turning it on\n\nGo to Profile, then Cushion. You need at least $500 in direct deposits in the last 30 days. If you stop meeting that, Cushion pauses until you do again.\n\n## Example\n\nIf your balance is low and you buy groceries that cost more than you have, Cushion covers the difference as long as the total below zero stays within $50.00. A purchase that would take you past $50.00 below zero is declined.\n\n## Limits\n\nCushion covers debit card purchases only. It never covers ATM withdrawals, transfers or wires.\n\n## Repaying\n\nYour next deposit repays it. If you stay negative for 30 days, Cushion is suspended. If the balance is still negative after 60 days, the account is restricted until it's repaid.\n\n## Cost\n\nCushion has no fees and no interest ($0.00). It isn't a loan and isn't reported to credit bureaus.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nloan and isn't reported to credit bureaus.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 326,
+    "latency_ms": 1513.9105420093983,
+    "model": "gpt-6-luna",
+    "output_tokens": 51,
+    "reasoning_tokens": 0,
+    "text": "This is the closing reassurance in the Cushion on Plus guide: Cushion has no fees or interest, isn’t a loan, and isn’t reported to credit bureaus; customers who need help can chat in the app 24/7."
+  }
+}

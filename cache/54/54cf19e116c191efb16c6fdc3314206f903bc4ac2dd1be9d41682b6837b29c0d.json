@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Common scams to watch for\n\nThese are the scams we see most often. Knowing them is the best protection.\n\n## Fake bank calls\n\nSomeone calls claiming to be from Tallowbrook's fraud team. They know some of your details and say your account is at risk. They ask for a code or ask you to move money. That's a scam. We never do that.\n\n## Impersonating someone you know\n\nA message from a \"family member\" with a new number who urgently needs money. Call them on their old number before you send anything.\n\n## Marketplace and rental scams\n\nA seller asks you to pay by BrookPay or wire instead of a protected payment method, often for a deal that seems too good. BrookPay and wires can't be reversed.\n\n## Job and investment scams\n\nSomeone offers easy money for moving funds through your account, or promises guaranteed returns. Moving money for others can get your account closed.\n\n## What to do\n\nIf you think you've been scammed, message us straight away. The sooner we know, the better the chance of stopping or recovering the money, although we can't promise that. See \"If you sent money to a scammer\".\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nThese are the scams we see most often. Knowing them is the best protection.\n\n## Fake bank calls\n\nSomeone calls claiming to be from Tallowbrook's fraud team. They know some of your details and say your account is at risk. They ask for a code or ask you to move money. That's a scam. We never do that.\n\n## Impersonating someone you know\n\nA message from a \"family member\" with a new number who urgently needs money. Call them on their old number before you send anything.\n\n## Marketplace and rental scams\n\nA seller asks you to pay by\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 440,
+    "latency_ms": 1601.3399160001427,
+    "model": "gpt-6-luna",
+    "output_tokens": 40,
+    "reasoning_tokens": 0,
+    "text": "This section of Tallowbrook’s scam-prevention guide lists common scams, including fake bank calls, impersonation, and marketplace or rental scams, and advises how to recognize them."
+  }
+}

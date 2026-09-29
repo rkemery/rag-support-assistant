@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Why was my card declined?\n\nIf a purchase was declined, the app usually tells you why in the activity feed. These are the most common reasons.\n\n## Not enough money\n\nWe don't let your balance go negative on most transactions, so a purchase larger than your balance is declined. There's no fee for that. Plus and Premium members with Cushion may be covered for small debit card purchases.\n\n## Your daily limit\n\nDaily card spending limits are $3,000 on Basic, $5,000 on Plus and $10,000 on Premium. Limits can't be raised except by changing plan.\n\n## Card settings\n\nCheck that the card is activated and isn't frozen, and that the right controls are on. If international purchases are switched off, foreign merchants will decline, even for online orders.\n\n## Fraud checks\n\nIf our systems think a purchase looks unusual, we decline it and send a fraud alert. Confirm the alert in the app and try again. If you don't answer, the card may stay locked.\n\n## Where you are\n\nCards don't work in comprehensively sanctioned countries and regions.\n\nIf none of these explain it, message support with the merchant name and time of the purchase.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\ndon't work in comprehensively sanctioned countries and regions.\n\nIf none of these explain it, message support with the merchant name and time of the purchase.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 366,
+    "latency_ms": 2740.1534580858424,
+    "model": "gpt-6-luna",
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "text": "This section explains that cards are declined in comprehensively sanctioned countries and regions, and advises contacting support or in-app chat if the decline remains unexplained."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "fingerprints": {
+    "llama": "31537299b6aba038",
+    "gpt5mini": "d67552668823c36a"
+  },
+  "note": "Frozen by `eval run` right after the first dev run."
+}

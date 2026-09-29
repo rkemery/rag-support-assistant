@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Sending an international wire\n\nPlus and Premium members can send international wires from the app. International wires aren't available on Basic.\n\n## How to send one\n\nTap Transfers, then Wire, then International. You'll need the recipient's name and address, their bank's SWIFT code, and their account number or IBAN.\n\n## Cutoff and timing\n\nInternational wires submitted before 1:00 PM ET on a business day are sent that day. They usually arrive in 1 to 5 business days, depending on the country and any banks in between.\n\n## Fees\n\n- Plus: $35.00 per wire\n- Premium: $10.00 per wire\n\nBanks along the way, and the receiving bank, may take their own fees from the amount.\n\n## Currency\n\nInternational wires are sent in US dollars. The receiving bank converts them at its own rate.\n\nWires can't be cancelled once sent. Wires to comprehensively sanctioned countries are blocked.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nany banks in between.\n\n## Fees\n\n- Plus: $35.00 per wire\n- Premium: $10.00 per wire\n\nBanks along the way, and the receiving bank, may take their own fees from the amount.\n\n## Currency\n\nInternational wires are sent in US dollars. The receiving bank converts them at its own rate.\n\nWires can't be cancelled once sent. Wires to comprehensively sanctioned countries are blocked.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 380,
+    "latency_ms": 1163.6618749471381,
+    "model": "gpt-6-luna",
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "text": "International wire transfer details, including fees, intermediary and receiving-bank charges, USD currency conversion, cancellation and sanctions restrictions, and support availability."
+  }
+}

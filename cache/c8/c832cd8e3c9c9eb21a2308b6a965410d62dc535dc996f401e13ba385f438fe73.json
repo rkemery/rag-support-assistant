@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Why can't I dispute a pending transaction?\n\nYou can't dispute a transaction while it's still pending. A pending transaction is an authorization. The merchant hasn't collected the money yet, and the amount can still change or disappear.\n\n## What to do\n\nWait for the transaction to post. Most pending transactions post or drop off within 7 days. Once it posts, the Dispute option appears when you tap it.\n\n## If you don't recognize it\n\nFreeze your card now, even though you can't dispute yet. That stops any more charges. When the transaction posts, dispute it as unauthorized. Your dispute window starts from the statement it posts on, so you won't lose time by waiting.\n\n## If the amount is wrong\n\nPending amounts are often estimates, for example at gas pumps or hotels. The posted amount is usually different. Wait and see what posts.\n\n## If it's been pending a long time\n\nSome merchants take longer. If a transaction has been pending much longer than usual, message support and we'll look at it.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nYou can't dispute a transaction while it's still pending. A pending transaction is an authorization. The merchant hasn't collected the money yet, and the amount can still change or disappear.\n\n## What to do\n\nWait for the transaction to post. Most pending transactions post or drop off within 7 days. Once it posts, the Dispute option appears when you tap it.\n\n## If you don't recognize it\n\nFreeze your card now, even though you can't dispute yet. That stops any more charges. When the transaction posts, dispute it as unauthorized. Your dispute\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 394,
+    "latency_ms": 1289.3364579649642,
+    "model": "gpt-6-luna",
+    "output_tokens": 35,
+    "reasoning_tokens": 0,
+    "text": "Explains why pending transactions can’t be disputed, advises waiting for the transaction to post, and recommends freezing the card immediately if the charge is unrecognized."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[products-joint-accounts] Do you offer joint accounts? (effective 2025-01-01)\nNo. Tallowbrook accounts are individual accounts only. We don't offer joint accounts, and you can't add an authorized user or a second card holder.\n\n## Sharing money with a partner\n\nEach of you can open your own Tallowbrook account and send money to each other instantly with BrookPay, for free.\n\n## Shared goals\n\nSavings Pockets belong to one account and can't be shared. You can each save toward the same goal in your own pockets.\n\n## Managing an account for someone else\n\nIf you have power of attorney, see \"Power of attorney\". Otherwise,\n\n[products-joint-accounts] Do you offer joint accounts? (effective 2025-01-01)\nyou have power of attorney, see \"Power of attorney\". Otherwise, we can only talk to the account holder.\n\n## Will you offer joint accounts?\n\nWe don't have plans to share right now.\n\n## Couples and roommates\n\nSplitting a bill is easy with BrookPay. One person pays, and the other sends their share straight from the app. BrookPay has no fee and arrives in seconds.\n\n## Moving money from a joint account elsewhere\n\nYou can link a joint account you hold at another bank as an external account, as long as your name is on it.\n\nStill stuck?\n\n[support-third-parties] Can someone else manage my account? (effective 2025-01-01)\nTallowbrook accounts belong to one person. We don't offer joint accounts or authorized users, and support only acts for the account holder in their own signed-in session.\n\n## What that means\n\n- We can't discuss an account with a spouse, partner, parent, child or friend, even if they know the account details.\n- We can't make changes because someone else asks, even if they're messaging from the account holder's phone.\n- We can't confirm whether a person has a Tallowbrook account.\n\n## Helping someone with their account\n\nThe account holder can sit with\n\n[products-joint-accounts] Do you offer joint accounts? (effective 2025-01-01)\nan external account, as long as your name is on it.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[account-eligibility] Who can open an account (effective 2025-01-01)\non Basic, and you can change plans once you're verified.\n\n## One account per person\n\nEach person can have one Tallowbrook account. We don't offer joint accounts, business accounts or accounts for people under 18.\n\n## Living abroad\n\nIf you move abroad permanently, you may need to close your account. Tell us before you move.\n\n## Previously closed by us\n\nIf Tallowbrook closed an account of yours in the past, a new application may be declined.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[account-eligibility] Who can open an account (effective 2025-01-01)\nYou can open a Tallowbrook account if you:\n\n- Are at least 18 years old\n- Live in the US and have a US residential address (not a PO box)\n- Have a Social Security number or ITIN\n- Have an unexpired government-issued photo ID\n- Have a smartphone that can run the Tallowbrook app\n\n## Opening an account\n\nDownload the app and tap Get started. You'll enter your details, take a photo of your ID and a selfie. Every account starts on Basic, and you can change plans once you're verified.\n\n## One account\n\n[products-business] Business accounts (effective 2025-01-01)\nNo. Tallowbrook only offers personal accounts. We don't offer business accounts for companies, partnerships, nonprofits or sole proprietors.\n\n## Using a personal account for business\n\nPersonal accounts are for personal use. Small amounts of freelance or side income are fine, such as getting paid for occasional gigs. Running a business's regular payments through a personal account isn't allowed, and could lead to a review of your account.\n\n## Business payments into your account\n\nYou can receive payments from a business, such as your employer or a client, into your personal account.\n\n## Business debit cards\n\nYour Tallowbrook card\n\n[support-third-parties] Can someone else manage my account? (effective 2025-01-01)\naccount.\n\n## Helping someone with their account\n\nThe account holder can sit with you and message us from their own session. We'll talk to them directly.\n\n## Legal authority\n\nIf you have power of attorney, or you're handling the account of someone who has died, we can help through our Account Services team. See \"Power of attorney\" and \"If an account holder has died\".\n\n## If you think someone is misusing your account\n\nIf someone else is using your account without your permission, or pressuring you over your money, tell us in the app. See \"If\n\nCustomer question:\nCan I open a joint account with my partner?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1316,
+    "latency_ms": 1648.2415829086676,
+    "model": "gpt-6-luna",
+    "output_tokens": 64,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. Tallowbrook offers individual accounts only, not joint accounts. You and your partner can each open your own account and send money to each other instantly for free with BrookPay.\",\"citations\":[\"products-joint-accounts\"],\"abstain\":false}"
+  }
+}

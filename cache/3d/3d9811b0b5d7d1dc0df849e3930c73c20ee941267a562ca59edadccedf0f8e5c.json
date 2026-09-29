@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Cushion on Basic\n\nCushion isn't available on the Basic plan. On Basic, a debit card purchase larger than your balance is declined, with no fee.\n\n## Why\n\nCushion is part of the paid plans. It's how we give members a little room without charging overdraft fees.\n\n## Getting Cushion\n\nMove to Plus for coverage up to $50.00, or to Premium for coverage up to $200. You'll also need at least $500 in direct deposits in the last 30 days.\n\n## Overdraft fees\n\nBasic has no overdraft fees ($0.00). Transactions that would overdraw your account are declined instead.\n\n## Can a Basic balance go negative?\n\nOccasionally, for example if a merchant posts more than it authorized or a dispute credit is taken back. Add money to bring it back to zero. Any deposit repays a negative balance automatically.\n\nThere's no fee for a declined transaction.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nCushion isn't available on the Basic plan. On Basic, a debit card purchase larger than your balance is declined, with no fee.\n\n## Why\n\nCushion is part of the paid plans. It's how we give members a little room without charging overdraft fees.\n\n## Getting Cushion\n\nMove to Plus for coverage up to $50.00, or to Premium for coverage up to $200. You'll also need at least $500 in direct deposits in the last 30 days.\n\n## Overdraft fees\n\nBasic has no overdraft fees ($0.00). Transactions that\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 387,
+    "latency_ms": 1346.1937080137432,
+    "model": "gpt-6-luna",
+    "output_tokens": 38,
+    "reasoning_tokens": 0,
+    "text": "This section explains that Cushion is unavailable on Basic, how eligible members can get coverage on paid plans, and that overdrafts on Basic have no fees and are generally declined."
+  }
+}

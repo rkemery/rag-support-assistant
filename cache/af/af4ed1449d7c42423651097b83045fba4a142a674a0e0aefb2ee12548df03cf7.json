@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Credit cards and loans\n\nTallowbrook doesn't offer credit cards, personal loans, mortgages, auto loans or lines of credit.\n\n## Your Tallowbrook card is a debit card\n\nIt spends money that's already in your account. It doesn't build credit history and doesn't appear on your credit report.\n\n## Is Cushion a loan?\n\nCushion covers small debit card purchases on Plus and Premium with no fees or interest. It isn't a line of credit, isn't reported to credit bureaus, and is repaid automatically from your next deposit.\n\n## Credit checks\n\nWe don't run a hard credit check when you open an account.\n\n## Paying a loan or card from another lender\n\nYou can pay other lenders from your Tallowbrook account by ACH, using your routing and account number.\n\n## Looking for credit?\n\nWe can't recommend lenders or give advice about borrowing.\n\n## Credit reports\n\nBecause we don't lend, we don't report your account to credit bureaus. A Tallowbrook account won't raise or lower your credit score.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nyour next deposit.\n\n## Credit checks\n\nWe don't run a hard credit check when you open an account.\n\n## Paying a loan or card from another lender\n\nYou can pay other lenders from your Tallowbrook account by ACH, using your routing and account number.\n\n## Looking for credit?\n\nWe can't recommend lenders or give advice about borrowing.\n\n## Credit reports\n\nBecause we don't lend, we don't report your account to credit bureaus. A Tallowbrook account won't raise or lower your credit score.\n\nStill stuck? Chat with us in the app. Someone is there around\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 401,
+    "latency_ms": 1516.0696250386536,
+    "model": "gpt-6-luna",
+    "output_tokens": 50,
+    "reasoning_tokens": 0,
+    "text": "Explains Tallowbrook’s credit policies: no hard credit checks, no credit reporting or borrowing advice, and how to pay other lenders via ACH. It follows details about Cushion and ends with a prompt to contact in-app support."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Weekends and bank holidays\n\nSome kinds of payment only move on business days. Business days are Monday to Friday, except bank holidays.\n\n## What pauses on weekends and holidays\n\n- ACH transfers to and from linked accounts\n- Domestic and international wires\n- Mobile check deposits (they count as received the next business day)\n\n## What works every day\n\n- Card purchases and ATM withdrawals\n- BrookPay transfers between members\n- Transfers between your main balance and Savings Pockets\n- Cash deposits at retail stores\n\n## Paydays near a holiday\n\nIf your payday falls on a holiday, your employer usually sends payroll earlier, and early direct deposit may pay you sooner still.\n\n## Timelines in business days\n\nWhen we say something takes a number of business days, such as card delivery, dispute credits or transfer arrival, weekends and bank holidays aren't counted.\n\nSupport is open every day, including holidays.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nSome kinds of payment only move on business days. Business days are Monday to Friday, except bank holidays.\n\n## What pauses on weekends and holidays\n\n- ACH transfers to and from linked accounts\n- Domestic and international wires\n- Mobile check deposits (they count as received the next business day)\n\n## What works every day\n\n- Card purchases and ATM withdrawals\n- BrookPay transfers between members\n- Transfers between your main balance and Savings Pockets\n- Cash deposits at retail stores\n\n## Paydays near a holiday\n\nIf your payday falls on a holiday, your employer usually sends payroll\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 381,
+    "latency_ms": 4090.5718330759555,
+    "model": "gpt-6-luna",
+    "output_tokens": 41,
+    "reasoning_tokens": 0,
+    "text": "Explains which bank transactions pause or continue on weekends and bank holidays, and how holidays can affect payday timing. This is part of a guide to business-day timelines and banking support availability."
+  }
+}

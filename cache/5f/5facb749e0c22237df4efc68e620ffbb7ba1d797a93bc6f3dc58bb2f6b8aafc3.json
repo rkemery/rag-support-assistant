@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Linking an external bank account\n\nTo move money between Tallowbrook and an account at another bank, link that account first. You can link it instantly by signing in to the other bank, or by confirming two small deposits.\n\n## Link instantly\n\nTap Transfers, then Linked accounts, then Add account. Choose your bank and sign in. Most large banks can be linked this way in under a minute.\n\n## Link with small deposits\n\nIf your bank isn't listed, enter its routing and account number. We send two small deposits, which arrive in 1 to 2 business days. Enter the two amounts in the app within 14 days to finish linking. After that, the link expires and you need to start again.\n\n## Rules\n\n- The external account must be in your name. We can't link accounts that belong to someone else, including a spouse.\n- You can link up to 5 external accounts.\n- New linked accounts may have lower transfer amounts for the first few days while we confirm them.\n\nYour Tallowbrook routing and account numbers are shown in the app under Account details, if the other bank asks for them.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nTo move money between Tallowbrook and an account at another bank, link that account first. You can link it instantly by signing in to the other bank, or by confirming two small deposits.\n\n## Link instantly\n\nTap Transfers, then Linked accounts, then Add account. Choose your bank and sign in. Most large banks can be linked this way in under a minute.\n\n## Link with small deposits\n\nIf your bank isn't listed, enter its routing and account number. We send two small deposits, which arrive in 1 to 2 business days. Enter the two amounts in the\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 429,
+    "latency_ms": 2515.831666998565,
+    "model": "gpt-6-luna",
+    "output_tokens": 32,
+    "reasoning_tokens": 0,
+    "text": "Explains how to link an external bank account to Tallowbrook, either by signing in to the other bank or verifying two small deposits."
+  }
+}

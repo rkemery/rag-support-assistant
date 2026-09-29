@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Do I need a travel notice?\n\nNo. You don't need to tell us before you travel. We retired travel notices and the Travel mode setting, and our fraud checks now use your location and spending patterns instead.\n\n## What to do instead\n\n- Keep app notifications on. If we see an unusual purchase, we'll send a fraud alert that you can confirm with one tap.\n- Answer fraud alerts quickly. If an alert goes unanswered for 24 hours, the card stays locked until you contact us.\n- Check that International purchases is switched on under Cards, then Controls.\n\n## Old travel notices\n\nIf you set a travel notice before we retired the feature, there's nothing you need to do. Old notices were deleted and don't affect your card.\n\n## Still worried?\n\nAdding a virtual card to your phone's wallet before you leave gives you a backup if your physical card is lost or declined.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\non under Cards, then Controls.\n\n## Old travel notices\n\nIf you set a travel notice before we retired the feature, there's nothing you need to do. Old notices were deleted and don't affect your card.\n\n## Still worried?\n\nAdding a virtual card to your phone's wallet before you leave gives you a backup if your physical card is lost or declined.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 347,
+    "latency_ms": 1138.5032499674708,
+    "model": "gpt-6-luna",
+    "output_tokens": 37,
+    "reasoning_tokens": 0,
+    "text": "This section explains what to do about old travel notices, suggests adding a virtual card as a backup when traveling, and tells customers how to get help in the app."
+  }
+}

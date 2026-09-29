@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# How fraud alerts work\n\nWhen we see a card transaction that looks unusual, we decline it and send you a fraud alert in the app, and by text if you've turned that on.\n\n## Answering an alert\n\nThe alert shows the merchant, amount and location. Tap \"Yes, that was me\" or \"No, that wasn't me\".\n\n- **Yes:** the card is unlocked straight away. Try the purchase again.\n- **No:** the card stays locked. We'll guide you through reporting it and disputing any other charges.\n\n## If you don't answer\n\nIf you don't answer within 24 hours, the card stays locked until you contact us.\n\n## Is this alert real?\n\nReal alerts appear inside the Tallowbrook app. A text alert only ever asks you to reply YES or NO, and never contains a link. We never ask for your card number, PIN, password or a one-time code to confirm an alert. If someone calls you about a fraud alert, hang up and open the app instead.\n\n## Too many alerts?\n\nAlerts are more common when you shop somewhere new or abroad. They get less frequent as our systems learn your patterns.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nIf you don't answer\n\nIf you don't answer within 24 hours, the card stays locked until you contact us.\n\n## Is this alert real?\n\nReal alerts appear inside the Tallowbrook app. A text alert only ever asks you to reply YES or NO, and never contains a link. We never ask for your card number, PIN, password or a one-time code to confirm an alert. If someone calls you about a fraud alert, hang up and open the app instead.\n\n## Too many alerts?\n\nAlerts are more common when you shop somewhere new or abroad. They get less frequent\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 433,
+    "latency_ms": 1447.0157920150086,
+    "model": "gpt-6-luna",
+    "output_tokens": 45,
+    "reasoning_tokens": 0,
+    "text": "This section explains what happens if you don’t respond to a fraud alert, how to verify that an alert is genuine and avoid scams, and why alerts may be more frequent when shopping somewhere new or abroad."
+  }
+}

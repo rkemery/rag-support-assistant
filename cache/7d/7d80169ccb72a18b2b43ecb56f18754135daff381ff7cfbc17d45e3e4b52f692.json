@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[card-activate] Activating your card (effective 2025-01-01)\nuse it online or in a mobile wallet while you wait. It has its own number, so you don't need to update it when the physical card shows up.\n\n## If activation fails\n\nCheck that you're activating the newest card. An old or replaced card can't be activated. If your card hasn't arrived within 10 business days of ordering it, message support so we can cancel it and send another one.\n\nReplacement cards need activating too. For a damaged card, your old card keeps working until you activate the new one.\n\nQuestions? Our support team is available in the app at any\n\n[card-activate] Activating your card (effective 2025-01-01)\nYour physical card arrives inactive. You need to activate it in the app before you can use it for purchases or at ATMs.\n\n## How to activate\n\n1. Open the app and tap Cards.\n2. Tap Activate card.\n3. Scan the card with your camera, or type the last 4 digits and the expiry date.\n4. Set your PIN when the app asks.\n\nActivation is instant. Your card works right after.\n\n## Before your card arrives\n\nYou can add a virtual card in the app and use it online or in a mobile wallet while you wait. It has its own\n\n[card-activate] Activating your card (effective 2025-01-01)\nthe new one.\n\nQuestions? Our support team is available in the app at any hour.\n\n[card-renewal] Card expiry and renewal (effective 2025-01-01)\nWe mail a new card automatically about 30 days before your current card expires. You don't need to ask for it.\n\n## What changes\n\nThe renewed card has the same card number, a new expiry date and a new security code. Most merchants that store your card get the new expiry date automatically, but some don't, so check your subscriptions.\n\n## What to do when it arrives\n\nActivate the new card in the app. Your old card keeps working until you activate the new one or until it expires, whichever comes first.\n\n## If it doesn't arrive\n\nCheck that your address in the\n\n[card-damaged] Replacing a damaged card (effective 2025-01-01)\nIf your card is cracked, bent, or the chip or contactless stops working, order a replacement in the app.\n\n## How to order\n\nTap Cards, choose the card, then Replace card, then Damaged. Confirm your address and pick a shipping speed.\n\n## Your old card keeps working\n\nWhen you report a card as damaged, we don't cancel it. You can keep using it (if it still works) until you activate the replacement. Activating the new card switches the old one off.\n\nThe new card has the same card number, a new expiry date and a new security\n\n[card-pin] Setting or changing your PIN (effective 2025-01-01)\nYou set your PIN when you activate your card, and you can change it any time in the app.\n\n## Change your PIN\n\n1. Tap Cards, then Card settings.\n2. Tap Change PIN.\n3. Confirm it's you with your passcode or face or fingerprint unlock.\n4. Enter the new PIN twice.\n\nThe new PIN works right away at card terminals. Some ATMs outside the BrookLink network only pick up the new PIN after your first chip-and-PIN purchase.\n\n## Forgot your PIN\n\nUse Change PIN in the app. You don't need the old one, because\n\n[close-inactivity] Inactive accounts (effective 2025-01-01)\npaid plan keeps charging its monthly fee while the account is open, which counts as activity. If you don't use your account, consider moving to Basic.\n\n## Coming back\n\nIf your account was closed for inactivity, you can apply for a new one whenever you like.\n\n## Keeping an account open\n\nAny card purchase, deposit or transfer counts as activity. Signing in to the app on its own doesn't.\n\nNeed more help? Message us in the app any time, day or night.\n\n[card-lost-stolen-v2] Lost or stolen card (effective 2025-11-01)\nIf your card is lost or stolen, you can deal with it in the app in a couple of minutes. You don't need to call us.\n\n## What to do\n\n1. **Freeze the card.** Tap Cards and switch Freeze card on. This stops new purchases right away.\n2. **Report it.** If you can't find it, tap Report lost or stolen. This cancels the card permanently. It can't be undone.\n3. **Add a virtual card.** You can create one in the app and use it online and in mobile wallets right away while the\n\nCustomer question:\nHow do I activate my new card?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1282,
+    "latency_ms": 1223.4699999680743,
+    "model": "gpt-6-luna",
+    "output_tokens": 84,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Open the app, tap **Cards**, then **Activate card**. Scan your new card or enter its last four digits and expiry date, then set your PIN when prompted; activation is instant. Make sure you’re activating the newest card, since an old or replaced card can’t be activated.\",\"citations\":[\"card-activate\"],\"abstain\":false}"
+  }
+}

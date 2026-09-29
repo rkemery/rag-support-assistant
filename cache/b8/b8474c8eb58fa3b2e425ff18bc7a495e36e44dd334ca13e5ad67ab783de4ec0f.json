@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Business accounts\n\nNo. Tallowbrook only offers personal accounts. We don't offer business accounts for companies, partnerships, nonprofits or sole proprietors.\n\n## Using a personal account for business\n\nPersonal accounts are for personal use. Small amounts of freelance or side income are fine, such as getting paid for occasional gigs. Running a business's regular payments through a personal account isn't allowed, and could lead to a review of your account.\n\n## Business payments into your account\n\nYou can receive payments from a business, such as your employer or a client, into your personal account.\n\n## Business debit cards\n\nYour Tallowbrook card is a personal debit card. It can't carry a business name.\n\n## Tax forms\n\nWe only issue interest tax forms. We can't issue forms for business income.\n\n## Looking for a business account?\n\nYou'll need a bank that offers business accounts. We can't recommend a specific one.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\ninto your personal account.\n\n## Business debit cards\n\nYour Tallowbrook card is a personal debit card. It can't carry a business name.\n\n## Tax forms\n\nWe only issue interest tax forms. We can't issue forms for business income.\n\n## Looking for a business account?\n\nYou'll need a bank that offers business accounts. We can't recommend a specific one.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 345,
+    "latency_ms": 1554.9832079559565,
+    "model": "gpt-6-luna",
+    "output_tokens": 50,
+    "reasoning_tokens": 0,
+    "text": "Tallowbrook offers personal accounts only, not business accounts. Occasional freelance or side income is allowed, but regular business payments through a personal account are not. Business payments from employers or clients can be received into a personal account."
+  }
+}

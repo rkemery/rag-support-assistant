@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Returned transfers\n\nSometimes a transfer is sent back. This is called a return. It usually happens a few business days after the transfer was sent.\n\n## Common reasons\n\n- The account number or routing number was wrong.\n- The receiving account was closed or frozen.\n- The name on the receiving account didn't match.\n- For money you pulled in from another bank, there wasn't enough money in that account.\n\n## What happens to the money\n\nFor transfers out, the money comes back to your Tallowbrook balance when the return reaches us. For transfers in, we take back any amount we already made available.\n\n## Fees\n\nWe don't charge for returned transfers ($0.00). The other bank might.\n\n## What to do\n\nCheck the details on the linked account, correct anything wrong, and send the transfer again. If a pull from your own account at another bank was returned, ask that bank why before you try again. Repeated returns can lead to lower transfer amounts.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nFor transfers in, we take back any amount we already made available.\n\n## Fees\n\nWe don't charge for returned transfers ($0.00). The other bank might.\n\n## What to do\n\nCheck the details on the linked account, correct anything wrong, and send the transfer again. If a pull from your own account at another bank was returned, ask that bank why before you try again. Repeated returns can lead to lower transfer amounts.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 384,
+    "latency_ms": 1282.6791249681264,
+    "model": "gpt-6-luna",
+    "output_tokens": 64,
+    "reasoning_tokens": 0,
+    "text": "Returned transfers may take a few business days. For transfers in, Tallowbrook reclaims any funds already made available; it charges no return fee, though the other bank may. Correct linked account details before retrying, ask the other bank about returned pulls, and contact in-app support for help."
+  }
+}

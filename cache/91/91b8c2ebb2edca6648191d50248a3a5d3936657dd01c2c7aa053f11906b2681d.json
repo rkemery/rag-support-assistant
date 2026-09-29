@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[security-scam-payment] If you sent money to a scammer (effective 2025-01-01)\nIf you sent a BrookPay payment, a transfer or a wire and then realized it was a scam, tell us right away.\n\n## What we can do\n\nSupport will pass your report to our Fraud team. They'll contact the receiving account or bank and try to recover the money. BrookPay payments can't be reversed, so recovery depends on the money still being in the other account. We can't promise to get it back.\n\n## What to include\n\n- The payment and the date\n- How you were contacted and what you were told\n- Screenshots of messages,\n\n[security-scam-payment] If you sent money to a scammer (effective 2025-01-01)\nHow you were contacted and what you were told\n- Screenshots of messages, and any names, numbers or websites\n\n## Protect yourself now\n\n- If you shared a password or code, change your password.\n- Don't send more money to get the first payment back. That's a common second scam.\n- Report the scam to the police.\n\n## Card payments are different\n\nIf you paid a scammer by card, you may be able to dispute the purchase with the merchant. See \"Disputing a purchase with a merchant\".\n\nThe Fraud team usually replies within 2\n\n[security-fraud-alerts] How fraud alerts work (effective 2025-01-01)\nWhen we see a card transaction that looks unusual, we decline it and send you a fraud alert in the app, and by text if you've turned that on.\n\n## Answering an alert\n\nThe alert shows the merchant, amount and location. Tap \"Yes, that was me\" or \"No, that wasn't me\".\n\n- **Yes:** the card is unlocked straight away. Try the purchase again.\n- **No:** the card stays locked. We'll guide you through reporting it and disputing any other charges.\n\n## If you don't answer\n\nIf you don't answer within 24\n\n[disputes-merchant-v2] Disputing a purchase with a merchant (effective 2026-01-15)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 120 days of the\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 90 days of the\n\n[transfers-returned] Returned transfers (effective 2025-01-01)\nSometimes a transfer is sent back. This is called a return. It usually happens a few business days after the transfer was sent.\n\n## Common reasons\n\n- The account number or routing number was wrong.\n- The receiving account was closed or frozen.\n- The name on the receiving account didn't match.\n- For money you pulled in from another bank, there wasn't enough money in that account.\n\n## What happens to the money\n\nFor transfers out, the money comes back to your Tallowbrook balance when the return reaches us. For transfers in, we take back any amount we already made available.\n\n##\n\n[disputes-documents] Documents that help a dispute (effective 2025-01-01)\nThe right documents make a dispute faster and more likely to succeed. Here's what helps for each kind of dispute.\n\n## Item not received\n\n- Order confirmation showing the expected delivery date\n- Tracking information, if any\n- Your messages to the merchant asking about the delivery\n\n## Item not as described\n\n- The product listing or description\n- Photos of what you received\n- Proof you returned it or offered to, if the merchant asked\n\n## Cancelled subscription still charged\n\n- The cancellation confirmation, or a screenshot of the date you cancelled\n- The merchant's cancellation terms, if you\n\n[security-account-takeover] If someone else accessed your account (effective 2025-01-01)\nIf you think someone else has signed in to your account, act fast.\n\n## Signs to look for\n\n- A password change or new-device sign-in you didn't make\n- Your email address or phone number changed without you\n- Transfers or BrookPay payments you didn't send\n- You're suddenly signed out and can't sign back in\n\n## What to do\n\n1. If you can still sign in, change your password and freeze your cards.\n2. Message support from the app, or call us if you can't sign in.\n\n## What we'll do\n\nSupport\n\nCustomer question:\nItem came broken and the seller won't answer my emails. can i get my money back thru you guys?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1426,
+    "latency_ms": 1688.8477499596775,
+    "model": "gpt-6-luna",
+    "output_tokens": 92,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"You may be able to file a merchant dispute if you paid by card and the item was significantly different from its description. Try contacting the seller first and keep a record of your emails; a dispute can’t guarantee a refund. The help-center excerpt doesn’t specify whether a broken item qualifies or give the filing deadline.\",\"citations\":[\"disputes-merchant-v2\"],\"abstain\":false}"
+  }
+}

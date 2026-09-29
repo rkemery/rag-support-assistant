@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[plan-change] Changing your plan (effective 2025-01-01)\nYou can move between Basic, Plus and Premium in the app under Profile, then Plan. You don't need to contact support, though support can make the change for you if you ask.\n\n## Upgrading\n\nAn upgrade takes effect immediately. We charge the new plan's full monthly fee that day, and that day becomes your new billing date. Your new limits, fees and savings rate apply from that moment.\n\n## Downgrading\n\nA downgrade takes effect on your next billing date. You keep your current plan's features until then. We don't refund part of a month.\n\n## Things to check before you\n\n[plan-billing] When and how plan fees are charged (effective 2025-01-01)\nPaid plan fees are charged once a month on your billing date, from your main balance. Your billing date is the day you first joined a paid plan, or the day of your last upgrade.\n\n## If the fee can't be collected\n\nIf your balance is too low on the billing date, we try again after 3 days. If the second try also fails, your plan moves to Basic. Cushion never covers plan fees. You can move back to a paid plan once you've added money.\n\n## Where to see it\n\nThe charge shows in your activity feed as \"Plan\n\n[plan-basic] The Basic plan (effective 2026-06-01)\n**Expedited card shipping:** $25.00\n- **Savings Pockets:** 0.50% APY\n- **Cushion:** not available on Basic\n- **Daily card spending limit:** $3,000\n- **Daily ATM limit:** $500\n\n## Good to know\n\nInternational wires aren't available on Basic. You can still receive them. If you travel or send money abroad often, Plus or Premium will usually cost less over a year.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away. Downgrades\n\n[wires-basic] Wire fees on Basic (effective 2025-01-01)\nneed to move to Plus or Premium. You can still receive international wires on Basic.\n\n## Before you send\n\nWires can't be cancelled once they're sent. Check the recipient's name, bank and account number carefully. Be wary of anyone who pressures you to wire money quickly, especially someone you've only met online.\n\nOther banks involved in the wire may charge their own fees, which can reduce the amount the recipient gets. We show our fee before you confirm.\n\nNeed more help? Message us in the app any time, day or night.\n\n[fee-changes-2026] What changed in the March 2026 fee update (effective 2026-03-01)\nless overall.\n\nIf the new Plus price doesn't work for you, you can move to Basic in the app. The change takes effect on your next billing date.\n\nQuestions? Our support team is available in the app at any hour.\n\n[plan-basic] The Basic plan (effective 2026-06-01)\nthe app under Profile, then Plan. Upgrades start right away. Downgrades start on your next billing date.\n\nQuestions? Our support team is available in the app at any hour.\n\n[cushion-basic] Cushion on Basic (effective 2025-01-01)\nCushion isn't available on the Basic plan. On Basic, a debit card purchase larger than your balance is declined, with no fee.\n\n## Why\n\nCushion is part of the paid plans. It's how we give members a little room without charging overdraft fees.\n\n## Getting Cushion\n\nMove to Plus for coverage up to $50.00, or to Premium for coverage up to $200. You'll also need at least $500 in direct deposits in the last 30 days.\n\n## Overdraft fees\n\nBasic has no overdraft fees ($0.00). Transactions that\n\n[plan-premium] The Premium plan (effective 2026-06-01)\n**Expedited card shipping:** free\n- **Savings Pockets:** 3.75% APY\n- **Cushion:** fee-free coverage up to $200 on debit card purchases\n- **Daily card spending limit:** $10,000\n- **Daily ATM limit:** $1,500\n\n## Good to know\n\nPremium members can get an emergency replacement card delivered abroad within 3 business days at no cost. Your card is metal, and replacements are metal too.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away.\n\nCustomer question:\nIf I upgrade from Basic to Premium today, when do I get charged?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1248,
+    "latency_ms": 1738.2989580510184,
+    "model": "gpt-6-luna",
+    "output_tokens": 58,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Your Premium upgrade takes effect immediately, and you’re charged Premium’s full monthly fee today from your main balance. Today also becomes your new billing date.\",\"citations\":[\"plan-change\",\"plan-billing\"],\"abstain\":false}"
+  }
+}

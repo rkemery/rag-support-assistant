@@ -1,0 +1,20 @@
+{
+  "dataset": "RAGTruth",
+  "repo": "https://github.com/ParticleMedia/RAGTruth",
+  "commit": "c103204b9ce28d6bbad859304bf30de72b8ed8fe",
+  "license": "MIT",
+  "source_sha256": {
+    "response.jsonl": "e4c2e4ac24fff676d8984cc61c35d791612fadc58015335d97dd632375e18073",
+    "source_info.jsonl": "0dffc26ea9f3c1c3d7c7e8336b56ef1646e3cec876edffcca3c9c624d12d578b"
+  },
+  "selection": {
+    "task_type": "QA",
+    "split": "test",
+    "quality": "good",
+    "per_class": 100,
+    "seed": 20260928
+  },
+  "subset_sha256": "2bd5d3aaf6e111bed384150a300f91c27e398a0d4bb4f075b373faa684f89ef7",
+  "n_items": 200,
+  "n_not_grounded": 100
+}
