@@ -255,7 +255,8 @@ def _generation_notes(
         + ", ".join(parts[:-1])
         + (" and " if len(parts) > 1 else "")
         + parts[-1]
-        + ", in table order.",
+        + ", in table order. The table's n is smaller where the judge couldn't parse a reply "
+        "(see below).",
         "",
     ]
     for arm in present:

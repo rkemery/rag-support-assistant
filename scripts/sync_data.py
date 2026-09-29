@@ -1,12 +1,13 @@
 """Vendor and verify the pinned Tallowbrook dataset snapshot in data/tallowbrook/.
 
     uv run python scripts/sync_data.py            # verify vendored files against MANIFEST.json
-    uv run python scripts/sync_data.py --from ../neobank-support-data   # copy, rewrite manifest
+    uv run python scripts/sync_data.py --from ../tallowbrook-dataset   # copy, rewrite manifest
 
 The copy mode refuses a source checkout that is not at the pinned commit or has
 uncommitted changes, so the manifest always names a commit the files came from.
 The dataset's canonical home will be a Hugging Face dataset. Until then the
-source is a git checkout of neobank-support-data.
+source is a git checkout of the dataset, branch claude/tallowbrook-dataset of
+rkemery/rag-support-assistant.
 """
 
 from __future__ import annotations
@@ -24,7 +25,7 @@ DEST = ROOT / "data" / "tallowbrook"
 MANIFEST = DEST / "MANIFEST.json"
 
 PINNED_COMMIT = "3c72058e8cc7d5dd6e224ecdec7b814341a3d48f"
-# source path in neobank-support-data -> vendored path under data/tallowbrook/
+# source path in the dataset checkout -> vendored path under data/tallowbrook/
 FILES = {
     "corpus/articles.jsonl": "articles.jsonl",
     "facts/policies.yaml": "policies.yaml",
@@ -86,7 +87,7 @@ def copy_from(source: Path, dest: Path = DEST) -> None:
     manifest = {
         "dataset": "Tallowbrook Neobank Support (synthetic)",
         "license": "CC-BY-4.0",
-        "source_repo": "neobank-support-data",
+        "source_repo": "rkemery/rag-support-assistant, branch claude/tallowbrook-dataset",
         "source_commit": PINNED_COMMIT,
         "files": entries,
     }
