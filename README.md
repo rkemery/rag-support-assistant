@@ -10,7 +10,7 @@ Results come with 95% confidence intervals and sample sizes, retrieval runs full
 <!-- results:start -->
 > Every number shown was produced offline by `make demo` from committed results, including the replies of the live model runs.
 
-**Retrieval, test split** (130 questions with a gold article, article-level, no LLM). Mean with a 95% percentile bootstrap CI over clusters (questions grouped by their first gold article). Latency is per query on CPU, on a 4-vCPU container shared with other jobs, so it is rough (see Limitations).
+**Retrieval, test split** (130 questions with a gold article, article-level, no LLM). Mean with a 95% percentile bootstrap CI over clusters (questions grouped by their first gold article). Latency per query on CPU is rough (see Limitations).
 
 | Config | Role | nDCG@10 | MRR@10 | Recall@5 | Recall@10 | p50 / p95 ms |
 |---|---|---|---|---|---|---|
@@ -27,7 +27,10 @@ Results come with 95% confidence intervals and sample sizes, retrieval runs full
 
 82 clusters. "chosen on dev" marks the winner of each step on dev nDCG@10, "generation" the three configs picked on dev for the answer runs.
 
-**Paired comparisons on test**, same questions, clustered paired t-test (harness `compare_runs`), with the minimum detectable effect at 80% power. nDCG@10 is the primary metric. Each step's candidates were fixed on dev before test ran, so the nDCG@10 tests on the grid rows are the confirmatory ones. The recall@5 columns and the strong-arm rows are exploratory.
+<details>
+<summary><b>Paired comparisons on test</b></summary>
+
+Clustered paired t-test on the same questions (harness `compare_runs`), with the minimum detectable effect (MDE) at 80% power. Each step's candidates were fixed on dev before test ran, so the nDCG@10 tests on the grid rows are confirmatory. The recall@5 columns and the strong-arm rows are exploratory.
 
 | Step | Baseline -> candidate | nDCG@10 change (95% CI) | p | MDE | Recall@5 change (95% CI) | p |
 |---|---|---|---|---|---|---|
@@ -41,7 +44,12 @@ Results come with 95% confidence intervals and sample sizes, retrieval runs full
 | strong arm | fixed-title / bge-small -> fixed-title / qwen3-emb | +0.006 (-0.031 to +0.043) | 0.754 | 0.052 | +0.009 (-0.032 to +0.050) | 0.660 |
 | strong arm | fixed-title / bge-small+bm25 convex(a=0.7) -> fixed-title / bge-small+bm25 convex(a=0.7) / rerank qwen3-rerank | +0.013 (-0.012 to +0.038) | 0.316 | 0.036 | +0.031 (-0.002 to +0.065) | 0.068 |
 
-**How the path was chosen (dev split, mean nDCG@10).** Test was run once, after these choices were fixed.
+</details>
+
+<details>
+<summary><b>How the path was chosen</b> (dev split, mean nDCG@10)</summary>
+
+Test was run once, after these choices were fixed.
 
 | Step | Candidates (dev nDCG@10) | Chosen |
 |---|---|---|
@@ -52,6 +60,7 @@ Results come with 95% confidence intervals and sample sizes, retrieval runs full
 
 Convex fusion weight on dense (alpha) swept on dev: 0.0: 0.736, 0.1: 0.758, 0.2: 0.772, 0.3: 0.792, 0.4: 0.813, 0.5: 0.828, 0.6: 0.825, 0.7: 0.839, 0.8: 0.811, 0.9: 0.795, 1.0: 0.791.
 
+</details>
 
 **Answers, test split** (150 questions: 120 answerable, 20 that should be declined, 10 false premises). gpt-6-luna, reasoning effort none, top 8 chunks. Judge: Llama-3.3-70B-Instruct. Clustered Wilson 95% CIs.
 
@@ -66,7 +75,10 @@ The hallucination rate counts answered questions only (answerable + should-decli
 
 fixed-title / bge-small+bm25 rrf: Llama's reply couldn't be parsed for 2 answers (q-test-007, q-test-068), so they're left out of its accuracy and hallucination rate. The replies use bare `no` and `yes` instead of JSON booleans. Read as written, accuracy would be 111/120 = 92.5% and the hallucination rate 4/137 = 2.9% (see Limitations).
 
-**Abstention table, test split** (answered / abstained). The first two rows are the 2x2. False-premise questions count as unanswerable in the dataset, but the right move is to answer and correct the premise, so they get their own row.
+<details>
+<summary><b>Abstention table, test split</b> (answered / abstained)</summary>
+
+The first two rows are the 2x2. False-premise questions count as unanswerable in the dataset, but the right move is to answer and correct the premise, so they get their own row.
 
 | Expected | fixed-title / bge-small+bm25 convex(a=0.7) | fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | fixed-title / bge-small+bm25 rrf | Full context (no retrieval) |
 |---|---|---|---|---|
@@ -74,9 +86,14 @@ fixed-title / bge-small+bm25 rrf: Llama's reply couldn't be parsed for 2 answers
 | Should decline (20) | 8 / 12 | 10 / 10 | 8 / 12 | 3 / 17 |
 | False premise (10) | 10 / 0 | 10 / 0 | 10 / 0 | 10 / 0 |
 
-The 20 should-decline questions are 10 near-miss and 10 out-of-scope. Answered ones by type (near-miss / out-of-scope), in table order: 7 / 1, 8 / 2, 7 / 1, 3 / 0. A near-miss question is on a covered topic but asks for a detail the help center doesn't give, and its reference answer is a partial answer ("the help center doesn't list the stores. It says..."). The answer prompt says to abstain when the excerpts don't contain the answer, yet Llama passed all 29 answered replies as correct and grounded. So "answered unanswerable" mostly counts replies that say the help center doesn't cover the detail but leave the abstain flag off, and the reference answers and the prompt disagree on whether that's right. The metric stays as defined before the run.
+The 20 should-decline questions are 10 near-miss and 10 out-of-scope, and the answered ones by type (near-miss / out-of-scope) are 7 / 1, 8 / 2, 7 / 1, 3 / 0, in table order. Near-miss reference answers are partial answers and Llama passed all 29 answered replies as correct and grounded, so "answered unanswerable" mostly counts replies that say the help center lacks the detail without setting the abstain flag, and the metric stays as defined before the run.
 
-**Hallucination flags on the answers, by judge** (flagged as not grounded / judged). Disagree counts the answers both LLM judges read where their `grounded` verdicts differ.
+</details>
+
+<details>
+<summary><b>Hallucination flags on the answers, by judge</b> (flagged as not grounded / judged)</summary>
+
+Disagree counts the answers both LLM judges read where their `grounded` verdicts differ.
 
 | Arm | Llama | gpt-5-mini | Llama vs gpt-5-mini disagree | HHEM |
 |---|---|---|---|---|
@@ -85,14 +102,18 @@ The 20 should-decline questions are 10 near-miss and 10 out-of-scope. Answered o
 | fixed-title / bge-small+bm25 rrf | 3 / 135 | 5 / 137 | 0 / 135 | 18 / 137 |
 | Full context (no retrieval) | 0 / 133 | 0 / 133 | 0 / 133 | 9 / 133 |
 
-A Rogan-Gladen correction for judge error was run and can't be identified here. With the Llama judge's perturbation TPR and TNR both at 1.00 it returns the judged rate unchanged for every arm, the bootstrap over answers collapses when an arm has 0 or 1 flagged answers, and plugging in the RAGTruth rates (TPR 93%, TNR 59%) gives a negative rate for every arm (-13% to -9%), which clips to 0. The true hallucination rate is unknown, bracketed by a judge that catches 100% of synthetic errors and 59% of RAGTruth's, neither of which matches this task. RAGTruth was also judged without a reference answer, while the answers here are judged with one.
+A Rogan-Gladen correction for judge error ran but can't be identified here: with the Llama judge's perturbation TPR and TNR both at 1.00 it returns every judged rate unchanged, and with RAGTruth's (TPR 93%, TNR 59%) it gives a negative rate for every arm (-13% to -9%), which clips to 0. The true hallucination rate is unknown, bracketed by a judge that catches 100% of synthetic errors and 59% of RAGTruth's.
 
 The arms are at most 3 flagged answers apart by Llama and 5 by gpt-5-mini, and the two LLM judges rank the retrieval arms differently, so the arms can't be told apart on hallucination.
 
 HHEM flags far more answers than either LLM judge, which fits its 21% false-alarm rate on faithful paraphrases.
 
+</details>
 
-**Judge validation with no labels written for this repo.** Perturbation test split: 462 items built from the facts file (240 faithful, 222 with one injected error), labels known by construction. The judge prompt is tuned on the 160 dev items only and frozen, by fingerprint, before test is judged. RAGTruth: 200 human-annotated QA responses (half with a hallucination). TPR is the share of good answers passed, TNR the share of flawed answers caught. Wilson 95% CIs, kappa with a bootstrap CI.
+<details>
+<summary><b>Judge validation</b> (no labels written for this repo)</summary>
+
+Perturbation test split: 462 items built from the facts file (240 faithful, 222 with one injected error), labels known by construction. The judge prompt is tuned on the 160 dev items only and frozen, by fingerprint, before test is judged. RAGTruth: 200 human-annotated QA responses (half with a hallucination). TPR is the share of good answers passed, TNR the share of flawed answers caught. Wilson 95% CIs, kappa with a bootstrap CI.
 
 | Judge | Set | Check | n | TPR | TNR | Cohen's kappa |
 |---|---|---|---|---|---|---|
@@ -113,12 +134,16 @@ HHEM flags far more answers than either LLM judge, which fits its 21% false-alar
 | gpt-5-mini | 0.0% (0.0% to 3.1%) | 0.0% (0.0% to 3.1%) | 100.0% (94.7% to 100.0%) | 100.0% (85.1% to 100.0%) | 100.0% (75.8% to 100.0%) | 99.2% (95.4% to 99.9%) |
 | HHEM-2.1-Open | 0.0% (0.0% to 3.1%) | 20.8% (14.5% to 28.9%) | 57.4% (45.5% to 68.4%) | 0.0% (0.0% to 14.9%) | 16.7% (4.7% to 44.8%) | 93.3% (87.4% to 96.6%) |
 
+</details>
 
-**Live-only cells.**
+<details>
+<summary><b>Live-only cells</b></summary>
 
 - Contextual retrieval (fixed-title+ctx / bge-small+bm25 convex(a=0.7)), test nDCG@10: 0.794 (0.752 to 0.838), -0.017 vs no context (-0.045 to +0.012, p=0.244).
 - Ragas on fixed-title-hybrid-bge-small-convex0.7-granite-rerank: context_recall 0.936 (n=118), faithfulness 0.949 (n=118).
 - Ragas on fixed-title-hybrid-bge-small-convex0.7: context_recall 0.927 (n=119), faithfulness 0.931 (n=119).
+
+</details>
 <!-- results:end -->
 
 ## Quickstart
@@ -229,6 +254,15 @@ Every live call goes through the same stack, outermost first: the harness `Cache
 ## Cost of a full live run
 
 <!-- cost:start -->
+Actual spend: $2.21 token-priced over 4343 calls in 2 runs. DollarCap's accounting shows $2.68, which includes $0.48 reserved for 109 failed, retried calls that Azure doesn't bill.
+
+Prompt caching served 5.40M of the full-context arm's 5.44M input tokens: 149 of 150 calls hit the cache, and a cold call cost $0.0037, about $3.7 per 1,000 answers against $0.42 warm.
+
+`make eval-live` runs with a hard cap of $8.00 (`make eval-live CAP=...` to change it), a bit more than twice the expected spend. A refused call stops the run, and cached calls cost nothing when it is started again.
+
+<details>
+<summary><b>Pre-run estimate by stage</b></summary>
+
 Estimated before the live run by `eval estimate`, which builds the requests the run sends and prices them at list prices. "Expected" assumes about 4 bytes per token, typical output lengths and the full-context prefix served from the prompt cache after the first call. "Worst case" is what `DollarCap` reserves per call (one token per input byte plus `max_output_tokens`), the bound it enforces. Answer judging uses the reference answer as a stand-in answer, since the estimate runs before any answers exist.
 
 | Stage | Calls | Expected $ | DollarCap worst case $ | Minutes at default quota |
@@ -251,11 +285,7 @@ Estimated before the live run by `eval estimate`, which builds the requests the 
 
 "Minutes at default quota" is the least wall time the rate limiter allows at the day-1 capacities (gpt-6-luna 20K, gpt-5-mini 20K, Llama-3.3-70B-Instruct 10K tokens per minute), using 80% of each. Stages run one after another, so at those quotas the run would take about 13 hours, and luna's default quota can't fit the full-context prompt at all. The live run used raised capacities (see Limitations).
 
-`make eval-live` runs with a hard cap of $8.00 (`make eval-live CAP=...` to change it), a bit more than twice the expected spend. A refused call stops the run, and cached calls cost nothing when it is started again.
-
-Actual spend: $2.21 token-priced over 4343 calls in 2 runs. DollarCap's accounting shows $2.68, which includes $0.48 reserved for 109 failed, retried calls that Azure doesn't bill.
-
-Prompt caching served 5.40M of the full-context arm's 5.44M input tokens: 149 of 150 calls hit the cache, and a cold call cost $0.0037, about $3.7 per 1,000 answers against $0.42 warm.
+</details>
 <!-- cost:end -->
 
 ## How I built this
