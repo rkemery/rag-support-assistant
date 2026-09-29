@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Round-ups\n\nRound-ups save your spare change. Each time you pay with your card, we round the purchase up to the next dollar and move the difference into a Savings Pocket you choose.\n\n## Turn on round-ups\n\nTap Savings, choose a pocket, and switch on Round-ups.\n\n## How it works\n\n- Round-ups are added up during the day and moved once a day.\n- Purchases that are already a whole dollar amount aren't rounded.\n- Round-ups only apply to card purchases, not to ATM withdrawals, transfers or fees.\n- If your main balance is too low, that day's round-up is skipped.\n\n## Refunds\n\nIf a purchase is refunded, the round-up stays in your pocket. It's your money either way.\n\n## Turning it off\n\nSwitch off Round-ups on the pocket at any time. Money already saved stays in the pocket.\n\nRound-ups are available on every plan and earn your plan's savings rate once they're in the pocket.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nIf your main balance is too low, that day's round-up is skipped.\n\n## Refunds\n\nIf a purchase is refunded, the round-up stays in your pocket. It's your money either way.\n\n## Turning it off\n\nSwitch off Round-ups on the pocket at any time. Money already saved stays in the pocket.\n\nRound-ups are available on every plan and earn your plan's savings rate once they're in the pocket.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 376,
+    "latency_ms": 1370.4457910498604,
+    "model": "gpt-6-luna",
+    "output_tokens": 44,
+    "reasoning_tokens": 0,
+    "text": "Round-ups automatically save the spare change from eligible card purchases into a chosen Savings Pocket. This section explains skipped round-ups, refunds, turning the feature off, savings rates, and where to get help."
+  }
+}

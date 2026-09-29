@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Savings rate change, June 2026\n\nOn June 1, 2026, we changed the rates on Savings Pockets. Here are the old and new rates.\n\n| Plan | Before | From the change |\n|---|---|---|\n| Basic | 0.75% | 0.50% |\n| Plus | 2.50% | 2.00% |\n| Premium | 4.10% | 3.75% |\n\n## Why\n\nOur savings rates follow wider interest rates, which came down over the past year. We kept the gap between plans the same.\n\n## What you need to do\n\nNothing. Your pockets started earning the new rate automatically. Interest earned before the change was calculated at the old rate.\n\n## Notice\n\nWe emailed every member at least 30 days before the change.\n\n## Balance cap\n\nThe cap didn't change. Plan rates apply up to $100,000.\n\n## Thinking about switching plans?\n\nThe rate you earn depends on your plan. Upgrading takes effect immediately, so your pockets start earning the higher rate the same day. Compare plans in the app before you decide.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\ndown over the past year. We kept the gap between plans the same.\n\n## What you need to do\n\nNothing. Your pockets started earning the new rate automatically. Interest earned before the change was calculated at the old rate.\n\n## Notice\n\nWe emailed every member at least 30 days before the change.\n\n## Balance cap\n\nThe cap didn't change. Plan rates apply up to $100,000.\n\n## Thinking about switching plans?\n\nThe rate you earn depends on your plan. Upgrading takes effect immediately, so your pockets start earning the higher rate the same day. Compare plans\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 432,
+    "latency_ms": 1199.6324169449508,
+    "model": "gpt-6-luna",
+    "output_tokens": 48,
+    "reasoning_tokens": 0,
+    "text": "This chunk is from a June 2026 notice about reduced Savings Pocket rates. It explains the automatic rate change, advance email notice, unchanged $100,000 balance cap, and how upgrading plans affects the rate earned."
+  }
+}

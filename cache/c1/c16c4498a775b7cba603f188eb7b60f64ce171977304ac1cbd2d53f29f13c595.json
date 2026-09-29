@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[account-verification-time] How long verification takes (effective 2025-01-01)\nMost applications are verified within 1 business day, and many within minutes.\n\n## Manual review\n\nIf we need to check something by hand, it can take up to 5 business days. We may ask for another document, such as proof of address.\n\n## While you wait\n\nYou can receive deposits into your new account, but you can't send money, withdraw cash or order a card until you're verified.\n\n## Checking status\n\nThe app shows your verification status on the home screen. We'll notify you as soon as it's done.\n\n## Can support speed it up?\n\nNo. Verification is\n\n[account-verification-time] How long verification takes (effective 2025-01-01)\nas it's done.\n\n## Can support speed it up?\n\nNo. Verification is handled by our Verification team, and support can't approve applications or tell you more than the app shows. If we need anything from you, we'll ask in the app.\n\n## Common causes of delays\n\nA blurry ID photo, a name that doesn't match your ID exactly, or a recent move are the most common reasons we need a manual review. Checking these before you apply helps.\n\nNeed more help? Message us in the app any time, day or night.\n\n[account-documents] Documents for identity verification (effective 2025-01-01)\ngood light.\n\n## Details\n\nYour legal name, date of birth, residential address and Social Security number or ITIN. Your name must match your ID.\n\n## Proof of address\n\nIf we can't confirm your address automatically, we'll ask for a document dated within the last 90 days, such as a utility bill, lease or bank statement.\n\n## What we don't accept\n\nExpired IDs, photocopies, student IDs, or screenshots of an ID.\n\nQuestions? Our support team is available in the app at any hour.\n\n[account-verification-failed] If we couldn't verify your identity (effective 2025-01-01)\nIf we couldn't verify your identity, the app tells you what went wrong and whether you can try again.\n\n## Common reasons\n\n- The photo of your ID was blurry, cropped or had glare\n- The name or date of birth didn't match your ID\n- The ID had expired\n- The selfie didn't match the ID photo\n\n## Trying again\n\nYou can try up to 3 times. After that, the application is closed and you can apply again after 30 days.\n\n## Can support help?\n\nSupport can explain the steps, but can't approve an application,\n\n[account-documents] Documents for identity verification (effective 2025-01-01)\nTo verify your identity, we need a photo ID and a selfie, plus a few details.\n\n## Photo IDs we accept\n\n- US driver's license or state ID card\n- US passport or passport card\n- Permanent resident card\n- Foreign passport, together with an ITIN\n\nThe ID must be unexpired, and all four corners must be visible in the photo.\n\n## Selfie\n\nThe app asks you to take a short selfie video to match your face to the ID. Remove glasses and hats, and use good light.\n\n## Details\n\nYour legal name, date of birth, residential address\n\n[account-name-change] Changing your legal name (effective 2025-01-01)\nIf your legal name has changed, for example after marriage or divorce, our Verification team can update it.\n\n## What you'll need\n\n- A photo ID in your new name, or your current ID plus a legal document showing the change, such as a marriage certificate or court order\n\n## How to request it\n\nMessage support in the app and ask to change your legal name. Support can't change it directly, but will pass the request to the Verification team and tell you how to upload the documents.\n\n## How long it takes\n\nUp to 5 business days after we receive your documents.\n\n##\n\n[account-verification-failed] If we couldn't verify your identity (effective 2025-01-01)\nsupport help?\n\nSupport can explain the steps, but can't approve an application, override a decision, or tell you why a decision was made beyond what the app shows. Verification decisions are made by our Verification team.\n\n## Tips\n\nUse your ID's exact legal name, photograph it on a dark background in daylight, and take the selfie facing a window.\n\nQuestions? Our support team is available in the app at any hour.\n\n[account-under-review] Account under review or restricted (effective 2025-01-01)\nSometimes we need to review an account, for example to confirm identity details, check unusual activity, or meet legal requirements.\n\n## What you can do during a review\n\nYou can still receive deposits. Depending on the review, you may not be able to send money, withdraw cash, use your card or order a new card.\n\n## What you'll see\n\nA banner in the app tells you the account is under review or restricted, and what we need from you, if anything.\n\n## How long it takes\n\nIt depends on the reason. If we need documents, sending them quickly is the best\n\nCustomer question:\nHow long does identity verification take?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1345,
+    "latency_ms": 1333.979249931872,
+    "model": "gpt-6-luna",
+    "output_tokens": 60,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Most applications are verified within 1 business day, and many are verified within minutes. If your application needs manual review, it can take up to 5 business days.\",\"citations\":[\"account-verification-time\"],\"abstain\":false}"
+  }
+}

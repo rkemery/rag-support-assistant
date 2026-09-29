@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[support-financial-abuse] If someone is controlling your money (effective 2025-01-01)\nIf someone is controlling your money, pressuring you to hand it over, or using your account without your permission, you're not alone, and we can help.\n\n## Tell us safely\n\nMessage support in the app when it's safe. You can use a code phrase like \"I need to talk about my account security\" if someone might see your screen. Support will pass your case to our Account Services team, who are trained to help.\n\n## What we can do\n\n- Change your password and sign out other devices\n- Freeze or replace your card\n- Stop sending paper mail to\n\n[support-third-parties] Can someone else manage my account? (effective 2025-01-01)\npressuring you over your money, tell us in the app. See \"If someone is controlling your money\".\n\nQuestions? Our support team is available in the app at any hour.\n\n[support-third-parties] Can someone else manage my account? (effective 2025-01-01)\naccount.\n\n## Helping someone with their account\n\nThe account holder can sit with you and message us from their own session. We'll talk to them directly.\n\n## Legal authority\n\nIf you have power of attorney, or you're handling the account of someone who has died, we can help through our Account Services team. See \"Power of attorney\" and \"If an account holder has died\".\n\n## If you think someone is misusing your account\n\nIf someone else is using your account without your permission, or pressuring you over your money, tell us in the app. See \"If\n\n[security-account-takeover] If someone else accessed your account (effective 2025-01-01)\ncall us if you can't sign in.\n\n## What we'll do\n\nSupport will freeze your cards and pass your case to our Fraud team, who handle account takeovers. The Fraud team contacts you within 2 business days, and usually much faster. They may sign out every device, reset your credentials and review recent activity with you.\n\nSupport can't reverse transfers or change your email or phone number during a takeover investigation. The Fraud team does that once they've confirmed who you are.\n\n## Afterward\n\nCheck your email account's security too. Many takeovers start with a compromised\n\n[products-under-18] Accounts for under-18s (effective 2025-01-01)\nafter them. The money stays yours.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[security-account-takeover] If someone else accessed your account (effective 2025-01-01)\nIf you think someone else has signed in to your account, act fast.\n\n## Signs to look for\n\n- A password change or new-device sign-in you didn't make\n- Your email address or phone number changed without you\n- Transfers or BrookPay payments you didn't send\n- You're suddenly signed out and can't sign back in\n\n## What to do\n\n1. If you can still sign in, change your password and freeze your cards.\n2. Message support from the app, or call us if you can't sign in.\n\n## What we'll do\n\nSupport\n\n[security-account-takeover] If someone else accessed your account (effective 2025-01-01)\nyour email account's security too. Many takeovers start with a compromised email.\n\nNeed more help? Message us in the app any time, day or night.\n\n[support-financial-abuse] If someone is controlling your money (effective 2025-01-01)\nother devices\n- Freeze or replace your card\n- Stop sending paper mail to your address\n- Talk about options for moving money you need to keep safe\n\n## What we won't do\n\nWe won't tell anyone else you contacted us.\n\n## If you're in danger\n\nIf you're in immediate danger, call emergency services first.\n\nAccount Services replies within 2 business days, and faster when you tell us it's urgent.\n\nQuestions? Our support team is available in the app at any hour.\n\nCustomer question:\nSomeone is pressuring me to hand over access to my money. Who can help?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1143,
+    "latency_ms": 1647.9709580307826,
+    "model": "gpt-6-luna",
+    "output_tokens": 104,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"If it’s safe, message Tallowbrook support in the app; you can use the code phrase “I need to talk about my account security” if someone might see your screen. Support will connect you with the Account Services team, which can discuss ways to keep money safe and won’t tell anyone else you contacted them. If you’re in immediate danger, call emergency services first.\",\"citations\":[\"support-financial-abuse\"],\"abstain\":false}"
+  }
+}

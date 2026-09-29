@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[account-under-review] Account under review or restricted (effective 2025-01-01)\nSometimes we need to review an account, for example to confirm identity details, check unusual activity, or meet legal requirements.\n\n## What you can do during a review\n\nYou can still receive deposits. Depending on the review, you may not be able to send money, withdraw cash, use your card or order a new card.\n\n## What you'll see\n\nA banner in the app tells you the account is under review or restricted, and what we need from you, if anything.\n\n## How long it takes\n\nIt depends on the reason. If we need documents, sending them quickly is the best\n\n[account-under-review] Account under review or restricted (effective 2025-01-01)\ndepends on the reason. If we need documents, sending them quickly is the best way to speed things up.\n\n## Can support help?\n\nSupport can't lift a review or restriction, and often can't share the reason. Support will pass your message to the Verification team, who reply within 2 business days.\n\n## Negative balance restrictions\n\nIf your account is restricted because of a negative balance, adding money lifts the restriction once the balance is back to zero.\n\nQuestions? Our support team is available in the app at any hour.\n\n[transfers-pending] Why is my transfer pending? (effective 2025-01-01)\nfor example a large first transfer to a newly linked account. The app shows \"In review\". Reviews usually finish within one business day, and we'll message you if we need anything.\n\n## New device\n\nFor 24 hours after you sign in on a new device, transfers above $500 can't be sent.\n\n## Incoming transfers\n\nIf money sent to you hasn't arrived, check with the sender's bank when it was sent. Direct deposits usually arrive as soon as your employer's payment file reaches us.\n\nIf a transfer has been pending longer than the expected arrival date, message support with\n\n[direct-deposit-setup] Setting up direct deposit (effective 2025-01-01)\nmake the switch. Your first paycheck may still go to your old account.\n\n## Why it helps\n\n- You may get paid up to 2 days early.\n- Plus and Premium members need at least $500 in direct deposits in the last 30 days to use Cushion.\n\n## Splitting a paycheck\n\nYour employer may let you split your pay between accounts. You can also set up an automatic transfer from your main balance to a Savings Pocket on payday.\n\nNeed more help? Message us in the app any time, day or night.\n\n[close-blockers] Why can't I close my account? (effective 2025-01-01)\nwhether it's from Cushion or from a reversed credit.\n\n## Account restricted or under review\n\nIf your account is restricted or under review, support can't close it. Message us and we'll pass your request to the team that manages the review.\n\n## Still stuck?\n\nMessage support with the reason the app gives. We'll tell you exactly what's left to do.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[direct-deposit-setup] Setting up direct deposit (effective 2025-01-01)\nDirect deposit sends your paycheck, or benefits, straight into your Tallowbrook account.\n\n## Set it up\n\n- **Automatic:** tap Transfers, then Direct deposit, then Set up automatically. Find your employer or payroll provider and sign in. The switch happens in the payroll system.\n- **Manual:** download a pre-filled direct deposit form from the same screen, or copy your routing and account number, and give it to your employer.\n\n## How long it takes\n\nEmployers usually need one or two pay cycles to make the switch. Your first paycheck may still go to your old account.\n\n##\n\n[check-deposit-how] Depositing a check in the app (effective 2025-01-01)\n$2,500 |\n| Premium | $5,000 |\n\n## Keep the check\n\nKeep the paper check for 14 days after it's deposited, then destroy it. Don't deposit the same check anywhere else.\n\n## Checks we can't accept\n\nChecks made out to someone else, checks from outside the US, money orders, and checks without the endorsement above.\n\n## When the money is available\n\nSee \"When check deposits are available\". The app shows the release date after you submit the deposit.\n\nQuestions? Our support team is available in the app at any hour.\n\n[direct-deposit-early] Early direct deposit (effective 2025-01-01)\nWith early direct deposit, you can get your paycheck up to 2 days before your employer's official payday. It's included on every plan at no cost.\n\n## How it works\n\nEmployers send payroll files to banks a few days before payday. When we receive yours, we make the money available right away instead of waiting for the official pay date.\n\n## Why timing varies\n\nHow early you're paid depends on when your employer sends the file. Some pay periods you might get paid two days early, others one day, or on payday itself. We can't make an employer send it sooner.\n\n##\n\nCustomer question:\nMy account is under review. Can I still get my paycheck deposited?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1357,
+    "latency_ms": 2044.4471249356866,
+    "model": "gpt-6-luna",
+    "output_tokens": 68,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Yes. You can still receive deposits while your account is under review, so your paycheck can be deposited. Depending on the review, you may not be able to send money, withdraw cash, or use your card.\",\"citations\":[\"account-under-review\"],\"abstain\":false}"
+  }
+}

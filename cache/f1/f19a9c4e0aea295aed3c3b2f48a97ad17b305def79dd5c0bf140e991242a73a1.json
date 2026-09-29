@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Disputing a purchase with a merchant\n\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 120 days of the transaction date. After that, we can't open a dispute for you.\n\n## How to file\n\nTap the transaction, then Get help, then Problem with a purchase. Tell us what happened and upload your records.\n\n## What happens next\n\nIf the dispute passes an initial review, you get a provisional credit within 10 business days. We then contact the merchant through the card network. Most cases finish within 45 days.\n\nTransactions you don't recognize at all are a different kind of dispute. See \"Disputing a transaction you didn't make\".\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 120 days of the\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 431,
+    "latency_ms": 1565.8574999542907,
+    "model": "gpt-6-luna",
+    "output_tokens": 39,
+    "reasoning_tokens": 0,
+    "text": "Explains when to file a merchant dispute for a card purchase, examples of eligible purchase problems, the need to contact the merchant first, and the 120-day filing deadline."
+  }
+}

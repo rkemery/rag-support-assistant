@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[fees-all-v1] Fees for all plans (effective 2025-01-01)\nIncoming domestic wires are free ($0.00) on every plan.\n- ATM owners can add their own surcharge. That is separate from our fee.\n\nQuestions? Our support team is available in the app at any hour.\n\n[wires-plus] Wire fees on Plus (effective 2025-01-01)\nHere's what wires cost on the Plus plan.\n\n| Wire | Fee |\n|---|---|\n| Outgoing domestic | $15.00 |\n| Outgoing international | $35.00 |\n| Incoming domestic | free |\n| Incoming international | $10.00 |\n\nYou can send up to $10,000 a day in domestic wires on Plus.\n\n## Cutoff times\n\nDomestic wires sent before 3:00 PM ET on a business day go out the same day.\nInternational wires sent before 1:00 PM ET go out the same day and arrive in 1 to\n\n[wires-basic] Wire fees on Basic (effective 2025-01-01)\nHere's what wires cost on the Basic plan.\n\n| Wire | Fee |\n|---|---|\n| Outgoing domestic | $25.00 |\n| Outgoing international | not available |\n| Incoming domestic | free |\n| Incoming international | $10.00 |\n\nYou can send up to $5,000 a day in domestic wires on Basic.\n\n## Cutoff times\n\nDomestic wires sent before 3:00 PM ET on a business day go out the same day.\n\nTo send money abroad by wire, you'd need to move to Plus or Premium. You can still receive international wires on\n\n[wires-premium] Wire fees on Premium (effective 2025-01-01)\nHere's what wires cost on the Premium plan.\n\n| Wire | Fee |\n|---|---|\n| Outgoing domestic | free |\n| Outgoing international | $10.00 |\n| Incoming domestic | free |\n| Incoming international | free |\n\nYou can send up to $25,000 a day in domestic wires on Premium.\n\n## Cutoff times\n\nDomestic wires sent before 3:00 PM ET on a business day go out the same day.\nInternational wires sent before 1:00 PM ET go out the same day and arrive in 1 to 5 business days.\n\n## Before\n\n[wires-incoming] Receiving a wire (effective 2025-01-01)\nYou can receive domestic and international wires into your Tallowbrook account on any plan.\n\n## What to give the sender\n\nYour routing number, account number, full legal name and address are in the app under Account details, then Wire instructions. International senders also need our SWIFT code, shown on the same screen.\n\n## Fees\n\n| Plan | Incoming domestic wire | Incoming international wire |\n|---|---|---|\n| Basic | free | $10.00 |\n| Plus | free | $10.00 |\n| Premium | free | free |\n\n## Timing\n\nDomestic wires usually arrive\n\n[fees-schedule-plus-v1] Plus plan fee schedule (effective 2025-01-01)\n|\n| Expedited card shipping | $25.00 |\n| Outgoing domestic wire | $15.00 |\n| Outgoing international wire | $35.00 |\n| Incoming international wire | $10.00 |\n| Cash deposit at a retail store | $3.00 |\n\n## Details\n\nYour first 2 out-of-network ATM withdrawals each calendar month are free. The fee applies from the next one.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nQuestions? Our support team is\n\n[wires-premium] Wire fees on Premium (effective 2025-01-01)\nthe same day and arrive in 1 to 5 business days.\n\n## Before you send\n\nWires can't be cancelled once they're sent. Check the recipient's name, bank and account number carefully. Be wary of anyone who pressures you to wire money quickly, especially someone you've only met online.\n\nOther banks involved in the wire may charge their own fees, which can reduce the amount the recipient gets. We show our fee before you confirm.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[fees-all-v1] Fees for all plans (effective 2025-01-01)\n3% | 1.5% | 0% |\n| Card replacement | $5.00 | $0.00 | $0.00 |\n| Expedited card shipping | $25.00 | $25.00 | $0.00 |\n| Outgoing domestic wire | $25.00 | $15.00 | $0.00 |\n| Outgoing international wire | not available | $35.00 | $10.00 |\n| Incoming international wire | $10.00 | $10.00 | $0.00 |\n| Cash deposit at a retail\n\nCustomer question:\nDo you guys charge for incoming wires?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1319,
+    "latency_ms": 1567.08037503995,
+    "model": "gpt-6-luna",
+    "output_tokens": 52,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Incoming domestic wires are free on every plan. Incoming international wires cost $10 on Basic and Plus, and are free on Premium.\",\"citations\":[\"wires-incoming\"],\"abstain\":false}"
+  }
+}

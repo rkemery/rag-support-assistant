@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Checkbooks, cashier's checks and money orders\n\nTallowbrook doesn't offer paper checkbooks, cashier's checks or money orders.\n\n## Paying someone who needs a check\n\nOptions include BrookPay (if they're a Tallowbrook member), an ACH transfer to their bank account, or a wire. Many landlords accept ACH.\n\n## Depositing checks\n\nYou can deposit paper checks made out to you by taking a photo in the app. See \"Depositing a check in the app\".\n\n## Money orders\n\nWe can't issue money orders, and money orders can't be deposited through the app.\n\n## Closing balance checks\n\nThe only time we mail a check is when you close your account without a linked external account. We send the remaining balance by check.\n\n## Direct deposit forms that ask for a voided check\n\nUse the pre-filled direct deposit form in the app instead. It has everything a voided check would show.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nissue money orders, and money orders can't be deposited through the app.\n\n## Closing balance checks\n\nThe only time we mail a check is when you close your account without a linked external account. We send the remaining balance by check.\n\n## Direct deposit forms that ask for a voided check\n\nUse the pre-filled direct deposit form in the app instead. It has everything a voided check would show.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 363,
+    "latency_ms": 1743.400958017446,
+    "model": "gpt-6-luna",
+    "output_tokens": 46,
+    "reasoning_tokens": 0,
+    "text": "This section explains Tallowbrook’s limits on money orders and checks, including the check mailed when closing an account without a linked external account and the in-app alternative to a voided check for direct deposit forms."
+  }
+}

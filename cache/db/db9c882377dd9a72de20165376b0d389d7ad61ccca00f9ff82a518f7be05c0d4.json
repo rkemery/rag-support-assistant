@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# What we'll never ask you\n\nScammers often pretend to be from a bank. Here's what Tallowbrook will never ask you for, by phone, text, email, chat or social media.\n\n## We will never ask for\n\n- Your full card number or security code\n- Your PIN\n- Your password or passcode\n- A one-time code we sent you\n- Remote access to your phone or computer\n- To move your money to a \"safe account\" to protect it\n- To buy gift cards or send cryptocurrency\n\n## What we might ask\n\nIn the app, support may ask you to confirm recent transactions or your address. That's in your signed-in session, where we already know it's you.\n\n## If someone asks\n\nStop, hang up or close the chat. Open the Tallowbrook app yourself and message us. Don't call a number or tap a link the person gave you. Our real phone number is in the app under Help.\n\nIf you already shared a code or password, change your password right away and message us so we can secure your account.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nmessage us so we can secure your account.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 323,
+    "latency_ms": 1371.4315830729902,
+    "model": "gpt-6-luna",
+    "output_tokens": 45,
+    "reasoning_tokens": 0,
+    "text": "If you’ve shared a code or password with a scammer, change your password immediately and message Tallowbrook through the app so support can secure your account. In-app support is available at any hour."
+  }
+}

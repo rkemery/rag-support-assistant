@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Finding a BrookLink ATM\n\nBrookLink is our ATM network. Withdrawals at BrookLink ATMs are free on every plan ($0.00 from us, and the ATM owner doesn't add a surcharge).\n\n## Find a BrookLink ATM\n\nOpen the app, tap Cash, then ATM map. The map shows BrookLink ATMs near you with opening hours, since some are inside stores.\n\n## Using other ATMs\n\nYou can use any ATM that accepts Visa. Outside BrookLink, you may pay an out-of-network fee depending on your plan, and the ATM owner may add a surcharge. The ATM screen should show the owner's surcharge before you confirm.\n\n## Daily limits\n\nATM withdrawals count toward a daily ATM limit that depends on your plan. See \"ATM withdrawal limits\".\n\n## Depositing cash\n\nBrookLink ATMs don't take cash deposits. To add cash, use a participating retail store instead. See \"Depositing cash at a store\".\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nBrookLink is our ATM network. Withdrawals at BrookLink ATMs are free on every plan ($0.00 from us, and the ATM owner doesn't add a surcharge).\n\n## Find a BrookLink ATM\n\nOpen the app, tap Cash, then ATM map. The map shows BrookLink ATMs near you with opening hours, since some are inside stores.\n\n## Using other ATMs\n\nYou can use any ATM that accepts Visa. Outside BrookLink, you may pay an out-of-network fee depending on your plan, and the ATM owner may add a surcharge. The ATM\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 388,
+    "latency_ms": 1737.00879199896,
+    "model": "gpt-6-luna",
+    "output_tokens": 45,
+    "reasoning_tokens": 0,
+    "text": "Explains BrookLink ATM withdrawals: finding nearby ATMs in the app, free withdrawals on BrookLink, and possible fees at other Visa ATMs. It also introduces ATM withdrawal limits and cash deposit guidance."
+  }
+}

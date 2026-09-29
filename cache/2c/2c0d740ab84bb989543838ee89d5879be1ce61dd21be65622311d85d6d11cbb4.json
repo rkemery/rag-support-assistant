@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Using your card abroad\n\nYour Tallowbrook card works in most countries, anywhere Visa is accepted.\n\n## Before you go\n\n- Keep notifications on for the app so you can answer fraud alerts quickly.\n- Make sure International purchases is switched on under Cards, then Controls.\n- Check your plan's foreign transaction and international ATM fees.\n- Add a virtual card to your phone's wallet as a backup.\n\n## What it costs\n\nPurchases in a foreign currency carry a foreign transaction fee of 3% on Basic, 1% on Plus and 0% on Premium. ATM withdrawals abroad have their own international ATM fee instead.\n\n## Paying in the local currency\n\nWhen a card terminal asks whether to pay in US dollars or the local currency, choose the local currency.\n\n## If your card is lost abroad\n\nFreeze it in the app and report it. Standard and expedited shipping only go to US addresses. Premium members can get an emergency card delivered abroad. Everyone else can keep spending with a virtual card in a mobile wallet.\n\nDo you need to tell us you're traveling? No. See \"Do I need a travel notice?\".\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nto tell us you're traveling? No. See \"Do I need a travel notice?\".\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 347,
+    "latency_ms": 1147.0556249842048,
+    "model": "gpt-6-luna",
+    "output_tokens": 42,
+    "reasoning_tokens": 0,
+    "text": "This chunk concludes Tallowbrook’s guide to using its card abroad, clarifying that no travel notice is needed and directing customers who still need help to 24/7 in-app chat."
+  }
+}

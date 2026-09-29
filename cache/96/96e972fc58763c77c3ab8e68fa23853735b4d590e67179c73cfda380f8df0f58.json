@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[plan-plus] The Plus plan (effective 2026-06-01)\nif you want the metal card.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away. Downgrades start on your next billing date.\n\nNeed more help? Message us in the app any time, day or night.\n\n[card-metal] The Premium metal card (effective 2025-01-01)\nPremium members get a metal debit card. It works exactly like the plastic card, with the same number, limits and controls.\n\n## Getting your metal card\n\nWhen you upgrade to Premium, the app asks whether you want a metal card now or at your next renewal. If you order it now, your current card keeps working until you activate the metal one.\n\n## Replacing it\n\nReplacements for a lost, stolen or damaged metal card are metal and free on Premium. Expedited shipping is free on Premium too, and takes 2 to 3 business days.\n\n## If you leave Premium\n\nYour\n\n[plan-plus] The Plus plan (effective 2026-06-01)\n**Card replacement:** free\n- **Expedited card shipping:** $25.00\n- **Savings Pockets:** 2.00% APY\n- **Cushion:** fee-free coverage up to $50.00 on debit card purchases\n- **Daily card spending limit:** $5,000\n- **Daily ATM limit:** $1,000\n\n## Good to know\n\nPlus includes outgoing international wires for $35.00 each. Your card is plastic, like Basic. Upgrade to Premium if you want the metal card.\n\nYou can change plans any time in the app\n\n[card-metal] The Premium metal card (effective 2025-01-01)\ntakes 2 to 3 business days.\n\n## If you leave Premium\n\nYour metal card keeps working until it expires. After that, or if you need a replacement, you'll get a plastic card.\n\n## Disposal\n\nMetal cards can't be cut with scissors. When you replace one, you can mail it back to us in the prepaid envelope that comes with the new card, and we'll recycle it.\n\nContactless works on metal cards the same way it does on plastic.\n\nQuestions? Our support team is available in the app at any hour.\n\n[plan-premium] The Premium plan (effective 2026-06-01)\n**Expedited card shipping:** free\n- **Savings Pockets:** 3.75% APY\n- **Cushion:** fee-free coverage up to $200 on debit card purchases\n- **Daily card spending limit:** $10,000\n- **Daily ATM limit:** $1,500\n\n## Good to know\n\nPremium members can get an emergency replacement card delivered abroad within 3 business days at no cost. Your card is metal, and replacements are metal too.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away.\n\n[card-replacement-plus] Card replacement fees on Plus (effective 2025-01-01)\nthe mail, when we replace a card because of a problem on our side, or for your automatic renewal card.\n\n## How to order\n\nTap Cards, choose the card, then Replace card. Pick lost, stolen or damaged, and choose a shipping speed. Fees are charged to your main balance when you place the order.\n\nSupport can also order a replacement for you in the app chat. The same fees apply either way.\n\nQuestions? Our support team is available in the app at any hour.\n\n[card-damaged] Replacing a damaged card (effective 2025-01-01)\nIf your card is cracked, bent, or the chip or contactless stops working, order a replacement in the app.\n\n## How to order\n\nTap Cards, choose the card, then Replace card, then Damaged. Confirm your address and pick a shipping speed.\n\n## Your old card keeps working\n\nWhen you report a card as damaged, we don't cancel it. You can keep using it (if it still works) until you activate the replacement. Activating the new card switches the old one off.\n\nThe new card has the same card number, a new expiry date and a new security\n\n[card-activate] Activating your card (effective 2025-01-01)\nuse it online or in a mobile wallet while you wait. It has its own number, so you don't need to update it when the physical card shows up.\n\n## If activation fails\n\nCheck that you're activating the newest card. An old or replaced card can't be activated. If your card hasn't arrived within 10 business days of ordering it, message support so we can cancel it and send another one.\n\nReplacement cards need activating too. For a damaged card, your old card keeps working until you activate the new one.\n\nQuestions? Our support team is available in the app at any\n\nCustomer question:\nHow do I order the metal card on the Plus plan?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1310,
+    "latency_ms": 1532.6437499606982,
+    "model": "gpt-6-luna",
+    "output_tokens": 63,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Plus includes a plastic card, not a metal one. Upgrade to Premium if you want a metal card; the app will ask whether you want it now or at your next renewal.\",\"citations\":[\"plan-plus\",\"card-metal\"],\"abstain\":false}"
+  }
+}

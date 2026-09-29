@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# ATM withdrawal limits\n\nHow much cash you can take out each day depends on your plan. The limit covers all ATMs combined, in the US and abroad.\n\n| Plan | Daily ATM limit |\n|---|---|\n| Basic | $500 |\n| Plus | $1,000 |\n| Premium | $1,500 |\n\nThe daily limit resets at midnight Eastern Time.\n\n## Can I raise my limit?\n\nNo. Limits are set by plan, and support can't raise them for a day or make exceptions. The only way to get a higher limit is to change plan.\n\n## ATM limits versus the ATM's own limit\n\nMany ATMs have their own maximum per withdrawal that's lower than ours. If you need more, you can make more than one withdrawal, as long as the total stays within your daily limit. Each withdrawal outside BrookLink may carry a fee.\n\nCash withdrawals are never covered by Cushion.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nHow much cash you can take out each day depends on your plan. The limit covers all ATMs combined, in the US and abroad.\n\n| Plan | Daily ATM limit |\n|---|---|\n| Basic | $500 |\n| Plus | $1,000 |\n| Premium | $1,500 |\n\nThe daily limit resets at midnight Eastern Time.\n\n## Can I raise my limit?\n\nNo. Limits are set by plan, and support can't raise them for a day or make exceptions. The only way to get a higher limit is to change plan.\n\n## ATM limits versus the ATM's own\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 384,
+    "latency_ms": 1389.445999986492,
+    "model": "gpt-6-luna",
+    "output_tokens": 45,
+    "reasoning_tokens": 0,
+    "text": "Explains BrookLink’s daily ATM withdrawal limits by plan, when they reset, and whether support can raise them. It begins contrasting BrookLink’s limits with an ATM’s own per-withdrawal limit."
+  }
+}

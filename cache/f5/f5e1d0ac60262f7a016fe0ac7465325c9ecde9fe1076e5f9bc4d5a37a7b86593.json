@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Depositing a check in the app\n\nYou can deposit paper checks by taking a photo in the app.\n\n## How to deposit\n\n1. Sign the back of the check.\n2. Under your signature, write \"For mobile deposit only at Tallowbrook\".\n3. Tap Transfers, then Deposit a check.\n4. Enter the amount and photograph the front and back on a dark surface.\n\n## Limits\n\n| Plan | Daily mobile check deposit limit |\n|---|---|\n| Basic | $1,000 |\n| Plus | $2,500 |\n| Premium | $5,000 |\n\n## Keep the check\n\nKeep the paper check for 14 days after it's deposited, then destroy it. Don't deposit the same check anywhere else.\n\n## Checks we can't accept\n\nChecks made out to someone else, checks from outside the US, money orders, and checks without the endorsement above.\n\n## When the money is available\n\nSee \"When check deposits are available\". The app shows the release date after you submit the deposit.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\n$2,500 |\n| Premium | $5,000 |\n\n## Keep the check\n\nKeep the paper check for 14 days after it's deposited, then destroy it. Don't deposit the same check anywhere else.\n\n## Checks we can't accept\n\nChecks made out to someone else, checks from outside the US, money orders, and checks without the endorsement above.\n\n## When the money is available\n\nSee \"When check deposits are available\". The app shows the release date after you submit the deposit.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 399,
+    "latency_ms": 1744.3211670033634,
+    "model": "gpt-6-luna",
+    "output_tokens": 33,
+    "reasoning_tokens": 0,
+    "text": "Tallowbrook app guide to depositing paper checks, including deposit limits by plan, check retention and acceptance rules, fund availability, and support details."
+  }
+}

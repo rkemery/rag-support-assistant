@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[disputes-unauthorized] Disputing a transaction you didn't make (effective 2026-01-15)\nIf you see a card transaction you didn't make or authorize, you can dispute it as unauthorized.\n\n## First, protect your card\n\nBefore we open an unauthorized dispute, the card used must be frozen or reported lost or stolen. That stops more charges while we investigate. If the card is still in your wallet, freezing is enough.\n\n## How long you have\n\nReport an unauthorized transaction within 60 days of the date of the statement it first appeared on. Statements close on the last calendar day of each month. For example, a transaction that posted in March appears on the\n\n[disputes-merchant-v2] Disputing a purchase with a merchant (effective 2026-01-15)\nyou don't recognize at all are a different kind of dispute. See \"Disputing a transaction you didn't make\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nyou don't recognize at all are a different kind of dispute. See \"Disputing a transaction you didn't make\".\n\nQuestions? Our support team is available in the app at any hour.\n\n[disputes-duplicate] Charged twice for the same thing (effective 2025-01-01)\nSeeing the same charge twice doesn't always mean you were charged twice.\n\n## Check if one is pending\n\nHotels, gas stations, car rentals and restaurants often place a temporary authorization, then post the final amount separately. The pending one usually drops off within 7 days. Pending transactions can't be disputed.\n\n## If both have posted\n\nIf two identical charges have both posted, contact the merchant first. Most will refund a duplicate quickly. If the merchant doesn't help, dispute the second charge in the app as a duplicate. Tap the transaction, then Get help, then Charged\n\n[disputes-unauthorized] Disputing a transaction you didn't make (effective 2026-01-15)\nwindow.\n\n## Not sure it's unauthorized?\n\nUnfamiliar names are often a merchant's parent company or a payment processor. Tap the transaction to see the merchant's details before you dispute it.\n\nQuestions? Our support team is available in the app at any hour.\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 90 days of the\n\n[disputes-duplicate] Charged twice for the same thing (effective 2025-01-01)\napp as a duplicate. Tap the transaction, then Get help, then Charged twice.\n\n## Duplicate fees\n\nIf we charged you the same fee twice, message support. A fee charged in error is always refunded.\n\n## Time limit\n\nDuplicate charges follow the merchant dispute window: 120 days from the transaction date.\n\n## Split payments\n\nSome merchants split one order into several charges, for example when items ship separately. Check your order confirmation before you dispute.\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-documents] Documents that help a dispute (effective 2025-01-01)\nscreenshot of the date you cancelled\n- The merchant's cancellation terms, if you have them\n\n## Unauthorized transactions\n\nUsually nothing. Just confirm you didn't make or authorize the transaction and that your card is frozen or reported.\n\n## How to upload\n\nOpen the dispute under Profile, then Disputes, and tap Add documents. Photos and PDFs work.\n\nNever send us your full card number, PIN or passwords as part of a dispute. We don't need them.\n\nQuestions? Our support team is available in the app at any hour.\n\nCustomer question:\nHow do I dispute a charge I didn't make?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1194,
+    "latency_ms": 1635.7191250426695,
+    "model": "gpt-6-luna",
+    "output_tokens": 101,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Freeze the card used or report it lost or stolen before opening the dispute; freezing is enough if you still have the card. Report the transaction within 60 days of the statement date it first appeared on. In the app, confirm you didn’t make or authorize it and that your card is frozen or reported, then open the dispute.\",\"citations\":[\"disputes-unauthorized\",\"disputes-documents\"],\"abstain\":false}"
+  }
+}

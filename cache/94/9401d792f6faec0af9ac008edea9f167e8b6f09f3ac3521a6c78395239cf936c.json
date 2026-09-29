@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Changing your email or phone number\n\nYou can change your email address and phone number in the app under Profile, then Personal details.\n\n## Email\n\nEnter the new email. We send a confirmation link to the new address and a notice to the old one. The change happens when you tap the link.\n\n## Phone number\n\nEnter the new number and confirm the code we text to it. You'll also be asked to approve the change from your current device.\n\n## Lost access to your old phone or email\n\nMessage support. Because this is a common way for fraudsters to take over accounts, we pass these requests to our Verification team, who may ask for a new selfie.\n\n## After a change\n\nFor 24 hours after a change, if you're also on a new device, BrookPay and external transfers are limited to $500.\n\nIf you get a notice about a change you didn't make, message us right away.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nway for fraudsters to take over accounts, we pass these requests to our Verification team, who may ask for a new selfie.\n\n## After a change\n\nFor 24 hours after a change, if you're also on a new device, BrookPay and external transfers are limited to $500.\n\nIf you get a notice about a change you didn't make, message us right away.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 355,
+    "latency_ms": 1230.5545420385897,
+    "model": "gpt-6-luna",
+    "output_tokens": 53,
+    "reasoning_tokens": 0,
+    "text": "This section of “Changing your email or phone number” explains that lost access to the old contact method requires contacting support and may involve identity verification. It also covers temporary transfer limits after a change, reporting unauthorized changes, and how to reach support."
+  }
+}

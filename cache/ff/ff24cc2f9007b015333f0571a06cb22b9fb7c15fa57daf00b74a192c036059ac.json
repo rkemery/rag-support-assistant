@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# The Plus plan\n\nPlus costs $5.00 a month. It's built for people who use their card a lot away from BrookLink ATMs or spend some time abroad, and it adds Cushion and a higher savings rate.\n\n## What's included\n\n- **Monthly fee:** $5.00\n- **ATMs:** free at BrookLink ATMs, plus 3 free out-of-network withdrawals a month. After that it's $2.50 per withdrawal.\n- **Foreign transaction fee:** 1% of the purchase amount\n- **Card replacement:** free\n- **Expedited card shipping:** $25.00\n- **Savings Pockets:** 2.00% APY\n- **Cushion:** fee-free coverage up to $50.00 on debit card purchases\n- **Daily card spending limit:** $5,000\n- **Daily ATM limit:** $1,000\n\n## Good to know\n\nPlus includes outgoing international wires for $35.00 each. Your card is plastic, like Basic. Upgrade to Premium if you want the metal card.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away. Downgrades start on your next billing date.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nPlus costs $5.00 a month. It's built for people who use their card a lot away from BrookLink ATMs or spend some time abroad, and it adds Cushion and a higher savings rate.\n\n## What's included\n\n- **Monthly fee:** $5.00\n- **ATMs:** free at BrookLink ATMs, plus 3 free out-of-network withdrawals a month. After that it's $2.50 per withdrawal.\n- **Foreign transaction fee:** 1% of the purchase amount\n- **Card replacement:** free\n- **Expedited card shipping:**\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 450,
+    "latency_ms": 1269.8462080443278,
+    "model": "gpt-6-luna",
+    "output_tokens": 54,
+    "reasoning_tokens": 0,
+    "text": "The Plus plan costs $5 per month and is designed for frequent out-of-network ATM use and travel. Its benefits include three free out-of-network ATM withdrawals monthly, a 1% foreign transaction fee, free card replacement, and expedited card shipping."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# How to close your account\n\nYou can close your Tallowbrook account in the app, or ask support to close it for you.\n\n## Before you close\n\nYour account can only be closed when:\n\n- No transactions are pending\n- No disputes are open\n- Your balance isn't negative\n\nAlso move money out of your Savings Pockets and switch your direct deposit and any automatic payments to another account.\n\n## Close in the app\n\nTap Profile, then Close account. The app checks the requirements, shows where any remaining money will go, and asks you to confirm.\n\n## Closing through support\n\nSupport can close your account for you when the balance is $0.00 and the requirements above are met. If there's money left, move it out first or close in the app, which sends it to you.\n\n## Plan fees\n\nPlan fees aren't refunded or prorated when you close, except under the cooling-off rule for a first paid plan charge.\n\nClosing is permanent. A closed account can't be reopened.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nasks you to confirm.\n\n## Closing through support\n\nSupport can close your account for you when the balance is $0.00 and the requirements above are met. If there's money left, move it out first or close in the app, which sends it to you.\n\n## Plan fees\n\nPlan fees aren't refunded or prorated when you close, except under the cooling-off rule for a first paid plan charge.\n\nClosing is permanent. A closed account can't be reopened.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 395,
+    "latency_ms": 1486.0326250782236,
+    "model": "gpt-6-luna",
+    "output_tokens": 52,
+    "reasoning_tokens": 0,
+    "text": "This chunk explains support-assisted account closure, the $0 balance requirement, how to handle remaining money, plan-fee refunds, and that closure is permanent. It follows the in-app closure steps in Tallowbrook’s account-closing guide."
+  }
+}

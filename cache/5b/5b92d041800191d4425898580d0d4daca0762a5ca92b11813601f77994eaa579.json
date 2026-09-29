@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Depositing cash at a store\n\nYou can add cash to your Tallowbrook account at participating retail stores. Open the app, tap Cash, then Deposit cash, and show the barcode to the cashier with your cash.\n\n## Fees\n\n| Plan | Fee per deposit |\n|---|---|\n| Basic | $3.00 |\n| Plus | $3.00 |\n| Premium | free |\n\n## Limits\n\n| Plan | Daily cash deposit limit |\n|---|---|\n| Basic | $1,000 |\n| Plus | $1,000 |\n| Premium | $2,000 |\n\n## When the money arrives\n\nFunds usually appear within minutes. Keep the store receipt until you see the deposit in the app.\n\n## Things to know\n\n- BrookLink ATMs don't accept cash deposits.\n- The barcode is valid for one deposit only.\n- Stores set their own maximum per visit, which can be lower than your daily limit.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\n|\n| Premium | $2,000 |\n\n## When the money arrives\n\nFunds usually appear within minutes. Keep the store receipt until you see the deposit in the app.\n\n## Things to know\n\n- BrookLink ATMs don't accept cash deposits.\n- The barcode is valid for one deposit only.\n- Stores set their own maximum per visit, which can be lower than your daily limit.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 368,
+    "latency_ms": 1090.2348749805242,
+    "model": "gpt-6-luna",
+    "output_tokens": 50,
+    "reasoning_tokens": 0,
+    "text": "This section explains cash deposit limits by plan, when deposited funds appear, and key restrictions such as one-time barcode use and store-set deposit maximums. It is part of Tallowbrook’s guide to depositing cash at participating stores."
+  }
+}

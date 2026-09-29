@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[disputes-unauthorized] Disputing a transaction you didn't make (effective 2026-01-15)\nof each month. For example, a transaction that posted in March appears on the March statement, so the window runs from the end of March.\n\n## What happens next\n\n- If your dispute passes an initial review, you get a provisional credit within 10 business days.\n- Most investigations finish within 45 days. Foreign transactions, and accounts open less than 30 days, can take up to 90 days.\n\n## Your liability\n\nYou aren't responsible for unauthorized card transactions reported within the window.\n\n## Not sure it's unauthorized?\n\nUnfamiliar names are often a\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 90 days of the\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nHow long you have\n\nFile a merchant dispute within 90 days of the transaction date. After that, we can't open a dispute for you.\n\n## How to file\n\nTap the transaction, then Get help, then Problem with a purchase. Tell us what happened and upload your records.\n\n## What happens next\n\nIf the dispute passes an initial review, you get a provisional credit within 10 business days. We then contact the merchant through the card network. Most cases finish within 45 days.\n\nTransactions you don't recognize at all are a different kind of dispute. See\n\n[disputes-status] Checking the status of a dispute (effective 2025-01-01)\n**Resolved in your favor:** the credit is permanent.\n- **Denied:** we've sent an explanation, and any provisional credit will be taken back.\n\n## How long it takes\n\nMost disputes finish within 45 days, and some take up to 90 days. We'll message you whenever the status changes.\n\n## Adding information\n\nYou can upload documents or add notes to an open dispute from the case page at any time.\n\n## Cancelling a dispute\n\nIf the merchant refunds you directly, withdraw the dispute from the case page so you aren't credited twice. If you were credited twice,\n\n[support-merchant-refunds] When will my refund arrive? (effective 2025-01-01)\na merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-duplicate] Charged twice for the same thing (effective 2025-01-01)\napp as a duplicate. Tap the transaction, then Get help, then Charged twice.\n\n## Duplicate fees\n\nIf we charged you the same fee twice, message support. A fee charged in error is always refunded.\n\n## Time limit\n\nDuplicate charges follow the merchant dispute window: 120 days from the transaction date.\n\n## Split payments\n\nSome merchants split one order into several charges, for example when items ship separately. Check your order confirmation before you dispute.\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-merchant-v2] Disputing a purchase with a merchant (effective 2026-01-15)\nIf you paid for something with your card and there's a problem with the purchase itself, you can file a merchant dispute. This covers:\n\n- Items or services you paid for but never received\n- Items that were significantly different from what was described\n- Subscriptions or recurring charges that continued after you cancelled\n\n## Contact the merchant first\n\nBefore you dispute, try to sort it out with the merchant, and keep a record of what you sent and what they said. We'll ask for it.\n\n## How long you have\n\nFile a merchant dispute within 120 days of the\n\n[disputes-pending] Why can't I dispute a pending transaction? (effective 2025-01-01)\nany more charges. When the transaction posts, dispute it as unauthorized. Your dispute window starts from the statement it posts on, so you won't lose time by waiting.\n\n## If the amount is wrong\n\nPending amounts are often estimates, for example at gas pumps or hotels. The posted amount is usually different. Wait and see what posts.\n\n## If it's been pending a long time\n\nSome merchants take longer. If a transaction has been pending much longer than usual, message support and we'll look at it.\n\nQuestions? Our support team is available in the app at any\n\nCustomer question:\nMy order that never arrived is 100 days old, so I'm past the 90-day dispute window, right?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1342,
+    "latency_ms": 1663.2480419939384,
+    "model": "gpt-6-luna",
+    "output_tokens": 81,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. The current policy gives you 120 days from the transaction date to file a merchant dispute for an order that never arrived, so 100 days is within the window. Try contacting the merchant first and keep a record of what you sent and their response.\",\"citations\":[\"disputes-merchant-v2\"],\"abstain\":false}"
+  }
+}

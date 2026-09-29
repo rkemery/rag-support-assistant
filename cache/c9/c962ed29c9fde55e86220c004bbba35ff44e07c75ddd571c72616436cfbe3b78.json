@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Charged twice for the same thing\n\nSeeing the same charge twice doesn't always mean you were charged twice.\n\n## Check if one is pending\n\nHotels, gas stations, car rentals and restaurants often place a temporary authorization, then post the final amount separately. The pending one usually drops off within 7 days. Pending transactions can't be disputed.\n\n## If both have posted\n\nIf two identical charges have both posted, contact the merchant first. Most will refund a duplicate quickly. If the merchant doesn't help, dispute the second charge in the app as a duplicate. Tap the transaction, then Get help, then Charged twice.\n\n## Duplicate fees\n\nIf we charged you the same fee twice, message support. A fee charged in error is always refunded.\n\n## Time limit\n\nDuplicate charges follow the merchant dispute window: 120 days from the transaction date.\n\n## Split payments\n\nSome merchants split one order into several charges, for example when items ship separately. Check your order confirmation before you dispute.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\napp as a duplicate. Tap the transaction, then Get help, then Charged twice.\n\n## Duplicate fees\n\nIf we charged you the same fee twice, message support. A fee charged in error is always refunded.\n\n## Time limit\n\nDuplicate charges follow the merchant dispute window: 120 days from the transaction date.\n\n## Split payments\n\nSome merchants split one order into several charges, for example when items ship separately. Check your order confirmation before you dispute.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 388,
+    "latency_ms": 1452.2898340364918,
+    "model": "gpt-6-luna",
+    "output_tokens": 63,
+    "reasoning_tokens": 0,
+    "text": "Guidance on duplicate charges: after confirming both transactions have posted and contacting the merchant, dispute the duplicate in the app. Duplicate fees can be reported to support, merchant disputes must be filed within 120 days, and split payments may not be duplicates. Contact support in the app for more help."
+  }
+}

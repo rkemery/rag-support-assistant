@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[security-account-takeover] If someone else accessed your account (effective 2025-01-01)\ncall us if you can't sign in.\n\n## What we'll do\n\nSupport will freeze your cards and pass your case to our Fraud team, who handle account takeovers. The Fraud team contacts you within 2 business days, and usually much faster. They may sign out every device, reset your credentials and review recent activity with you.\n\nSupport can't reverse transfers or change your email or phone number during a takeover investigation. The Fraud team does that once they've confirmed who you are.\n\n## Afterward\n\nCheck your email account's security too. Many takeovers start with a compromised\n\n[support-contact] Contacting support (effective 2025-01-01)\nif you can't sign in. We reply by email, but for your security we can't make changes to your account by email.\n\n## Specialist teams\n\nSome requests go to a specialist team, such as Fraud, Disputes or Verification. They reply within 2 business days.\n\n## Beware of fakes\n\nOnly use the contact details in the app or on this help center. Scammers post fake support numbers online.\n\nNeed more help? Message us in the app any time, day or night.\n\n[support-what-we-can-do] What our support team can help with (effective 2025-01-01)\nand nothing is pending or disputed\n- Explain fees, limits and policies\n\n## Support passes to a specialist team\n\n- **Fraud:** suspected account takeover, removing a fraud lock, scam payments\n- **Disputes:** disputes above the support limit\n- **Verification:** identity checks, legal name or date-of-birth changes, accounts under review or restricted\n- **Account Services:** power of attorney, a deceased account holder, financial abuse\n- **Complaints:** formal complaints\n\nSpecialist teams reply within 2 business days.\n\n## Support can't\n\n- Act\n\n[card-fraud-lock] Why is my card locked by Tallowbrook? (effective 2025-01-01)\nthe lock straight away.\n- If there's no alert, message us in the app. Support will pass your case to the Fraud team. Support can't remove a fraud lock, and neither can the freeze switch.\n\nThe Fraud team replies within 2 business days, often much sooner.\n\n## Meanwhile\n\nDeposits and incoming transfers still arrive while your card is locked. You can also still use BrookPay and transfers, unless the Fraud team has restricted those too.\n\nWe will never ask you to confirm a fraud alert by giving us your full card number, PIN or a\n\n[security-scam-payment] If you sent money to a scammer (effective 2025-01-01)\na purchase with a merchant\".\n\nThe Fraud team usually replies within 2 business days.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[card-fraud-lock] Why is my card locked by Tallowbrook? (effective 2025-01-01)\nto confirm a fraud alert by giving us your full card number, PIN or a one-time code.\n\nNeed more help? Message us in the app any time, day or night.\n\n[security-fraud-alerts] How fraud alerts work (effective 2025-01-01)\nare more common when you shop somewhere new or abroad. They get less frequent as our systems learn your patterns.\n\nQuestions? Our support team is available in the app at any hour.\n\n[security-never-ask] What we'll never ask you (effective 2025-01-01)\nScammers often pretend to be from a bank. Here's what Tallowbrook will never ask you for, by phone, text, email, chat or social media.\n\n## We will never ask for\n\n- Your full card number or security code\n- Your PIN\n- Your password or passcode\n- A one-time code we sent you\n- Remote access to your phone or computer\n- To move your money to a \"safe account\" to protect it\n- To buy gift cards or send cryptocurrency\n\n## What we might ask\n\nIn the app, support may ask you to\n\nCustomer question:\nWhat's the direct phone number for the Fraud team?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1154,
+    "latency_ms": 1554.8542909091339,
+    "model": "gpt-6-luna",
+    "output_tokens": 78,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"The help center doesn’t provide a direct phone number for the Fraud team. Use the contact details in the app or on the help center; you can message support in the app any time, and specialist teams reply within 2 business days.\",\"citations\":[\"support-contact\",\"security-account-takeover\"],\"abstain\":false}"
+  }
+}

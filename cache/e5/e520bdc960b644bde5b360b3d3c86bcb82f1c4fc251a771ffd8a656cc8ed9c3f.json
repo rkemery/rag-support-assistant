@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Changing your plan\n\nYou can move between Basic, Plus and Premium in the app under Profile, then Plan. You don't need to contact support, though support can make the change for you if you ask.\n\n## Upgrading\n\nAn upgrade takes effect immediately. We charge the new plan's full monthly fee that day, and that day becomes your new billing date. Your new limits, fees and savings rate apply from that moment.\n\n## Downgrading\n\nA downgrade takes effect on your next billing date. You keep your current plan's features until then. We don't refund part of a month.\n\n## Things to check before you downgrade\n\n- If you use Cushion and move to Basic, Cushion switches off. Any negative balance still has to be repaid.\n- Your Savings Pockets start earning the new plan's rate on the day the downgrade takes effect.\n- A Premium metal card keeps working until it expires. Replacements after that are plastic.\n- If this is your first paid plan and you were charged less than 14 days ago, leaving the paid plan gets you a full refund of that charge. See \"Refunds of plan fees\".\n\nThere's no limit on how often you can change plans.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nYou can move between Basic, Plus and Premium in the app under Profile, then Plan. You don't need to contact support, though support can make the change for you if you ask.\n\n## Upgrading\n\nAn upgrade takes effect immediately. We charge the new plan's full monthly fee that day, and that day becomes your new billing date. Your new limits, fees and savings rate apply from that moment.\n\n## Downgrading\n\nA downgrade takes effect on your next billing date. You keep your current plan's features until then. We don't refund part of a month.\n\n## Things to check before you\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 445,
+    "latency_ms": 1215.9137499984354,
+    "model": "gpt-6-luna",
+    "output_tokens": 32,
+    "reasoning_tokens": 0,
+    "text": "Explains how to change between Basic, Plus and Premium plans, including when upgrades and downgrades take effect and what happens to billing."
+  }
+}

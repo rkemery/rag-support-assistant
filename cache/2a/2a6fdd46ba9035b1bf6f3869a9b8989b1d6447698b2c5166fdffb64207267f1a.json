@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[atm-limits] ATM withdrawal limits (effective 2025-01-01)\nHow much cash you can take out each day depends on your plan. The limit covers all ATMs combined, in the US and abroad.\n\n| Plan | Daily ATM limit |\n|---|---|\n| Basic | $500 |\n| Plus | $1,000 |\n| Premium | $1,500 |\n\nThe daily limit resets at midnight Eastern Time.\n\n## Can I raise my limit?\n\nNo. Limits are set by plan, and support can't raise them for a day or make exceptions. The only way to get a higher limit is to change plan.\n\n## ATM limits versus the ATM's own\n\n[plan-basic] The Basic plan (effective 2026-06-01)\n**Expedited card shipping:** $25.00\n- **Savings Pockets:** 0.50% APY\n- **Cushion:** not available on Basic\n- **Daily card spending limit:** $3,000\n- **Daily ATM limit:** $500\n\n## Good to know\n\nInternational wires aren't available on Basic. You can still receive them. If you travel or send money abroad often, Plus or Premium will usually cost less over a year.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away. Downgrades\n\n[transfer-limits-basic] Transfer limits on Basic (effective 2025-01-01)\nreset at midnight Eastern Time. The monthly limit resets on the first day of each calendar month.\n\n## Incoming transfers\n\nThere's no limit on money coming in by ACH, wire, direct deposit or BrookPay.\n\n## New devices\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are capped at $500.\n\n## Need more?\n\nLimits are set by plan. Support can't raise them, even for one transfer. Changing plan is the only way to get higher limits.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[atm-fees-basic-v1] ATM fees on Basic (effective 2025-01-01)\nThe ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $500 a day on Basic.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nNeed more help? Message us in the app any time, day or night.\n\n[atm-fees-basic-v2] ATM fees on Basic (effective 2026-03-01)\nThe ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $500 a day on Basic.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[atm-limits] ATM withdrawal limits (effective 2025-01-01)\na higher limit is to change plan.\n\n## ATM limits versus the ATM's own limit\n\nMany ATMs have their own maximum per withdrawal that's lower than ours. If you need more, you can make more than one withdrawal, as long as the total stays within your daily limit. Each withdrawal outside BrookLink may carry a fee.\n\nCash withdrawals are never covered by Cushion.\n\nQuestions? Our support team is available in the app at any hour.\n\n[atm-fees-premium] ATM fees on Premium (effective 2025-01-01)\nThe ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $1,500 a day on Premium.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nQuestions? Our support team is available in the app at any hour.\n\n[atm-surcharges] ATM owner surcharges and our fees (effective 2025-01-01)\nthem.\n\nNeed more help? Message us in the app any time, day or night.\n\nCustomer question:\nCan support raise my ATM limit just for today? I'm on Basic and need 800 bucks",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1232,
+    "latency_ms": 2626.1459999950603,
+    "model": "gpt-6-luna",
+    "output_tokens": 78,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. Support can’t raise your Basic ATM limit for a day or make exceptions; the Basic daily limit is $500 across all ATMs, and it resets at midnight Eastern Time. To get a higher limit, you’d need to change plans.\",\"citations\":[\"atm-limits\",\"plan-basic\"],\"abstain\":false}"
+  }
+}

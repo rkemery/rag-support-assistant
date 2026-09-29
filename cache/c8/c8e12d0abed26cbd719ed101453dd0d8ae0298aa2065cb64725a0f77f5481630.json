@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# What our support team can help with\n\nOur support team can sort out most things during your chat. Some requests go to a specialist team, and a few things we can't do at all.\n\n## Support can\n\n- Freeze or unfreeze your card\n- Report a card lost or stolen and order a replacement\n- Open a dispute that's inside its window, has posted, and totals up to $5,000\n- Refund a fee under our refund policy\n- Change your plan\n- Close your account if the balance is zero and nothing is pending or disputed\n- Explain fees, limits and policies\n\n## Support passes to a specialist team\n\n- **Fraud:** suspected account takeover, removing a fraud lock, scam payments\n- **Disputes:** disputes above the support limit\n- **Verification:** identity checks, legal name or date-of-birth changes, accounts under review or restricted\n- **Account Services:** power of attorney, a deceased account holder, financial abuse\n- **Complaints:** formal complaints\n\nSpecialist teams reply within 2 business days.\n\n## Support can't\n\n- Act for, or share details with, anyone other than the account holder\n- Give investment, tax or legal advice\n- Raise limits\n- Refund fees outside the refund policy, or open disputes after their window\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nteams reply within 2 business days.\n\n## Support can't\n\n- Act for, or share details with, anyone other than the account holder\n- Give investment, tax or legal advice\n- Raise limits\n- Refund fees outside the refund policy, or open disputes after their window\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 416,
+    "latency_ms": 1849.7403330402449,
+    "model": "gpt-6-luna",
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "text": "This section concludes the support guide by noting specialist-team response times, services support cannot provide, and 24/7 in-app availability."
+  }
+}

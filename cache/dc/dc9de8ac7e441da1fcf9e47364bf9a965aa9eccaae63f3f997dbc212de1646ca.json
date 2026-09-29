@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# ATM owner surcharges and our fees\n\nWhen you use an ATM outside BrookLink, up to two different charges can apply. They're easy to mix up.\n\n## The ATM owner's surcharge\n\nThis is set by whoever owns the ATM, not by us. The ATM shows it on screen before you confirm, and it's added to the withdrawal amount. For example, if you withdraw cash and the owner charges a surcharge, one transaction for the total appears in your activity.\n\n## Tallowbrook's out-of-network fee\n\nThis is our fee, charged as a separate line called \"Out-of-network ATM fee\". It's $2.50 on Basic and on Plus after your free withdrawals, and free on Premium.\n\n## Premium surcharge reimbursement\n\nPremium pays back ATM owner surcharges up to $10.00 per calendar month. The refund is credited automatically on the first business day of the next month.\n\n## Avoiding both\n\nUse a BrookLink ATM. They never charge a surcharge, and we never charge a fee for them.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWhen you use an ATM outside BrookLink, up to two different charges can apply. They're easy to mix up.\n\n## The ATM owner's surcharge\n\nThis is set by whoever owns the ATM, not by us. The ATM shows it on screen before you confirm, and it's added to the withdrawal amount. For example, if you withdraw cash and the owner charges a surcharge, one transaction for the total appears in your activity.\n\n## Tallowbrook's out-of-network fee\n\nThis is our fee, charged as a separate line called \"Out-of-network ATM fee\".\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 400,
+    "latency_ms": 1745.7654579775408,
+    "model": "gpt-6-luna",
+    "output_tokens": 44,
+    "reasoning_tokens": 0,
+    "text": "This section explains the two possible charges for using an ATM outside BrookLink: the ATM owner’s surcharge, which is added to the withdrawal, and Tallowbrook’s separate out-of-network ATM fee."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# If your dispute is denied\n\nSometimes a dispute is decided against you. Here's what that means.\n\n## Why disputes are denied\n\n- The merchant showed you made or authorized the purchase, for example with delivery proof signed at your address.\n- The dispute was filed after its window closed.\n- The merchant already refunded you.\n- The issue isn't covered, such as a price you agreed to and later changed your mind about.\n\n## What happens to the provisional credit\n\nWe send you a written explanation first. 5 business days later, we take the provisional credit back. If that leaves your balance negative, add money so your account isn't restricted.\n\n## Can I appeal?\n\nYes, if you have new information. Reply to the decision message with the new documents and we'll review it again. We can't reopen a dispute just because you disagree with the outcome.\n\n## Negative balance\n\nSee \"Negative balance after a dispute\" for how repayment works.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nSometimes a dispute is decided against you. Here's what that means.\n\n## Why disputes are denied\n\n- The merchant showed you made or authorized the purchase, for example with delivery proof signed at your address.\n- The dispute was filed after its window closed.\n- The merchant already refunded you.\n- The issue isn't covered, such as a price you agreed to and later changed your mind about.\n\n## What happens to the provisional credit\n\nWe send you a written explanation first. 5 business days later, we take the provisional credit back. If that leaves your balance negative, add money so your\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 389,
+    "latency_ms": 2118.534208042547,
+    "model": "gpt-6-luna",
+    "output_tokens": 30,
+    "reasoning_tokens": 0,
+    "text": "Explains why a dispute may be denied and what happens to provisional credit afterward, including repayment if the reversal creates a negative balance."
+  }
+}

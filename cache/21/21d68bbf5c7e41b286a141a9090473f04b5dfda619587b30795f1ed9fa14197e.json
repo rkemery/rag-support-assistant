@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Early direct deposit\n\nWith early direct deposit, you can get your paycheck up to 2 days before your employer's official payday. It's included on every plan at no cost.\n\n## How it works\n\nEmployers send payroll files to banks a few days before payday. When we receive yours, we make the money available right away instead of waiting for the official pay date.\n\n## Why timing varies\n\nHow early you're paid depends on when your employer sends the file. Some pay periods you might get paid two days early, others one day, or on payday itself. We can't make an employer send it sooner.\n\n## Things to know\n\n- Early direct deposit is automatic. There's nothing to switch on.\n- It applies to payroll and government benefits sent by direct deposit. It doesn't apply to transfers you make yourself or to BrookPay.\n- If an employer cancels or reverses a payroll file, the deposit may be reversed.\n\nIf your paycheck is late on your official payday, check with your employer first. They can confirm when and where it was sent.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWith early direct deposit, you can get your paycheck up to 2 days before your employer's official payday. It's included on every plan at no cost.\n\n## How it works\n\nEmployers send payroll files to banks a few days before payday. When we receive yours, we make the money available right away instead of waiting for the official pay date.\n\n## Why timing varies\n\nHow early you're paid depends on when your employer sends the file. Some pay periods you might get paid two days early, others one day, or on payday itself. We can't make an employer send it sooner.\n\n##\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 414,
+    "latency_ms": 2191.248832968995,
+    "model": "gpt-6-luna",
+    "output_tokens": 31,
+    "reasoning_tokens": 0,
+    "text": "Explains the early direct deposit benefit, how payroll files trigger payment, and why deposit timing varies based on when an employer sends them."
+  }
+}

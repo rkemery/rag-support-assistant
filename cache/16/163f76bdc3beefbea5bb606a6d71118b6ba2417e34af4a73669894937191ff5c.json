@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[plan-basic] The Basic plan (effective 2026-06-01)\nBasic is Tallowbrook's free plan. The monthly fee is $0.00, there's no minimum balance, and you get the same app, debit card and support as every other member.\n\n## What's included\n\n- **Monthly fee:** $0.00\n- **ATMs:** free at BrookLink ATMs. Out-of-network withdrawals cost $2.50 each.\n- **Foreign transaction fee:** 3% of the purchase amount\n- **Card replacement:** $5.00\n- **Expedited card shipping:** $25.00\n- **Savings\n\n[cushion-basic] Cushion on Basic (effective 2025-01-01)\nfees\n\nBasic has no overdraft fees ($0.00). Transactions that would overdraw your account are declined instead.\n\n## Can a Basic balance go negative?\n\nOccasionally, for example if a merchant posts more than it authorized or a dispute credit is taken back. Add money to bring it back to zero. Any deposit repays a negative balance automatically.\n\nThere's no fee for a declined transaction.\n\nNeed more help? Message us in the app any time, day or night.\n\n[cushion-basic] Cushion on Basic (effective 2025-01-01)\nCushion isn't available on the Basic plan. On Basic, a debit card purchase larger than your balance is declined, with no fee.\n\n## Why\n\nCushion is part of the paid plans. It's how we give members a little room without charging overdraft fees.\n\n## Getting Cushion\n\nMove to Plus for coverage up to $50.00, or to Premium for coverage up to $200. You'll also need at least $500 in direct deposits in the last 30 days.\n\n## Overdraft fees\n\nBasic has no overdraft fees ($0.00). Transactions that\n\n[savings-apy-basic-v1] Savings rate on Basic (effective 2025-07-01)\nWe'll email you at least 30 days before a decrease.\n\n## How to start earning\n\nTap Savings, then New pocket, and move money in from your main balance. Moving money in and out is instant and free. Interest for each month is paid into the pocket on the first business day of the next month.\n\n## If you change plans\n\nYour pockets start earning the new plan's rate on the day the change takes effect. Upgrades take effect right away and downgrades on your next billing date.\n\n## Earn more\n\nPlus members earn 2.50% APY on the same\n\n[savings-apy-basic-v2] Savings rate on Basic (effective 2026-06-01)\nWe'll email you at least 30 days before a decrease.\n\n## How to start earning\n\nTap Savings, then New pocket, and move money in from your main balance. Moving money in and out is instant and free. Interest for each month is paid into the pocket on the first business day of the next month.\n\n## If you change plans\n\nYour pockets start earning the new plan's rate on the day the change takes effect. Upgrades take effect right away and downgrades on your next billing date.\n\n## Earn more\n\nPlus members earn 2.00% APY on the same\n\n[fees-all-v2] Fees for all plans (effective 2026-03-01)\n| $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 3 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM owners can add their\n\n[atm-fees-basic-v2] ATM fees on Basic (effective 2026-03-01)\nThe ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $500 a day on Basic.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[fees-all-v1] Fees for all plans (effective 2025-01-01)\n$10.00 | $0.00 |\n| Cash deposit at a retail store | $3.00 | $3.00 | $0.00 |\n\n## Notes\n\n- Plus includes 2 free out-of-network ATM withdrawals each calendar month. The fee in the table applies after those.\n- Premium reimburses ATM owner surcharges up to $10.00 a month.\n- There are no overdraft fees ($0.00), no fees for returned transfers and no inactivity fees on any plan.\n- Incoming domestic wires are free ($0.00) on every plan.\n- ATM\n\nCustomer question:\nis basic actually free or is there a catch",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1371,
+    "latency_ms": 2126.3466250384226,
+    "model": "gpt-6-luna",
+    "output_tokens": 100,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Basic has a $0 monthly fee and no minimum balance. It does have charges for some services: out-of-network ATM withdrawals cost $2.50 each, foreign transactions cost 3%, card replacement costs $5, and expedited card shipping costs $25. Basic also has no overdraft fees; transactions that would overdraw your account are declined instead.\",\"citations\":[\"plan-basic\",\"cushion-basic\"],\"abstain\":false}"
+  }
+}

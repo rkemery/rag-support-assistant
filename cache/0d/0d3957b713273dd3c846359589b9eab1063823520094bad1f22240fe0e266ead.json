@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[overdraft-no-fees] Do you charge overdraft fees? (effective 2025-01-01)\nmay charge its own late fee.\n\nQuestions? Our support team is available in the app at any hour.\n\n[overdraft-no-fees] Do you charge overdraft fees? (effective 2025-01-01)\nNo. Tallowbrook doesn't charge overdraft fees ($0.00) or non-sufficient funds fees ($0.00) on any plan.\n\n## What happens instead\n\nIf you don't have enough money, the transaction is simply declined. There's no charge for a decline.\n\n## Cushion\n\nPlus and Premium members can turn on Cushion, which covers small debit card purchases when your balance runs short, with no fee. Cushion covers up to $50.00 on Plus and $200 on Premium. It isn't available on Basic.\n\n## Can my balance still\n\n[overdraft-no-fees] Do you charge overdraft fees? (effective 2025-01-01)\non Premium. It isn't available on Basic.\n\n## Can my balance still go negative?\n\nRarely. It can happen when a merchant charges more than it first authorized, for example a tip added to a restaurant bill, when a deposit is returned, or when a dispute credit is taken back. Add money to bring it back to zero.\n\n## Returned payments\n\nIf a scheduled transfer or an ACH debit can't be paid, it's returned unpaid, with no fee from us. The company you owe may charge its own late fee.\n\nQuestions? Our support team is available in the\n\n[cushion-basic] Cushion on Basic (effective 2025-01-01)\nfees\n\nBasic has no overdraft fees ($0.00). Transactions that would overdraw your account are declined instead.\n\n## Can a Basic balance go negative?\n\nOccasionally, for example if a merchant posts more than it authorized or a dispute credit is taken back. Add money to bring it back to zero. Any deposit repays a negative balance automatically.\n\nThere's no fee for a declined transaction.\n\nNeed more help? Message us in the app any time, day or night.\n\n[cushion-basic] Cushion on Basic (effective 2025-01-01)\nCushion isn't available on the Basic plan. On Basic, a debit card purchase larger than your balance is declined, with no fee.\n\n## Why\n\nCushion is part of the paid plans. It's how we give members a little room without charging overdraft fees.\n\n## Getting Cushion\n\nMove to Plus for coverage up to $50.00, or to Premium for coverage up to $200. You'll also need at least $500 in direct deposits in the last 30 days.\n\n## Overdraft fees\n\nBasic has no overdraft fees ($0.00). Transactions that\n\n[fees-schedule-premium-v1] Premium plan fee schedule (effective 2025-01-01)\nExpedited card shipping | $0.00 |\n| Outgoing domestic wire | $0.00 |\n| Outgoing international wire | $10.00 |\n| Incoming international wire | $0.00 |\n| Cash deposit at a retail store | $0.00 |\n\n## Details\n\nPremium has no ATM fees from us, and we pay back ATM owner surcharges up to $10.00 each month.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nQuestions? Our support team is\n\n[atm-surcharges] ATM owner surcharges and our fees (effective 2025-01-01)\nWhen you use an ATM outside BrookLink, up to two different charges can apply. They're easy to mix up.\n\n## The ATM owner's surcharge\n\nThis is set by whoever owns the ATM, not by us. The ATM shows it on screen before you confirm, and it's added to the withdrawal amount. For example, if you withdraw cash and the owner charges a surcharge, one transaction for the total appears in your activity.\n\n## Tallowbrook's out-of-network fee\n\nThis is our fee, charged as a separate line called \"Out-of-network ATM fee\".\n\n[fees-schedule-premium-v2] Premium plan fee schedule (effective 2026-03-01)\nExpedited card shipping | $0.00 |\n| Outgoing domestic wire | $0.00 |\n| Outgoing international wire | $10.00 |\n| Incoming international wire | $0.00 |\n| Cash deposit at a retail store | $0.00 |\n\n## Details\n\nPremium has no ATM fees from us, and we pay back ATM owner surcharges up to $10.00 each month.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nNeed more help? Message us\n\nCustomer question:\nDo you charge overdraft fees?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1286,
+    "latency_ms": 1432.6716249343008,
+    "model": "gpt-6-luna",
+    "output_tokens": 74,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. Tallowbrook charges no overdraft or nonsufficient-funds fees on any plan. If a transaction would overdraw your account, it’s generally declined with no fee, though a balance can rarely go negative in certain situations.\",\"citations\":[\"overdraft-no-fees\"],\"abstain\":false}"
+  }
+}

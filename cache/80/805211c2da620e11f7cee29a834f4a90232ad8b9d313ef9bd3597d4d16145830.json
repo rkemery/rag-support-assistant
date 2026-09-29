@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Subscriptions that keep charging\n\nIf a subscription keeps charging you after you cancelled it, here's what to do.\n\n## 1. Cancel with the merchant\n\nCancel through the merchant's website or app, and save the confirmation email or a screenshot. Freezing your card doesn't stop recurring payments to merchants you've already authorized.\n\n## 2. Ask for a refund\n\nContact the merchant with your cancellation confirmation and ask them to refund charges made after that date. Many merchants will.\n\n## 3. Dispute it\n\nIf the merchant won't refund you, dispute each charge made after you cancelled. Tap the transaction, then Get help, then Cancelled but still charged. You have 120 days from each transaction date.\n\n## Stopping future charges\n\nIf a merchant keeps charging after you cancel, you can report the card lost and get a new number. Recurring payments to the old number will then fail. There may be a replacement fee depending on your plan.\n\n## Free trials\n\nCharges after a free trial ended aren't unauthorized if you gave your card when signing up. Cancel with the merchant and ask for a refund.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\ncard when signing up. Cancel with the merchant and ask for a refund.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 338,
+    "latency_ms": 3449.246082920581,
+    "model": "gpt-6-luna",
+    "output_tokens": 60,
+    "reasoning_tokens": 0,
+    "text": "This is the end of a guide to handling subscriptions that keep charging after cancellation. It explains that post-trial charges are generally authorized if you provided your card when signing up, and advises cancelling with the merchant and requesting a refund. It closes by directing users to in-app support."
+  }
+}

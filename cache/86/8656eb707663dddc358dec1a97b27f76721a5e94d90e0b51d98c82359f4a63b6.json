@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# How Cushion works\n\nCushion is fee-free overdraft coverage for debit card purchases, available on Plus and Premium.\n\n## How much it covers\n\n- Plus: up to $50.00\n- Premium: up to $200\n- Basic: not available\n\n## Who can use it\n\nYou need at least $500 in direct deposits in the last 30 days. Turn it on in the app under Profile, then Cushion.\n\n## What it covers\n\nDebit card purchases only, including mobile wallet payments. It never covers ATM withdrawals, transfers, BrookPay, wires or plan fees.\n\n## What it costs\n\nNothing. Cushion has no fees ($0.00) and no interest.\n\n## Paying it back\n\nYour next deposit repays it automatically. If your balance stays negative for 30 days, Cushion is suspended. See \"Repaying Cushion\".\n\n## Turning it off\n\nYou can switch Cushion off at any time in the same place. Purchases larger than your balance are then declined, with no fee.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nstuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 307,
+    "latency_ms": 1245.6133329542354,
+    "model": "gpt-6-luna",
+    "output_tokens": 22,
+    "reasoning_tokens": 0,
+    "text": "For Cushion overdraft coverage questions, contact in-app chat, available 24/7."
+  }
+}

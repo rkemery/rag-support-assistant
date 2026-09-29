@@ -248,8 +248,17 @@ def _judge_rows(results: Path, arms: Sequence[str], names: dict[str, str]) -> li
             a = {r.item_id: r.scores["grounded"] for r in llama if "grounded" in r.scores}
             b = {r.item_id: r.scores["grounded"] for r in mini if "grounded" in r.scores}
             both = sorted(set(a) & set(b))
-            k = kappa_interval([a[i] for i in both], [b[i] for i in both], seed=analysis.SEED)
-            kappa = f"{k.estimate:.2f} ({k.low:.2f} to {k.high:.2f}), n={len(both)}"
+            va, vb = [a[i] for i in both], [b[i] for i in both]
+            if len(set(va)) < 2 or len(set(vb)) < 2:
+                # Kappa is undefined when a judge gives one verdict to every answer.
+                agree = sum(x == y for x, y in zip(va, vb, strict=True)) / len(both)
+                kappa = (
+                    f"undefined (one judge gave a single verdict), agreement {agree:.1%}, "
+                    f"n={len(both)}"
+                )
+            else:
+                k = kappa_interval(va, vb, seed=analysis.SEED)
+                kappa = f"{k.estimate:.2f} ({k.low:.2f} to {k.high:.2f}), n={len(both)}"
         out.append(
             f"| {label} | {(1 - c.observed.estimate) * 100:.1f}% | {corrected} | {kappa} | "
             f"{c.observed.n} |"
@@ -435,19 +444,22 @@ def render(results: Path = REPO_ROOT / "results") -> str:
         selection = json.loads(selection_path.read_text(encoding="utf-8"))
         arms = [*selection["generation_configs"], FULL_CONTEXT]
         names |= {s: info["name"] for s, info in selection["configs"].items()}
-    pending_note = (
-        '> Rows marked "pending live run" need Azure model calls, which have not been made '
-        "yet. Every number shown was produced offline by `make demo` from committed results."
-    )
-    parts = [
-        pending_note,
-        "",
+    body = [
         retrieval_section(results),
         generation_section(results, arms, names),
         judge_section(results),
         extras_section(results),
     ]
-    return "\n".join(parts)
+    note = (
+        "> Every number shown was produced offline by `make demo` from committed results, "
+        "including the replies of the live model runs."
+    )
+    if any(PENDING in part for part in body):
+        note = (
+            f'> Rows marked "{PENDING}" need Azure model calls, which have not been made '
+            "yet. Every number shown was produced offline by `make demo` from committed results."
+        )
+    return "\n".join([note, "", *body])
 
 
 def render_cost(results: Path = REPO_ROOT / "results") -> str:

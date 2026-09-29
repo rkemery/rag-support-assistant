@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# When check deposits are available\n\nOnce your check deposit is accepted, here's when you can use the money.\n\n## Standard availability\n\n- The first $225 is available the next business day.\n- The rest is available within 2 business days.\n\n## New accounts\n\nFor accounts open less than 30 days, we may hold check deposits for up to 7 business days.\n\n## Longer holds\n\nWe may also hold a check longer if it's unusually large for your account, if the check looks altered, or if it has been returned before. The app shows the release date on the deposit.\n\n## Returned checks\n\nIf the check bounces after the money was made available, we take the amount back from your balance. There's no returned item fee.\n\nDeposits made on a weekend or bank holiday count as received on the next business day.\n\n## Check the status\n\nTap the deposit in your activity feed to see whether it's pending, available or returned.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nThe app shows the release date on the deposit.\n\n## Returned checks\n\nIf the check bounces after the money was made available, we take the amount back from your balance. There's no returned item fee.\n\nDeposits made on a weekend or bank holiday count as received on the next business day.\n\n## Check the status\n\nTap the deposit in your activity feed to see whether it's pending, available or returned.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 372,
+    "latency_ms": 1455.3483750205487,
+    "model": "gpt-6-luna",
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "text": "This section covers longer check-deposit holds, returned checks, weekend and holiday processing, and how to check deposit status or get support in the app."
+  }
+}

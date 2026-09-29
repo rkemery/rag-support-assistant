@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Negative balance after a dispute\n\nYour balance can go negative when we take back a provisional credit after a dispute is denied, or when a deposit is returned. This isn't Cushion, and it can happen on any plan, including Basic.\n\n## Why it happens\n\nA provisional credit is money we lend you while a dispute is investigated. If the dispute is denied, we give you written notice and take it back 5 business days later. If you've spent it in the meantime, the balance can drop below zero.\n\n## What to do\n\nAdd money to bring your balance back to zero. Any incoming deposit repays it automatically.\n\n## Fees\n\nThere are no fees for a negative balance ($0.00).\n\n## If it isn't repaid\n\nAs with Cushion, if a negative balance lasts 60 days, the account is restricted until it's repaid. On Plus and Premium, Cushion is suspended while the balance is negative for longer than 30 days.\n\n## Can't pay it right away?\n\nMessage support. If you're going through financial hardship, we can pass your case to our Account Services team.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nhardship, we can pass your case to our Account Services team.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 334,
+    "latency_ms": 1057.1465420071036,
+    "model": "gpt-6-luna",
+    "output_tokens": 48,
+    "reasoning_tokens": 0,
+    "text": "If you can’t repay a negative balance right away, contact support. If you’re experiencing financial hardship, your case can be referred to Account Services; you can also chat with support in the app 24/7."
+  }
+}

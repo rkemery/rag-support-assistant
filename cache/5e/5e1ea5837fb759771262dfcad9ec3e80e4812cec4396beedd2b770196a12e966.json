@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# ATM fees on Plus\n\nHere's what ATM withdrawals cost on the Plus plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | first 3 each month free, then $2.50 |\n| ATMs outside the US | $3.00 |\n\nThe 3 free withdrawals reset on the first day of each calendar month. Unused ones don't carry over.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $1,000 a day on Plus.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nadd their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $1,000 a day on Plus.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 392,
+    "latency_ms": 1993.3379580033943,
+    "model": "gpt-6-luna",
+    "output_tokens": 49,
+    "reasoning_tokens": 0,
+    "text": "This section of the Plus ATM-fees guide explains ATM-owner surcharges, the $1,000 daily withdrawal limit, where Tallowbrook fees appear in the activity feed, the ATM map, and how to contact support."
+  }
+}

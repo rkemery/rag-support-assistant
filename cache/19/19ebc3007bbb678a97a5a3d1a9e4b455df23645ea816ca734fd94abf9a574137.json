@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Card replacement fees on Premium\n\nThis is what a replacement card costs on the Premium plan, whether it's lost, stolen or damaged.\n\n| | Cost |\n|---|---|\n| Replacement card | free |\n| Standard shipping (7 to 10 business days) | free |\n| Expedited shipping (2 to 3 business days) | free |\n\nOn Premium both the card and expedited shipping are free.\n\nYour replacement is a metal card.\n\n## When we don't charge\n\nThere's no fee when a card is lost in the mail, when we replace a card because of a problem on our side, or for your automatic renewal card.\n\n## How to order\n\nTap Cards, choose the card, then Replace card. Pick lost, stolen or damaged, and choose a shipping speed. Fees are charged to your main balance when you place the order.\n\nSupport can also order a replacement for you in the app chat. The same fees apply either way.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nwhen we replace a card because of a problem on our side, or for your automatic renewal card.\n\n## How to order\n\nTap Cards, choose the card, then Replace card. Pick lost, stolen or damaged, and choose a shipping speed. Fees are charged to your main balance when you place the order.\n\nSupport can also order a replacement for you in the app chat. The same fees apply either way.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 367,
+    "latency_ms": 3130.867457948625,
+    "model": "gpt-6-luna",
+    "output_tokens": 61,
+    "reasoning_tokens": 0,
+    "text": "On Premium, replacement cards and both standard and expedited shipping are free. There’s also no fee for replacements due to a problem on the company’s side or for automatic renewal cards. To order, use Cards in the app or contact support via in-app chat; the same fees apply."
+  }
+}

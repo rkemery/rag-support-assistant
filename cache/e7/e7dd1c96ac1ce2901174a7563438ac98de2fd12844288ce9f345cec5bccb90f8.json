@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Business accounts\n\nNo. Tallowbrook only offers personal accounts. We don't offer business accounts for companies, partnerships, nonprofits or sole proprietors.\n\n## Using a personal account for business\n\nPersonal accounts are for personal use. Small amounts of freelance or side income are fine, such as getting paid for occasional gigs. Running a business's regular payments through a personal account isn't allowed, and could lead to a review of your account.\n\n## Business payments into your account\n\nYou can receive payments from a business, such as your employer or a client, into your personal account.\n\n## Business debit cards\n\nYour Tallowbrook card is a personal debit card. It can't carry a business name.\n\n## Tax forms\n\nWe only issue interest tax forms. We can't issue forms for business income.\n\n## Looking for a business account?\n\nYou'll need a bank that offers business accounts. We can't recommend a specific one.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nNo. Tallowbrook only offers personal accounts. We don't offer business accounts for companies, partnerships, nonprofits or sole proprietors.\n\n## Using a personal account for business\n\nPersonal accounts are for personal use. Small amounts of freelance or side income are fine, such as getting paid for occasional gigs. Running a business's regular payments through a personal account isn't allowed, and could lead to a review of your account.\n\n## Business payments into your account\n\nYou can receive payments from a business, such as your employer or a client, into your personal account.\n\n## Business debit cards\n\nYour Tallowbrook card\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 382,
+    "latency_ms": 2428.4210419282317,
+    "model": "gpt-6-luna",
+    "output_tokens": 44,
+    "reasoning_tokens": 0,
+    "text": "Tallowbrook offers only personal accounts, not business accounts. The document explains limits on business use, permitted incoming business payments, personal debit cards, tax forms, and where to seek a business account."
+  }
+}

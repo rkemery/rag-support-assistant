@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Card delivery times and tracking\n\nWe mail physical cards to the residential address on your profile. Cards can't be sent to a PO box or to a different address than the one on file.\n\n## How long it takes\n\n- Standard shipping: 7 to 10 business days\n- Expedited shipping: 2 to 3 business days, with tracking\n\nBusiness days don't include weekends or bank holidays.\n\n## Tracking\n\nExpedited cards come with a tracking link in the app under Cards. Standard cards don't have tracking, but the app shows the date we mailed it.\n\n## If it doesn't arrive\n\nIf a standard card hasn't arrived 10 business days after we mailed it, message support. We'll cancel the card in transit and send a new one. There's no fee for a card that got lost in the mail.\n\n## Moving?\n\nUpdate your address before ordering a card. An address change may need proof of address. See \"Updating your address\".\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\napp shows the date we mailed it.\n\n## If it doesn't arrive\n\nIf a standard card hasn't arrived 10 business days after we mailed it, message support. We'll cancel the card in transit and send a new one. There's no fee for a card that got lost in the mail.\n\n## Moving?\n\nUpdate your address before ordering a card. An address change may need proof of address. See \"Updating your address\".\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 372,
+    "latency_ms": 1189.9814169155434,
+    "model": "gpt-6-luna",
+    "output_tokens": 46,
+    "reasoning_tokens": 0,
+    "text": "This section explains what to do if a mailed card is delayed or lost, how to update your address before ordering, and how to contact support. Standard cards have no tracking; the app shows their mailing date."
+  }
+}

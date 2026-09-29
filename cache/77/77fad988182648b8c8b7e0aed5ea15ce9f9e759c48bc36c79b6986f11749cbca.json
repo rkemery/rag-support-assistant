@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Foreign transaction fees on Premium\n\nOn the Premium plan, the foreign transaction fee is 0% of the purchase amount in US dollars.\n\n## When it applies\n\n- Purchases in a foreign currency, in a store or online\n- Purchases in US dollars processed by a merchant outside the US\n\nIt doesn't apply to ATM withdrawals abroad. Those have the international ATM fee instead.\n\n## Example\n\nOn Premium, a purchase abroad costs exactly the converted amount. No fee is added.\n\n## Exchange rate\n\nWe use the card network's rate on the day the transaction settles, with no markup. Choose the local currency when a terminal offers to charge you in dollars.\n\n## Refunds\n\nIf a foreign purchase is refunded, we also refund the foreign transaction fee on the refunded amount. The refund is converted at the rate on the day it settles.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nOn the Premium plan, the foreign transaction fee is 0% of the purchase amount in US dollars.\n\n## When it applies\n\n- Purchases in a foreign currency, in a store or online\n- Purchases in US dollars processed by a merchant outside the US\n\nIt doesn't apply to ATM withdrawals abroad. Those have the international ATM fee instead.\n\n## Example\n\nOn Premium, a purchase abroad costs exactly the converted amount. No fee is added.\n\n## Exchange rate\n\nWe use the card network's rate on the day the transaction settles, with no markup. Choose the local currency when a\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 373,
+    "latency_ms": 1094.099957961589,
+    "model": "gpt-6-luna",
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "text": "Explains Premium’s 0% foreign transaction fee, which purchases qualify, how currency conversion works, and why to choose local currency when paying abroad."
+  }
+}

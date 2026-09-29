@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[account-verification-failed] If we couldn't verify your identity (effective 2025-01-01)\nIf we couldn't verify your identity, the app tells you what went wrong and whether you can try again.\n\n## Common reasons\n\n- The photo of your ID was blurry, cropped or had glare\n- The name or date of birth didn't match your ID\n- The ID had expired\n- The selfie didn't match the ID photo\n\n## Trying again\n\nYou can try up to 3 times. After that, the application is closed and you can apply again after 30 days.\n\n## Can support help?\n\nSupport can explain the steps, but can't approve an application,\n\n[disputes-duplicate] Charged twice for the same thing (effective 2025-01-01)\nSeeing the same charge twice doesn't always mean you were charged twice.\n\n## Check if one is pending\n\nHotels, gas stations, car rentals and restaurants often place a temporary authorization, then post the final amount separately. The pending one usually drops off within 7 days. Pending transactions can't be disputed.\n\n## If both have posted\n\nIf two identical charges have both posted, contact the merchant first. Most will refund a duplicate quickly. If the merchant doesn't help, dispute the second charge in the app as a duplicate. Tap the transaction, then Get help, then Charged\n\n[disputes-duplicate] Charged twice for the same thing (effective 2025-01-01)\napp as a duplicate. Tap the transaction, then Get help, then Charged twice.\n\n## Duplicate fees\n\nIf we charged you the same fee twice, message support. A fee charged in error is always refunded.\n\n## Time limit\n\nDuplicate charges follow the merchant dispute window: 120 days from the transaction date.\n\n## Split payments\n\nSome merchants split one order into several charges, for example when items ship separately. Check your order confirmation before you dispute.\n\nNeed more help? Message us in the app any time, day or night.\n\n[account-verification-time] How long verification takes (effective 2025-01-01)\nMost applications are verified within 1 business day, and many within minutes.\n\n## Manual review\n\nIf we need to check something by hand, it can take up to 5 business days. We may ask for another document, such as proof of address.\n\n## While you wait\n\nYou can receive deposits into your new account, but you can't send money, withdraw cash or order a card until you're verified.\n\n## Checking status\n\nThe app shows your verification status on the home screen. We'll notify you as soon as it's done.\n\n## Can support speed it up?\n\nNo. Verification is\n\n[security-two-step] Two-step verification (effective 2025-01-01)\nTwo-step verification is always on for Tallowbrook accounts. When you sign in on a new device, or do something sensitive, we ask for your password and a second step.\n\n## The second step\n\n- A push approval on a device you've already signed in on, or\n- A one-time code sent by text, valid for 10 minutes\n\n## When we ask\n\n- Signing in on a new device\n- Changing your password, email or phone number\n- Adding a new external account or wire recipient\n- Viewing your full virtual card number\n\n## Keep codes to yourself\n\nA\n\n[disputes-status] Checking the status of a dispute (effective 2025-01-01)\nthe case page so you aren't credited twice. If you were credited twice, we'll take back the extra amount.\n\nNeed more help? Message us in the app any time, day or night.\n\n[account-verification-time] How long verification takes (effective 2025-01-01)\nas it's done.\n\n## Can support speed it up?\n\nNo. Verification is handled by our Verification team, and support can't approve applications or tell you more than the app shows. If we need anything from you, we'll ask in the app.\n\n## Common causes of delays\n\nA blurry ID photo, a name that doesn't match your ID exactly, or a recent move are the most common reasons we need a manual review. Checking these before you apply helps.\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-status] Checking the status of a dispute (effective 2025-01-01)\n**Resolved in your favor:** the credit is permanent.\n- **Denied:** we've sent an explanation, and any provisional credit will be taken back.\n\n## How long it takes\n\nMost disputes finish within 45 days, and some take up to 90 days. We'll message you whenever the status changes.\n\n## Adding information\n\nYou can upload documents or add notes to an open dispute from the case page at any time.\n\n## Cancelling a dispute\n\nIf the merchant refunds you directly, withdraw the dispute from the case page so you aren't credited twice. If you were credited twice,\n\nCustomer question:\nI failed verification twice. How many more tries do I get?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1311,
+    "latency_ms": 1417.4911249428988,
+    "model": "gpt-6-luna",
+    "output_tokens": 69,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"You can try up to 3 times, so after failing twice, you have 1 try left. After the third unsuccessful attempt, your application will be closed and you can apply again after 30 days.\",\"citations\":[\"account-verification-failed\"],\"abstain\":false}"
+  }
+}

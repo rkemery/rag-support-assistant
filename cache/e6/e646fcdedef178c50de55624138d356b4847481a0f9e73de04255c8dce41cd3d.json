@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Account verification letter\n\nAn account verification letter confirms that you have an open account with us. Landlords, employers and government offices sometimes ask for one.\n\n## Get a letter\n\nTap Profile, then Documents, then Account verification letter. The PDF is ready right away and shows your name, account number, account type and the date the account was opened.\n\n## Showing your balance\n\nYou can choose whether the letter includes your current balance.\n\n## Custom letters\n\nWe can't write custom letters, sign forms, or fill in third-party verification forms. The standard letter is accepted by most organizations.\n\n## Closed accounts\n\nLetters are only available for open accounts. For a closed account, use your final statement.\n\n## Someone else asking\n\nWe don't confirm account details to landlords, employers or anyone else who contacts us directly. Give them the letter yourself.\n\n## Is it official?\n\nYes. The letter carries a verification code that the recipient can check on our help center.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nAn account verification letter confirms that you have an open account with us. Landlords, employers and government offices sometimes ask for one.\n\n## Get a letter\n\nTap Profile, then Documents, then Account verification letter. The PDF is ready right away and shows your name, account number, account type and the date the account was opened.\n\n## Showing your balance\n\nYou can choose whether the letter includes your current balance.\n\n## Custom letters\n\nWe can't write custom letters, sign forms, or fill in third-party verification forms. The standard letter is accepted by most organizations.\n\n## Closed accounts\n\nLetters are only available\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 395,
+    "latency_ms": 1434.872291982174,
+    "model": "gpt-6-luna",
+    "output_tokens": 37,
+    "reasoning_tokens": 0,
+    "text": "This section explains how to obtain an account verification letter, what information it includes, balance options, and limits on custom letters; letters are available only for open accounts."
+  }
+}

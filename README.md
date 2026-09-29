@@ -6,7 +6,7 @@ Results come with 95% confidence intervals and sample sizes, retrieval runs full
 ## Results
 
 <!-- results:start -->
-> Rows marked "pending live run" need Azure model calls, which have not been made yet. Every number shown was produced offline by `make demo` from committed results.
+> Every number shown was produced offline by `make demo` from committed results, including the replies of the live model runs.
 
 **Retrieval, test split** (130 questions with a gold article, article-level, no LLM). Mean with a 95% percentile bootstrap CI over clusters (questions grouped by their first gold article). Latency is per query on CPU, on a 4-vCPU container shared with other jobs, so it is rough (see Limitations).
 
@@ -55,39 +55,39 @@ Convex fusion weight on dense (alpha) swept on dev: 0.0: 0.736, 0.1: 0.758, 0.2:
 
 | Arm | Accuracy (answerable) | False refusal | Answered unanswerable | Hallucination rate | Premise corrected | $ per 1k answers | p50 ms |
 |---|---|---|---|---|---|---|---|
-| fixed-title / bge-small+bm25 convex(a=0.7) | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run |
-| fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run |
-| fixed-title / bge-small+bm25 rrf | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run |
-| Full context (no retrieval) | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run |
+| fixed-title / bge-small+bm25 convex(a=0.7) | 97.5% (92.8% to 99.2%), n=120 | 0.8% (0.1% to 4.7%), n=120 | 40.0% (21.0% to 62.6%), n=20 | 0.7% (0.1% to 4.1%), n=137 | 100.0% (65.3% to 100.0%), n=10 | 0.163 | 1597 |
+| fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | 94.2% (88.3% to 97.2%), n=120 | 1.7% (0.5% to 6.0%), n=120 | 50.0% (28.8% to 71.2%), n=20 | 1.4% (0.4% to 5.3%), n=138 | 100.0% (65.3% to 100.0%), n=10 | 0.163 | 4711 |
+| fixed-title / bge-small+bm25 rrf | 94.1% (88.1% to 97.1%), n=118 | 0.8% (0.1% to 4.7%), n=120 | 40.0% (21.0% to 62.6%), n=20 | 2.2% (0.7% to 6.4%), n=135 | 100.0% (65.3% to 100.0%), n=10 | 0.167 | 1571 |
+| Full context (no retrieval) | 99.2% (95.3% to 99.9%), n=120 | 0.0% (0.0% to 3.2%), n=120 | 15.0% (4.9% to 37.7%), n=20 | 0.0% (0.0% to 2.9%), n=133 | 100.0% (65.3% to 100.0%), n=10 | 0.420 | 2111 |
 
 **Abstention table, test split** (answered / abstained). The first two rows are the 2x2. False-premise questions count as unanswerable in the dataset, but the right move is to answer and correct the premise, so they get their own row.
 
 | Expected | fixed-title / bge-small+bm25 convex(a=0.7) | fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | fixed-title / bge-small+bm25 rrf | Full context (no retrieval) |
 |---|---|---|---|---|
-| Answerable (120) | pending live run | pending live run | pending live run | pending live run |
-| Should decline (20) | pending live run | pending live run | pending live run | pending live run |
-| False premise (10) | pending live run | pending live run | pending live run | pending live run |
+| Answerable (120) | 119 / 1 | 118 / 2 | 119 / 1 | 120 / 0 |
+| Should decline (20) | 8 / 12 | 10 / 10 | 8 / 12 | 3 / 17 |
+| False premise (10) | 10 / 0 | 10 / 0 | 10 / 0 | 10 / 0 |
 
 **Hallucination rate corrected for judge error, and judge agreement on the answers.** The correction is Rogan-Gladen with the Llama judge's TPR and TNR on the perturbation test split, and its interval carries their uncertainty. It assumes the judge errs on real answers the way it errs on synthetic ones. The RAGTruth rows below check that. Kappa compares the Llama and gpt-5-mini `grounded` verdicts on the same answers.
 
 | Arm | Judged hallucination rate | Corrected (95% CI) | Llama vs gpt-5-mini kappa | n |
 |---|---|---|---|---|
-| fixed-title / bge-small+bm25 convex(a=0.7) | pending live run | pending live run | pending live run | |
-| fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | pending live run | pending live run | pending live run | |
-| fixed-title / bge-small+bm25 rrf | pending live run | pending live run | pending live run | |
-| Full context (no retrieval) | pending live run | pending live run | pending live run | |
+| fixed-title / bge-small+bm25 convex(a=0.7) | 0.7% | 0.7% (0.0% to 2.3%) | 0.39 (0.00 to 1.00), n=137 | 137 |
+| fixed-title / bge-small+bm25 convex(a=0.7) / rerank granite-rerank | 1.4% | 1.4% (0.0% to 3.7%) | 0.80 (0.00 to 1.00), n=138 | 138 |
+| fixed-title / bge-small+bm25 rrf | 2.2% | 2.2% (0.0% to 4.9%) | 1.00 (1.00 to 1.00), n=135 | 135 |
+| Full context (no retrieval) | 0.0% | 0.0% (0.0% to 0.0%) | undefined (one judge gave a single verdict), agreement 100.0%, n=133 | 133 |
 
 
 **Judge validation without human labels.** Perturbation test split: 462 items built from the facts file (240 faithful, 222 with one injected error), labels known by construction. The judge prompt is tuned on the 160 dev items only and frozen, by fingerprint, before test is judged. RAGTruth: 200 human-annotated QA responses (half with a hallucination). TPR is the share of good answers passed, TNR the share of flawed answers caught. Wilson 95% CIs, kappa with a bootstrap CI.
 
 | Judge | Set | Check | n | TPR | TNR | Cohen's kappa |
 |---|---|---|---|---|---|---|
-| Llama-3.3-70B-Instruct | perturbations | grounded | pending live run | | | |
-| Llama-3.3-70B-Instruct | perturbations | correct | pending live run | | | |
-| Llama-3.3-70B-Instruct | RAGTruth | grounded | pending live run | | | |
-| gpt-5-mini | perturbations | grounded | pending live run | | | |
-| gpt-5-mini | perturbations | correct | pending live run | | | |
-| gpt-5-mini | RAGTruth | grounded | pending live run | | | |
+| Llama-3.3-70B-Instruct | perturbations | grounded | 462 | 100.0% (98.4% to 100.0%) | 100.0% (98.3% to 100.0%) | 1.00 (1.00 to 1.00) |
+| Llama-3.3-70B-Instruct | perturbations | correct | 342 | 100.0% (98.4% to 100.0%) | 100.0% (96.4% to 100.0%) | 1.00 (1.00 to 1.00) |
+| Llama-3.3-70B-Instruct | RAGTruth | grounded | 200 | 93.0% (86.3% to 96.6%) | 59.0% (49.2% to 68.1%) | 0.52 (0.41 to 0.63) |
+| gpt-5-mini | perturbations | grounded | 462 | 100.0% (98.4% to 100.0%) | 99.5% (97.5% to 99.9%) | 1.00 (0.99 to 1.00) |
+| gpt-5-mini | perturbations | correct | 342 | 99.6% (97.7% to 99.9%) | 100.0% (96.4% to 100.0%) | 0.99 (0.98 to 1.00) |
+| gpt-5-mini | RAGTruth | grounded | 200 | 88.0% (80.2% to 93.0%) | 64.0% (54.2% to 72.7%) | 0.52 (0.40 to 0.63) |
 | HHEM-2.1-Open (threshold 0.5) | perturbations | grounded | 462 | 89.6% (85.1% to 92.8%) | 68.9% (62.6% to 74.6%) | 0.59 (0.52 to 0.66) |
 | HHEM-2.1-Open (threshold 0.5) | RAGTruth | grounded | 200 | 96.0% (90.2% to 98.4%) | 53.0% (43.3% to 62.5%) | 0.49 (0.38 to 0.60) |
 
@@ -95,15 +95,16 @@ Convex fusion weight on dense (alpha) swept on dev: 0.0: 0.736, 0.1: 0.758, 0.2:
 
 | Judge | original (n=120) | paraphrase (n=120) | wrong_number (n=68) | wrong_plan (n=22) | superseded (n=12) | unsupported_claim (n=120) |
 |---|---|---|---|---|---|---|
-| Llama-3.3-70B-Instruct | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run |
-| gpt-5-mini | pending live run | pending live run | pending live run | pending live run | pending live run | pending live run |
+| Llama-3.3-70B-Instruct | 0.0% (0.0% to 3.1%) | 0.0% (0.0% to 3.1%) | 100.0% (94.7% to 100.0%) | 100.0% (85.1% to 100.0%) | 100.0% (75.8% to 100.0%) | 100.0% (96.9% to 100.0%) |
+| gpt-5-mini | 0.0% (0.0% to 3.1%) | 0.0% (0.0% to 3.1%) | 100.0% (94.7% to 100.0%) | 100.0% (85.1% to 100.0%) | 100.0% (75.8% to 100.0%) | 99.2% (95.4% to 99.9%) |
 | HHEM-2.1-Open | 0.0% (0.0% to 3.1%) | 20.8% (14.5% to 28.9%) | 57.4% (45.5% to 68.4%) | 0.0% (0.0% to 14.9%) | 16.7% (4.7% to 44.8%) | 93.3% (87.4% to 96.6%) |
 
 
 **Live-only cells.**
 
-- Contextual retrieval (one cell, LLM-written context per chunk): pending live run.
-- Ragas 0.4.3 faithfulness and context recall on two configs: pending live run.
+- Contextual retrieval (fixed-title+ctx / bge-small+bm25 convex(a=0.7)), test nDCG@10: 0.794 (0.752 to 0.838), -0.017 vs no context (-0.045 to +0.012, p=0.244).
+- Ragas on fixed-title-hybrid-bge-small-convex0.7-granite-rerank: context_recall 0.936 (n=118), faithfulness 0.949 (n=118).
+- Ragas on fixed-title-hybrid-bge-small-convex0.7: context_recall 0.927 (n=119), faithfulness 0.931 (n=119).
 <!-- results:end -->
 
 ## Quickstart
@@ -236,7 +237,7 @@ Estimated before any live call by `eval estimate`, which builds the requests the
 
 `make eval-live` runs with a hard cap of $8.00 (`make eval-live CAP=...` to change it), a bit more than twice the expected spend. A refused call stops the run, and cached calls cost nothing when it is started again.
 
-Actual spend: pending live run.
+Actual spend so far: $2.68 over 4343 calls in 2 runs.
 <!-- cost:end -->
 
 ## How I built this

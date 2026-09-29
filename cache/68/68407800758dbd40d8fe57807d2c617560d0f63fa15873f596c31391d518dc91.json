@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[disputes-ach] Disputing an ACH debit (effective 2025-01-01)\nAn ACH debit is when a company pulls money from your account using your account and routing number, for example a utility bill or a loan payment.\n\n## Unauthorized ACH debits\n\nIf a company took money you didn't authorize, report it within 60 days of the statement it first appeared on. Tap the transaction, then Get help, then I didn't authorize this.\n\n## Authorized, but wrong\n\nIf you did authorize the company but the amount or date is wrong, contact the company first. If that doesn't work, message support and we'll look at it with\n\n[transfers-returned] Returned transfers (effective 2025-01-01)\nSometimes a transfer is sent back. This is called a return. It usually happens a few business days after the transfer was sent.\n\n## Common reasons\n\n- The account number or routing number was wrong.\n- The receiving account was closed or frozen.\n- The name on the receiving account didn't match.\n- For money you pulled in from another bank, there wasn't enough money in that account.\n\n## What happens to the money\n\nFor transfers out, the money comes back to your Tallowbrook balance when the return reaches us. For transfers in, we take back any amount we already made available.\n\n##\n\n[disputes-ach] Disputing an ACH debit (effective 2025-01-01)\nIf that doesn't work, message support and we'll look at it with you.\n\n## Stopping future debits\n\nYou can block a company from pulling money in the app. Tap the transaction, then Block future debits. Tell the company too, so they know to bill you another way.\n\n## What happens next\n\nWe'll ask the company's bank to return the money. If your claim passes an initial review, you get a provisional credit within 10 business days.\n\nACH transfers you sent yourself, and BrookPay payments, can't be disputed this way.\n\nQuestions? Our\n\n[docs-account-details] Finding your account and routing numbers (effective 2025-01-01)\nKeeping them safe\n\nOnly give your account and routing numbers to people and companies you trust, such as your employer. Someone with these numbers can try to pull money by ACH. If that happens, you can dispute it.\n\n## Support won't read them out\n\nFor security, support won't read your full account number or card number to you in chat or on the phone. You can always see them in the app.\n\n## Wire instructions\n\nFor incoming wires, use the Wire instructions screen under Account details, which also shows our SWIFT code for international wires.\n\nQuestions? Our support team\n\n[atm-cash-not-dispensed] ATM didn't give me my cash (effective 2025-01-01)\nIf an ATM took money from your account but didn't give you the cash, or gave you less than you asked for, you can dispute it.\n\n## What to do\n\n1. Note the ATM location, date and time, and keep any receipt.\n2. Check the app. Sometimes the ATM reverses the withdrawal on its own within a few days, and the transaction disappears or shows a matching credit.\n3. If it's still there once the withdrawal has posted, open a dispute in the app within 60 days. Tap the transaction, then Get help, then Cash not\n\n[disputes-unauthorized] Disputing a transaction you didn't make (effective 2026-01-15)\nwindow.\n\n## Not sure it's unauthorized?\n\nUnfamiliar names are often a merchant's parent company or a payment processor. Tap the transaction to see the merchant's details before you dispute it.\n\nQuestions? Our support team is available in the app at any hour.\n\n[support-financial-abuse] If someone is controlling your money (effective 2025-01-01)\nother devices\n- Freeze or replace your card\n- Stop sending paper mail to your address\n- Talk about options for moving money you need to keep safe\n\n## What we won't do\n\nWe won't tell anyone else you contacted us.\n\n## If you're in danger\n\nIf you're in immediate danger, call emergency services first.\n\nAccount Services replies within 2 business days, and faster when you tell us it's urgent.\n\nQuestions? Our support team is available in the app at any hour.\n\n[disputes-unauthorized] Disputing a transaction you didn't make (effective 2026-01-15)\nIf you see a card transaction you didn't make or authorize, you can dispute it as unauthorized.\n\n## First, protect your card\n\nBefore we open an unauthorized dispute, the card used must be frozen or reported lost or stolen. That stops more charges while we investigate. If the card is still in your wallet, freezing is enough.\n\n## How long you have\n\nReport an unauthorized transaction within 60 days of the date of the statement it first appeared on. Statements close on the last calendar day of each month. For example, a transaction that posted in March appears on the\n\nCustomer question:\nThe electric company pulled money from my account that I never authorized. How do I get it back?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1336,
+    "latency_ms": 1432.0922089973465,
+    "model": "gpt-6-luna",
+    "output_tokens": 96,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Report the unauthorized ACH debit within 60 days of the statement it first appeared on. In the app, tap the transaction, then **Get help**, then **I didn’t authorize this**. If your claim passes an initial review, you’ll receive a provisional credit within 10 business days while the company’s bank is asked to return the money.\",\"citations\":[\"disputes-ach\"],\"abstain\":false}"
+  }
+}

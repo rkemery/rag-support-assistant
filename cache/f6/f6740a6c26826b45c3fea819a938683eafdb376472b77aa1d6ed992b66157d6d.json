@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[support-merchant-refunds] When will my refund arrive? (effective 2025-01-01)\na merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[support-merchant-refunds] When will my refund arrive? (effective 2025-01-01)\ndays have passed, ask the merchant for the refund reference number, sometimes called an ARN, and message support. We can trace it.\n\n## Refunds to a cancelled card\n\nRefunds to a card you've replaced still reach your account. You don't need to give the merchant your new card.\n\n## Refunds in a foreign currency\n\nForeign refunds are converted on the day they settle, so the amount can differ slightly from what you paid.\n\n## Merchant won't refund?\n\nYou may be able to file a merchant dispute. See \"Disputing a purchase with a merchant\".\n\nNeed\n\n[disputes-merchant-v1] Disputing a purchase with a merchant (effective 2024-06-01)\nHow long you have\n\nFile a merchant dispute within 90 days of the transaction date. After that, we can't open a dispute for you.\n\n## How to file\n\nTap the transaction, then Get help, then Problem with a purchase. Tell us what happened and upload your records.\n\n## What happens next\n\nIf the dispute passes an initial review, you get a provisional credit within 10 business days. We then contact the merchant through the card network. Most cases finish within 45 days.\n\nTransactions you don't recognize at all are a different kind of dispute. See\n\n[disputes-status] Checking the status of a dispute (effective 2025-01-01)\n**Resolved in your favor:** the credit is permanent.\n- **Denied:** we've sent an explanation, and any provisional credit will be taken back.\n\n## How long it takes\n\nMost disputes finish within 45 days, and some take up to 90 days. We'll message you whenever the status changes.\n\n## Adding information\n\nYou can upload documents or add notes to an open dispute from the case page at any time.\n\n## Cancelling a dispute\n\nIf the merchant refunds you directly, withdraw the dispute from the case page so you aren't credited twice. If you were credited twice,\n\n[disputes-merchant-v2] Disputing a purchase with a merchant (effective 2026-01-15)\nHow long you have\n\nFile a merchant dispute within 120 days of the transaction date. After that, we can't open a dispute for you.\n\n## How to file\n\nTap the transaction, then Get help, then Problem with a purchase. Tell us what happened and upload your records.\n\n## What happens next\n\nIf the dispute passes an initial review, you get a provisional credit within 10 business days. We then contact the merchant through the card network. Most cases finish within 45 days.\n\nTransactions you don't recognize at all are a different kind of dispute. See\n\n[close-blockers] Why can't I close my account? (effective 2025-01-01)\nIf the app won't let you close your account, one of these is usually the reason.\n\n## Pending transactions\n\nWait until everything has posted. Card authorizations usually post or drop off within a few days.\n\n## Open disputes\n\nWe can't close an account while a dispute is open, because the outcome may add or remove money. Most disputes finish within 45 days. If the merchant refunded you, you can withdraw the dispute.\n\n## Negative balance\n\nAdd money to bring the balance back to zero, whether it's from Cushion or from a reversed credit.\n\n## Account restricted\n\n[disputes-denied] If your dispute is denied (effective 2025-01-01)\nSometimes a dispute is decided against you. Here's what that means.\n\n## Why disputes are denied\n\n- The merchant showed you made or authorized the purchase, for example with delivery proof signed at your address.\n- The dispute was filed after its window closed.\n- The merchant already refunded you.\n- The issue isn't covered, such as a price you agreed to and later changed your mind about.\n\n## What happens to the provisional credit\n\nWe send you a written explanation first. 5 business days later, we take the provisional credit back. If that leaves your balance negative, add money so your\n\n[disputes-how-to-file] How to file a dispute (effective 2026-01-15)\nwithin 120 days of the transaction date, after contacting the merchant.\n\n## Filing through support\n\nSupport can open disputes totaling up to $5,000 per case. Larger cases go to our Disputes team, who will contact you within 2 business days.\n\n## One dispute per transaction\n\nIf a transaction already has an open dispute, add information to that case instead of opening a new one.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\nCustomer question:\nThe merchant refunded me after I opened a dispute. What should I do?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1316,
+    "latency_ms": 1436.0821249429137,
+    "model": "gpt-6-luna",
+    "output_tokens": 52,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Withdraw the dispute from its case page so you aren’t credited twice. If you were credited twice, contact support in the app.\",\"citations\":[\"disputes-status\"],\"abstain\":false}"
+  }
+}

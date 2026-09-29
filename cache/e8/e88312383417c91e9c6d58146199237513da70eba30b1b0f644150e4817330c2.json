@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Activating your card\n\nYour physical card arrives inactive. You need to activate it in the app before you can use it for purchases or at ATMs.\n\n## How to activate\n\n1. Open the app and tap Cards.\n2. Tap Activate card.\n3. Scan the card with your camera, or type the last 4 digits and the expiry date.\n4. Set your PIN when the app asks.\n\nActivation is instant. Your card works right after.\n\n## Before your card arrives\n\nYou can add a virtual card in the app and use it online or in a mobile wallet while you wait. It has its own number, so you don't need to update it when the physical card shows up.\n\n## If activation fails\n\nCheck that you're activating the newest card. An old or replaced card can't be activated. If your card hasn't arrived within 10 business days of ordering it, message support so we can cancel it and send another one.\n\nReplacement cards need activating too. For a damaged card, your old card keeps working until you activate the new one.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nuse it online or in a mobile wallet while you wait. It has its own number, so you don't need to update it when the physical card shows up.\n\n## If activation fails\n\nCheck that you're activating the newest card. An old or replaced card can't be activated. If your card hasn't arrived within 10 business days of ordering it, message support so we can cancel it and send another one.\n\nReplacement cards need activating too. For a damaged card, your old card keeps working until you activate the new one.\n\nQuestions? Our support team is available in the app at any\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 410,
+    "latency_ms": 1457.9243749612942,
+    "model": "gpt-6-luna",
+    "output_tokens": 65,
+    "reasoning_tokens": 0,
+    "text": "Troubleshooting physical card activation, including checking that the card is the newest one, what to do if delivery takes over 10 business days, replacement-card activation, and contacting in-app support. Also notes that a virtual card can be used online or in a mobile wallet while waiting for the physical card."
+  }
+}

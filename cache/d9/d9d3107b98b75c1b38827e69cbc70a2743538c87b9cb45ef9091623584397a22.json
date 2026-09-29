@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Sending a domestic wire\n\nDomestic wires send money to another US bank account on the same business day.\n\n## How to send a wire\n\n1. Tap Transfers, then Wire.\n2. Enter the recipient's name, bank routing number, account number and address.\n3. Review the fee and confirm with your passcode.\n\n## Cutoff\n\nWires submitted before 3:00 PM ET on a business day are sent the same day. Later wires are sent the next business day.\n\n## Fees and limits\n\n| Plan | Fee | Daily limit |\n|---|---|---|\n| Basic | $25.00 | $5,000 |\n| Plus | $15.00 | $10,000 |\n| Premium | free | $25,000 |\n\n## Before you send\n\nWires can't be cancelled once sent. Double-check the details, and be careful if someone you've only met online, or someone claiming to be from a bank or the government, asks you to wire money.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nDomestic wires send money to another US bank account on the same business day.\n\n## How to send a wire\n\n1. Tap Transfers, then Wire.\n2. Enter the recipient's name, bank routing number, account number and address.\n3. Review the fee and confirm with your passcode.\n\n## Cutoff\n\nWires submitted before 3:00 PM ET on a business day are sent the same day. Later wires are sent the next business day.\n\n## Fees and limits\n\n| Plan | Fee | Daily limit |\n|---|---|---|\n| Basic |\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 399,
+    "latency_ms": 6392.257333965972,
+    "model": "gpt-6-luna",
+    "output_tokens": 37,
+    "reasoning_tokens": 0,
+    "text": "Explains how to send a domestic wire, including steps, cutoff times, and plan-based fees and daily limits; the fee table continues beyond the Basic plan entry."
+  }
+}

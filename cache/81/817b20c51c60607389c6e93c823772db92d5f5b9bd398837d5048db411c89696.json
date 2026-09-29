@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[referrals] Refer a friend (effective 2025-01-01)\nadd a referral afterward.\n\n## Rules\n\n- Your friend must be new to Tallowbrook.\n- You can't refer yourself or open a second account.\n- Referral bonuses may be reported to tax authorities.\n\n## Didn't get your bonus?\n\nCheck your friend used your link and received the direct deposits in time. If they did, message support.\n\nNeed more help? Message us in the app any time, day or night.\n\n[referrals] Refer a friend (effective 2025-01-01)\nWhen a friend opens a Tallowbrook account with your invite link and qualifies, you each get $25.00.\n\n## How your friend qualifies\n\nThey need to receive at least $500 in direct deposits within 60 days of opening their account.\n\n## When you're paid\n\nBoth bonuses are paid within 5 business days of your friend qualifying.\n\n## Your invite link\n\nTap Profile, then Invite friends. Share the link any way you like. Your friend has to use the link when they sign up. We can't add a referral afterward.\n\n## Rules\n\n- Your friend must be new to\n\n[transfer-limits-plus] Transfer limits on Plus (effective 2025-01-01)\nreset at midnight Eastern Time. The monthly limit resets on the first day of each calendar month.\n\n## Incoming transfers\n\nThere's no limit on money coming in by ACH, wire, direct deposit or BrookPay.\n\n## New devices\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are capped at $500.\n\n## Need more?\n\nLimits are set by plan. Support can't raise them, even for one transfer. Changing plan is the only way to get higher limits.\n\nQuestions? Our support team is available in the app at any hour.\n\n[transfer-limits-premium] Transfer limits on Premium (effective 2025-01-01)\nreset at midnight Eastern Time. The monthly limit resets on the first day of each calendar month.\n\n## Incoming transfers\n\nThere's no limit on money coming in by ACH, wire, direct deposit or BrookPay.\n\n## New devices\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are capped at $500.\n\n## Need more?\n\nLimits are set by plan. Support can't raise them, even for one transfer. Changing plan is the only way to get higher limits.\n\nQuestions? Our support team is available in the app at any hour.\n\n[transfer-limits-basic] Transfer limits on Basic (effective 2025-01-01)\nreset at midnight Eastern Time. The monthly limit resets on the first day of each calendar month.\n\n## Incoming transfers\n\nThere's no limit on money coming in by ACH, wire, direct deposit or BrookPay.\n\n## New devices\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are capped at $500.\n\n## Need more?\n\nLimits are set by plan. Support can't raise them, even for one transfer. Changing plan is the only way to get higher limits.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[support-third-parties] Can someone else manage my account? (effective 2025-01-01)\nTallowbrook accounts belong to one person. We don't offer joint accounts or authorized users, and support only acts for the account holder in their own signed-in session.\n\n## What that means\n\n- We can't discuss an account with a spouse, partner, parent, child or friend, even if they know the account details.\n- We can't make changes because someone else asks, even if they're messaging from the account holder's phone.\n- We can't confirm whether a person has a Tallowbrook account.\n\n## Helping someone with their account\n\nThe account holder can sit with\n\n[savings-rate-change-2026] Savings rate change, June 2026 (effective 2026-06-01)\ndown over the past year. We kept the gap between plans the same.\n\n## What you need to do\n\nNothing. Your pockets started earning the new rate automatically. Interest earned before the change was calculated at the old rate.\n\n## Notice\n\nWe emailed every member at least 30 days before the change.\n\n## Balance cap\n\nThe cap didn't change. Plan rates apply up to $100,000.\n\n## Thinking about switching plans?\n\nThe rate you earn depends on your plan. Upgrading takes effect immediately, so your pockets start earning the higher rate the same day. Compare plans\n\n[atm-limits] ATM withdrawal limits (effective 2025-01-01)\na higher limit is to change plan.\n\n## ATM limits versus the ATM's own limit\n\nMany ATMs have their own maximum per withdrawal that's lower than ours. If you need more, you can make more than one withdrawal, as long as the total stays within your daily limit. Each withdrawal outside BrookLink may carry a fee.\n\nCash withdrawals are never covered by Cushion.\n\nQuestions? Our support team is available in the app at any hour.\n\nCustomer question:\nIs there a cap on how many friends I can refer for the bonus?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1336,
+    "latency_ms": 1354.5205419650301,
+    "model": "gpt-6-luna",
+    "output_tokens": 55,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"The help-center information doesn’t specify a cap on the number of friends you can refer. It says each qualifying friend earns you both a $25 bonus.\",\"citations\":[\"referrals\"],\"abstain\":false}"
+  }
+}

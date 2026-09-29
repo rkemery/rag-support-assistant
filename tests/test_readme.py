@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import shutil
+
 import pytest
 
 from rag_support_assistant.data import REPO_ROOT
@@ -11,11 +13,19 @@ pytestmark = pytest.mark.skipif(
 )
 
 
-def test_render_uses_committed_results_and_marks_pending():
+def test_render_uses_committed_results():
     text = render()
     assert "**Retrieval, test split**" in text
     assert "nDCG@10" in text
-    assert PENDING in text  # live rows stay pending until the live run
+
+
+def test_render_marks_live_rows_pending_without_live_results(tmp_path):
+    # Only the offline retrieval results: every live row reads pending.
+    shutil.copytree(REPO_ROOT / "results" / "retrieval", tmp_path / "retrieval")
+    text = render(tmp_path)
+    assert "nDCG@10" in text
+    assert PENDING in text
+    assert "have not been made yet" in text
 
 
 def test_readme_section_is_current():

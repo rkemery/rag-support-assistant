@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Two-step verification\n\nTwo-step verification is always on for Tallowbrook accounts. When you sign in on a new device, or do something sensitive, we ask for your password and a second step.\n\n## The second step\n\n- A push approval on a device you've already signed in on, or\n- A one-time code sent by text, valid for 10 minutes\n\n## When we ask\n\n- Signing in on a new device\n- Changing your password, email or phone number\n- Adding a new external account or wire recipient\n- Viewing your full virtual card number\n\n## Keep codes to yourself\n\nA one-time code is only for you to type into the Tallowbrook app. Nobody from Tallowbrook will ask you to read it out. If someone asks, it's a scam.\n\n## Changed your phone number?\n\nUpdate it in the app while you still have the old number. If you've lost access to your old number, message support. We'll pass it to the team that verifies identity, which can take longer.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nTwo-step verification is always on for Tallowbrook accounts. When you sign in on a new device, or do something sensitive, we ask for your password and a second step.\n\n## The second step\n\n- A push approval on a device you've already signed in on, or\n- A one-time code sent by text, valid for 10 minutes\n\n## When we ask\n\n- Signing in on a new device\n- Changing your password, email or phone number\n- Adding a new external account or wire recipient\n- Viewing your full virtual card number\n\n## Keep codes to yourself\n\nA\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 412,
+    "latency_ms": 931.748167029582,
+    "model": "gpt-6-luna",
+    "output_tokens": 36,
+    "reasoning_tokens": 0,
+    "text": "Explains Tallowbrook’s always-on two-step verification: available second-step methods, actions that trigger verification, and a warning not to share one-time codes."
+  }
+}

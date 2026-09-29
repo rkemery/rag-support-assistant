@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Refer a friend\n\nWhen a friend opens a Tallowbrook account with your invite link and qualifies, you each get $25.00.\n\n## How your friend qualifies\n\nThey need to receive at least $500 in direct deposits within 60 days of opening their account.\n\n## When you're paid\n\nBoth bonuses are paid within 5 business days of your friend qualifying.\n\n## Your invite link\n\nTap Profile, then Invite friends. Share the link any way you like. Your friend has to use the link when they sign up. We can't add a referral afterward.\n\n## Rules\n\n- Your friend must be new to Tallowbrook.\n- You can't refer yourself or open a second account.\n- Referral bonuses may be reported to tax authorities.\n\n## Didn't get your bonus?\n\nCheck your friend used your link and received the direct deposits in time. If they did, message support.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWhen a friend opens a Tallowbrook account with your invite link and qualifies, you each get $25.00.\n\n## How your friend qualifies\n\nThey need to receive at least $500 in direct deposits within 60 days of opening their account.\n\n## When you're paid\n\nBoth bonuses are paid within 5 business days of your friend qualifying.\n\n## Your invite link\n\nTap Profile, then Invite friends. Share the link any way you like. Your friend has to use the link when they sign up. We can't add a referral afterward.\n\n## Rules\n\n- Your friend must be new to\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 378,
+    "latency_ms": 1262.8157919971272,
+    "model": "gpt-6-luna",
+    "output_tokens": 62,
+    "reasoning_tokens": 0,
+    "text": "Referral program: both people receive $25 when a new Tallowbrook customer signs up using the invite link and receives at least $500 in direct deposits within 60 days; bonuses arrive within five business days. Find the link under Profile → Invite friends; referrals can’t be added afterward."
+  }
+}

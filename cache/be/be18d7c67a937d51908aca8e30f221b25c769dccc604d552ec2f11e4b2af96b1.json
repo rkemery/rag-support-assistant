@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Setting up direct deposit\n\nDirect deposit sends your paycheck, or benefits, straight into your Tallowbrook account.\n\n## Set it up\n\n- **Automatic:** tap Transfers, then Direct deposit, then Set up automatically. Find your employer or payroll provider and sign in. The switch happens in the payroll system.\n- **Manual:** download a pre-filled direct deposit form from the same screen, or copy your routing and account number, and give it to your employer.\n\n## How long it takes\n\nEmployers usually need one or two pay cycles to make the switch. Your first paycheck may still go to your old account.\n\n## Why it helps\n\n- You may get paid up to 2 days early.\n- Plus and Premium members need at least $500 in direct deposits in the last 30 days to use Cushion.\n\n## Splitting a paycheck\n\nYour employer may let you split your pay between accounts. You can also set up an automatic transfer from your main balance to a Savings Pocket on payday.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nDirect deposit sends your paycheck, or benefits, straight into your Tallowbrook account.\n\n## Set it up\n\n- **Automatic:** tap Transfers, then Direct deposit, then Set up automatically. Find your employer or payroll provider and sign in. The switch happens in the payroll system.\n- **Manual:** download a pre-filled direct deposit form from the same screen, or copy your routing and account number, and give it to your employer.\n\n## How long it takes\n\nEmployers usually need one or two pay cycles to make the switch. Your first paycheck may still go to your old account.\n\n##\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 403,
+    "latency_ms": 1441.595209063962,
+    "model": "gpt-6-luna",
+    "output_tokens": 25,
+    "reasoning_tokens": 0,
+    "text": "Instructions for setting up Tallowbrook direct deposit automatically or manually, including how long the switch usually takes."
+  }
+}

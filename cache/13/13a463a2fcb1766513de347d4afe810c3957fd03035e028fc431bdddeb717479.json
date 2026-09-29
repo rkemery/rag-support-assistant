@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[travel-exchange-rates] Exchange rates we use (effective 2025-01-01)\nthe rate on the day it settles, usually a day or two later, so it can move slightly up or down.\n\n## Refunds in a foreign currency\n\nIf a foreign merchant refunds you, we convert the refund at the rate on the day it settles. That can be a little more or less than you originally paid. We refund the foreign transaction fee on the refunded part.\n\nThe fee applies to purchases made in a foreign currency, and to purchases in US dollars processed by a merchant outside the US.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[travel-exchange-rates] Exchange rates we use (effective 2025-01-01)\nWhen you pay in a foreign currency, we convert the amount to US dollars using the card network's exchange rate on the day the transaction settles. We don't add a markup to that rate.\n\n## What you pay on top\n\nYour plan's foreign transaction fee is added as a percentage of the converted amount:\n\n- Basic: 3%\n- Plus: 1%\n- Premium: 0%\n\n## Why the amount changes\n\nA pending transaction shows an estimate based on the rate when you paid. The final amount uses the rate on the day it settles, usually a day or two later, so\n\n[travel-dcc] Paying in local currency or dollars (effective 2025-01-01)\nYour plan's foreign transaction fee may still apply, because the merchant is still abroad.\n\n## Online shopping\n\nForeign websites sometimes show prices in dollars using their own conversion. If you can switch the site to its home currency, that's usually cheaper.\n\n## Already paid in dollars?\n\nDynamic currency conversion isn't a reason to dispute a purchase, because you agreed to it at the terminal. Next time, choose the local currency.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[fx-fees-premium] Foreign transaction fees on Premium (effective 2025-01-01)\nOn the Premium plan, the foreign transaction fee is 0% of the purchase amount in US dollars.\n\n## When it applies\n\n- Purchases in a foreign currency, in a store or online\n- Purchases in US dollars processed by a merchant outside the US\n\nIt doesn't apply to ATM withdrawals abroad. Those have the international ATM fee instead.\n\n## Example\n\nOn Premium, a purchase abroad costs exactly the converted amount. No fee is added.\n\n## Exchange rate\n\nWe use the card network's rate on the day the transaction settles, with no markup. Choose the local currency when a\n\n[fx-fees-plus-v2] Foreign transaction fees on Plus (effective 2026-03-01)\nyour activity feed, called \"Foreign transaction fee\", on the same day the purchase settles.\n\n## Exchange rate\n\nWe use the card network's rate on the day the transaction settles, with no markup. Choose the local currency when a terminal offers to charge you in dollars.\n\n## Refunds\n\nIf a foreign purchase is refunded, we also refund the foreign transaction fee on the refunded amount. The refund is converted at the rate on the day it settles.\n\nIf you travel often, Premium has no foreign transaction fee.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[fx-fees-basic] Foreign transaction fees on Basic (effective 2025-01-01)\nyour activity feed, called \"Foreign transaction fee\", on the same day the purchase settles.\n\n## Exchange rate\n\nWe use the card network's rate on the day the transaction settles, with no markup. Choose the local currency when a terminal offers to charge you in dollars.\n\n## Refunds\n\nIf a foreign purchase is refunded, we also refund the foreign transaction fee on the refunded amount. The refund is converted at the rate on the day it settles.\n\nIf you travel often, Premium has no foreign transaction fee.\n\nNeed more help? Message us in the app any time, day or night.\n\n[fx-fees-plus-v1] Foreign transaction fees on Plus (effective 2025-01-01)\nseparate line in your activity feed, called \"Foreign transaction fee\", on the same day the purchase settles.\n\n## Exchange rate\n\nWe use the card network's rate on the day the transaction settles, with no markup. Choose the local currency when a terminal offers to charge you in dollars.\n\n## Refunds\n\nIf a foreign purchase is refunded, we also refund the foreign transaction fee on the refunded amount. The refund is converted at the rate on the day it settles.\n\nIf you travel often, Premium has no foreign transaction fee.\n\nNeed more help? Message us in the app any time, day or\n\n[travel-dcc] Paying in local currency or dollars (effective 2025-01-01)\nAbroad, card terminals and ATMs sometimes offer to charge you in US dollars instead of the local currency. This is called dynamic currency conversion. It sounds convenient, but it's almost always more expensive.\n\n## What to choose\n\nAlways choose the local currency. Then the conversion happens at the card network's rate, plus your plan's foreign transaction fee.\n\n## Why dollars cost more\n\nIf you pick US dollars, the merchant or ATM owner converts the amount using its own rate, which usually includes a markup. Your plan's foreign transaction fee may still apply, because the merchant is still\n\nCustomer question:\nWhat exchange rate do you use for purchases in other currencies?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1411,
+    "latency_ms": 1355.5103749968112,
+    "model": "gpt-6-luna",
+    "output_tokens": 70,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"We convert foreign-currency purchases to US dollars using the card network’s exchange rate on the day the transaction settles, with no added markup. The rate can differ slightly from the one shown while the purchase is pending.\",\"citations\":[\"travel-exchange-rates\"],\"abstain\":false}"
+  }
+}

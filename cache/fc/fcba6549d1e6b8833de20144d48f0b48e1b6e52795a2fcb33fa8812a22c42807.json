@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Accounts for under-18s\n\nTallowbrook accounts are for people aged 18 and over. We don't offer teen accounts, custodial accounts or accounts for children.\n\n## Sending money to a young person\n\nIf your child has an account at another bank, you can send money there by ACH.\n\n## Adding a child to your account\n\nYou can't add a child as an authorized user or give them a card on your account.\n\n## When they turn 18\n\nThey can apply for their own account in the app with their own ID and Social Security number or ITIN.\n\n## Using a parent's account\n\nPlease don't let someone else use your card or app. Transactions made by someone you gave your card to aren't covered as unauthorized.\n\n## Students\n\nStudents aged 18 and over can open an account like anyone else.\n\n## Gifts for a child\n\nWe can't hold money on a child's behalf. If you want to save for a child, you can create a Savings Pocket in your own account and name it after them. The money stays yours.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\ntheir own ID and Social Security number or ITIN.\n\n## Using a parent's account\n\nPlease don't let someone else use your card or app. Transactions made by someone you gave your card to aren't covered as unauthorized.\n\n## Students\n\nStudents aged 18 and over can open an account like anyone else.\n\n## Gifts for a child\n\nWe can't hold money on a child's behalf. If you want to save for a child, you can create a Savings Pocket in your own account and name it after them. The money stays yours.\n\nStill stuck? Chat with us in the\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 407,
+    "latency_ms": 1496.071832953021,
+    "model": "gpt-6-luna",
+    "output_tokens": 67,
+    "reasoning_tokens": 0,
+    "text": "This section of Tallowbrook’s under-18 account policy explains that customers must be 18 or older, someone else shouldn’t use a parent’s card or app, adult students can apply, and parents can save for a child only in a Savings Pocket they own. For help, contact support in the app."
+  }
+}

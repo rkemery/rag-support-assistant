@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[products-crypto-investing] Investing and cryptocurrency (effective 2025-01-01)\nTallowbrook doesn't offer investing, brokerage or retirement accounts, and you can't buy, sell or hold cryptocurrency with us.\n\n## Sending money to an investment app\n\nYou can link your Tallowbrook account to an investment or crypto platform and move money by ACH, like any other external account. Some platforms also accept debit card payments.\n\n## Crypto purchases with your card\n\nSome crypto platforms treat card purchases as cash advances. We don't charge cash advance fees, but the platform might. Card purchases from crypto platforms can't be disputed if you simply change your mind.\n\n## Scams\n\nBe careful\n\n[card-mobile-wallets] Using mobile wallets (effective 2025-01-01)\nYou can add your Tallowbrook physical or virtual card to the mobile wallet on your phone or watch and pay by tapping at checkout.\n\n## Add a card\n\nIn the Tallowbrook app, tap Cards, choose the card, and tap Add to wallet. The app sends the card details straight to your wallet, so you don't have to type them.\n\n## Things to know\n\n- Your wallet uses a device-specific number instead of your card number. Merchants never see your real card number.\n- Freezing a card in the app also blocks wallet payments on that card.\n- If you report a\n\n[products-checks] Checkbooks, cashier's checks and money orders (effective 2025-01-01)\nTallowbrook doesn't offer paper checkbooks, cashier's checks or money orders.\n\n## Paying someone who needs a check\n\nOptions include BrookPay (if they're a Tallowbrook member), an ACH transfer to their bank account, or a wire. Many landlords accept ACH.\n\n## Depositing checks\n\nYou can deposit paper checks made out to you by taking a photo in the app. See \"Depositing a check in the app\".\n\n## Money orders\n\nWe can't issue money orders, and money orders can't be deposited through the app.\n\n##\n\n[security-two-step] Two-step verification (effective 2025-01-01)\nViewing your full virtual card number\n\n## Keep codes to yourself\n\nA one-time code is only for you to type into the Tallowbrook app. Nobody from Tallowbrook will ask you to read it out. If someone asks, it's a scam.\n\n## Changed your phone number?\n\nUpdate it in the app while you still have the old number. If you've lost access to your old number, message support. We'll pass it to the team that verifies identity, which can take longer.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[support-no-advice] Financial advice (effective 2025-01-01)\nOur support team can explain how Tallowbrook products work, but we can't give financial, investment, tax or legal advice.\n\n## What we can't help with\n\n- Whether to invest, save or pay down debt\n- Which stocks, funds or cryptocurrencies to buy or sell\n- How much of your money to keep in savings\n- How to report interest or other income on your taxes\n- Legal questions about wills, divorce or disputes with other people\n\n## What we can help with\n\n- How our savings rates and Savings Pockets work\n- Fees and limits on each plan, so you\n\n[transfers-brookpay] Sending money with BrookPay (effective 2025-01-01)\ncosts $0.00 on every plan. BrookPay only works between Tallowbrook members.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[security-never-ask] What we'll never ask you (effective 2025-01-01)\nScammers often pretend to be from a bank. Here's what Tallowbrook will never ask you for, by phone, text, email, chat or social media.\n\n## We will never ask for\n\n- Your full card number or security code\n- Your PIN\n- Your password or passcode\n- A one-time code we sent you\n- Remote access to your phone or computer\n- To move your money to a \"safe account\" to protect it\n- To buy gift cards or send cryptocurrency\n\n## What we might ask\n\nIn the app, support may ask you to\n\n[card-fraud-lock] Why is my card locked by Tallowbrook? (effective 2025-01-01)\nto confirm a fraud alert by giving us your full card number, PIN or a one-time code.\n\nNeed more help? Message us in the app any time, day or night.\n\nCustomer question:\nCan I buy bitcoin in the Tallowbrook app?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1245,
+    "latency_ms": 1408.9922501007095,
+    "model": "gpt-6-luna",
+    "output_tokens": 49,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"No. Tallowbrook doesn’t offer investing or cryptocurrency, so you can’t buy bitcoin in the app.\",\"citations\":[\"products-crypto-investing\"],\"abstain\":false}"
+  }
+}

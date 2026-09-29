@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# How long verification takes\n\nMost applications are verified within 1 business day, and many within minutes.\n\n## Manual review\n\nIf we need to check something by hand, it can take up to 5 business days. We may ask for another document, such as proof of address.\n\n## While you wait\n\nYou can receive deposits into your new account, but you can't send money, withdraw cash or order a card until you're verified.\n\n## Checking status\n\nThe app shows your verification status on the home screen. We'll notify you as soon as it's done.\n\n## Can support speed it up?\n\nNo. Verification is handled by our Verification team, and support can't approve applications or tell you more than the app shows. If we need anything from you, we'll ask in the app.\n\n## Common causes of delays\n\nA blurry ID photo, a name that doesn't match your ID exactly, or a recent move are the most common reasons we need a manual review. Checking these before you apply helps.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nas it's done.\n\n## Can support speed it up?\n\nNo. Verification is handled by our Verification team, and support can't approve applications or tell you more than the app shows. If we need anything from you, we'll ask in the app.\n\n## Common causes of delays\n\nA blurry ID photo, a name that doesn't match your ID exactly, or a recent move are the most common reasons we need a manual review. Checking these before you apply helps.\n\nNeed more help? Message us in the app any time, day or night.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 387,
+    "latency_ms": 2955.1431249128655,
+    "model": "gpt-6-luna",
+    "output_tokens": 34,
+    "reasoning_tokens": 0,
+    "text": "Explains that support cannot speed up identity verification, notes common causes of manual-review delays, and directs users to message support in the app for help."
+  }
+}

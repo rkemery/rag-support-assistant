@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[security-fraud-alerts] How fraud alerts work (effective 2025-01-01)\nIf you don't answer\n\nIf you don't answer within 24 hours, the card stays locked until you contact us.\n\n## Is this alert real?\n\nReal alerts appear inside the Tallowbrook app. A text alert only ever asks you to reply YES or NO, and never contains a link. We never ask for your card number, PIN, password or a one-time code to confirm an alert. If someone calls you about a fraud alert, hang up and open the app instead.\n\n## Too many alerts?\n\nAlerts are more common when you shop somewhere new or abroad. They get less frequent\n\n[security-fraud-alerts] How fraud alerts work (effective 2025-01-01)\nWhen we see a card transaction that looks unusual, we decline it and send you a fraud alert in the app, and by text if you've turned that on.\n\n## Answering an alert\n\nThe alert shows the merchant, amount and location. Tap \"Yes, that was me\" or \"No, that wasn't me\".\n\n- **Yes:** the card is unlocked straight away. Try the purchase again.\n- **No:** the card stays locked. We'll guide you through reporting it and disputing any other charges.\n\n## If you don't answer\n\nIf you don't answer within 24\n\n[card-declined] Why was my card declined? (effective 2025-01-01)\non Premium. Limits can't be raised except by changing plan.\n\n## Card settings\n\nCheck that the card is activated and isn't frozen, and that the right controls are on. If international purchases are switched off, foreign merchants will decline, even for online orders.\n\n## Fraud checks\n\nIf our systems think a purchase looks unusual, we decline it and send a fraud alert. Confirm the alert in the app and try again. If you don't answer, the card may stay locked.\n\n## Where you are\n\nCards don't work in comprehensively sanctioned countries and regions.\n\nIf none of these\n\n[card-fraud-lock] Why is my card locked by Tallowbrook? (effective 2025-01-01)\nthe lock straight away.\n- If there's no alert, message us in the app. Support will pass your case to the Fraud team. Support can't remove a fraud lock, and neither can the freeze switch.\n\nThe Fraud team replies within 2 business days, often much sooner.\n\n## Meanwhile\n\nDeposits and incoming transfers still arrive while your card is locked. You can also still use BrookPay and transfers, unless the Fraud team has restricted those too.\n\nWe will never ask you to confirm a fraud alert by giving us your full card number, PIN or a\n\n[card-fraud-lock] Why is my card locked by Tallowbrook? (effective 2025-01-01)\nIf the app says your card is \"Locked by Tallowbrook\", our fraud systems have placed a fraud lock on it. This is different from a freeze you set yourself.\n\n## Why it happens\n\nWe lock a card when we see activity that looks like fraud, or when a fraud alert goes unanswered for 24 hours.\n\n## How to get it removed\n\n- If there's an open fraud alert in the app, answer it. Tapping \"Yes, that was me\" usually removes the lock straight away.\n- If there's no alert, message us in the\n\n[security-fraud-alerts] How fraud alerts work (effective 2025-01-01)\nare more common when you shop somewhere new or abroad. They get less frequent as our systems learn your patterns.\n\nQuestions? Our support team is available in the app at any hour.\n\n[travel-notice-v2] Do I need a travel notice? (effective 2025-09-01)\nNo. You don't need to tell us before you travel. We retired travel notices and the Travel mode setting, and our fraud checks now use your location and spending patterns instead.\n\n## What to do instead\n\n- Keep app notifications on. If we see an unusual purchase, we'll send a fraud alert that you can confirm with one tap.\n- Answer fraud alerts quickly. If an alert goes unanswered for 24 hours, the card stays locked until you contact us.\n- Check that International purchases is switched on under Cards, then Controls.\n\n## Old travel notices\n\nIf you set a\n\n[card-fraud-lock] Why is my card locked by Tallowbrook? (effective 2025-01-01)\nto confirm a fraud alert by giving us your full card number, PIN or a one-time code.\n\nNeed more help? Message us in the app any time, day or night.\n\nCustomer question:\nWhat happens if I don't respond to a fraud alert?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1255,
+    "latency_ms": 1615.953541942872,
+    "model": "gpt-6-luna",
+    "output_tokens": 79,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"If you don’t respond within 24 hours, your card stays locked until you contact Tallowbrook. You can answer an open alert in the app; selecting “Yes, that was me” usually unlocks the card straight away.\",\"citations\":[\"security-fraud-alerts\",\"card-fraud-lock\"],\"abstain\":false}"
+  }
+}

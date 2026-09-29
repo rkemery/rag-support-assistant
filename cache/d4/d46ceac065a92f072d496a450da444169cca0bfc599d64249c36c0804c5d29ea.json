@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[savings-tax-forms] Tax forms for interest (effective 2025-01-01)\nIf you earn at least $10.00 in interest during a calendar year, we send you a Form 1099-INT.\n\n## When it's available\n\nBy January 31 of the following year. You'll find it in the app under Profile, then Documents, then Tax forms. We'll notify you when it's ready.\n\n## Earned less?\n\nIf you earned less than the threshold, we don't send a form, but the interest is still shown on your monthly statements. You may still need to report it.\n\n## Premium ATM surcharge refunds and bonuses\n\nATM surcharge\n\n[savings-tax-forms] Tax forms for interest (effective 2025-01-01)\nreport it.\n\n## Premium ATM surcharge refunds and bonuses\n\nATM surcharge refunds aren't interest and don't appear on the form. Referral bonuses may be reported separately.\n\n## Tax questions\n\nWe can't give tax advice. For questions about how to report interest, talk to a tax professional.\n\n## Wrong details on the form\n\nIf your name or taxpayer ID on the form is wrong, message support. Changes to your legal name or taxpayer ID go to our Verification team.\n\nNeed more help? Message us in the app any time, day or night.\n\n[close-statements] Statements after closing (effective 2025-01-01)\nAfter you close your account, you can still sign in and download statements for 90 days.\n\n## Download them before you go\n\nWe recommend downloading any statements and tax forms you might need before you close. Tap Profile, then Documents.\n\n## After that\n\nOnce the download period ends, you can't sign in. Message support from the sign-in screen, or email us, and we'll send the statements you need. We keep records for seven years.\n\n## Tax forms\n\nIf you earned at least $10.00 in interest in the year you closed, we still send your 1099-INT\n\n[savings-interest-calc] How savings interest is calculated (effective 2025-01-01)\nup to $100,000. Anything above that earns 0.10% APY.\n\n## Changing plans\n\nIf you change plans, the new rate applies from the day the change takes effect. Interest for earlier days in the month uses the old rate.\n\n## Rate changes\n\nRates are variable. We give at least 30 days notice by email before we lower a rate.\n\nYour main balance doesn't earn interest.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[products-business] Business accounts (effective 2025-01-01)\ninto your personal account.\n\n## Business debit cards\n\nYour Tallowbrook card is a personal debit card. It can't carry a business name.\n\n## Tax forms\n\nWe only issue interest tax forms. We can't issue forms for business income.\n\n## Looking for a business account?\n\nYou'll need a bank that offers business accounts. We can't recommend a specific one.\n\nQuestions? Our support team is available in the app at any hour.\n\n[close-statements] Statements after closing (effective 2025-01-01)\ninterest in the year you closed, we still send your 1099-INT by January 31.\n\n## Verification letters\n\nAccount verification letters are only available for open accounts.\n\n## Card and transaction history\n\nYour statements list every transaction, fee, interest payment and dispute credit for the month, so they're usually all you need for records, taxes or a loan application elsewhere.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[support-no-advice] Financial advice (effective 2025-01-01)\nand Savings Pockets work\n- Fees and limits on each plan, so you can decide which suits you\n- Your statements and tax forms\n\n## Where to get advice\n\nFor advice about your situation, talk to a qualified financial adviser, tax professional or lawyer.\n\n## Investing\n\nTallowbrook doesn't offer investment or brokerage accounts. See \"Investing and cryptocurrency\".\n\nNeed more help? Message us in the app any time, day or night.\n\n[savings-apy-basic-v2] Savings rate on Basic (effective 2026-06-01)\nOn the Basic plan, Savings Pockets earn 0.50% APY, effective June 1, 2026.\n\n## Details\n\n- The rate applies to combined pocket balances up to $100,000. Anything above earns 0.10% APY.\n- Interest compounds daily and is paid monthly.\n- Your main balance doesn't earn interest. Move money to a pocket to earn it.\n- There's no minimum balance and no limit on withdrawals.\n\n## Rates are variable\n\nWe may change the rate. We'll email you at least 30 days before a decrease.\n\n## How\n\nCustomer question:\nWill I get a tax form for my savings interest? I only earned a few dollars last year",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1288,
+    "latency_ms": 1526.372667052783,
+    "model": "gpt-6-luna",
+    "output_tokens": 74,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"If you earned less than $10.00 in interest last year, Tallowbrook won’t send a Form 1099-INT. Your interest will still appear on your monthly statements, and you may still need to report it.\",\"citations\":[\"savings-tax-forms\"],\"abstain\":false}"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# ACH transfer cutoff times\n\nStandard transfers to and from your linked bank accounts use ACH, which only processes on business days.\n\n## Cutoff time\n\nTransfers you submit before 2:00 PM ET on a business day are sent that day. Transfers submitted after 2:00 PM ET, or on a weekend or bank holiday, are sent the next business day.\n\n## When the money arrives\n\nOnce sent, ACH transfers usually arrive in 1 to 3 business days. The other bank decides when to make the money available.\n\n## Example\n\nIf you send money on a Friday after 2:00 PM ET, it's sent on Monday (or Tuesday if Monday is a holiday).\n\n## Faster options\n\n- BrookPay transfers to other Tallowbrook members arrive in seconds, every day.\n- Domestic wires arrive the same business day if sent before the wire cutoff.\n\n## Limits\n\nDaily and monthly ACH limits depend on your plan. See the transfer limits article for your plan.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nStandard transfers to and from your linked bank accounts use ACH, which only processes on business days.\n\n## Cutoff time\n\nTransfers you submit before 2:00 PM ET on a business day are sent that day. Transfers submitted after 2:00 PM ET, or on a weekend or bank holiday, are sent the next business day.\n\n## When the money arrives\n\nOnce sent, ACH transfers usually arrive in 1 to 3 business days. The other bank decides when to make the money available.\n\n## Example\n\nIf you send money on a Friday after\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 394,
+    "latency_ms": 4123.88191698119,
+    "model": "gpt-6-luna",
+    "output_tokens": 35,
+    "reasoning_tokens": 0,
+    "text": "Explains ACH transfer processing: business-day rules and the 2:00 PM ET cutoff, typical arrival time, and a Friday-after-cutoff example."
+  }
+}

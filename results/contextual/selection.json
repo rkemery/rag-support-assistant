@@ -1,0 +1,13 @@
+{
+  "name": "fixed-title+ctx / bge-small+bm25 convex(a=0.7)",
+  "config": {
+    "chunking": "fixed-title",
+    "embedding": "bge-small",
+    "mode": "hybrid",
+    "fusion": "convex",
+    "alpha": 0.7,
+    "reranker": null,
+    "contextual": true
+  },
+  "summary": "0.794 (0.752 to 0.838), -0.017 vs no context (-0.045 to +0.012, p=0.244)"
+}

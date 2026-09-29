@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Cancelling a transfer\n\nWhether you can cancel a transfer depends on the type of transfer and how far along it is.\n\n## Scheduled or pending ACH transfers\n\nYou can cancel a scheduled ACH transfer in the app until the ACH cutoff time (4:00 PM ET) on its send date. Tap Transfers, choose the transfer and tap Cancel. After the cutoff, the transfer is already on its way and can't be cancelled.\n\n## BrookPay\n\nBrookPay payments arrive instantly and can't be cancelled.\n\n## Wires\n\nWires can't be cancelled once sent. We can ask the receiving bank to return the money, but the receiving bank decides, and it isn't guaranteed.\n\n## Recurring transfers\n\nYou can stop future transfers in a recurring series at any time. Stopping the series doesn't cancel a transfer that's already past its cutoff.\n\n## Sent to the wrong account?\n\nIf an ACH transfer went to the wrong external account, message support. We'll try to contact the other bank, but we can't promise the money comes back.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nWhether you can cancel a transfer depends on the type of transfer and how far along it is.\n\n## Scheduled or pending ACH transfers\n\nYou can cancel a scheduled ACH transfer in the app until the ACH cutoff time (4:00 PM ET) on its send date. Tap Transfers, choose the transfer and tap Cancel. After the cutoff, the transfer is already on its way and can't be cancelled.\n\n## BrookPay\n\nBrookPay payments arrive instantly and can't be cancelled.\n\n## Wires\n\nWires can't be cancelled once sent. We can ask the receiving bank to\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 398,
+    "latency_ms": 1365.6273330561817,
+    "model": "gpt-6-luna",
+    "output_tokens": 43,
+    "reasoning_tokens": 0,
+    "text": "The document explains when different transfers can be cancelled, including ACH cutoff rules, instant BrookPay payments, and wire limitations. This chunk covers ACH and BrookPay cancellations and begins the section on wires."
+  }
+}

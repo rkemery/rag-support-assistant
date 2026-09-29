@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Do I need a travel notice?\n\nYes. Set a travel notice before you leave the US so your card isn't declined abroad.\n\n## How to set a travel notice\n\n1. Open the app and tap Profile, then Travel mode.\n2. Add each country you'll visit.\n3. Enter your departure and return dates.\n\nSet the notice at least 2 before you leave, so it reaches our fraud systems in time. One notice can cover a trip of up to 90 days. For longer trips, add a second notice before the first one ends.\n\n## If you forget\n\nPurchases abroad without a travel notice are likely to be declined, and your card may be locked. If that happens, message support in the app and we'll help you unlock it.\n\n## Changing your plans\n\nYou can edit or delete a travel notice in Travel mode at any time. If you come home early, delete the notice so any later foreign charges are checked as usual.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nfirst one ends.\n\n## If you forget\n\nPurchases abroad without a travel notice are likely to be declined, and your card may be locked. If that happens, message support in the app and we'll help you unlock it.\n\n## Changing your plans\n\nYou can edit or delete a travel notice in Travel mode at any time. If you come home early, delete the notice so any later foreign charges are checked as usual.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 371,
+    "latency_ms": 1574.2710410850123,
+    "model": "gpt-6-luna",
+    "output_tokens": 49,
+    "reasoning_tokens": 0,
+    "text": "This section of the travel notice guide explains what happens if you travel without a notice, how to edit or delete a notice if plans change, and how to contact support. A notice covers trips of up to 90 days."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Why is my transfer pending?\n\nA transfer can show as pending for a few reasons. Here's how to tell what's going on.\n\n## Waiting for the cutoff\n\nACH transfers submitted after 4:00 PM ET, or on a weekend or holiday, stay pending until they're sent on the next business day.\n\n## On its way\n\nOnce sent, ACH transfers take 1 to 3 business days to arrive. The app shows the expected arrival date on the transfer.\n\n## Under review\n\nSome transfers are reviewed before they're sent, for example a large first transfer to a newly linked account. The app shows \"In review\". Reviews usually finish within one business day, and we'll message you if we need anything.\n\n## New device\n\nFor 24 hours after you sign in on a new device, transfers above $500 can't be sent.\n\n## Incoming transfers\n\nIf money sent to you hasn't arrived, check with the sender's bank when it was sent. Direct deposits usually arrive as soon as your employer's payment file reaches us.\n\nIf a transfer has been pending longer than the expected arrival date, message support with the amount and date.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nA transfer can show as pending for a few reasons. Here's how to tell what's going on.\n\n## Waiting for the cutoff\n\nACH transfers submitted after 4:00 PM ET, or on a weekend or holiday, stay pending until they're sent on the next business day.\n\n## On its way\n\nOnce sent, ACH transfers take 1 to 3 business days to arrive. The app shows the expected arrival date on the transfer.\n\n## Under review\n\nSome transfers are reviewed before they're sent, for example a large first transfer to a newly linked account. The app shows\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 423,
+    "latency_ms": 1811.9289999594912,
+    "model": "gpt-6-luna",
+    "output_tokens": 38,
+    "reasoning_tokens": 0,
+    "text": "Explains why ACH transfers may be pending, including cutoff timing, delivery estimates, and reviews; also covers new-device limits, incoming transfers, and when to contact support."
+  }
+}

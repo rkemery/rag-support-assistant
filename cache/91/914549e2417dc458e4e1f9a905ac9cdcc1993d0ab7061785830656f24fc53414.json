@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# ATM fees on Plus\n\nHere's what ATM withdrawals cost on the Plus plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | first 2 each month free, then $2.00 |\n| ATMs outside the US | $3.00 |\n\nThe 2 free withdrawals reset on the first day of each calendar month. Unused ones don't carry over.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $1,000 a day on Plus.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nHere's what ATM withdrawals cost on the Plus plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | first 2 each month free, then $2.00 |\n| ATMs outside the US | $3.00 |\n\nThe 2 free withdrawals reset on the first day of each calendar month. Unused ones don't carry over.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 405,
+    "latency_ms": 2144.921167055145,
+    "model": "gpt-6-luna",
+    "output_tokens": 25,
+    "reasoning_tokens": 0,
+    "text": "This section explains Plus-plan ATM withdrawal fees, monthly free withdrawals, and surcharges charged by ATM owners."
+  }
+}

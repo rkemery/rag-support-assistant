@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[disputes-subscriptions] Subscriptions that keep charging (effective 2026-01-15)\nIf a subscription keeps charging you after you cancelled it, here's what to do.\n\n## 1. Cancel with the merchant\n\nCancel through the merchant's website or app, and save the confirmation email or a screenshot. Freezing your card doesn't stop recurring payments to merchants you've already authorized.\n\n## 2. Ask for a refund\n\nContact the merchant with your cancellation confirmation and ask them to refund charges made after that date. Many merchants will.\n\n## 3. Dispute it\n\nIf the merchant won't refund you, dispute each charge made after you cancelled. Tap the transaction,\n\n[card-freeze] Freezing and unfreezing your card (effective 2025-01-01)\nFreezing your card blocks new purchases and ATM withdrawals straight away. It's the fastest thing to do if you've misplaced your card and think you might find it again.\n\n## How to freeze or unfreeze\n\nTap Cards, choose the card, and switch Freeze card on. Switch it off to unfreeze. Both happen instantly, and you can do it as often as you like.\n\n## What still works while frozen\n\n- Recurring payments to merchants you've already authorized, such as subscriptions\n- Refunds from merchants\n- Deposits and incoming transfers\n- Your virtual\n\n[card-freeze] Freezing and unfreezing your card (effective 2025-01-01)\nremove a fraud lock with the freeze switch. See \"Why is my card locked by Tallowbrook?\".\n\nSupport can also freeze or unfreeze your card for you if you ask in the app.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[card-freeze] Freezing and unfreezing your card (effective 2025-01-01)\nRefunds from merchants\n- Deposits and incoming transfers\n- Your virtual card, which has its own freeze switch\n\n## Freeze or report lost?\n\nIf you're sure the card is gone or stolen, report it lost or stolen instead. That cancels the card permanently and lets you order a replacement. A freeze is temporary and reversible.\n\n## Freeze versus fraud lock\n\nIf the app says your card is locked by Tallowbrook, that's a fraud lock, not a freeze. You can't remove a fraud lock with the freeze switch. See \"Why is my card locked\n\n[disputes-subscriptions] Subscriptions that keep charging (effective 2026-01-15)\ncard when signing up. Cancel with the merchant and ask for a refund.\n\nNeed more help? Message us in the app any time, day or night.\n\n[card-damaged] Replacing a damaged card (effective 2025-01-01)\nnot sure whether the card is damaged or lost, freeze it first. You can decide afterward.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\n[disputes-subscriptions] Subscriptions that keep charging (effective 2026-01-15)\nrefund you, dispute each charge made after you cancelled. Tap the transaction, then Get help, then Cancelled but still charged. You have 120 days from each transaction date.\n\n## Stopping future charges\n\nIf a merchant keeps charging after you cancel, you can report the card lost and get a new number. Recurring payments to the old number will then fail. There may be a replacement fee depending on your plan.\n\n## Free trials\n\nCharges after a free trial ended aren't unauthorized if you gave your card when signing up. Cancel with the merchant and ask for a refund.\n\nNeed\n\n[card-controls] Card controls (effective 2025-01-01)\non your physical card doesn't affect your virtual card, which can't be used at ATMs anyway.\n- Controls don't change your limits. Limits are set by your plan.\n\n## Controls versus freezing\n\nControls block certain kinds of transactions. Freezing blocks almost everything. If you think your card is at risk, freeze it.\n\nSupport can explain your current settings, but you change controls yourself in the app.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n\nCustomer question:\nIf I freeze my card, will my Netflix subscription still go through?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1160,
+    "latency_ms": 1805.9503340627998,
+    "model": "gpt-6-luna",
+    "output_tokens": 64,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"Yes. Freezing your card does not stop recurring payments to merchants you’ve already authorized, such as Netflix. To stop future subscription charges, cancel with the merchant.\",\"citations\":[\"card-freeze\",\"disputes-subscriptions\"],\"abstain\":false}"
+  }
+}

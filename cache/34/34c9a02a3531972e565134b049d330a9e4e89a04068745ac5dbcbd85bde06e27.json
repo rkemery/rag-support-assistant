@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# ATM fees on Basic\n\nHere's what ATM withdrawals cost on the Basic plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | $2.50 |\n| ATMs outside the US | $3.00 |\n\nEvery out-of-network withdrawal is charged the fee. To avoid it, use a BrookLink ATM.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou can withdraw up to $500 a day on Basic.\n\n## Where fees show up\n\nAny Tallowbrook ATM fee appears as its own line in your activity feed, right after the withdrawal, so you can always see what you paid us and what the ATM owner charged. The app's ATM map shows the nearest BrookLink ATMs.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nHere's what ATM withdrawals cost on the Basic plan.\n\n| ATM | Tallowbrook fee |\n|---|---|\n| BrookLink, in the US | $0.00 |\n| Any other ATM in the US | $2.50 |\n| ATMs outside the US | $3.00 |\n\nEvery out-of-network withdrawal is charged the fee. To avoid it, use a BrookLink ATM.\n\n## Surcharges\n\nATM owners outside BrookLink can add their own surcharge on top of our fee. The ATM shows it on screen before you confirm.\n\n## Daily limit\n\nYou\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 393,
+    "latency_ms": 1380.905708996579,
+    "model": "gpt-6-luna",
+    "output_tokens": 30,
+    "reasoning_tokens": 0,
+    "text": "Explains ATM withdrawal fees on the Basic plan, out-of-network charges, ATM-owner surcharges, and the daily withdrawal limit."
+  }
+}

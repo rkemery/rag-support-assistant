@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Do you charge overdraft fees?\n\nNo. Tallowbrook doesn't charge overdraft fees ($0.00) or non-sufficient funds fees ($0.00) on any plan.\n\n## What happens instead\n\nIf you don't have enough money, the transaction is simply declined. There's no charge for a decline.\n\n## Cushion\n\nPlus and Premium members can turn on Cushion, which covers small debit card purchases when your balance runs short, with no fee. Cushion covers up to $50.00 on Plus and $200 on Premium. It isn't available on Basic.\n\n## Can my balance still go negative?\n\nRarely. It can happen when a merchant charges more than it first authorized, for example a tip added to a restaurant bill, when a deposit is returned, or when a dispute credit is taken back. Add money to bring it back to zero.\n\n## Returned payments\n\nIf a scheduled transfer or an ACH debit can't be paid, it's returned unpaid, with no fee from us. The company you owe may charge its own late fee.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nNo. Tallowbrook doesn't charge overdraft fees ($0.00) or non-sufficient funds fees ($0.00) on any plan.\n\n## What happens instead\n\nIf you don't have enough money, the transaction is simply declined. There's no charge for a decline.\n\n## Cushion\n\nPlus and Premium members can turn on Cushion, which covers small debit card purchases when your balance runs short, with no fee. Cushion covers up to $50.00 on Plus and $200 on Premium. It isn't available on Basic.\n\n## Can my balance still\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 401,
+    "latency_ms": 1343.4403750579804,
+    "model": "gpt-6-luna",
+    "output_tokens": 32,
+    "reasoning_tokens": 0,
+    "text": "Explains Tallowbrook’s overdraft and non-sufficient funds fee policy, declined transactions, and Cushion coverage for Plus and Premium plans."
+  }
+}

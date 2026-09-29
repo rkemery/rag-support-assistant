@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# The Premium plan\n\nPremium costs $15.00 a month. It removes nearly every fee we charge, comes with a metal card, and has the highest limits and savings rate we offer.\n\n## What's included\n\n- **Monthly fee:** $15.00\n- **ATMs:** no Tallowbrook fee at any ATM in the US, and we reimburse ATM owner surcharges up to $10.00 a month.\n- **Foreign transaction fee:** 0% of the purchase amount\n- **Card replacement:** free\n- **Expedited card shipping:** free\n- **Savings Pockets:** 3.75% APY\n- **Cushion:** fee-free coverage up to $200 on debit card purchases\n- **Daily card spending limit:** $10,000\n- **Daily ATM limit:** $1,500\n\n## Good to know\n\nPremium members can get an emergency replacement card delivered abroad within 3 business days at no cost. Your card is metal, and replacements are metal too.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away. Downgrades start on your next billing date.\n\nNeed more help? Message us in the app any time, day or night.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nPremium costs $15.00 a month. It removes nearly every fee we charge, comes with a metal card, and has the highest limits and savings rate we offer.\n\n## What's included\n\n- **Monthly fee:** $15.00\n- **ATMs:** no Tallowbrook fee at any ATM in the US, and we reimburse ATM owner surcharges up to $10.00 a month.\n- **Foreign transaction fee:** 0% of the purchase amount\n- **Card replacement:** free\n- **Expedited card shipping:** free\n- **Savings Pockets:**\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 439,
+    "latency_ms": 1224.4215829996392,
+    "model": "gpt-6-luna",
+    "output_tokens": 40,
+    "reasoning_tokens": 0,
+    "text": "This chunk describes Tallowbrook’s Premium plan, including its $15 monthly fee, benefits, and the beginning of its included features list, which continues with Savings Pockets details."
+  }
+}

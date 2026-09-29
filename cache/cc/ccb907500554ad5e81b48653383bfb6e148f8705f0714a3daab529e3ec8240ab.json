@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Reopening a closed account\n\nClosed accounts can't be reopened. If you'd like to come back, apply for a new account in the app.\n\n## What a new account means\n\n- New account and card numbers\n- New verification. You'll go through identity checks again.\n- Your old transaction history stays with the closed account.\n- Any cooling-off refund for a first paid plan charge only applies once per person.\n\n## Statements from the old account\n\nYou can download statements for 90 days after closing. After that, message support to request them.\n\n## If we closed your account\n\nIf Tallowbrook closed your account, for example after a review, you may not be able to open a new one. Support can't reverse that decision.\n\n## Inactive accounts\n\nIf your account was closed for inactivity, you can apply again at any time.\n\n## Your old account details\n\nUpdate your employer and any companies that paid into your old account. Payments sent to a closed account are returned to the sender.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nrequest them.\n\n## If we closed your account\n\nIf Tallowbrook closed your account, for example after a review, you may not be able to open a new one. Support can't reverse that decision.\n\n## Inactive accounts\n\nIf your account was closed for inactivity, you can apply again at any time.\n\n## Your old account details\n\nUpdate your employer and any companies that paid into your old account. Payments sent to a closed account are returned to the sender.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 394,
+    "latency_ms": 1987.1772499755025,
+    "model": "gpt-6-luna",
+    "output_tokens": 57,
+    "reasoning_tokens": 0,
+    "text": "Guidance on reopening a closed account, including restrictions for accounts closed by Tallowbrook, reapplying after inactivity, and updating payers because payments to the old account are returned. Also explains how to request old account statements after the 90-day download period."
+  }
+}

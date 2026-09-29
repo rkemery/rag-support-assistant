@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Emergency card while abroad\n\nIf you're a Premium member and your card is lost, stolen or damaged while you're outside the US, we can send an emergency card to where you're staying. It arrives within 3 business days and costs $0.00.\n\n## How to request one\n\n1. Freeze or report your card in the app.\n2. Message support and ask for an emergency card.\n3. Give the full address where you'll be for the next few days, such as a hotel.\n\nDelivery can take longer in remote areas. The card is activated in the app like any other card.\n\n## Basic and Plus members\n\nEmergency cards abroad aren't available on Basic or Plus. Standard and expedited shipping only go to US addresses. Instead, add a virtual card in the app and use it in your phone's wallet while you're away. Your replacement can be sent to your US address.\n\n## Cash abroad\n\nVirtual cards can't be used at ATMs. If you need cash, you can ask someone with a Tallowbrook account to send you money by BrookPay and then use a card-free option at your destination, or rely on card payments in stores.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nThe card is activated in the app like any other card.\n\n## Basic and Plus members\n\nEmergency cards abroad aren't available on Basic or Plus. Standard and expedited shipping only go to US addresses. Instead, add a virtual card in the app and use it in your phone's wallet while you're away. Your replacement can be sent to your US address.\n\n## Cash abroad\n\nVirtual cards can't be used at ATMs. If you need cash, you can ask someone with a Tallowbrook account to send you money by BrookPay and then use a card-free option at your destination, or\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 432,
+    "latency_ms": 1281.3497909810394,
+    "model": "gpt-6-luna",
+    "output_tokens": 35,
+    "reasoning_tokens": 0,
+    "text": "Explains activating an emergency card and alternatives for Basic and Plus members abroad, including virtual card use, US-only replacement shipping, and ways to access cash.\n"
+  }
+}

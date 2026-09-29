@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Plus plan fee schedule\n\nHere is every fee that can apply to a Plus account, effective January 1, 2025. Fees are taken from your main balance when they're charged and show up in your activity feed with the word \"Fee\".\n\n| Fee | Amount |\n|---|---|\n| Monthly fee | $4.00 |\n| Out-of-network ATM withdrawal | $2.00 |\n| International ATM withdrawal | $3.00 |\n| Foreign transaction fee | 1.5% |\n| Card replacement | $0.00 |\n| Expedited card shipping | $25.00 |\n| Outgoing domestic wire | $15.00 |\n| Outgoing international wire | $35.00 |\n| Incoming international wire | $10.00 |\n| Cash deposit at a retail store | $3.00 |\n\n## Details\n\nYour first 2 out-of-network ATM withdrawals each calendar month are free. The fee applies from the next one.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\n|\n| Expedited card shipping | $25.00 |\n| Outgoing domestic wire | $15.00 |\n| Outgoing international wire | $35.00 |\n| Incoming international wire | $10.00 |\n| Cash deposit at a retail store | $3.00 |\n\n## Details\n\nYour first 2 out-of-network ATM withdrawals each calendar month are free. The fee applies from the next one.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nQuestions? Our support team is\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 421,
+    "latency_ms": 4364.942791988142,
+    "model": "gpt-6-luna",
+    "output_tokens": 85,
+    "reasoning_tokens": 0,
+    "text": "The Plus plan fee schedule lists charges including $25 expedited card shipping, wire transfer fees, and a $3 retail cash deposit fee. It notes the first two out-of-network ATM withdrawals each month are free, there are no overdraft, returned transfer, or inactivity fees, and the $4 monthly fee is charged on the billing date without proration. Support is available in the app at any hour."
+  }
+}

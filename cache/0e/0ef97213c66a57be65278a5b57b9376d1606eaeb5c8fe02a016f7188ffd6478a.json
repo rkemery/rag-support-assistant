@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Do you offer joint accounts?\n\nNo. Tallowbrook accounts are individual accounts only. We don't offer joint accounts, and you can't add an authorized user or a second card holder.\n\n## Sharing money with a partner\n\nEach of you can open your own Tallowbrook account and send money to each other instantly with BrookPay, for free.\n\n## Shared goals\n\nSavings Pockets belong to one account and can't be shared. You can each save toward the same goal in your own pockets.\n\n## Managing an account for someone else\n\nIf you have power of attorney, see \"Power of attorney\". Otherwise, we can only talk to the account holder.\n\n## Will you offer joint accounts?\n\nWe don't have plans to share right now.\n\n## Couples and roommates\n\nSplitting a bill is easy with BrookPay. One person pays, and the other sends their share straight from the app. BrookPay has no fee and arrives in seconds.\n\n## Moving money from a joint account elsewhere\n\nYou can link a joint account you hold at another bank as an external account, as long as your name is on it.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nyou have power of attorney, see \"Power of attorney\". Otherwise, we can only talk to the account holder.\n\n## Will you offer joint accounts?\n\nWe don't have plans to share right now.\n\n## Couples and roommates\n\nSplitting a bill is easy with BrookPay. One person pays, and the other sends their share straight from the app. BrookPay has no fee and arrives in seconds.\n\n## Moving money from a joint account elsewhere\n\nYou can link a joint account you hold at another bank as an external account, as long as your name is on it.\n\nStill stuck?\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 421,
+    "latency_ms": 1842.3460409976542,
+    "model": "gpt-6-luna",
+    "output_tokens": 64,
+    "reasoning_tokens": 0,
+    "text": "Tallowbrook offers individual accounts only, with no joint accounts, authorized users, or second cardholders. This section covers power-of-attorney access, future joint-account plans, using free instant BrookPay to split expenses, linking an external joint account held in your name, and contacting in-app support."
+  }
+}

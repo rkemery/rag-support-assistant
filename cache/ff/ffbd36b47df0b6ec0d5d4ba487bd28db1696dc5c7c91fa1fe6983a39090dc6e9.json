@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# How savings interest is calculated\n\nInterest on Savings Pockets is calculated every day and paid once a month.\n\n## How it's calculated\n\nEach day we work out interest on the balance in each pocket at your plan's rate, and it compounds daily. The APY already includes the effect of compounding.\n\n## When it's paid\n\nInterest for the month is paid into each pocket on the first business day of the next month, and shows as \"Interest\".\n\n## Balance cap\n\nYour plan's APY applies to combined pocket balances up to $100,000. Anything above that earns 0.10% APY.\n\n## Changing plans\n\nIf you change plans, the new rate applies from the day the change takes effect. Interest for earlier days in the month uses the old rate.\n\n## Rate changes\n\nRates are variable. We give at least 30 days notice by email before we lower a rate.\n\nYour main balance doesn't earn interest.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nInterest on Savings Pockets is calculated every day and paid once a month.\n\n## How it's calculated\n\nEach day we work out interest on the balance in each pocket at your plan's rate, and it compounds daily. The APY already includes the effect of compounding.\n\n## When it's paid\n\nInterest for the month is paid into each pocket on the first business day of the next month, and shows as \"Interest\".\n\n## Balance cap\n\nYour plan's APY applies to combined pocket balances up to $100,000. Anything above that earns 0.10%\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 387,
+    "latency_ms": 2879.623332992196,
+    "model": "gpt-6-luna",
+    "output_tokens": 36,
+    "reasoning_tokens": 0,
+    "text": "Explains how Savings Pocket interest is calculated and paid, including daily compounding and the $100,000 balance cap; the main balance does not earn interest."
+  }
+}

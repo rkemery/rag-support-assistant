@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# Setting or changing your PIN\n\nYou set your PIN when you activate your card, and you can change it any time in the app.\n\n## Change your PIN\n\n1. Tap Cards, then Card settings.\n2. Tap Change PIN.\n3. Confirm it's you with your passcode or face or fingerprint unlock.\n4. Enter the new PIN twice.\n\nThe new PIN works right away at card terminals. Some ATMs outside the BrookLink network only pick up the new PIN after your first chip-and-PIN purchase.\n\n## Forgot your PIN\n\nUse Change PIN in the app. You don't need the old one, because the app already knows it's you.\n\n## Locked PIN\n\nAfter several wrong tries, ATMs and terminals will refuse the PIN. Changing the PIN in the app unlocks it.\n\n## Keep it private\n\nTallowbrook staff will never ask for your PIN. Support can't see it either. Anyone who asks for it, by phone, text, email or chat, isn't us.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nChange PIN in the app. You don't need the old one, because the app already knows it's you.\n\n## Locked PIN\n\nAfter several wrong tries, ATMs and terminals will refuse the PIN. Changing the PIN in the app unlocks it.\n\n## Keep it private\n\nTallowbrook staff will never ask for your PIN. Support can't see it either. Anyone who asks for it, by phone, text, email or chat, isn't us.\n\nQuestions? Our support team is available in the app at any hour.\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 384,
+    "latency_ms": 1572.8839170187712,
+    "model": "gpt-6-luna",
+    "output_tokens": 44,
+    "reasoning_tokens": 0,
+    "text": "This section of the “Setting or changing your PIN” guide explains how to reset a forgotten PIN, unlock a PIN after too many incorrect attempts, keep the PIN private, and contact in-app support."
+  }
+}

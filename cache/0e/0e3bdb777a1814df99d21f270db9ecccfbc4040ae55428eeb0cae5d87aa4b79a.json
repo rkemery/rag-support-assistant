@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[support-deceased] If an account holder has died (effective 2025-01-01)\nWhat happens to the account\n\nOnce we're notified, we freeze the account and cards to protect them. Recurring payments stop. Direct deposits received after the date of death may be returned to the sender.\n\nAfter Account Services confirms who's authorized, the balance is paid to the estate.\n\n## Timing\n\nAccount Services contacts you within 2 business days. Please don't try to sign in to the account or use its cards.\n\nNeed more help? Message us in the app any time, day or night.\n\n[support-deceased] If an account holder has died (effective 2025-01-01)\nWe're sorry for your loss. Here's how to let us know that a Tallowbrook member has died.\n\n## Tell us\n\nEmail support@tallowbrook.example with the subject Bereavement, or message support. Support passes every bereavement case to our Account Services team, who handle it from start to finish.\n\n## What Account Services will ask for\n\n- The death certificate\n- Proof that you're the executor or administrator of the estate, or the next of kin\n- Your photo ID\n\n## What happens to the account\n\nOnce we're notified, we freeze the\n\n[cushion-negative-after-dispute] Negative balance after a dispute (effective 2025-01-01)\nmoney to bring your balance back to zero. Any incoming deposit repays it automatically.\n\n## Fees\n\nThere are no fees for a negative balance ($0.00).\n\n## If it isn't repaid\n\nAs with Cushion, if a negative balance lasts 60 days, the account is restricted until it's repaid. On Plus and Premium, Cushion is suspended while the balance is negative for longer than 30 days.\n\n## Can't pay it right away?\n\nMessage support. If you're going through financial hardship, we can pass your case to our Account Services team.\n\nStill stuck?\n\n[close-inactivity] Inactive accounts (effective 2025-01-01)\nWe may close accounts that have a $0.00 balance and no activity for 12 months.\n\n## Notice\n\nWe email you at least 30 days before closing. Any activity during that time, such as a deposit or a card purchase, keeps the account open.\n\n## Fees\n\nWe don't charge inactivity fees ($0.00) on any plan.\n\n## Accounts with money in them\n\nWe don't close accounts for inactivity while they hold a balance, including money in Savings Pockets.\n\n## Paid plans\n\nA paid plan keeps charging its monthly fee while the account is open, which counts\n\n[close-balance] What happens to your money when you close (effective 2025-01-01)\nWhen you close your account in the app, we send any remaining money to you.\n\n## How we send it\n\n- If you have a linked external account, we send the balance there by ACH.\n- If you don't, we mail a check to the address on your profile.\n\nEither way, it's sent within 10 business days of closing.\n\n## Savings Pockets\n\nMoney in your pockets, and any interest earned up to the closing date, is included in the payout.\n\n## Refunds that arrive later\n\nIf a merchant refund or other credit arrives after your account\n\n[support-power-of-attorney] Power of attorney (effective 2025-01-01)\nHow long it takes\n\nAccount Services replies within 2 business days to confirm what they received, and may ask for more information.\n\n## Until it's approved\n\nWe can't share information or take instructions from you until Account Services has approved the document. That includes freezing cards or changing plans.\n\n## If the account holder is in danger\n\nIf you think the account holder is being exploited financially, tell us. We treat that as urgent.\n\nQuestions? Our support team is available in the app at any hour.\n\n[direct-deposit-setup] Setting up direct deposit (effective 2025-01-01)\nmake the switch. Your first paycheck may still go to your old account.\n\n## Why it helps\n\n- You may get paid up to 2 days early.\n- Plus and Premium members need at least $500 in direct deposits in the last 30 days to use Cushion.\n\n## Splitting a paycheck\n\nYour employer may let you split your pay between accounts. You can also set up an automatic transfer from your main balance to a Savings Pocket on payday.\n\nNeed more help? Message us in the app any time, day or night.\n\n[disputes-status] Checking the status of a dispute (effective 2025-01-01)\n**Resolved in your favor:** the credit is permanent.\n- **Denied:** we've sent an explanation, and any provisional credit will be taken back.\n\n## How long it takes\n\nMost disputes finish within 45 days, and some take up to 90 days. We'll message you whenever the status changes.\n\n## Adding information\n\nYou can upload documents or add notes to an open dispute from the case page at any time.\n\n## Cancelling a dispute\n\nIf the merchant refunds you directly, withdraw the dispute from the case page so you aren't credited twice. If you were credited twice,\n\nCustomer question:\nHow long does it take for a deceased member's balance to be paid to the estate?",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1361,
+    "latency_ms": 1328.2170000020415,
+    "model": "gpt-6-luna",
+    "output_tokens": 63,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"After Account Services confirms who is authorized, the balance is paid to the estate. The help center doesn’t specify how long that payment takes; Account Services contacts you within 2 business days.\",\"citations\":[\"support-deceased\"],\"abstain\":false}"
+  }
+}

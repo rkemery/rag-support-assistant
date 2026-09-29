@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[card-controls] Card controls (effective 2025-01-01)\nCard controls let you decide where your card can be used. Changes take effect straight away.\n\n## Controls you can set\n\nIn the app, tap Cards, choose the card, then Controls. You can switch each of these on or off:\n\n- Online purchases\n- International purchases (in stores and online with foreign merchants)\n- ATM withdrawals\n- Contactless payments\n\n## Common mix-ups\n\n- A declined online order from a foreign website is often the International purchases control, not the Online purchases one.\n- Switching off ATM withdrawals on your physical card doesn't affect your virtual card, which can't be used\n\n[card-declined] Why was my card declined? (effective 2025-01-01)\non Premium. Limits can't be raised except by changing plan.\n\n## Card settings\n\nCheck that the card is activated and isn't frozen, and that the right controls are on. If international purchases are switched off, foreign merchants will decline, even for online orders.\n\n## Fraud checks\n\nIf our systems think a purchase looks unusual, we decline it and send a fraud alert. Confirm the alert in the app and try again. If you don't answer, the card may stay locked.\n\n## Where you are\n\nCards don't work in comprehensively sanctioned countries and regions.\n\nIf none of these\n\n[travel-card-abroad] Using your card abroad (effective 2025-01-01)\nYour Tallowbrook card works in most countries, anywhere Visa is accepted.\n\n## Before you go\n\n- Keep notifications on for the app so you can answer fraud alerts quickly.\n- Make sure International purchases is switched on under Cards, then Controls.\n- Check your plan's foreign transaction and international ATM fees.\n- Add a virtual card to your phone's wallet as a backup.\n\n## What it costs\n\nPurchases in a foreign currency carry a foreign transaction fee of 3% on Basic, 1% on Plus and 0% on Premium. ATM withdrawals abroad have their own international ATM fee\n\n[travel-notice-v2] Do I need a travel notice? (effective 2025-09-01)\nNo. You don't need to tell us before you travel. We retired travel notices and the Travel mode setting, and our fraud checks now use your location and spending patterns instead.\n\n## What to do instead\n\n- Keep app notifications on. If we see an unusual purchase, we'll send a fraud alert that you can confirm with one tap.\n- Answer fraud alerts quickly. If an alert goes unanswered for 24 hours, the card stays locked until you contact us.\n- Check that International purchases is switched on under Cards, then Controls.\n\n## Old travel notices\n\nIf you set a\n\n[travel-card-abroad] Using your card abroad (effective 2025-01-01)\nand 0% on Premium. ATM withdrawals abroad have their own international ATM fee instead.\n\n## Paying in the local currency\n\nWhen a card terminal asks whether to pay in US dollars or the local currency, choose the local currency.\n\n## If your card is lost abroad\n\nFreeze it in the app and report it. Standard and expedited shipping only go to US addresses. Premium members can get an emergency card delivered abroad. Everyone else can keep spending with a virtual card in a mobile wallet.\n\nDo you need to tell us you're traveling? No. See \"Do I need a travel\n\n[travel-notice-v1] Do I need a travel notice? (effective 2024-03-01)\nfirst one ends.\n\n## If you forget\n\nPurchases abroad without a travel notice are likely to be declined, and your card may be locked. If that happens, message support in the app and we'll help you unlock it.\n\n## Changing your plans\n\nYou can edit or delete a travel notice in Travel mode at any time. If you come home early, delete the notice so any later foreign charges are checked as usual.\n\nQuestions? Our support team is available in the app at any hour.\n\n[atm-abroad] Using ATMs abroad (effective 2025-01-01)\nYour Tallowbrook card works at ATMs abroad that accept Visa.\n\n## What it costs\n\n| Plan | International ATM fee |\n|---|---|\n| Basic | $3.00 |\n| Plus | $3.00 |\n| Premium | free |\n\nThe international ATM fee replaces the out-of-network fee for withdrawals outside the US. The foreign transaction fee doesn't apply to ATM withdrawals. It only applies to purchases.\n\nThe ATM owner may add its own surcharge. Premium surcharge reimbursement covers ATMs abroad too, up to the same monthly cap.\n\n## Pick the local currency\n\nIf the\n\n[travel-notice-v1] Do I need a travel notice? (effective 2024-03-01)\nYes. Set a travel notice before you leave the US so your card isn't declined abroad.\n\n## How to set a travel notice\n\n1. Open the app and tap Profile, then Travel mode.\n2. Add each country you'll visit.\n3. Enter your departure and return dates.\n\nSet the notice at least 2 before you leave, so it reaches our fraud systems in time. One notice can cover a trip of up to 90 days. For longer trips, add a second notice before the first one ends.\n\n## If you forget\n\nPurchases abroad without a travel notice\n\nCustomer question:\nhow do i turn off international purchases on my card",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1393,
+    "latency_ms": 1549.4262499269098,
+    "model": "gpt-6-luna",
+    "output_tokens": 56,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"In the app, tap **Cards**, choose your card, then tap **Controls**. Switch off **International purchases**; the change takes effect straight away.\",\"citations\":[\"card-controls\"],\"abstain\":false}"
+  }
+}

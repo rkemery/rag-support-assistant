@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# ATM didn't give me my cash\n\nIf an ATM took money from your account but didn't give you the cash, or gave you less than you asked for, you can dispute it.\n\n## What to do\n\n1. Note the ATM location, date and time, and keep any receipt.\n2. Check the app. Sometimes the ATM reverses the withdrawal on its own within a few days, and the transaction disappears or shows a matching credit.\n3. If it's still there once the withdrawal has posted, open a dispute in the app within 60 days. Tap the transaction, then Get help, then Cash not dispensed.\n\n## What happens next\n\nWe ask the ATM operator for its records. Most ATM cases are resolved within 10 business days. If the records show the cash wasn't dispensed, we credit the full amount, including any ATM fee we charged for that withdrawal.\n\n## Pending withdrawals\n\nYou can't dispute a withdrawal while it's still pending. Wait until it posts.\n\nQuestions? Our support team is available in the app at any hour.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nIf an ATM took money from your account but didn't give you the cash, or gave you less than you asked for, you can dispute it.\n\n## What to do\n\n1. Note the ATM location, date and time, and keep any receipt.\n2. Check the app. Sometimes the ATM reverses the withdrawal on its own within a few days, and the transaction disappears or shows a matching credit.\n3. If it's still there once the withdrawal has posted, open a dispute in the app within 60 days. Tap the transaction, then Get help, then Cash not\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 394,
+    "latency_ms": 1165.8917499007657,
+    "model": "gpt-6-luna",
+    "output_tokens": 43,
+    "reasoning_tokens": 0,
+    "text": "Explains how to dispute an ATM withdrawal when cash wasn’t dispensed or the amount was short, including checking for an automatic reversal and filing a dispute within 60 days after the withdrawal posts."
+  }
+}

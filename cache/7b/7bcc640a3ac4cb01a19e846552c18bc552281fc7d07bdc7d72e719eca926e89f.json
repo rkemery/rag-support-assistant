@@ -1,0 +1,22 @@
+{
+  "request": {
+    "extra": {},
+    "input": "<document>\n# How to file a dispute\n\nMost disputes can be filed yourself in the app in a couple of minutes. Support can also file one for you.\n\n## File it yourself\n\n1. Tap the transaction in your activity feed.\n2. Tap Get help and choose the reason.\n3. Answer the questions and add any documents.\n\n## Before you file\n\n- The transaction must have posted. Pending transactions can't be disputed.\n- Unauthorized transactions: within 60 days of the statement date, and the card must be frozen or reported first.\n- Merchant problems: within 120 days of the transaction date, after contacting the merchant.\n\n## Filing through support\n\nSupport can open disputes totaling up to $5,000 per case. Larger cases go to our Disputes team, who will contact you within 2 business days.\n\n## One dispute per transaction\n\nIf a transaction already has an open dispute, add information to that case instead of opening a new one.\n\nStill stuck? Chat with us in the app. Someone is there around the clock.\n</document>\nHere is the chunk we want to situate within the whole document\n<chunk>\nMost disputes can be filed yourself in the app in a couple of minutes. Support can also file one for you.\n\n## File it yourself\n\n1. Tap the transaction in your activity feed.\n2. Tap Get help and choose the reason.\n3. Answer the questions and add any documents.\n\n## Before you file\n\n- The transaction must have posted. Pending transactions can't be disputed.\n- Unauthorized transactions: within 60 days of the statement date, and the card must be frozen or reported first.\n- Merchant problems: within 120 days of the transaction date, after contacting the merchant.\n\n##\n</chunk>\nPlease give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else.",
+    "instructions": null,
+    "max_output_tokens": 150,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 393,
+    "latency_ms": 1827.1689580287784,
+    "model": "gpt-6-luna",
+    "output_tokens": 27,
+    "reasoning_tokens": 0,
+    "text": "Explains how to file a transaction dispute in the app and the requirements and deadlines for unauthorized transactions and merchant problems."
+  }
+}

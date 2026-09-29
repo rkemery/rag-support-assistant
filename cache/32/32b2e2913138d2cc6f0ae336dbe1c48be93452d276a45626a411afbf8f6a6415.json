@@ -1,0 +1,58 @@
+{
+  "request": {
+    "extra": {
+      "text": {
+        "format": {
+          "name": "support_answer",
+          "schema": {
+            "additionalProperties": false,
+            "properties": {
+              "abstain": {
+                "type": "boolean"
+              },
+              "answer": {
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "answer",
+              "citations",
+              "abstain"
+            ],
+            "type": "object"
+          },
+          "strict": true,
+          "type": "json_schema"
+        }
+      }
+    },
+    "input": [
+      {
+        "content": "Help-center excerpts:\n\n[cushion-negative-after-dispute] Negative balance after a dispute (effective 2025-01-01)\nmoney to bring your balance back to zero. Any incoming deposit repays it automatically.\n\n## Fees\n\nThere are no fees for a negative balance ($0.00).\n\n## If it isn't repaid\n\nAs with Cushion, if a negative balance lasts 60 days, the account is restricted until it's repaid. On Plus and Premium, Cushion is suspended while the balance is negative for longer than 30 days.\n\n## Can't pay it right away?\n\nMessage support. If you're going through financial hardship, we can pass your case to our Account Services team.\n\nStill stuck?\n\n[security-account-takeover] If someone else accessed your account (effective 2025-01-01)\nIf you think someone else has signed in to your account, act fast.\n\n## Signs to look for\n\n- A password change or new-device sign-in you didn't make\n- Your email address or phone number changed without you\n- Transfers or BrookPay payments you didn't send\n- You're suddenly signed out and can't sign back in\n\n## What to do\n\n1. If you can still sign in, change your password and freeze your cards.\n2. Message support from the app, or call us if you can't sign in.\n\n## What we'll do\n\nSupport\n\n[overdraft-no-fees] Do you charge overdraft fees? (effective 2025-01-01)\non Premium. It isn't available on Basic.\n\n## Can my balance still go negative?\n\nRarely. It can happen when a merchant charges more than it first authorized, for example a tip added to a restaurant bill, when a deposit is returned, or when a dispute credit is taken back. Add money to bring it back to zero.\n\n## Returned payments\n\nIf a scheduled transfer or an ACH debit can't be paid, it's returned unpaid, with no fee from us. The company you owe may charge its own late fee.\n\nQuestions? Our support team is available in the\n\n[security-scam-payment] If you sent money to a scammer (effective 2025-01-01)\nIf you sent a BrookPay payment, a transfer or a wire and then realized it was a scam, tell us right away.\n\n## What we can do\n\nSupport will pass your report to our Fraud team. They'll contact the receiving account or bank and try to recover the money. BrookPay payments can't be reversed, so recovery depends on the money still being in the other account. We can't promise to get it back.\n\n## What to include\n\n- The payment and the date\n- How you were contacted and what you were told\n- Screenshots of messages,\n\n[transfers-brookpay] Sending money with BrookPay (effective 2025-01-01)\n$5,000 |\n\nFor 24 hours after you sign in on a new device, BrookPay and external transfers are limited to $500.\n\n## BrookPay can't be reversed\n\nOnce a BrookPay payment is sent, it can't be cancelled or pulled back, even by support. Only send money to people you know. If you sent money to the wrong person, ask them to send it back. If you think you were scammed, report it to us right away.\n\n## Fees\n\nBrookPay costs $0.00 on every plan. BrookPay only works between\n\n[disputes-subscriptions] Subscriptions that keep charging (effective 2026-01-15)\nrefund you, dispute each charge made after you cancelled. Tap the transaction, then Get help, then Cancelled but still charged. You have 120 days from each transaction date.\n\n## Stopping future charges\n\nIf a merchant keeps charging after you cancel, you can report the card lost and get a new number. Recurring payments to the old number will then fail. There may be a replacement fee depending on your plan.\n\n## Free trials\n\nCharges after a free trial ended aren't unauthorized if you gave your card when signing up. Cancel with the merchant and ask for a refund.\n\nNeed\n\n[fees-schedule-premium-v2] Premium plan fee schedule (effective 2026-03-01)\nExpedited card shipping | $0.00 |\n| Outgoing domestic wire | $0.00 |\n| Outgoing international wire | $10.00 |\n| Incoming international wire | $0.00 |\n| Cash deposit at a retail store | $0.00 |\n\n## Details\n\nPremium has no ATM fees from us, and we pay back ATM owner surcharges up to $10.00 each month.\n\nNo plan has overdraft fees, returned transfer fees or inactivity fees. The monthly fee is charged on your billing date and isn't prorated.\n\nNeed more help? Message us\n\n[plan-premium] The Premium plan (effective 2026-06-01)\n**Expedited card shipping:** free\n- **Savings Pockets:** 3.75% APY\n- **Cushion:** fee-free coverage up to $200 on debit card purchases\n- **Daily card spending limit:** $10,000\n- **Daily ATM limit:** $1,500\n\n## Good to know\n\nPremium members can get an emergency replacement card delivered abroad within 3 business days at no cost. Your card is metal, and replacements are metal too.\n\nYou can change plans any time in the app under Profile, then Plan. Upgrades start right away.\n\nCustomer question:\nSigned up for Premium last week and honestly regret it. Can I get my money back??",
+        "role": "user"
+      }
+    ],
+    "instructions": "You are the help-center assistant for Tallowbrook, a US neobank. Answer the customer's question using only the help-center excerpts you are given.\n\nRules:\n- Use only facts stated in the excerpts. Do not add fees, limits, dates, steps or products they do not mention.\n- Some excerpts are older versions of a policy. When two excerpts disagree, follow the one with the later effective date.\n- If the question depends on the customer's plan (Basic, Plus or Premium), use that plan's numbers.\n- If the question rests on something false (for example a fee that does not exist), say so and give the correct facts. That is an answer, not an abstention.\n- Abstain when the excerpts do not contain the answer, when the question is not about Tallowbrook, or when it asks for investment, tax or legal advice. Set \"abstain\" to true and say briefly that the help center does not cover it.\n- Cite the article IDs (the text in square brackets) of every excerpt you used. Cite nothing when you abstain.\n- Keep the answer short: two to four sentences, plain language.\n",
+    "max_output_tokens": 600,
+    "model": "gpt-6-luna",
+    "reasoning_effort": "none",
+    "temperature": null,
+    "trial": 0
+  },
+  "response": {
+    "cached_input_tokens": 0,
+    "finish_reason": "stop",
+    "input_tokens": 1414,
+    "latency_ms": 2129.637207952328,
+    "model": "gpt-6-luna",
+    "output_tokens": 44,
+    "reasoning_tokens": 0,
+    "text": "{\"answer\":\"The help-center information doesn’t say whether Premium plan fees can be refunded. Message support to ask about your situation.\",\"citations\":[],\"abstain\":true}"
+  }
+}
